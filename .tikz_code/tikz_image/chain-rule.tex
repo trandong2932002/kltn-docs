@@ -1,0 +1,17 @@
+\begin{tikzpicture}
+    \begin{scope}[every node/.style={circle, draw}]
+        \node (A) at (0,0) {$x$};
+        \node (B) at (4,0) {$g(x)$};
+        \node (C) at (8,0) {$f(g(x))$};
+    \end{scope}
+
+    \begin{scope}[->, >={Stealth[black]}, every edge/.style={draw}]
+        \draw (A) -- (B);
+        \draw (B) -- (C);
+    \end{scope}
+
+    \begin{scope}
+        \node () at (2,1) {$\dfrac{\partial g(x)}{\partial x}$};
+        \node () at (6,1) {$\dfrac{\partial f(g(x))}{\partial g(x)}$};
+    \end{scope}
+\end{tikzpicture}

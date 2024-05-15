@@ -1,0 +1,32 @@
+\begin{tikzpicture}
+    \begin{scope}[every node/.style={circle, draw}]
+        \node (A) at (0,0) {};
+        \node (B) at (0,1) {};
+        \node (C) at (0,2) {};
+        \node (D) at (0,3) {};
+        \node (E) at (0,4) {};
+    \end{scope}
+
+    \begin{scope}[every node/.style={rectangle, draw}]
+        \node (G) at (2,0) {$b$};
+        \node [minimum height=1cm, minimum width=1cm] (F) at (5,2) {$\Sigma$};
+        \node [minimum height=1cm, minimum width=1cm] (H) at (6,2) {$\Phi$};
+    \end{scope}
+
+    \begin{scope}[->, >={Stealth[black]}, every node/.style={above}]
+        \draw (-2,0) -- node {$x_1$} (A);
+        \draw (-2,1) -- node {$x_2$} (B);
+        \draw (-2,2) -- node {$x_3$} (C);
+        \draw (-2,3) -- node {$x_4$} (D);
+        \draw (-2,4) -- node {$x_5$} (E);
+    \end{scope}
+
+    \begin{scope}[->, >={Stealth[black]}, every node/.style={above, pos=0.3}]
+        \draw (A) -- node {$w_1$} (F);
+        \draw (B) -- node {$w_2$} (F);
+        \draw (C) -- node {$w_3$} (F);
+        \draw (D) -- node {$w_4$} (F);
+        \draw (E) -- node {$w_5$} (F);
+        \draw (G) -- (F);
+    \end{scope}
+\end{tikzpicture}

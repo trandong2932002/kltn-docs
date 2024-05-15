@@ -1,0 +1,10 @@
+\begin{tikzpicture}
+    \begin{scope}[decoration={brace,mirror,amplitude=7}]
+        \node (A) at (0,0) {[drove][my][high][speed]};
+        \node (B) at (3.3,0) {[vehicle]};
+        \node (C) at (6.55,0) {[down][the][road][today]};
+        \draw [decorate] (A.south west)--node [below=3mm] {từ xung quanh} (A.south east);
+        \draw [decorate] (B.south west)--node [below=3mm] {từ ở giữa} (B.south east);
+        \draw [decorate] (C.south west)--node [below=3mm] {từ xung quanh} (C.south east);
+    \end{scope}
+\end{tikzpicture}

@@ -1,0 +1,183 @@
+\ProvidesPackage{preamble}
+
+% font: Times New Roman
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+% font size: 13pt, line spacing: 1.5lines
+\usepackage{scrextend}
+\usepackage{anyfontsize}
+\changefontsizes[19.5pt]{13pt}
+% paper size and margins
+\usepackage[a4paper, portrait,
+    top=2cm, bottom=2cm, left=3cm, right=2cm,
+    headheight=0.8cm, headsep=0.3cm, marginparsep=0.5cm, footskip=0.8cm]{geometry}
+% header and footer styles
+\usepackage{fancyhdr}
+\fancypagestyle{fancy}{
+    \fancyhf{}
+    \fancyhead[L]{\leftmark}
+    \fancyfoot[C]{\thepage}
+}
+\fancypagestyle{plain}{
+    \fancyhf{}
+}
+% section-header style fix: change fancypagestyle of chapter title page from plain to fancy
+\usepackage{etoolbox}
+\patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{fancy}}{}{}
+% space between tablenotes and table (threeparttable)
+\BeforeBeginEnvironment{tablenotes}{\smallskip}
+% tablenotes font size (threeparttable)
+\AtBeginEnvironment{tablenotes}{\fontsize{10pt}{15pt}\selectfont}
+% table font size: 12pt
+\BeforeBeginEnvironment{tabularx}{\fontsize{12pt}{18pt}\selectfont}
+\BeforeBeginEnvironment{tabular}{\fontsize{12pt}{18pt}\selectfont}
+% image centering
+\AtBeginEnvironment{figure}{\centering}
+% section depth
+\setcounter{secnumdepth}{4}
+% toc depth
+\setcounter{tocdepth}{4}
+% clickable table
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+% modify section
+\usepackage{titlesec}
+\titleformat{\chapter}[hang]
+{\bfseries\fontsize{14pt}{21pt}\selectfont\filcenter\MakeUppercase}
+{\chaptertitlename\ \thechapter:}
+{10pt}
+{\bfseries\fontsize{14pt}{21pt}\selectfont\MakeUppercase}
+\titlespacing*{\chapter}
+{0pt}{-10pt}{0pt}
+%
+\titleformat{\section}[hang]
+{\bf\fontsize{13pt}{19.5pt}\selectfont\MakeUppercase}
+{\thesection\ }
+{0pt}
+{\bf\fontsize{13pt}{19.5pt}\selectfont\MakeUppercase}
+\titlespacing*{\section}
+{0pt}{0pt}{0pt}
+%
+\titleformat{\subsection}[hang]
+{\bf\fontsize{13pt}{19.5pt}\selectfont}
+{\thesubsection\ }
+{0pt}
+{\bf\fontsize{13pt}{19.5pt}\selectfont}
+\titlespacing*{\subsection}
+{0pt}{0pt}{0pt}
+%
+\titleformat{\subsubsection}[hang]
+{\it\fontsize{13pt}{19.5pt}\selectfont}
+{\thesubsubsection\ }
+{0pt}
+{\it\fontsize{13pt}{19.5pt}\selectfont}
+\titlespacing*{\subsubsection}
+{0pt}{0pt}{0pt}
+%
+\titleformat{\tablename}[hang]
+{\bf\fontsize{14pt}{21pt}\selectfont\filcenter\MakeUppercase}
+{\thetable}
+{0pt}
+{\bf\fontsize{14pt}{21pt}\selectfont\MakeUppercase}
+\titlespacing*{\tablename}
+{0pt}{0pt}{0pt}
+% clickable toc
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+% threeparttable for notes
+\usepackage{threeparttable}
+% tabularx
+\usepackage{tabularx, booktabs}
+\newcolumntype{L}[1]{>{\hsize=#1\hsize\raggedright\arraybackslash}X}%
+\newcolumntype{R}[1]{>{\hsize=#1\hsize\raggedleft\arraybackslash}X}%
+\newcolumntype{C}[1]{>{\hsize=#1\hsize\centering\arraybackslash}X}%
+% image in tabularx, export: the package can go directly in the arguments of graphicx
+\usepackage[export]{adjustbox}
+% modify title 
+\renewcommand{\contentsname}{Mục lục}
+\renewcommand{\listtablename}{Danh sách bảng}
+\renewcommand{\listfigurename}{Danh sách hình ảnh}
+\renewcommand{\chaptername}{Chương}
+\renewcommand{\appendixname}{Phụ lục}
+% modify names of table, figure
+\usepackage{caption}
+\DeclareCaptionFont{table-figure-caption-fontsize}{\fontsize{11pt}{16.5pt}\selectfont}
+\captionsetup{tablename=Bảng, figurename=Hình, labelfont=bf, font=table-figure-caption-fontsize}
+\captionsetup[subfigure]{font=table-figure-caption-fontsize}
+% bibliography
+\usepackage[
+    backend=biber,
+    style=ieee,
+    sorting=ynt]{biblatex}
+\addbibresource{./references.bib}
+% bibliography fix: overfull hbox
+\emergencystretch=1em
+% bibliography font size 11pt, align left
+\renewcommand*{\bibfont}{\fontsize{11pt}{16.5pt}\selectfont\raggedright}
+% image inserting
+\usepackage{graphicx}
+% import
+\usepackage{import}
+% math
+\usepackage{amsmath, amssymb}
+\DeclareMathOperator{\sign}{sign}
+% item
+\usepackage{enumitem}
+\setlist[itemize]{nolistsep}
+\setlist[enumerate]{nolistsep}
+% indent first paragraph in a section
+\usepackage{indentfirst}
+% multiple figure
+\usepackage{subcaption}
+% use code
+\usepackage{algorithm, algpseudocode}
+% new algorithm
+\makeatletter
+\newenvironment{algorithmz}[1][htbp]{
+    \floatname{algorithm}{Giải thuật}
+    \renewcommand{\ALG@name}{Giải thuật}
+    \begin{algorithm}[#1]%
+        }{\end{algorithm}}
+\makeatother
+% new algorithm command
+\algnewcommand\algorithmicforeach{\textbf{for each}}
+\algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ \algorithmicdo}
+%
+% debug
+%
+\makeatletter
+\newcommand{\showfont}
+{%
+    (%\foreignlanguage{english}
+    {%
+            % encoding: \f@encoding{},
+            % family: \f@family{},
+            % series: \f@series{},
+            % shape: \f@shape{},
+            size: \f@size{},
+            baseline: \f@baselineskip{},
+            linespread: \f@linespread{},
+            linespacing: \the\baselineskip{}%
+        })%
+}
+\makeatother
+% debug layout
+% \usepackage{showframe}
+% \usepackage{lua-visual-debug} % using this package with lualatex
+% debug text
+\usepackage{lipsum}
+%
+% end debug
+%

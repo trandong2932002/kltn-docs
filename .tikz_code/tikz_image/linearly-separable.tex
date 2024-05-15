@@ -1,0 +1,23 @@
+\begin{tikzpicture}
+    \begin{scope}
+        \foreach \Point in {(1.69,2.12), (1.65,3), (2.29,3.16), (2.37,4.06), (2.81,3.82), (3.37,4.16), (2.85,3.36), (4.17,4.58), (3.47,4.84), (1.21,2.56)} {
+                \node at \Point {$\textcolor{red}{\bullet}$};
+            }
+        \foreach \Point in {(1.73,1.04), (2.89,0.82), (2.63,1.88), (3.67,2.04), (3.31,2.82), (3.07,1.82), (4.41,2.9), (4.45,3.78), (2.47,1.32)} {
+                \node at \Point {$\textcolor{blue}{\bullet}$};
+            }
+        \draw (1,1) -- (5,5);
+
+        \foreach \Point in {(7.23,4.72), (8.41,4.54), (7.61,4.3), (8.23,3.94), (10.13,2.34), (9.49,1.9), (10.37,2.66), (10.85,2.08), (10.21,1.34)} {
+                \node at \Point {$\textcolor{blue}{\bullet}$};
+            }
+        \foreach \Point in {(7.41,1.38), (9.77,4.76), (10.43,4.48), (10.53,4.06), (9.71,4.1), (11.17,3.84), (7.45,2.82), (8.47,2.2), (7.67,2.02), (7.93,2.6)} {
+                \node at \Point {$\textcolor{red}{\bullet}$};
+            }
+    \end{scope}
+    
+    \begin{scope}
+        \node at (3,6) {Phân biệt tuyến tính};
+        \node at (9,6) {Không phân biệt tuyến tính};
+    \end{scope}
+\end{tikzpicture}

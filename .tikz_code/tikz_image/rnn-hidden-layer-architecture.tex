@@ -1,0 +1,44 @@
+\begin{tikzpicture}
+    \begin{scope}[every node/.style={draw,rectangle,rounded corners,minimum width=10cm,minimum height=4.4cm}]
+        \node (A) at (-0.5,0) {};
+    \end{scope}
+
+    \begin{scope}[every node/.style={draw,rectangle,minimum width=0.75cm,minimum height=1.5cm}]
+        \node (B) at (0,3.5) {$\mathbf y_t$};
+        \node (C) at (0,-3.5) {$\mathbf x_t$};
+    \end{scope}
+
+    \begin{scope}[every node/.style={draw,rectangle,minimum width=0.75cm,minimum height=0.75cm}]
+        \node (D) at (-4.5,0) {$W_{hh}$};
+        \node (E) at (-3,-1.5) {$W_{xh}$};
+        \node (F) at (-3,0) {$+$};
+        \node (G) at (-1.5,0) {$\Phi_1$};
+        \node [circle] (H) at (-3,1.5) {$b_1$};
+
+        \node (D1) at (3,0) {$W_{hh}$};
+        \node (F1) at (1.5,0) {$+$};
+        \node (G1) at (0,0) {$\Phi_2$};
+        \node [circle] (H1) at (1.5,1.5) {$b_2$};
+    \end{scope}
+
+    \begin{scope}[->,>={Stealth[black]},thick]
+        \draw [rounded corners] (C.north) |- (E.east);
+        \draw [rounded corners] (G.south) |- ++ (0,-0.5) -| (D1.south);
+        %
+        \draw (-7,0) -- node [pos=0.4,above] {$\mathbf h_{t-1}$} (D);
+        \draw [rounded corners] (2.8,-0.882) -| (4,0) -- node [pos=0.5,above] {$\mathbf h_t$} (6,0);
+    \end{scope}
+
+    \begin{scope}[>={Stealth[black]},every edge/.style={draw=black,thick}, every node/.style={midway, right}]
+        \path [->] (D) edge node {} (F);
+        \path [->] (E) edge node {} (F);
+        \path [->] (H) edge node {} (F);
+        \path [->] (F) edge node {} (G);
+        %
+        \path [->] (D1) edge node {} (F1);
+        \path [->] (H1) edge node {} (F1);
+        \path [->] (F1) edge node {} (G1);
+        %
+        \path [->] (G1) edge node {} (B);
+    \end{scope}
+\end{tikzpicture}

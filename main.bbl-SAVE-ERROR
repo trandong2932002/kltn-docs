@@ -1,0 +1,332 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{ynt/global//global/global}
+    \entry{webpage6}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=dc787e57b060aa09eb76c48469ecce4e}{%
+           family={{Afshine Amidi}},
+           familyi={A\bibinitperiod},
+           given={{Shervine Amidi}},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{dc787e57b060aa09eb76c48469ecce4e}
+      \strng{fullhash}{dc787e57b060aa09eb76c48469ecce4e}
+      \strng{bibnamehash}{dc787e57b060aa09eb76c48469ecce4e}
+      \strng{authorbibnamehash}{dc787e57b060aa09eb76c48469ecce4e}
+      \strng{authornamehash}{dc787e57b060aa09eb76c48469ecce4e}
+      \strng{authorfullhash}{dc787e57b060aa09eb76c48469ecce4e}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-recurrent-neural-networks}}
+      \field{note}{Ngày truy cập: 2023-12-13}
+      \field{title}{Recurrent Neural Networks cheatsheet}
+      \field{year}{2019}
+    \endentry
+    \entry{webpage2}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=5a66838a479f7a205a40a275f39139a0}{%
+           family={{Ayush Pant}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{5a66838a479f7a205a40a275f39139a0}
+      \strng{fullhash}{5a66838a479f7a205a40a275f39139a0}
+      \strng{bibnamehash}{5a66838a479f7a205a40a275f39139a0}
+      \strng{authorbibnamehash}{5a66838a479f7a205a40a275f39139a0}
+      \strng{authornamehash}{5a66838a479f7a205a40a275f39139a0}
+      \strng{authorfullhash}{5a66838a479f7a205a40a275f39139a0}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://towardsdatascience.com/workflow-of-a-machine-learning-project-ec1dba419b94}}
+      \field{note}{Ngày truy cập: 2023-12-13}
+      \field{title}{Workflow of a Machine Learning project}
+      \field{year}{2019}
+    \endentry
+    \entry{webpage13}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://trituenhantao.io/kien-thuc/word-embedding-la-gi-tai-sao-no-quan-trong/}}
+      \field{note}{Ngày truy cập: 2023-12-13}
+      \field{title}{Word embedding là gì? Tại sao nó quan trọng?}
+      \field{year}{2019}
+    \endentry
+    \entry{webpage12}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=ab69e57b8717c968eaea01670c4b03e4}{%
+           family={{Bui Quang Manh}},
+           familyi={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{ab69e57b8717c968eaea01670c4b03e4}
+      \strng{fullhash}{ab69e57b8717c968eaea01670c4b03e4}
+      \strng{bibnamehash}{ab69e57b8717c968eaea01670c4b03e4}
+      \strng{authorbibnamehash}{ab69e57b8717c968eaea01670c4b03e4}
+      \strng{authornamehash}{ab69e57b8717c968eaea01670c4b03e4}
+      \strng{authorfullhash}{ab69e57b8717c968eaea01670c4b03e4}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://viblo.asia/p/word-embedding-tim-hieu-khai-niem-co-ban-trong-nlp-1Je5E93G5nL}}
+      \field{note}{Ngày truy cập: 2023-12-13}
+      \field{title}{Viblo - Word Embedding - Tìm hiểu khái niệm cơ bản trong NLP}
+      \field{year}{2020}
+    \endentry
+    \entry{webpage9}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=953db8b0478b824d08eab5986bc437cd}{%
+           family={{Jaimin Mungalpara}},
+           familyi={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{953db8b0478b824d08eab5986bc437cd}
+      \strng{fullhash}{953db8b0478b824d08eab5986bc437cd}
+      \strng{bibnamehash}{953db8b0478b824d08eab5986bc437cd}
+      \strng{authorbibnamehash}{953db8b0478b824d08eab5986bc437cd}
+      \strng{authornamehash}{953db8b0478b824d08eab5986bc437cd}
+      \strng{authorfullhash}{953db8b0478b824d08eab5986bc437cd}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://medium.com/nerd-for-tech/word-embedding-text-analysis-nlp-part-3-glove-and-fasttext-da21d074237a}}
+      \field{note}{Ngày truy cập: 2023-12-13}
+      \field{title}{Word Embedding: Text Analysis: NLP: Part-3: GloVe}
+      \field{year}{2021}
+    \endentry
+    \entry{webpage3}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=77b2eb62bfd8db12253c61ad0c57291b}{%
+           family={{Thomas Kurbiel}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{77b2eb62bfd8db12253c61ad0c57291b}
+      \strng{fullhash}{77b2eb62bfd8db12253c61ad0c57291b}
+      \strng{bibnamehash}{77b2eb62bfd8db12253c61ad0c57291b}
+      \strng{authorbibnamehash}{77b2eb62bfd8db12253c61ad0c57291b}
+      \strng{authornamehash}{77b2eb62bfd8db12253c61ad0c57291b}
+      \strng{authorfullhash}{77b2eb62bfd8db12253c61ad0c57291b}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://towardsdatascience.com/derivative-of-the-softmax-function-and-the-categorical-cross-entropy-loss-ffceefc081d1}}
+      \field{note}{Ngày truy cập: 2023-12-13}
+      \field{title}{Derivative of the Softmax Function and the Categorical Cross-Entropy Loss}
+      \field{year}{2021}
+    \endentry
+    \entry{Aggarwal2022-xj}{book}{}
+      \name{author}{1}{}{%
+        {{hash=86d11a07b1bfeac58dc68f7a419b3039}{%
+           family={Aggarwal},
+           familyi={A\bibinitperiod},
+           given={Charu\bibnamedelima C},
+           giveni={C\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{location}{1}{%
+        {Cham, Switzerland}%
+      }
+      \list{publisher}{1}{%
+        {Springer Nature}%
+      }
+      \strng{namehash}{86d11a07b1bfeac58dc68f7a419b3039}
+      \strng{fullhash}{86d11a07b1bfeac58dc68f7a419b3039}
+      \strng{bibnamehash}{86d11a07b1bfeac58dc68f7a419b3039}
+      \strng{authorbibnamehash}{86d11a07b1bfeac58dc68f7a419b3039}
+      \strng{authornamehash}{86d11a07b1bfeac58dc68f7a419b3039}
+      \strng{authorfullhash}{86d11a07b1bfeac58dc68f7a419b3039}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{Machine learning for text}
+      \field{year}{2022}
+    \endentry
+    \entry{Aggarwal2023-zk}{book}{}
+      \name{author}{1}{}{%
+        {{hash=86d11a07b1bfeac58dc68f7a419b3039}{%
+           family={Aggarwal},
+           familyi={A\bibinitperiod},
+           given={Charu\bibnamedelima C},
+           giveni={C\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \list{location}{1}{%
+        {Cham, Switzerland}%
+      }
+      \list{publisher}{1}{%
+        {Springer Nature}%
+      }
+      \strng{namehash}{86d11a07b1bfeac58dc68f7a419b3039}
+      \strng{fullhash}{86d11a07b1bfeac58dc68f7a419b3039}
+      \strng{bibnamehash}{86d11a07b1bfeac58dc68f7a419b3039}
+      \strng{authorbibnamehash}{86d11a07b1bfeac58dc68f7a419b3039}
+      \strng{authornamehash}{86d11a07b1bfeac58dc68f7a419b3039}
+      \strng{authorfullhash}{86d11a07b1bfeac58dc68f7a419b3039}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{6}
+      \field{title}{Neural networks and deep learning: A textbook}
+      \field{year}{2023}
+    \endentry
+    \entry{ciampiconi2023survey}{misc}{}
+      \name{author}{5}{}{%
+        {{hash=2e2891433a6f8041d5170ead615caba8}{%
+           family={Ciampiconi},
+           familyi={C\bibinitperiod},
+           given={Lorenzo},
+           giveni={L\bibinitperiod}}}%
+        {{hash=2185e231497f7904b70ebeb7f1c59024}{%
+           family={Elwood},
+           familyi={E\bibinitperiod},
+           given={Adam},
+           giveni={A\bibinitperiod}}}%
+        {{hash=ab21e9813a0beeaf3e909650a649c7d8}{%
+           family={Leonardi},
+           familyi={L\bibinitperiod},
+           given={Marco},
+           giveni={M\bibinitperiod}}}%
+        {{hash=c1e36ed60a53722c09bfa3b3383d2832}{%
+           family={Mohamed},
+           familyi={M\bibinitperiod},
+           given={Ashraf},
+           giveni={A\bibinitperiod}}}%
+        {{hash=6c6cd03c0bab5b1a4b4f6cd18b30eac7}{%
+           family={Rozza},
+           familyi={R\bibinitperiod},
+           given={Alessandro},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{ac77fa9f300e7f75cc15e2a5c03dc482}
+      \strng{fullhash}{acd7701374e3ea920ae77e021145b783}
+      \strng{bibnamehash}{acd7701374e3ea920ae77e021145b783}
+      \strng{authorbibnamehash}{acd7701374e3ea920ae77e021145b783}
+      \strng{authornamehash}{ac77fa9f300e7f75cc15e2a5c03dc482}
+      \strng{authorfullhash}{acd7701374e3ea920ae77e021145b783}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.LG}
+      \field{eprinttype}{arXiv}
+      \field{title}{A survey and taxonomy of loss functions in machine learning}
+      \field{year}{2023}
+      \verb{eprint}
+      \verb 2301.05579
+      \endverb
+    \endentry
+    \entry{webpage1}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=e6db22035c15bdd005e9e9326529b629}{%
+           family={{John Terra}},
+           familyi={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{e6db22035c15bdd005e9e9326529b629}
+      \strng{fullhash}{e6db22035c15bdd005e9e9326529b629}
+      \strng{bibnamehash}{e6db22035c15bdd005e9e9326529b629}
+      \strng{authorbibnamehash}{e6db22035c15bdd005e9e9326529b629}
+      \strng{authornamehash}{e6db22035c15bdd005e9e9326529b629}
+      \strng{authorfullhash}{e6db22035c15bdd005e9e9326529b629}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.simplilearn.com/regression-vs-classification-in-machine-learning-article}}
+      \field{note}{Ngày truy cập: 2023-12-13}
+      \field{title}{Regression vs. Classification in Machine Learning for Beginners}
+      \field{year}{2023}
+    \endentry
+    \entry{webpage11}{misc}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://en.wikipedia.org/wiki/Kernel_(image_processing)}}
+      \field{note}{Ngày truy cập: 2023-12-13}
+      \field{title}{Kernel (image processing)}
+      \field{year}{2023}
+    \endentry
+    \entry{webpage14}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=193f0569174b46e0e4f51fba9af8fdfb}{%
+           family={{Krithika V}},
+           familyi={K\bibinitperiod},
+           given={{Analytics Vidhya}},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{193f0569174b46e0e4f51fba9af8fdfb}
+      \strng{fullhash}{193f0569174b46e0e4f51fba9af8fdfb}
+      \strng{bibnamehash}{193f0569174b46e0e4f51fba9af8fdfb}
+      \strng{authorbibnamehash}{193f0569174b46e0e4f51fba9af8fdfb}
+      \strng{authornamehash}{193f0569174b46e0e4f51fba9af8fdfb}
+      \strng{authorfullhash}{193f0569174b46e0e4f51fba9af8fdfb}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.analyticsvidhya.com/blog/2023/01/introduction-to-fasttext-embeddings-and-its-implication/}}
+      \field{note}{Ngày truy cập: 2023-12-13}
+      \field{title}{Introduction to FastText Embeddings and its Implication}
+      \field{year}{2023}
+    \endentry
+    \entry{webpage}{misc}{}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://monkeylearn.com/machine-learning/}}
+      \field{note}{Ngày truy cập: 2023-12-13}
+      \field{title}{An Introduction to Machine Learning}
+    \endentry
+    \entry{webpage10}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=70ea5b89f420691e22c8e3d246abb756}{%
+           family={{Hưng Nguyễn}},
+           familyi={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{70ea5b89f420691e22c8e3d246abb756}
+      \strng{fullhash}{70ea5b89f420691e22c8e3d246abb756}
+      \strng{bibnamehash}{70ea5b89f420691e22c8e3d246abb756}
+      \strng{authorbibnamehash}{70ea5b89f420691e22c8e3d246abb756}
+      \strng{authornamehash}{70ea5b89f420691e22c8e3d246abb756}
+      \strng{authorfullhash}{70ea5b89f420691e22c8e3d246abb756}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://vietnix.vn/deep-learning-la-gi/}}
+      \field{note}{Ngày truy cập: 2023-12-13}
+      \field{title}{Deep Learning là gì? Tổng quan về Deep Learning từ A-Z}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

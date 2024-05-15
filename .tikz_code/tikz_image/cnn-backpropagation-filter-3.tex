@@ -1,0 +1,12 @@
+\begin{tikzpicture}
+    \begin{scope}[step=0.5cm, very thin]
+        \draw (0,0) grid (1.5,1.5);
+
+        \draw [<-,shift={(0,0.25)}] (1.25,0)--(0.25,0);
+        \draw [shift={(0,0.75)}] (1.25,0)--(0.25,0);
+        \draw [shift={(0,1.25)}] (1.25,0)--(0.25,0);
+
+        \draw [dashed,shift={(0,0.75)}] (1.25,0.5)--(0.25,0);
+        \draw [dashed,shift={(0,0.25)}] (1.25,0.5)--(0.25,0);
+    \end{scope}
+\end{tikzpicture}

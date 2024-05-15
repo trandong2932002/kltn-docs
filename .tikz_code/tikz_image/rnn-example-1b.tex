@@ -1,0 +1,194 @@
+\begin{tikzpicture}
+    \begin{scope}[every node/.style={draw,rectangle, minimum width=1.5cm, minimum height=0.75cm}]
+        \node (A) at (0,0) {};
+        \node (B) at (3,0) {};
+        \node (C) at (6,0) {};
+        \node (D) at (9,0) {};
+    \end{scope}
+
+    \begin{scope}[every node/.style={draw,rectangle, minimum width=0.75cm, minimum height=1.5cm}]
+        \node (E) at (0,2) {};
+        \node (F) at (3,2) {};
+        \node (G) at (6,2) {};
+        \node (H) at (9,2) {};
+    \end{scope}
+
+    \begin{scope}[every node/.style={draw,rectangle, minimum width=0.75cm, minimum height=1.5cm}]
+        \node (I) at (0,-2) {};
+        \node (J) at (3,-2) {};
+        \node (K) at (6,-2) {};
+        \node (L) at (9,-2) {};
+    \end{scope}
+
+    \begin{scope}[every node/.style={draw=none}]
+        \fontsize{10pt}{15pt}
+        \begin{scope}[shift={(0-0.3,1.28)}]
+            \matrix[matrix of nodes,
+                inner sep=0pt,
+                anchor=south west,
+                nodes={inner sep=0pt,text width=.6cm,align=center,minimum height=.35cm}
+            ]{
+                -1.2 \\
+                1.3  \\
+                -0.8 \\
+                1.7  \\
+            };
+        \end{scope}
+        \begin{scope}[shift={(3-0.3,1.28)}]
+            \matrix[matrix of nodes,
+                inner sep=0pt,
+                anchor=south west,
+                nodes={inner sep=0pt,text width=.6cm,align=center,minimum height=.35cm}
+            ]{
+                -0.4 \\
+                -1.7 \\
+                1.9  \\
+                -1.6 \\
+            };
+        \end{scope}
+        \begin{scope}[shift={(6-0.3,1.28)}]
+            \matrix[matrix of nodes,
+                inner sep=0pt,
+                anchor=south west,
+                nodes={inner sep=0pt,text width=.6cm,align=center,minimum height=.35cm}
+            ]{
+                1.7  \\
+                0.4  \\
+                -1.9 \\
+                1.1  \\
+            };
+        \end{scope}
+        \begin{scope}[shift={(9-0.3,1.28)}]
+            \matrix[matrix of nodes,
+                inner sep=0pt,
+                anchor=south west,
+                nodes={inner sep=0pt,text width=.6cm,align=center,minimum height=.35cm}
+            ]{
+                -1.8 \\
+                0.8  \\
+                -1.3 \\
+                1.8  \\
+            };
+        \end{scope}
+        %
+        \begin{scope}[shift={(0-0.3,-2.73)}]
+            \matrix[matrix of nodes,
+                inner sep=0pt,
+                anchor=south west,
+                nodes={inner sep=0pt,text width=.6cm,align=center,minimum height=.35cm}
+            ]{
+                1 \\
+                0 \\
+                0 \\
+                0 \\
+            };
+        \end{scope}
+        \begin{scope}[shift={(3-0.3,-2.73)}]
+            \matrix[matrix of nodes,
+                inner sep=0pt,
+                anchor=south west,
+                nodes={inner sep=0pt,text width=.6cm,align=center,minimum height=.35cm}
+            ]{
+                0 \\
+                1 \\
+                0 \\
+                0 \\
+            };
+        \end{scope}
+        \begin{scope}[shift={(6-0.3,-2.73)}]
+            \matrix[matrix of nodes,
+                inner sep=0pt,
+                anchor=south west,
+                nodes={inner sep=0pt,text width=.6cm,align=center,minimum height=.35cm}
+            ]{
+                0 \\
+                0 \\
+                1 \\
+                0 \\
+            };
+        \end{scope}
+        \begin{scope}[shift={(9-0.3,-2.73)}]
+            \matrix[matrix of nodes,
+                inner sep=0pt,
+                anchor=south west,
+                nodes={inner sep=0pt,text width=.6cm,align=center,minimum height=.35cm}
+            ]{
+                0 \\
+                0 \\
+                0 \\
+                1 \\
+            };
+        \end{scope}
+        %
+        \begin{scope}[shift={(0-0.3,-0.37)}]
+            \matrix[matrix of nodes,
+                inner sep=0pt,
+                anchor=south west,
+                nodes={inner sep=0pt,text width=.6cm,align=center,minimum height=.35cm}
+            ]{
+                0.8 \\
+                0.7 \\
+            };
+        \end{scope}
+        \begin{scope}[shift={(3-0.3,-0.37)}]
+            \matrix[matrix of nodes,
+                inner sep=0pt,
+                anchor=south west,
+                nodes={inner sep=0pt,text width=.6cm,align=center,minimum height=.35cm}
+            ]{
+                0.6  \\
+                -0.9 \\
+            };
+        \end{scope}
+        \begin{scope}[shift={(6-0.3,-0.37)}]
+            \matrix[matrix of nodes,
+                inner sep=0pt,
+                anchor=south west,
+                nodes={inner sep=0pt,text width=.6cm,align=center,minimum height=.35cm}
+            ]{
+                -0.8 \\
+                0.4  \\
+            };
+        \end{scope}
+        \begin{scope}[shift={(9-0.3,-0.37)}]
+            \matrix[matrix of nodes,
+                inner sep=0pt,
+                anchor=south west,
+                nodes={inner sep=0pt,text width=.6cm,align=center,minimum height=.35cm}
+            ]{
+                0.6 \\
+                0.8 \\
+            };
+        \end{scope}
+    \end{scope}
+
+    \begin{scope}[every node/.style={draw=none}]
+        \node () at (0,-3) {the};
+        \node () at (3,-3) {lion};
+        \node () at (6,-3) {chased};
+        \node () at (9,-3) {the};
+        %
+        \node () at (0,3) {lion};
+        \node () at (3,3) {chased};
+        \node () at (6,3) {the};
+        \node () at (9,3) {deer};
+    \end{scope}
+
+    \begin{scope}[>={Stealth[black]},every edge/.style={draw=black,thick}, every node/.style={midway,above}]
+        \path [->] (A) edge node {$W_{hh}$} (B);
+        \path [->] (B) edge node {$W_{hh}$} (C);
+        \path [->] (C) edge node {$W_{hh}$} (D);
+    \end{scope}
+
+    \begin{scope}[>={Stealth[black]},every edge/.style={draw=black,thick}, every node/.style={midway, right}]
+        \path [->] (A) edge node {$W_{hy}$} (E);
+        \path [->] (B) edge node {$W_{hy}$} (F);
+        \path [->] (C) edge node {$W_{hy}$} (G);
+        \path [->] (D) edge node {$W_{hy}$} (H);
+
+        \path [->] (I) edge node {$W_{xh}$} (A);
+        \path [->] (J) edge node {$W_{xh}$} (B);
+        \path [->] (K) edge node {$W_{xh}$} (C);
+        \path [->] (L) edge node {$W_{xh}$} (D);
+    \end{scope}
+\end{tikzpicture}

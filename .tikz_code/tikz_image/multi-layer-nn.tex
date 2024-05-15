@@ -1,0 +1,51 @@
+\begin{tikzpicture}
+    \begin{scope}[every node/.style={circle, draw, minimum size=0.3cm}]
+        \begin{scope}[shift={(0,0)}]
+            \foreach \x in {1,...,4}
+            \node (A\x) at (0, \x-1) {};
+            \draw [dashed] (-.5,-.5)--(.5,-.5)--(.5,3.5)--node [rectangle, draw=none, above] {Lớp đầu vào} (-.5,3.5)--(-.5,-.5);
+        \end{scope}
+
+        \begin{scope}[shift={(3,-1)}]
+            \foreach \x in {1,...,6}
+            \node (B\x) at (0, \x-1) {};
+            \draw [dashed] (-.5,-.5)--(.5,-.5)--(.5,5.5)--node [rectangle, draw=none, above] {Lớp ẩn $1$} (-.5,5.5)--(-.5,-.5);
+        \end{scope}
+
+        \begin{scope}[shift={(6,-.5)}]
+            \foreach \x in {1,...,5}
+            \node (C\x) at (0, \x-1) {};
+            \draw [dashed] (-.5,-.5)--(.5,-.5)--(.5,4.5)--node [rectangle, draw=none, above] {Lớp ẩn $2$} (-.5,4.5)--(-.5,-.5);
+        \end{scope}
+
+        \begin{scope}[shift={(9,-1.5)}]
+            \foreach \x in {1,...,7}
+            \node (D\x) at (0, \x-1) {};
+            \draw [dashed] (-.5,-.5)--(.5,-.5)--(.5,6.5)--node [rectangle, draw=none, above] {Lớp ẩn $3$} (-.5,6.5)--(-.5,-.5);
+        \end{scope}
+
+        \begin{scope}[shift={(12,.5)}]
+            \foreach \x in {1,...,3}
+            \node (E\x) at (0, \x-1) {};
+            \draw [dashed] (-.5,-.5)--(.5,-.5)--(.5,2.5)--node [rectangle, draw=none, above] {Lớp đầu ra} (-.5,2.5)--(-.5,-.5);
+        \end{scope}
+    \end{scope}
+
+    \begin{scope}[thin, gray]
+        \foreach \x in {1,...,4}
+        \foreach \y in {1,...,6}
+        \draw (A\x)--(B\y);
+
+        \foreach \x in {1,...,6}
+        \foreach \y in {1,...,5}
+        \draw (B\x)--(C\y);
+
+        \foreach \x in {1,...,5}
+        \foreach \y in {1,...,7}
+        \draw (C\x)--(D\y);
+
+        \foreach \x in {1,...,7}
+        \foreach \y in {1,...,3}
+        \draw (D\x)--(E\y);
+    \end{scope}
+\end{tikzpicture}

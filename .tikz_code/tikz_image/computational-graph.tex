@@ -1,0 +1,22 @@
+\begin{tikzpicture}
+    \begin{scope}
+        \node (A) at (0,0) {$g=3e-2f$};
+        %
+        \node (B) at (-2,-1.5) {$e=a+2b$};
+        \node (C) at (2,-1.5) {$f=3c+4d$};
+        %
+        \node (D) at (-3,-3) {$a$};
+        \node (E) at (-1,-3) {$b$};
+        \node (F) at (1,-3) {$c$};
+        \node (G) at (3,-3) {$d$};
+    \end{scope}
+
+    \begin{scope}[<-, >={Stealth[black]}]
+        \draw (A) -- (B);
+        \draw (A) -- (C);
+        \draw (B) -- (D);
+        \draw (B) -- (E);
+        \draw (C) -- (F);
+        \draw (C) -- (G);
+    \end{scope}
+\end{tikzpicture}

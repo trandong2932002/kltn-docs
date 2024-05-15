@@ -1,0 +1,59 @@
+\begin{tikzpicture}
+    \begin{scope}[every node/.style={draw,rectangle, minimum width=1.5cm, minimum height=0.75cm}]
+        \node (A) at (0,0) {$\mathbf h_1^{(f)}$};
+        \node (B) at (3,0) {$\mathbf h_2^{(f)}$};
+        \node (C) at (6,0) {$\mathbf h_3^{(f)}$};
+        \node (D) at (9,0) {$\mathbf h_4^{(f)}$};
+
+        \node (A1) at (0,2) {$\mathbf h_1^{(b)}$};
+        \node (B1) at (3,2) {$\mathbf h_2^{(b)}$};
+        \node (C1) at (6,2) {$\mathbf h_3^{(b)}$};
+        \node (D1) at (9,2) {$\mathbf h_4^{(b)}$};
+    \end{scope}
+
+    \begin{scope}[every node/.style={draw,rectangle, minimum width=0.75cm, minimum height=1.5cm}]
+        \node (E) at (0,4) {$\mathbf y_1$};
+        \node (F) at (3,4) {$\mathbf y_2$};
+        \node (G) at (6,4) {$\mathbf y_3$};
+        \node (H) at (9,4) {$\mathbf y_4$};
+    \end{scope}
+
+    \begin{scope}[every node/.style={draw,rectangle, minimum width=0.75cm, minimum height=1.5cm}]
+        \node (I) at (0,-2) {$\mathbf x_1$};
+        \node (J) at (3,-2) {$\mathbf x_2$};
+        \node (K) at (6,-2) {$\mathbf x_3$};
+        \node (L) at (9,-2) {$\mathbf x_4$};
+    \end{scope}
+
+    \begin{scope}[>={Stealth[black]},every edge/.style={draw=black,thick}, every node/.style={midway,above}]
+        \path [->] (A) edge node {} (B);
+        \path [->] (B) edge node {} (C);
+        \path [->] (C) edge node {} (D);
+
+        \path [<-] (A1) edge node {} (B1);
+        \path [<-] (B1) edge node {} (C1);
+        \path [<-] (C1) edge node {} (D1);
+    \end{scope}
+
+    \begin{scope}[>={Stealth[black]},every edge/.style={draw=black,thick}, every node/.style={midway, right}]
+        \path [->] (I) edge node {} (A);
+        \path [->] (J) edge node {} (B);
+        \path [->] (K) edge node {} (C);
+        \path [->] (L) edge node {} (D);
+
+        \path [->] (A1) edge node {} (E);
+        \path [->] (B1) edge node {} (F);
+        \path [->] (C1) edge node {} (G);
+        \path [->] (D1) edge node {} (H);
+
+        \path [->] (A) edge [out=30, in=-30, dashed] node {} (E);
+        \path [->] (B) edge [out=30, in=-30, dashed] node {} (F);
+        \path [->] (C) edge [out=30, in=-30, dashed] node {} (G);
+        \path [->] (D) edge [out=30, in=-30, dashed] node {} (H);
+
+        \path [->] (I) edge [out=150, in=-150, dashed] node {} (A1);
+        \path [->] (J) edge [out=150, in=-150, dashed] node {} (B1);
+        \path [->] (K) edge [out=150, in=-150, dashed] node {} (C1);
+        \path [->] (L) edge [out=150, in=-150, dashed] node {} (D1);
+    \end{scope}
+\end{tikzpicture}

@@ -1,0 +1,42 @@
+\begin{tikzpicture}
+    \begin{scope}[every node/.style={circle, draw}]
+        \node (A) at (0,0) {$f$};
+        %
+        \node (B) at (-2,-1.5) {$g_1$};
+        \node (C) at (2,-1.5) {$g_2$};
+        %
+        \node (D) at (-3,-3) {$h_1$};
+        \node (E) at (-1,-3) {$h_2$};
+        \node (F) at (1,-3) {$h_1$};
+        \node (G) at (3,-3) {$h_2$};
+        %
+        \node (H) at (-4,-6) {$z_1$};
+        \node (I) at (4,-6) {$z_2$};
+        %
+    \end{scope}
+
+    \begin{scope}[every node/.style={circle}]
+        \node (text1) at (6,0) {$2^0$};
+        \node (text2) at (6,-1.5) {$2^1$};
+        \node (text3) at (6,-3) {$2^2$};
+        \node (text4) at (6,-6) {$2^n$};
+        \node (text5) at (0,-6) {$\cdots$};
+        \node (text6) at (6,-4.4) {$\vdots$};
+    \end{scope}
+
+    \begin{scope}[<-, >={Stealth[black]}]
+        \draw (A) -- (B);
+        \draw (A) -- (C);
+        \draw (B) -- (D);
+        \draw (B) -- (E);
+        \draw (C) -- (F);
+        \draw (C) -- (G);
+        \draw (C) -- (F);
+        \draw (C) -- (G);
+    \end{scope}
+
+    \begin{scope}[every node/.style={circle, fill=white}]
+        \draw (D) -- node {$\cdots$} (H);
+        \draw (G) -- node {$\cdots$} (I);
+    \end{scope}
+\end{tikzpicture}

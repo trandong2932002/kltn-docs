@@ -1,0 +1,20 @@
+\begin{tikzpicture}
+    \begin{scope}[every node/.style={draw,rectangle,text width=1.8cm,minimum height=1.5cm,align=center}]
+        \node (A1) at (9,0) {text};
+        \node (A2) at (9,2) {fast};
+        \node (A3) at (9,4) {to};
+        \node (A4) at (9,6) {want};
+        \node (A5) at (9,8) {I};
+
+        \node (B) at (5,4) {};
+        \node (C) at (0,4) {<lea,arn> learn};
+
+        \draw [<-] (A1.west)--(B);
+        \draw [<-] (A2.west)--(B);
+        \draw [<-] (A3.west)--(B);
+        \draw [<-] (A4.west)--(B);
+        \draw [<-] (A5.west)--(B);
+
+        \draw [<-] (B.west)--(C);
+    \end{scope}
+\end{tikzpicture}

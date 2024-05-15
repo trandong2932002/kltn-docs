@@ -1,0 +1,22 @@
+\begin{tikzpicture}
+    \begin{scope}
+        \node (A) at (0.6,0) {$\mathbf x$};
+        \node (B) at (3.6,0) {$\mathbf h_1$};
+        \node (C) at (6.6,0) {$\mathbf h_2$};
+        \node (D) at (9.6,0) {$\mathbf o$};
+
+    \end{scope}
+
+    \begin{scope}
+        \draw (0,-1.5) -- (0,1.5) -- (1.2,1.5) -- (1.2,-1.5) -- (0,-1.5);
+        \draw (3,-2.1) -- (3,2.1) -- (4.2,2.1) -- (4.2,-2.1) -- (3,-2.1);
+        \draw (6,-2.4) -- (6,2.4) -- (7.2,2.4) -- (7.2,-2.4) -- (6,-2.4);
+        \draw (9,-1.8) -- (9,1.8) -- (10.2,1.8) -- (10.2,-1.8) -- (9,-1.8);
+    \end{scope}
+
+    \begin{scope}[every node/.style={midway, sloped, above, align=center}]
+        \draw[->] (1.2,0) -- (3,0) node {Ma trận\\$7\times 5$};
+        \draw[->] (4.2,0) -- (6,0) node {Ma trận\\$8\times 7$};
+        \draw[->] (7.2,0) -- (9,0) node {Ma trận\\$6\times 8$};
+    \end{scope}
+\end{tikzpicture}

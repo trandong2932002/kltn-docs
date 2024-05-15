@@ -1,0 +1,61 @@
+\begin{tikzpicture}
+    \begin{scope}[every node/.style={rotate=90}]
+        \node (A) at (0.6,0) {Lớp $i$};
+        \node (B) at (3.6,0) {Lớp $i+1$};
+        \node (C) at (6.6,0) {Lớp $i+2$};
+        \node (D) at (9.6,0) {Lớp $i+3$};
+        \node (D) at (12.6,0) {Lớp $i+4$};
+    \end{scope}
+
+    \begin{scope}
+        \draw (0,-2) -- (0,2) -- (1.2,2) -- (1.2,-2) -- (0,-2);
+        \draw (3,-2) -- (3,2) -- (4.2,2) -- (4.2,-2) -- (3,-2);
+        \draw (6,-2) -- (6,2) -- (7.2,2) -- (7.2,-2) -- (6,-2);
+        \draw (9,-2) -- (9,2) -- (10.2,2) -- (10.2,-2) -- (9,-2);
+        \draw (12,-2) -- (12,2) -- (13.2,2) -- (13.2,-2) -- (12,-2);
+    \end{scope}
+
+    \begin{scope}[->, >={Stealth[black]}, every node/.style={midway, sloped, above, align=center}]
+        \draw (7.2,1) -- (9,1) node {kích hoạt};
+        \draw (7.2,0) -- (9,0) node {};
+        \draw (7.2,-1) -- (9,-1) node {};
+        %%
+        \draw (4.2,1) -- (6,1) node {tuyến tính};
+        \draw (4.2,0) -- (6,0) node {};
+        \draw (4.2,-1) -- (6,-1) node {};
+        %
+        \draw (4.2,1) -- (6,0) node {};
+        \draw (4.2,1) -- (6,-1) node {};
+        \draw (4.2,0) -- (6,1) node {};
+        \draw (4.2,0) -- (6,-1) node {};
+        \draw (4.2,-1) -- (6,1) node {};
+        \draw (4.2,-1) -- (6,0) node {};
+    \end{scope}
+
+    \begin{scope}[->, >={Stealth[black]}, every node/.style={midway, sloped, above, align=center}]
+        \draw (1.2,1) -- (3,1) node {kích hoạt};
+        \draw (1.2,0) -- (3,0) node {};
+        \draw (1.2,-1) -- (3,-1) node {};
+        %%
+        \draw (10.2,1) -- (12,1) node {tuyến tính};
+        \draw (10.2,0) -- (12,0) node {};
+        \draw (10.2,-1) -- (12,-1) node {};
+        %
+        \draw (10.2,1) -- (12,0) node {};
+        \draw (10.2,1) -- (12,-1) node {};
+        \draw (10.2,0) -- (12,1) node {};
+        \draw (10.2,0) -- (12,-1) node {};
+        \draw (10.2,-1) -- (12,1) node {};
+        \draw (10.2,-1) -- (12,0) node {};
+    \end{scope}
+
+    \begin{scope}[->, >={Stealth[black]}, every node/.style={midway, sloped, above, align=center}]
+        \draw (3.8,2.3) -- (6.4,2.3) node {$\mathbf z_{i+2}=W\mathbf z_{i+1}$};
+        \draw (6.8,2.3) -- (9.4,2.3) node {$\mathbf z_{i+3}=\Phi(\mathbf z_{i+2})$};
+    \end{scope}
+
+    \begin{scope}[<-, >={Stealth[black]}, every node/.style={midway, sloped, below, align=center}]
+        \draw (3.8,-2.3) -- (6.4,-2.3) node {$\mathbf g_{i+1}=W^\intercal\mathbf g_{i+2}$};
+        \draw (6.8,-2.3) -- (9.4,-2.3) node {$\mathbf g_{i+2}=\Phi'(\mathbf g_{i+3})$};
+    \end{scope}
+\end{tikzpicture}

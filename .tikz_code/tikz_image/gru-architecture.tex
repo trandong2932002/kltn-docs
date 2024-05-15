@@ -1,0 +1,55 @@
+\begin{tikzpicture}
+    \begin{scope}[every node/.style={draw,rectangle,rounded corners,minimum width=11.8cm,minimum height=6.3cm}]
+        \node (A) at (-0.5,1.5) {};
+    \end{scope}
+
+    \begin{scope}[every node/.style={draw,rectangle,minimum width=0.75cm,minimum height=1.5cm}]
+        \node (C) at (0,-3) {$\mathbf h^{(k-1)}_t$};
+    \end{scope}
+
+    \begin{scope}[every node/.style={draw,rectangle,minimum width=0.75cm,minimum height=0.75cm}]
+        \node (D) at (-4.5,0) {$W^{(k)}_t$};
+        \node (F) at (-3,0) {$+$};
+        \node [circle] (H) at (-3,1.5) {$\mathbf b_1$};
+
+        \node (G) at (-1.5,0) {$\Phi_\mathbf r$};
+        \node (G1) at (0,0) {$\Phi_\mathbf z$};
+        \node (D1) at (3,0) {$\odot$};
+        \node (H1) at (0,1.5) {$\odot$};
+
+        \node (G2) at (-1.5,3) {$\odot$};
+        \node (F2) at (1.5,3) {$V^{(k)}_t$};
+        \node (H2) at (3,3) {$+$};
+        \node [circle] (I2) at (4.5,3) {$\mathbf b_2$};
+
+        \node (H3) at (3,1.5) {$\Phi$};
+        \node (D3) at (4.5,0) {$+$};
+    \end{scope}
+
+    \begin{scope}[->,>={Stealth[black]},thick]
+        \draw [rounded corners] (C.north) -- ++ (0,1) -| (D.south);
+        \draw [rounded corners] (F.south) -- ++ (0,-0.5) -| (G.south);
+        \draw [rounded corners] (-1.7,-0.882) -| (G1.south);
+        \draw (G1) -- (H1);
+        \draw (F2) -- (H2);
+        \draw (H2) -- (H3);
+        \draw (H3) -- (D1);
+        \draw (G1) -- (D1);
+        \draw (D1) -- (D3);
+        \draw (I2) -- (H2);
+        \draw [rounded corners] (H1) -| ++ (1.5,-2.5) -| (D3.south);
+        \draw [rounded corners] (-6,0) -| ++ (0.5,3) -- (G2.west);
+        \draw [rounded corners] (-4.3,-1.244) -| ++ (-1.7,5.5) -| (F2.north);
+        \draw [rounded corners] (-3.2,3) -| ++ (0.5,0.85) -| (H1.north);
+        %
+        \draw (-8,0) -- node [pos=0.3,above] {$\mathbf h_{t-1}^{(k)}$} (D);
+        \draw (D3) -- node [pos=0.6,above] {$\mathbf h_{t}^{(k)}$} (6.5,0);
+    \end{scope}
+
+    \begin{scope}[>={Stealth[black]},every edge/.style={draw=black,thick}, every node/.style={midway, right}]
+        \path [->] (D) edge node {} (F);
+        \path [->] (G) edge node {} (G2);
+        \path [->] (H) edge node {} (F);
+        \path [->] (G2) edge node {} (F2);
+    \end{scope}
+\end{tikzpicture}

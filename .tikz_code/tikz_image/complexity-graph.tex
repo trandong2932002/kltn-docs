@@ -1,0 +1,46 @@
+\begin{tikzpicture}
+    \begin{scope}[every node/.style={circle, draw}]
+        \node (A) at (-1,1) {$z_1$};
+        \node (B) at (-1,-1) {$z_2$};
+        \node (C) at (2,1) {$y_1$};
+        \node (D) at (2,-1) {$y_2$};
+        \node (E) at (3.5,1) {$x_1$};
+        \node (F) at (3.5,-1) {$x_2$};
+        %
+        \node (G) at (7,1) {$h_1$};
+        \node (H) at (7,-1) {$h_2$};
+        \node (I) at (8.5,1) {$g_1$};
+        \node (J) at (8.5,-1) {$g_2$};
+        \node (K) at (11.5,0) {$f$};
+        %
+        \begin{scope}[dashed, every node/.style={rectangle, above}]
+            \draw[dashed] (-1.7,-2) -- node [rotate=90] {Lớp đầu vào} (-1.7,2) -- (-0.3,2) -- (-0.3,-2) -- (-1.7,-2);
+            \draw[dashed] (1,-2) -- (1,2) -- node {Lớp ẩn} (9.2,2) -- (9.2,-2) -- (1,-2);
+            \draw[dashed] (10.6,-2) -- (10.6,2) -- (12.2,2) -- node [rotate=-90] {Lớp đầu ra} (12.2,-2) -- (10.6,-2);
+
+        \end{scope}
+    \end{scope}
+
+    \begin{scope}[->, >={Stealth[black]}, every edge/.style={draw}]
+        \draw (A) -- (C);
+        \draw (A) -- (D);
+        \draw (B) -- (C);
+        \draw (B) -- (D);
+        \draw (C) -- (E);
+        \draw (C) -- (F);
+        \draw (D) -- (E);
+        \draw (D) -- (F);
+        \draw (G) -- (I);
+        \draw (G) -- (J);
+        \draw (H) -- (I);
+        \draw (H) -- (J);
+        \draw (I) -- (K);
+        \draw (J) -- (K);
+        \begin{scope}[every node/.style={circle, fill=white}]
+            \draw (E) -- node {$\cdots$} (G);
+            \draw (E) -- node {$\cdots$} (H);
+            \draw (F) -- node {$\cdots$} (G);
+            \draw (F) -- node {$\cdots$} (H);
+        \end{scope}
+    \end{scope}
+\end{tikzpicture}

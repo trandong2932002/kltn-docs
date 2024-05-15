@@ -1,0 +1,68 @@
+\begin{tikzpicture}
+    \begin{scope}[every node/.style={draw,rectangle, minimum width=1.5cm, minimum height=0.75cm}]
+        \node (A) at (0,-0.5) {$\mathbf h_1^{(1)}$};
+        \node (B) at (3,-0.5) {$\mathbf h_2^{(1)}$};
+        \node (C) at (6,-0.5) {$\mathbf h_3^{(1)}$};
+        \node (D) at (9,-0.5) {$\mathbf h_4^{(1)}$};
+
+        \node (A1) at (0,1) {$\mathbf h_1^{(2)}$};
+        \node (B1) at (3,1) {$\mathbf h_2^{(2)}$};
+        \node (C1) at (6,1) {$\mathbf h_3^{(2)}$};
+        \node (D1) at (9,1) {$\mathbf h_4^{(2)}$};
+
+        \node (A2) at (0,2.5) {$\mathbf h_1^{(3)}$};
+        \node (B2) at (3,2.5) {$\mathbf h_2^{(3)}$};
+        \node (C2) at (6,2.5) {$\mathbf h_3^{(3)}$};
+        \node (D2) at (9,2.5) {$\mathbf h_4^{(3)}$};
+    \end{scope}
+
+    \begin{scope}[every node/.style={draw,rectangle, minimum width=0.75cm, minimum height=1.5cm}]
+        \node (E) at (0,4.5) {$\mathbf y_1$};
+        \node (F) at (3,4.5) {$\mathbf y_2$};
+        \node (G) at (6,4.5) {$\mathbf y_3$};
+        \node (H) at (9,4.5) {$\mathbf y_4$};
+    \end{scope}
+
+    \begin{scope}[every node/.style={draw,rectangle, minimum width=0.75cm, minimum height=1.5cm}]
+        \node (I) at (0,-2.5) {$\mathbf x_1$};
+        \node (J) at (3,-2.5) {$\mathbf x_2$};
+        \node (K) at (6,-2.5) {$\mathbf x_3$};
+        \node (L) at (9,-2.5) {$\mathbf x_4$};
+    \end{scope}
+
+    \begin{scope}[>={Stealth[black]},every edge/.style={draw=black,thick}, every node/.style={midway,above}]
+        \path [->] (A) edge node {} (B);
+        \path [->] (B) edge node {} (C);
+        \path [->] (C) edge node {} (D);
+
+        \path [->] (A1) edge node {} (B1);
+        \path [->] (B1) edge node {} (C1);
+        \path [->] (C1) edge node {} (D1);
+
+        \path [->] (A2) edge node {} (B2);
+        \path [->] (B2) edge node {} (C2);
+        \path [->] (C2) edge node {} (D2);
+    \end{scope}
+
+    \begin{scope}[>={Stealth[black]},every edge/.style={draw=black,thick}, every node/.style={midway, right}]
+        \path [->] (I) edge node {} (A);
+        \path [->] (J) edge node {} (B);
+        \path [->] (K) edge node {} (C);
+        \path [->] (L) edge node {} (D);
+
+        \path [->] (A) edge node {} (A1);
+        \path [->] (B) edge node {} (B1);
+        \path [->] (C) edge node {} (C1);
+        \path [->] (D) edge node {} (D1);
+
+        \path [->] (A1) edge node {} (A2);
+        \path [->] (B1) edge node {} (B2);
+        \path [->] (C1) edge node {} (C2);
+        \path [->] (D1) edge node {} (D2);
+
+        \path [->] (A2) edge node {} (E);
+        \path [->] (B2) edge node {} (F);
+        \path [->] (C2) edge node {} (G);
+        \path [->] (D2) edge node {} (H);
+    \end{scope}
+\end{tikzpicture}

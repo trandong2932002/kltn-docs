@@ -1,0 +1,118 @@
+\begin{tikzpicture}[scale=2]
+    \fontsize{8pt}{12pt}\selectfont
+    \begin{scope}[shift={(0,0)}]
+        \begin{scope}[every node/.style={draw,rectangle,minimum width=.2cm,minimum height=3cm}]
+            \node (X1) at (0,0) {};
+        \end{scope}
+
+        \begin{scope}[shift={(0,0.67)}, every node/.style={draw,circle,minimum size=.1cm,inner sep=1.4pt}]
+            \node [label={180:$x_{m1}$}] at (0,0) {};
+            \node [label={180:$x_{m2}$}] at (0,-.12) {};
+            \node [label={180:$x_{m3}$}] at (0,-.24) {};
+            %
+            \node [draw=none] at (0,-.79) {$\vdots$};
+            %
+            \node [label={180:$x_{md}$}] at (0,-.67*2) {};
+        \end{scope}
+
+        \begin{scope}[draw=none,text width=1.5cm]
+            \node at (.6,.3) {$U=[u_{jq}]$ $d\times p$};
+        \end{scope}
+    \end{scope}
+
+    \node [draw=none] at (0,2.25/2) {$\vdots$};
+
+    \begin{scope}[shift={(0,2.25)}]
+        \begin{scope}[every node/.style={draw,rectangle,minimum width=.2cm,minimum height=3cm}]
+            \node (X2) at (0,0) {};
+        \end{scope}
+
+        \begin{scope}[shift={(0,0.67)}, every node/.style={draw,circle,minimum size=.1cm,inner sep=1.4pt}]
+            \node [label={180:$x_{j1}$}] at (0,0) {};
+            \node [label={180:$x_{j2}$}] at (0,-.12) {};
+            \node [label={180:$x_{j3}$}] at (0,-.24) {};
+            %
+            \node [draw=none] at (0,-.79) {$\vdots$};
+            %
+            \node [label={180:$x_{jd}$}] at (0,-.67*2) {};
+        \end{scope}
+
+        \begin{scope}[draw=none,text width=1.5cm]
+            \node at (.6,0) {$U=[u_{jq}]$ $d\times p$};
+        \end{scope}
+    \end{scope}
+
+    \node [draw=none] at (0,2.25+2.25/2) {$\vdots$};
+
+    \begin{scope}[shift={(0,4.5)}]
+        \begin{scope}[every node/.style={draw,rectangle,minimum width=.2cm,minimum height=3cm}]
+            \node (X3) at (0,0) {};
+        \end{scope}
+
+        \begin{scope}[shift={(0,0.67)}, every node/.style={draw,circle,minimum size=.1cm,inner sep=1.4pt}]
+            \node [label={180:$x_{11}$}] at (0,0) {};
+            \node [label={180:$x_{12}$}] at (0,-.12) {};
+            \node [label={180:$x_{13}$}] at (0,-.24) {};
+            %
+            \node [draw=none] at (0,-.79) {$\vdots$};
+            %
+            \node [label={180:$x_{1d}$}] at (0,-.67*2) {};
+        \end{scope}
+
+        \begin{scope}[draw=none,text width=1.5cm]
+            \node at (.6,-.5) {$U=[u_{jq}]$ $d\times p$};
+        \end{scope}
+    \end{scope}
+
+    %h
+    \begin{scope}[shift={(2.5,2.25)}]
+        \begin{scope}[every node/.style={draw,rectangle,minimum width=.2cm,minimum height=2.3cm}]
+            \node (H) at (0,0) {};
+        \end{scope}
+
+        \begin{scope}[shift={(0,0.5)}, every node/.style={draw,circle,minimum size=.1cm,inner sep=1.4pt}]
+            \node [label={0:$h_1$}] at (0,0) {};
+            \node [label={0:$h_2$}] at (0,-.12) {};
+            \node [label={0:$h_3$}] at (0,-.24) {};
+            %
+            \node [draw=none] at (0,-.62) {$\vdots$};
+            %
+            \node [label={0:$h_p$}] at (0,-.5*2) {};
+        \end{scope}
+
+        \begin{scope}[draw=none,text width=1.5cm]
+            \node at (1,0) {$V=[v_{qj}]$ $d\times p$};
+        \end{scope}
+    \end{scope}
+
+    %y
+    \begin{scope}[shift={(5,2.25)}]
+        \begin{scope}[every node/.style={draw,rectangle,minimum width=.2cm,minimum height=3cm}]
+            \node (Y) at (0,0) {};
+        \end{scope}
+
+        \begin{scope}[shift={(0,0.67)}, every node/.style={draw,circle,minimum size=.1cm,inner sep=1.4pt}]
+            \node [label={0:$y_1$}] at (0,0) {};
+            \node [label={0:$y_2$}] at (0,-.12) {};
+            \node [label={0:$y_3$}] at (0,-.24) {};
+            %
+            \node [draw=none] at (0,-.79) {$\vdots$};
+            %
+            \node [label={0:$y_d$}] at (0,-.67*2) {};
+        \end{scope}
+    \end{scope}
+
+    \begin{scope}
+        \draw (X1.north east)--(H.north west);
+        \draw (X1.south east)--(H.south west);
+        %
+        \draw (X2.north east)--(H.north west);
+        \draw (X2.south east)--(H.south west);
+        %
+        \draw (X3.north east)--(H.north west);
+        \draw (X3.south east)--(H.south west);
+        %
+        \draw (H.north east)--(Y.north west);
+        \draw (H.south east)--(Y.south west);
+    \end{scope}
+\end{tikzpicture}

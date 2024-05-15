@@ -1,0 +1,25 @@
+\begin{tikzpicture}
+    \begin{scope}[every node/.style={draw, rectangle, minimum width=1.5cm, minimum height=0.75cm}]
+        \node (A) at (0,0) {$\mathbf h_1$};
+    \end{scope}
+
+    \begin{scope}[every node/.style={draw, rectangle, minimum width=0.75cm, minimum height=1.5cm}]
+        \node (E) at (0,2) {$\mathbf y_1$};
+    \end{scope}
+
+    \begin{scope}[every node/.style={draw, rectangle, minimum width=0.75cm, minimum height=1.5cm}]
+        \node (I) at (0,-2) {$\mathbf x_1$};
+    \end{scope}
+
+    \begin{scope}[>={Stealth[black]}, every edge/.style={draw=black,thick}, every node/.style={midway, right}]
+        \path [->] (A) edge node {$W_{hy}$} (E);
+        \path [->] (I) edge node {$W_{xh}$} (A);
+        \path [->] (A) edge [loop right] node {$W_{hh}$} (A);
+    \end{scope}
+
+    \begin{scope}[every node/.style={draw=none}]
+        \node (text1) at (-2,-2) {Lớp đầu vào};
+        \node (text1) at (-2,0) {Lớp ẩn};
+        \node (text1) at (-2,2) {Lớp đầu ra};
+    \end{scope}
+\end{tikzpicture}

@@ -1,0 +1,40 @@
+\begin{tikzpicture}
+    \begin{scope}[every node/.style={draw,rectangle, minimum width=1.5cm, minimum height=0.75cm}]
+        \node (A) at (0,0) {$\mathbf h_1$};
+        \node (B) at (3,0) {$\mathbf h_2$};
+        \node (C) at (6,0) {$\mathbf h_3$};
+        \node (D) at (9,0) {$\mathbf h_4$};
+    \end{scope}
+
+    \begin{scope}[every node/.style={draw,rectangle, minimum width=0.75cm, minimum height=1.5cm}]
+        \node (E) at (0,2) {$\mathbf y_1$};
+        \node (F) at (3,2) {$\mathbf y_2$};
+        \node (G) at (6,2) {$\mathbf y_3$};
+        \node (H) at (9,2) {$\mathbf y_4$};
+    \end{scope}
+
+    \begin{scope}[every node/.style={draw,rectangle, minimum width=0.75cm, minimum height=1.5cm}]
+        \node (I) at (0,-2) {$\mathbf x_1$};
+        \node (J) at (3,-2) {$\mathbf x_2$};
+        \node (K) at (6,-2) {$\mathbf x_3$};
+        \node (L) at (9,-2) {$\mathbf x_4$};
+    \end{scope}
+
+    \begin{scope}[>={Stealth[black]},every edge/.style={draw=black,thick}, every node/.style={midway,above}]
+        \path [->] (A) edge node {$W_{hh}$} (B);
+        \path [->] (B) edge node {$W_{hh}$} (C);
+        \path [->] (C) edge node {$W_{hh}$} (D);
+    \end{scope}
+
+    \begin{scope}[>={Stealth[black]},every edge/.style={draw=black,thick}, every node/.style={midway, right}]
+        \path [->] (A) edge node {$W_{hy}$} (E);
+        \path [->] (B) edge node {$W_{hy}$} (F);
+        \path [->] (C) edge node {$W_{hy}$} (G);
+        \path [->] (D) edge node {$W_{hy}$} (H);
+
+        \path [->] (I) edge node {$W_{xh}$} (A);
+        \path [->] (J) edge node {$W_{xh}$} (B);
+        \path [->] (K) edge node {$W_{xh}$} (C);
+        \path [->] (L) edge node {$W_{xh}$} (D);
+    \end{scope}
+\end{tikzpicture}

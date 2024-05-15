@@ -1,0 +1,13 @@
+\begin{tikzpicture}
+    \begin{axis}[
+            ticklabel style={font=\small},
+            xmin=-2,
+            xmax=2,
+            ymin=-1.2,
+            ymax=1.2,
+        ]
+        \addplot[blue, mark=none, domain=-2:-1, thick] {-1};
+        \addplot[blue, mark=none, domain=1:2, thick] {1};
+        \addplot[blue, mark=none, domain=-1:1, thick] {x};
+    \end{axis}
+\end{tikzpicture}

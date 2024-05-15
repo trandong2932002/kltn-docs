@@ -1,0 +1,28 @@
+\begin{tikzpicture}
+
+    \begin{scope}[every node/.style={circle, draw}]
+        \node (A) at (0,0) {$x$};
+        \node (B) at (3,0) {$h(x)$};
+        \node (C) at (6.5,1) {$g_1(h)$};
+        \node (D) at (6.5,-1) {$g_2(h)$};
+        \node (E) at (11,0) {$f(g_1,g_2)$};
+        \node (F) at (13,0) {$o$};
+    \end{scope}
+
+    \begin{scope}[->, >={Stealth[black]}]
+        \draw (A) -- (B);
+        \draw (B) -- (C);
+        \draw (B) -- (D);
+        \draw (C) -- (E);
+        \draw (D) -- (E);
+        \draw (E) -- (F);
+    \end{scope}
+
+    \begin{scope}
+        \node () at (1.5,0.7) {$\dfrac{\partial h(x)}{\partial x}$};
+        \node () at (4.5,1.2) {$\dfrac{\partial g_1(h)}{\partial h}$};
+        \node () at (4.5,-1.5) {$\dfrac{\partial g_2(h)}{\partial h}$};
+        \node () at (8.5,1.2) {$\dfrac{\partial f(g_1,g_2)}{\partial g_1}$};
+        \node () at (8.5,-1.5) {$\dfrac{\partial f(g_1,g_2)}{\partial g_2}$};
+    \end{scope}
+\end{tikzpicture}

@@ -1,0 +1,95 @@
+\begin{tikzpicture}
+    \begin{scope}[scale=0.15]
+        \begin{scope}
+            \pgfmathsetmacro{\x}{3}
+            \pgfmathsetmacro{\y}{32}
+            \pgfmathsetmacro{\z}{32}
+            \path (0,0,\y) coordinate (A) (\x,0,\y) coordinate (B) (\x,0,0) coordinate (C) (0,0,0) coordinate (D) (0,\z,\y) coordinate (E) (\x,\z,\y) coordinate (F) (\x,\z,0) coordinate (G) (0,\z,0) coordinate (H);
+            \draw (A)--(B)--(C)--(G)--(F)--(B) (A)--(E)--(F)--(G)--(H)--(E);
+            \draw [dashed] (A)--(D)--(C) (D)--(H);
+            \draw [thin,<->] ($(A)+(0,-40pt)$) -- node [below] {3} ($(B)+(0,-40pt)$);
+            \draw [thin,<->] ($(E)+(135:40pt)$) -- node [above,sloped] {32} ($(H)+(135:40pt)$);
+            \draw [thin,<->] ($(A)+(-40pt,0)$) -- node [above,sloped] {32} ($(E)+(-40pt,0)$);
+        \end{scope}
+
+        \begin{scope}[shift={(0,4,13)}]
+            \pgfmathsetmacro{\x}{3}
+            \pgfmathsetmacro{\y}{5}
+            \pgfmathsetmacro{\z}{5}
+            \path (0,0,\y) coordinate (A) (\x,0,\y) coordinate (B) (\x,0,0) coordinate (C) (0,0,0) coordinate (D) (0,\z,\y) coordinate (E) (\x,\z,\y) coordinate (F) (\x,\z,0) coordinate (G) (0,\z,0) coordinate (H);
+            \draw [dashed] (A)--(B) (A)--(E)--(F)--(G)--(H)--(E) (A)--(D)--(C) (D)--(H);
+            \draw (B)--(C)--(G)--(F)--(B);
+        \end{scope}
+
+        \begin{scope}[shift={(0,23,13)}]
+            \pgfmathsetmacro{\x}{3}
+            \pgfmathsetmacro{\y}{5}
+            \pgfmathsetmacro{\z}{5}
+            \path (0,0,\y) coordinate (A) (\x,0,\y) coordinate (B) (\x,0,0) coordinate (C) (0,0,0) coordinate (D) (0,\z,\y) coordinate (E) (\x,\z,\y) coordinate (F) (\x,\z,0) coordinate (G) (0,\z,0) coordinate (H);
+            \draw [dashed] (A)--(B) (A)--(E)--(F)--(G)--(H)--(E) (A)--(D)--(C) (D)--(H);
+            \draw (B)--(C)--(G)--(F)--(B);
+        \end{scope}
+    \end{scope}
+
+
+    \begin{scope}[scale=0.15,shift={(30,7,27/2)}]
+        \pgfmathsetmacro{\x}{3}
+        \pgfmathsetmacro{\y}{5}
+        \pgfmathsetmacro{\z}{5}
+        \path (0,0,\y) coordinate (A) (\x,0,\y) coordinate (B) (\x,0,0) coordinate (C) (0,0,0) coordinate (D) (0,\z,\y) coordinate (E) (\x,\z,\y) coordinate (F) (\x,\z,0) coordinate (G) (0,\z,0) coordinate (H);
+        \draw (A)--(B)--(C)--(G)--(F)--(B) (A)--(E)--(F)--(G)--(H)--(E);
+        \draw [dashed] (A)--(D)--(C) (D)--(H);
+        % \draw[thin,<->] ($(A)+(0,-40pt)$) -- node[below]{3}($(B)+(0,-40pt)$);
+        % \draw[thin,<->] ($(E)+(135:40pt)$) -- node[above,sloped]{5}($(H)+(135:40pt)$);
+        % \draw[thin,<->] ($(A)+(-40pt,0)$) -- node[above,sloped]{5}($(E)+(-40pt,0)$);
+    \end{scope}
+
+    \begin{scope}[scale=0.15,shift={(30,7+5+8,27/2)}]
+        \pgfmathsetmacro{\x}{3}
+        \pgfmathsetmacro{\y}{5}
+        \pgfmathsetmacro{\z}{5}
+        \path (0,0,\y) coordinate (A) (\x,0,\y) coordinate (B) (\x,0,0) coordinate (C) (0,0,0) coordinate (D) (0,\z,\y) coordinate (E) (\x,\z,\y) coordinate (F) (\x,\z,0) coordinate (G) (0,\z,0) coordinate (H);
+        \draw (A)--(B)--(C)--(G)--(F)--(B) (A)--(E)--(F)--(G)--(H)--(E);
+        \draw [dashed] (A)--(D)--(C) (D)--(H);
+        % \draw[thin,<->] ($(A)+(0,-40pt)$) -- node[below]{3}($(B)+(0,-40pt)$);
+        % \draw[thin,<->] ($(E)+(135:40pt)$) -- node[above,sloped]{5}($(H)+(135:40pt)$);
+        % \draw[thin,<->] ($(A)+(-40pt,0)$) -- node[above,sloped]{5}($(E)+(-40pt,0)$);
+    \end{scope}
+
+    \begin{scope}[scale=0.15,shift={(60,2,2)}]
+        \pgfmathsetmacro{\x}{2}
+        \pgfmathsetmacro{\y}{28}
+        \pgfmathsetmacro{\z}{28}
+        \path (0,0,\y) coordinate (A) (\x,0,\y) coordinate (B) (\x,0,0) coordinate (C) (0,0,0) coordinate (D) (0,\z,\y) coordinate (E) (\x,\z,\y) coordinate (F) (\x,\z,0) coordinate (G) (0,\z,0) coordinate (H);
+        \draw (A)--(B)--(C)--(G)--(F)--(B) (A)--(E)--(F)--(G)--(H)--(E);
+        \draw [dashed] (A)--(D)--(C) (D)--(H);
+        \draw [thin,<->] ($(A)+(0,-40pt)$) -- node [below] {2} ($(B)+(0,-40pt)$);
+        \draw [thin,<->] ($(B)+(-45:40pt)$) -- node [below,sloped] {28} ($(C)+(-45:40pt)$);
+        \draw [thin,<->] ($(C)+(40pt,0)$) -- node [below,sloped] {28} ($(G)+(40pt,0)$);
+
+        \draw [densely dotted] (0,22,14)--(0,22,16)--(0,24,16)--(0,24,14)--(0,22,14);
+        \draw (2,4,14)--(2,4,16)--(2,6,16)--(2,6,14)--(2,4,14);
+    \end{scope}
+
+    \begin{scope}[scale=0.15,loosely dotted]
+        \draw (3,23,13)--(30,7+5+8,27/2);
+        \draw (3,23,13+5)--(30,7+5+8,27/2+5);
+        \draw (3,23+5,13+5)--(30,7+5+8+5,27/2+5);
+        \draw (3,23+5,13)--(30,7+5+8+5,27/2);
+
+        \draw (3,4,13)--(30,7,27/2);
+        \draw (3,4,13+5)--(30,7,27/2+5);
+        \draw (3,4+5,13+5)--(30,7+5,27/2+5);
+        \draw (3,4+5,13)--(30,7+5,27/2);
+        %
+        \draw (33,7+5+8,27/2)--(60,24,16);
+        \draw (33,7+5+8,27/2+5)--(60,24,16+2);
+        \draw (33,7+5+8+5,27/2+5)--(60,24+2,16+2);
+        \draw (33,7+5+8+5,27/2)--(60,24+2,16);
+
+        \draw (33,7,27/2)--(62,6,16);
+        \draw (33,7,27/2+5)--(62,6,16+2);
+        \draw (33,7+5,27/2+5)--(62,6+2,16+2);
+        \draw (33,7+5,27/2)--(62,6+2,16);
+    \end{scope}
+\end{tikzpicture}

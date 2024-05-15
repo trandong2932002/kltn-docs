@@ -1,0 +1,51 @@
+\begin{tikzpicture}
+    \begin{scope}[step=0.5cm,very thin]
+        \draw (0,0) grid (3.5,3.5);
+        \matrix[matrix of nodes,
+            inner sep=0pt,
+            anchor=south west,
+            nodes={inner sep=0pt, text width=0.5cm, align=center, minimum height=0.5cm}
+        ]{
+            6 & 3 & 4 & 4 & 5 & 0 & 3 \\
+            4 & 7 & 4 & 0 & 4 & 0 & 4 \\
+            7 & 0 & 2 & 3 & 4 & 5 & 2 \\
+            3 & 7 & 5 & 0 & 3 & 0 & 7 \\
+            5 & 8 & 1 & 2 & 5 & 4 & 2 \\
+            8 & 0 & 1 & 0 & 6 & 0 & 0 \\
+            6 & 4 & 1 & 3 & 0 & 4 & 5 \\
+        };
+    \end{scope}
+
+    \begin{scope}[step=0.5cm,very thin, shift={(7,0.5)}]
+        \draw (0,0) grid (2.5,2.5);
+        \matrix[matrix of nodes,
+            inner sep=0pt,
+            anchor=south west,
+            nodes={inner sep=0pt, text width=0.5cm, align=center, minimum height=0.5cm}
+        ]{
+            7 & 7 & 5 & 5 & 5 \\
+            7 & 7 & 5 & 5 & 7 \\
+            8 & 8 & 5 & 5 & 7 \\
+            8 & 8 & 6 & 6 & 7 \\
+            8 & 8 & 6 & 6 & 6 \\
+        };
+    \end{scope}
+
+    \begin{scope}[step=0.5cm,very thin, shift={(7,-2)}]
+        \draw (0,0) grid (1.5,1.5);
+        \matrix[matrix of nodes,
+            inner sep=0pt,
+            anchor=south west,
+            nodes={inner sep=0pt, text width=0.5cm, align=center, minimum height=0.5cm}
+        ]{
+            7 & 5 & 5 \\
+            8 & 5 & 7 \\
+            8 & 6 & 6 \\
+        };
+    \end{scope}
+
+    \begin{scope}[draw=none]
+        \draw [->] (3.5,1.75) to node [above] {phép gộp $3\times 3$} node [below] {bước tiến 1} (7,1.75);
+        \draw [->] (3.5,1.25) to node [above,rotate=-37] {phép gộp $3\times 3$} node [below,rotate=-37] {bước tiến 2} (7,-1.25);
+    \end{scope}
+\end{tikzpicture}

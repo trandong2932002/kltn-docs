@@ -1,0 +1,78 @@
+\begin{tikzpicture}
+    \begin{scope}[every node/.style={circle, draw}]
+        \node (A) at (0,0) {};
+        \node (B) at (0,1) {};
+        \node (C) at (0,2) {};
+        \node (D) at (0,3) {};
+        \node (E) at (0,4) {};
+        %
+        \node (A1) at (3,1) {};
+        \node (B1) at (3,2) {};
+        \node (C1) at (3,3) {};
+        %
+        \node (A2) at (5,1) {};
+        \node (B2) at (5,2) {};
+        \node (C2) at (5,3) {};
+        %
+        \node (A3) at (7,1) {};
+        \node (B3) at (7,2) {};
+        \node (C3) at (7,3) {};
+    \end{scope}
+
+    \begin{scope}[->, >={Stealth[black]}, every node/.style={above}]
+        \draw (-2,0) -- node {$x_1$} (A);
+        \draw (-2,1) -- node {$x_2$} (B);
+        \draw (-2,2) -- node {$x_3$} (C);
+        \draw (-2,3) -- node {$x_4$} (D);
+        \draw (-2,4) -- node {$x_5$} (E);
+    \end{scope}
+
+    \begin{scope}[every node/.style={above, pos=0.5}]
+        \draw (A3) -- node {$P(y=red)$} (11,1);
+        \draw (B3) -- node {$P(y=blue)$} (11,2);
+        \draw (C3) -- node {$P(y=green)$} (11,3);
+    \end{scope}
+
+    \begin{scope}[every node/.style={above, pos=0.3}]
+        \draw (A) -- (A1);
+        \draw (A) -- (B1);
+        \draw (A) -- (C1);
+        \draw (B) -- (A1);
+        \draw (B) -- (B1);
+        \draw (B) -- (C1);
+        \draw (C) -- (A1);
+        \draw (C) -- (B1);
+        \draw (C) -- (C1);
+        \draw (D) -- (A1);
+        \draw (D) -- (B1);
+        \draw (D) -- (C1);
+        \draw (E) -- (A1);
+        \draw (E) -- (B1);
+        \draw (E) -- (C1);
+        %
+        \draw (A1) -- (A2);
+        \draw (A1) -- (B2);
+        \draw (A1) -- (C2);
+        \draw (B1) -- (A2);
+        \draw (B1) -- (B2);
+        \draw (B1) -- (C2);
+        \draw (C1) -- (A2);
+        \draw (C1) -- (B2);
+        \draw (C1) -- (C2);
+        %
+        \draw (A2) -- (A3);
+        \draw (A2) -- (B3);
+        \draw (A2) -- (C3);
+        \draw (B2) -- (A3);
+        \draw (B2) -- (B3);
+        \draw (B2) -- (C3);
+        \draw (C2) -- (A3);
+        \draw (C2) -- (B3);
+        \draw (C2) -- (C3);
+    \end{scope}
+
+    \begin{scope}[dashed, every node/.style={rectangle, above}]
+        \draw (2.5,3.5) -- node {Lớp ẩn} (5.5,3.5) -- (5.5,0.5) -- (2.5,0.5) -- (2.5,3.5);
+        \draw (6.5,3.5) -- node {Lớp softmax} (7.5,3.5) -- (7.5,0.5) -- (6.5,0.5) -- (6.5,3.5);
+    \end{scope}
+\end{tikzpicture}

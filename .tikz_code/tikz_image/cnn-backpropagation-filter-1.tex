@@ -1,0 +1,14 @@
+\begin{tikzpicture}
+    \begin{scope}[step=0.5cm, very thin]
+        \draw (0,0) grid (1.5,1.5);
+        \matrix[matrix of nodes,
+            inner sep=0pt,
+            anchor=south west,
+            nodes={inner sep=0pt, text width=0.5cm, align=center, minimum height=0.45cm}
+        ]{
+            a & b & c \\
+            d & e & f \\
+            g & h & i \\
+        };
+    \end{scope}
+\end{tikzpicture}
