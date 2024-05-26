@@ -1,5 +1,5 @@
 \subsubsection{Giới thiệu}
-Mô hình Sequence-to-Sequence (Seq2Seq) nhận input là một sequence và trả lại output cũng là một sequence. Ví dụ bài toán QA, input là câu hỏi "how are you?" và output là câu trả lời "I am good". Phương pháp truyền thống sử dụng RNNs cho cả encoder (phần mã hóa input) và decoder (phần giải mã input và đưa ra output tương ứng).
+Mô hình Sequence-to-Sequence (Seq2Seq) nhận input là một sequence và trả lại output cũng là một sequence. Ví dụ bài toán QA, input là câu hỏi ``how are you?'' và output là câu trả lời ``I am good''. Phương pháp truyền thống sử dụng RNNs cho cả encoder (phần mã hóa input) và decoder (phần giải mã input và đưa ra output tương ứng).
 
 Nhưng mô hình này vẫn có nhiều điểm yếu như đã trình bày, điểm yếu thứ nhất của RNNs là thời gian train rất chậm, đến mức người ta phải sử dụng phiên bản Truncated Backpropagation để train nó. Mặc dù vậy, tốc độ train vẫn rất chậm do phải sử dụng CPU, không tận dụng được tính toán song song trên GPU.  Điểm yếu thứ hai là nó xử lý không tốt với những câu dài do hiện tượng Gradient Vanishing/Exploding. Khi số lượng units càng lớn, gradient giảm dần ở các units cuối do công thức Đạo hàm chuỗi, dẫn đến mất thông tin/sự phụ thuộc xa giữa các units.
 
