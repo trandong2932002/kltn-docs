@@ -1,0 +1,22 @@
+\subsubsection{Tiếp cận nông \textit{(Shallow approach)}}
+Trong xử lý ảnh chúng ta đều biết tới những pretrained models nổi tiếng trên bộ dữ liệu Imagenet với 1000 classes. Nhờ số lượng classes lớn nên hầu hết các nhãn trong phân loại ảnh thông thường đều xuất hiện trong Imagenet và chúng ta có thể học chuyển giao lại các tác vụ xử lý ảnh rất nhanh và tiện lợi. Chúng ta cũng kỳ vọng NLP có một tập hợp các pretrained models như vậy, tri thức từ model được huấn luyện trên các nguồn tài nguyên văn bản không nhãn (unlabeled text) rất dồi dào và sẵn có.
+
+Tuy nhiên trong NLP việc học chuyển giao là không hề đơn giản như Computer Vision. Các kiến trúc mạng deep CNN của Computer Vision cho phép học chuyển giao trên đồng thời cả low-level và high-level features thông qua việc tận dụng lại các tham số từ những layers của mô hình pretrained.
+
+Nhưng trong NLP, các thuật toán cũ hơn như GLoVe, word2vec, fasttext chỉ cho phép sử dụng các biểu diễn véc tơ nhúng của từ là các low-level features như là đầu vào cho layer đầu tiên của mô hình. Các layers còn lại giúp tạo ra high-level features thì dường như được huấn luyện lại từ đầu.
+
+Như vậy chúng ta chỉ chuyển giao được các đặc trưng ở mức độ rất nông nên phương pháp này còn được gọi là tiếp cận nông (shallow approach). Việc tiếp cận với các layers sâu hơn là không thể. Điều này tạo ra một hạn chế rất lớn đối với NLP so với Computer Vision trong việc học chuyển giao. Cách tiếp cận nông trong học chuyển giao còn được xem như là feature-based.
+
+Khi áp dụng feature-based, chúng ta sẽ tận dụng lại các biểu diễn từ được huấn luyện trước trên những kiến trúc mô hình cố định và những bộ văn bản có kích thước rất lớn để nâng cao khả năng biểu diễn từ trong không gian đa chiều. Một số pretrained feature-based bạn có thể áp dụng trong tiếng anh đã được huấn luyện sẵn đó là GloVe, word2vec, fasttext, ELMo.
+
+\subsubsection{Học sâu \textit{(Deep learning)}}
+
+Ngoài ra, Một trong những thách thức lớn nhất của NLP là thiếu hụt dữ liệu huấn luyện. Mặc dù tổng thể có một lượng dữ liệu văn bản khổng lồ, nhưng để tạo ra các bộ dữ liệu cho các nhiệm vụ cụ thể, chúng ta cần phân chia chúng thành nhiều lĩnh vực rất đa dạng. Điều này dẫn đến việc chỉ có vài nghìn hoặc vài trăm nghìn mẫu huấn luyện được dán nhãn thủ công. Nếu muốn đạt được những cải tiến đáng kể, các mô hình NLP dựa trên học sâu đòi hỏi lượng dữ liệu lớn hơn nhiều - hàng triệu hoặc hàng tỷ mẫu huấn luyện được dán nhãn.
+
+Để giúp bù đắp khoảng trống về dữ liệu này, các nhà nghiên cứu đã phát triển các kỹ thuật khác nhau để huấn luyện sử dụng khối lượng văn bản khổng lồ không dán nhãn trên web (được gọi là pre-training). Các mô hình này được tiền huấn luyện này sau đó có thể được tinh chỉnh (fine-tuned) trên các bộ dữ liệu nhỏ hơn cho các nhiệm vụ cụ thể, chẳng hạn như giải quyết các vấn đề như trả lời câu hỏi, phân tích cảm xúc. Cách tiếp cận này đã mang lại những cải thiện đáng kể so với việc huấn luyện từ đầu trên các bộ dữ liệu nhỏ hơn cho các nhiệm vụ cụ thể. 
+
+Các mô hình NLP đột phá trong hai năm trở lại đây như BERT, ELMo, ULMFit, OpenAI GPT đã cho phép việc chuyển giao layers trong NLP khả thi hơn. Chúng ta không chỉ học chuyển giao được các đặc trưng mà còn chuyển giao được kiến trúc của mô hình nhờ số lượng layers nhiều hơn, chiều sâu của mô hình sâu hơn trươc đó.
+
+Các kiến trúc mới phân cấp theo level có khả năng chuyển giao được những cấp độ khác nhau của đặc trưng từ low-level tới high-level. Trong khi học nông chỉ chuyển giao được low-level tại layer đầu tiên. Tất nhiên low-level cũng đóng vai trò quan trọng trong các tác vụ NLP. Nhưng high-level là những đặc trưng có ý nghĩa hơn vì đó là những đặc trưng đã được tinh luyện.
+
+Người ta kỳ vọng rằng ULMFit, OpenAI GPT, BERT sẽ là những mô hình pretrained giúp tiến gần hơn tới việc xây dựng một lớp các pretrained models ImageNet for NLP. Khi học chuyển giao theo phương pháp học sâu chúng ta sẽ tận dụng lại kiến trúc từ mô hình pretrained và bổ sung một số layers phía sau để phù hợp với nhiệm vụ huấn luyện. Các tham số của các layers gốc sẽ được fine-tunning lại. Chỉ một số ít các tham số ở layers bổ sung được huấn luyện lại từ đầu.
