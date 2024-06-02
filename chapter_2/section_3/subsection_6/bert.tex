@@ -110,7 +110,7 @@ Tương tự như các tác vụ liên quan đến cặp câu được đề c�
 Hiện tại có nhiều phiên bản khác nhau của model BERT. Các phiên bản đều dựa trên việc thay đổi kiến trúc của Transformer tập trung ở 3 tham số: $L$: số lượng các block sub-layers trong transformer, $H$: kích thước của embedding véc tơ (hay còn gọi là hidden size), $A$: Số lượng head trong multi-head layer, mỗi một head sẽ thực hiện một self-attention. Tên gọi của 2 kiến trúc bao gồm:
 \begin{itemize}
     \item $BERT_{BASE}$ ($L$=12, $H$=768, $A$=12): Tổng tham số 110 triệu.
-    \item $BERT_{lARGE}$ ($L$=24, $H$=1024, $A$=16): Tổng tham số 340 triệu.
+    \item $BERT_{LARGE}$ ($L$=24, $H$=1024, $A$=16): Tổng tham số 340 triệu.
 \end{itemize}
 Như vậy ở kiến trúc BERT Large chúng ta tăng gấp đôi số layer, tăng kích thước hidden size của embedding véc tơ gấp 1.33 lần và tăng số lượng head trong multi-head layer gấp 1.33 lần.
 
