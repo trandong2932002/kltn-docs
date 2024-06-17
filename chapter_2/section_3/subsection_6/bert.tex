@@ -3,6 +3,7 @@
 
 % Để giúp bù đắp khoảng trống về dữ liệu này, các nhà nghiên cứu đã phát triển các kỹ thuật khác nhau để huấn luyện sử dụng khối lượng văn bản khổng lồ không dán nhãn trên web (được gọi là pre-training). Các mô hình này được tiền huấn luyện này sau đó có thể được tinh chỉnh (fine-tuned) trên các bộ dữ liệu nhỏ hơn cho các nhiệm vụ cụ thể, chẳng hạn như giải quyết các vấn đề như trả lời câu hỏi, phân tích cảm xúc. Cách tiếp cận này đã mang lại những cải thiện đáng kể so với việc huấn luyện từ đầu trên các bộ dữ liệu nhỏ hơn cho các nhiệm vụ cụ thể. 
 
+% https://arxiv.org/abs/1810.04805
 \subsubsection{Giới thiệu BERT}
 Vào cuối năm 2018, các nhà nghiên cứu tại Google AI Language đã công bố một kỹ thuật mới được gọi là BERT ({\bf B}idirectional {\bf E}ncoder {\bf R}epresentations from {\bf T}ransformers) - một bước đột phá lớn đã gây tiếng vang trong cộng đồng Học sâu bởi hiệu suất đáng kinh ngạc của nó. Trong bài báo BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding[xxx] các tác giả đã nêu ra những cải tiến của model BERT trong các tác vụ:
 
@@ -11,7 +12,7 @@ Vào cuối năm 2018, các nhà nghiên cứu tại Google AI Language đã cô
     \item Tăng accuracy trên bộ dữ liệu MultiNLI đánh giá tác vụ quan hệ văn bản (text entailment) lên 86.7\%.
     \item Tăng accuracy F1 score trên bộ dữ liệu SQuAD v1.1 đánh giá tác vụ question and answering lên 93.2\%.
 \end{itemize}
-
+% https://medium.com/@samia.khalid/bert-explained-a-complete-guide-with-theory-and-tutorial-3ac9ebc8fa7c
 Về cơ bản, nhiệm vụ mà các mô hình ngôn ngữ cố gắng giải quyết là  "điền vào chỗ trống" dựa trên ngữ cảnh. Ví dụ, với câu: ``Tôi đi chợ và mua một \_\_\_\_ giày.''
 Một mô hình ngôn ngữ có thể hoàn thành câu bằng cách dự đoán từ điền vào chỗ trống:
 
@@ -51,7 +52,7 @@ BERT được huấn luyện dựa trên Transformer, mục tiêu là tạo mô 
 \end{figure}
 
 Về bản chất, Transformer sẽ ánh xạ chuỗi ký tự đầu vào thành chuỗi ký tự đầu ra, do đó đầu ra cũng là một chuỗi các vector tương ứng giữa các token đầu vào và đầu ra ở cùng chỉ số. Như đã đề cập trước đó, BERT sẽ không dự đoán từ tiếp theo trong câu. Quá trình huấn luyện sử dụng hai chiến lược sau:
-
+% https://phamdinhkhanh.github.io/2020/05/23/BERTModel.html#23-masked-ml-mlm
 \begin{enumerate}
     \item \textbf{Masked ML (MLM):}
     Masked ML là một tác vụ cho phép chúng ta fine-tuning lại các biểu diễn từ trên các bộ dữ liệu unsupervised-text bất kỳ. Chúng ta có thể áp dụng Masked ML cho những ngôn ngữ khác nhau để tạo ra biểu diễn embedding cho chúng. Các bộ dữ liệu của tiếng anh có kích thước lên tới vài vài trăm tới vài nghìn GB được huấn luyện trên BERT đã tạo ra những kết quả khá ấn tượng.
@@ -107,6 +108,7 @@ Ví dụ:
 
 Tương tự như các tác vụ liên quan đến cặp câu được đề cập ở phần dự đoán câu tiếp theo, ở phần này câu hỏi sẽ trở thành câu đầu tiên và đoạn văn là câu thứ hai trong chuỗi đầu vào. Tuy nhiên, lần này có thêm hai tham số mới được học trong quá trình tinh chỉnh: một vector bắt đầu và một vector kết thúc.
 
+% https://phamdinhkhanh.github.io/2020/05/23/BERTModel.html#3-c%C3%A1c-ki%E1%BA%BFn-tr%C3%BAc-model-bert
 \subsubsection{Những kiến trúc của BERT}
 Hiện tại có nhiều phiên bản khác nhau của model BERT. Các phiên bản đều dựa trên việc thay đổi kiến trúc của Transformer tập trung ở 3 tham số: $L$: số lượng các block sub-layers trong transformer, $H$: kích thước của embedding vector (hay còn gọi là hidden size), $A$: Số lượng head trong multi-head layer, mỗi một head sẽ thực hiện một self-attention. Tên gọi của 2 kiến trúc bao gồm:
 \begin{itemize}

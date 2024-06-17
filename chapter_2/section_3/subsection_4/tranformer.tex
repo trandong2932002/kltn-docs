@@ -1,4 +1,5 @@
 \subsubsection{Giới thiệu}
+% https://viblo.asia/p/transformers-nguoi-may-bien-hinh-bien-doi-the-gioi-nlp-924lJPOXKPM
 Mô hình Sequence-to-Sequence (Seq2Seq) nhận đầu vào là một chuỗi và trả lại đầu ra cũng là một chuỗi. Ví dụ bài toán QA, đầu vào là câu hỏi ``how are you?'' và đầu ra là câu trả lời ``I am good''. Phương pháp truyền thống sử dụng RNN cho cả encoder (phần mã hóa đầu vào) và decoder (phần giải mã đầu vào và trả đầu ra tương ứng).
 
 Nhưng mô hình này vẫn có nhiều điểm yếu như đã trình bày, điểm yếu đầu tiên là tốc độ huyến luyện rất chậm, do bản chất tuần hoàn của mạng, việc tính toán gradient cho các bước thời gian trước đó cần thực hiện theo trình tự, dẫn đến việc sử dụng CPU thay vì GPU, vốn có khả năng tính toán song song hiệu quả hơn. Việc sử dụng Truncated Backpropagation để cải thiện tốc độ huấn luyện vẫn còn hạn chế. Điểm yếu thứ hai là nó xử lý không tốt với những câu dài do hiện tượng Gradient Vanishing/Exploding như đã đề cập.
@@ -9,6 +10,8 @@ Vậy có cách nào tận dụng khả năng tính toán song song của GPU đ
 
 Điều đặc biệt về Transformer so với mô hình RNN là nó không yêu cầu xử lý các phần tử trong chuỗi một cách tuần tự. Trong khi RNN phải xử lý từng phần tử theo thứ tự từ đầu đến cuối, Transformer có thể xử lý toàn bộ câu ngôn ngữ tự nhiên cùng một lúc. Điều này cho phép Transformer tận dụng tối đa khả năng tính toán song song của GPU và giảm thời gian xử lý đáng kể. Thay vì phải chờ đợi kết quả từ các phần tử trước đó trong chuỗi, Transformer có thể đồng thời xem xét và ánh xạ mối quan hệ giữa tất cả các từ trong câu. Điều này giúp mô hình hiểu được mối quan hệ toàn diện trong câu và tạo ra các biểu diễn ngữ nghĩa phong phú hơn.
 
+% https://arxiv.org/abs/1706.03762
+% https://phamdinhkhanh.github.io/2019/06/18/AttentionLayer.html
 \subsubsection{Kiến trúc Tranformer}
 \begin{figure}[htb]
     \centering
@@ -28,8 +31,8 @@ Kiến trúc của Tranformer gồm 2 phần là Encoder bên trái và Decoder 
 Ngoài ra luôn có một bước cộng thêm Positional Encoding vào các đầu vào của encoder và decoder nhằm đưa thêm yếu tố thời gian vào mô hình làm tăng độ chuẩn xác. Đây chỉ đơn thuần là phép cộng vector mã hóa vị trí của từ trong câu với vector biểu diễn từ. Chúng ta có thể mã hóa dưới dạng $[0, 1]$ vector vị trí hoặc sử dụng hàm $sin,cos$ như trong bài báo.
 
 \subsubsection{Cơ chế Attention}
-\begin{enumerate}
-    \item \textbf{Scaled Dot-Product Attention:}
+\begin{enumerate}[label=\textbf{\arabic*}]
+    \item Scaled Dot-Product Attention:
 
     Đây chính là một cơ chế self-attention khi mỗi từ có thể điều chỉnh trọng số của nó cho các từ khác trong câu sao cho từ ở vị trí càng gần nó nhất thì trọng số càng lớn và càng xa thì càng nhỏ dần. Sau bước nhúng từ (đi qua embeding layer) ta có đầu vào của encoder và decoder là ma trận $\mathbf{X}$ kích thước $m\times n$, $m,n$ lần lượt là là độ dài câu và số chiều của một vector nhúng từ.
 
@@ -52,7 +55,7 @@ Ngoài ra luôn có một bước cộng thêm Positional Encoding vào các đ�
         \label{figure:attention-equation}
     \end{figure}
 
-    \item \textbf{Multi-head Attention:}
+    \item Multi-head Attention:
     
     Như vậy sau quá trình Scale dot production chúng ta sẽ thu được 1 ma trận attention. Các tham số mà model cần tinh chỉnh chính là các ma trận $\mathbf{W}_\mathbf{q},\mathbf{W}_\mathbf{k},\mathbf{W}_\mathbf{v}$. Mỗi quá trình như vậy được gọi là một head của attention. Khi lặp lại quá trình này nhiều lần (trong bài báo là ba heads) ta sẽ thu được quá trình Multi-head Attention.
     
