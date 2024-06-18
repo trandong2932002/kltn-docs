@@ -117,3 +117,24 @@ Hiện tại có nhiều phiên bản khác nhau của model BERT. Các phiên b
 \end{itemize}
 Như vậy ở kiến trúc BERT Large chúng ta tăng gấp đôi số layer, tăng kích thước hidden size của embedding vector gấp 1.33 lần và tăng số lượng head trong multi-head layer gấp 1.33 lần.
 
+% https://viblo.asia/p/bert-roberta-phobert-bertweet-ung-dung-state-of-the-art-pre-trained-model-cho-bai-toan-phan-loai-van-ban-4P856PEWZY3
+\subsubsection{PhoBERT}
+
+PhoBERT là mô hình ngôn ngữ tiền huấn luyện (pre-trained language model) đầu tiên được phát triển dành riêng cho tiếng Việt. Mô hình do VinAI giới thiệu vào năm 2020 này được xây dựng dựa trên kiến trúc RoBERTa của Facebook, một phiên bản cải tiến so với BERT, và được huấn luyện trên một tập dữ liệu khổng lồ gồm văn bản tiếng Việt.
+
+Những đặc điểm chính của PhoBERT bao gồm:
+\begin{itemize}
+    \item Tiền huấn luyện đơn ngôn ngữ (Monolingual language model): PhoBERT chỉ được huấn luyện trên dữ liệu tiếng Việt, giúp mô hình hiểu và xử lý ngôn ngữ tiếng Việt một cách hiệu quả hơn.
+    \item Kiến trúc RoBERTa: PhoBERT sử dụng kiến trúc RoBERTa, một phiên bản cải tiến của BERT, giúp mô hình đạt được hiệu suất tốt hơn trong nhiều nhiệm vụ xử lý ngôn ngữ tự nhiên (NLP).
+    \item Tập dữ liệu khổng lồ: PhoBERT được huấn luyện trên một tập dữ liệu khổng lồ gồm văn bản tiếng Việt, bao gồm khoảng 1GB dữ liệu Wikipedia tiếng Việt và 20GB nguồn tin tức tiếng Việt.
+    \item Bộ chia tách từ RDRSegmenter: PhoBERT sử dụng bộ chia tách từ RDRSegmenter của VnCoreNLP để tách từ cho dữ liệu đầu vào trước khi đưa vào mô hình.
+    \item Nhiệm vụ huấn luyện: Vì tiếp cận theo kiến trúc RoBERTa, PhoBERT chỉ sử dụng nhiệm vụ Masked Language Model (MLM) để huấn luyện, giúp mô hình học cách dự đoán từ thiếu trong một câu dựa vào các từ ngữ cảnh.
+\end{itemize}
+
+PhoBERT được giới thiệu với 2 phiên bản, tương tự như BERT:
+\begin{itemize}
+    \item $PhoBERT_{BASE}$: Có 12 khối transformer.
+    \item $PhoBERT_{LARGE}$: Có 24 khối transformer.
+\end{itemize}
+
+
