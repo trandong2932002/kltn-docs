@@ -1,1 +1,49 @@
-this is subsection 2
+Dữ liệu gốc được thu thập từ Kaggle, một nền tảng trực tuyến dành cho cộng đồng khoa học dữ liệu và học máy [8]. Nguồn dữ liệu này xuất phát từ thử thách phân loại bình luận độc hại, được tổ chức và cung cấp bởi Conversation AI, một nhóm nghiên cứu do Jigsaw và Google thành lập. Theo mô tả, dữ liệu thô được trích xuất từ các bình luận trong phần thảo luận (talk page) trên Wikipedia, một bách khoa toàn thư trực tuyến đa ngôn ngữ.
+
+Tập dữ liệu bao gồm nhiều thuộc tính được mô tả như sau:
+\begin{itemize}
+    \item \textit{id}: Là id của từng bình luận trong tập dữ liệu.
+    \item \textit{comment\_text}: Các bình luận dưới dạng văn bản thuần túy, sẽ được xử lý để máy có thể học được.
+    \item Các nhãn trạng thái thể hiện sự độc hại của bình luận:
+          \begin{enumerate}
+              \item \textit{toxic}: tính khái quát chung các nhãn còn lại.
+              \item \textit{severe\_toxic}: thể hiện mức độ độc hại rất cao.
+              \item \textit{obscene}: thể hiện bình luận có sử dụng ngôn từ thô tục.
+              \item \textit{threat}: thể hiện bình luận mang tính chất đe doạ.
+              \item \textit{insult}: thể hiện bình luận mang tính chất xúc phạm.
+              \item \textit{identity\_hate}: thể hiện bình luận mang tính chất xúc phạm thân thể.
+          \end{enumerate}
+\end{itemize}
+
+Tập dữ liệu này có khoảng 160 nghìn bản ghi và được dùng làm tập dữ liệu chính được để huấn luyện mô hình.
+
+% \begin{table}[h]
+%     \centering
+%     \fontsize{10pt}{15pt}\selectfont
+%     \caption{Tập dữ liệu Kaggle - Toxic Comment Classification Challenge}
+%     \begin{tabularx}{0.98\textwidth}{llXrrrrrr}
+%         \hline
+%           & \textbf{id} & \textbf{comment\_text}                             & \textbf{toxic} & \textbf{severe\_toxic} & \textbf{obscene} & \textbf{threat} & \textbf{insult} & \textbf{identity\_hate} \\\hline
+%         1 & 00009\dots  & Giải trình\textbackslash nTại\dots                 & 0.0            & 0.0                    & 0.0              & 0.0             & 0.0             & 0.0                     \\
+%         2 & 00010\dots  & D'Aww! Anh ấy\dots                                 & 0.0            & 0.0                    & 0.0              & 0.0             & 0.0             & 0.0                     \\
+%         3 & 00011\dots  & Này anh bạn, tôi\dots                              & 0.0            & 0.0                    & 0.0              & 0.0             & 0.0             & 0.0                     \\
+%         4 & 0001b\dots  & ``\textbackslash nHơn\textbackslash nTôi khôn\dots & 0.0            & 0.0                    & 0.0              & 0.0             & 0.0             & 0.0                     \\
+%         5 & 0001d\dots  & Ngài là người hù\dots                              & 0.0            & 0.0                    & 0.0              & 0.0             & 0.0             & 0.0                     \\\hline
+%     \end{tabularx}
+% \end{table}
+
+\begin{table}[h]
+    \centering
+    \fontsize{10pt}{15pt}\selectfont
+    \caption{Tập dữ liệu Kaggle - Toxic Comment Classification Challenge}
+    \begin{tabularx}{0.98\textwidth}{llXrrrrrr}
+        \hline
+          & \textbf{id} & \textbf{comment\_text}                             & \textbf{toxic} & \textbf{severe\_toxic} & \textbf{obscene} & \textbf{threat} & \textbf{insult} & \textbf{identity\_hate} \\\hline
+          1 & 0002b... & COCKSUCKER BEFORE YOU PISS ...              & 1 & 1 & 1 & 0 & 1 & 0 \\
+          2 & 0020e... & Stupid peace of shit stop deleting my ...   & 1 & 1 & 1 & 0 & 1 & 0 \\
+          3 & 0020f... & =Tony Sidaway is obviously a fistfuckee ... & 1 & 0 & 1 & 0 & 1 & 0 \\
+          4 & 00321... & Stop undoing my edits or die!               & 1 & 0 & 0 & 1 & 0 & 0 \\
+          5 & 008e0... & Kill all niggers ...                        & 1 & 0 & 1 & 0 & 1 & 1 \\
+          6 & 00819... & I did research thank you very much ...      & 0 & 0 & 0 & 0 & 0 & 0 \\\hline
+    \end{tabularx}
+\end{table}

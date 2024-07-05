@@ -3,6 +3,7 @@
 
 % Để giúp bù đắp khoảng trống về dữ liệu này, các nhà nghiên cứu đã phát triển các kỹ thuật khác nhau để huấn luyện sử dụng khối lượng văn bản khổng lồ không dán nhãn trên web (được gọi là pre-training). Các mô hình này được tiền huấn luyện này sau đó có thể được tinh chỉnh (fine-tuned) trên các bộ dữ liệu nhỏ hơn cho các nhiệm vụ cụ thể, chẳng hạn như giải quyết các vấn đề như trả lời câu hỏi, phân tích cảm xúc. Cách tiếp cận này đã mang lại những cải thiện đáng kể so với việc huấn luyện từ đầu trên các bộ dữ liệu nhỏ hơn cho các nhiệm vụ cụ thể. 
 
+% https://arxiv.org/abs/1810.04805
 \subsubsection{Giới thiệu BERT}
 Vào cuối năm 2018, các nhà nghiên cứu tại Google AI Language đã công bố một kỹ thuật mới được gọi là BERT ({\bf B}idirectional {\bf E}ncoder {\bf R}epresentations from {\bf T}ransformers) - một bước đột phá lớn đã gây tiếng vang trong cộng đồng Học sâu bởi hiệu suất đáng kinh ngạc của nó. Trong bài báo BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding[xxx] các tác giả đã nêu ra những cải tiến của model BERT trong các tác vụ:
 
@@ -11,13 +12,13 @@ Vào cuối năm 2018, các nhà nghiên cứu tại Google AI Language đã cô
     \item Tăng accuracy trên bộ dữ liệu MultiNLI đánh giá tác vụ quan hệ văn bản (text entailment) lên 86.7\%.
     \item Tăng accuracy F1 score trên bộ dữ liệu SQuAD v1.1 đánh giá tác vụ question and answering lên 93.2\%.
 \end{itemize}
-
-Về cơ bản, nhiệm vụ mà các mô hình ngôn ngữ cố gắng giải quyết là  "điền vào chỗ trống" dựa trên ngữ cảnh. Ví dụ, với câu: ``Mẹ đi chợ và mua một \_\_\_\_ dưa hấu.''
+% https://medium.com/@samia.khalid/bert-explained-a-complete-guide-with-theory-and-tutorial-3ac9ebc8fa7c
+Về cơ bản, nhiệm vụ mà các mô hình ngôn ngữ cố gắng giải quyết là  "điền vào chỗ trống" dựa trên ngữ cảnh. Ví dụ, với câu: ``Tôi đi chợ và mua một \_\_\_\_ giày.''
 Một mô hình ngôn ngữ có thể hoàn thành câu bằng cách dự đoán từ điền vào chỗ trống:
 
 \begin{itemize}
-    \item ``quả'' với tỉ lệ 80\% vì "quả" là cách đếm thông dụng cho dưa hấu.
-    \item ``nửa'' với tỉ lệ 20\% vì đôi khi người ta cũng mua nửa quả dưa hấu.
+    \item ``đôi'' với tỉ lệ 80\% vì ``đôi'' là cách đếm thông dụng cho giày.
+    \item ``chiếc'' với tỉ lệ 20\% vì đôi khi người ta cũng một chiếc giày.
 \end{itemize}
 
 Trước khi BERT được công bố, những mô hình ngôn ngữ sẽ xem xét chuỗi văn bản này trong quá trình huấn luyện theo hướng từ trái sang phải hoặc kết hợp cả hai hướng. Cách tiếp cận đơn hướng này hoạt động tốt cho việc tạo câu, chúng ta có thể dự đoán từ tiếp theo, thêm nó vào chuỗi, sau đó dự đoán từ tiếp theo sau đó cho đến khi có một câu hoàn chỉnh.
@@ -40,7 +41,7 @@ BERT được huấn luyện dựa trên Transformer, mục tiêu là tạo mô 
 \begin{itemize}
     \item \textbf{Nhúng từ (token embedding)}: Ký hiệu {\tt [CLS]} được thêm vào các token từ đầu vào ở đầu câu đầu tiên và ký hiệu {\tt [SEP]} được chèn vào cuối mỗi câu.
     \item \textbf{Nhúng câu (segment embedding)}: Thêm một ký hiệu chỉ thị Câu A hoặc Câu B cho mỗi token. Điều này cho phép bộ mã hóa phân biệt giữa các câu.
-    \item \textbf{Nhúng vị trí (position embedding)}: Thêm một véc tơ nhúng vị trí cho mỗi token trong chuỗi. Điều này cho phép mô hình biết vị trí của mỗi token trong chuỗi.
+    \item \textbf{Nhúng vị trí (position embedding)}: Thêm một vector nhúng vị trí cho mỗi token trong chuỗi. Điều này cho phép mô hình biết vị trí của mỗi token trong chuỗi.
 \end{itemize}
 
 \begin{figure}[htb]
@@ -51,27 +52,27 @@ BERT được huấn luyện dựa trên Transformer, mục tiêu là tạo mô 
 \end{figure}
 
 Về bản chất, Transformer sẽ ánh xạ chuỗi ký tự đầu vào thành chuỗi ký tự đầu ra, do đó đầu ra cũng là một chuỗi các vector tương ứng giữa các token đầu vào và đầu ra ở cùng chỉ số. Như đã đề cập trước đó, BERT sẽ không dự đoán từ tiếp theo trong câu. Quá trình huấn luyện sử dụng hai chiến lược sau:
-
+% https://phamdinhkhanh.github.io/2020/05/23/BERTModel.html#23-masked-ml-mlm
 \begin{enumerate}
     \item \textbf{Masked ML (MLM):}
     Masked ML là một tác vụ cho phép chúng ta fine-tuning lại các biểu diễn từ trên các bộ dữ liệu unsupervised-text bất kỳ. Chúng ta có thể áp dụng Masked ML cho những ngôn ngữ khác nhau để tạo ra biểu diễn embedding cho chúng. Các bộ dữ liệu của tiếng anh có kích thước lên tới vài vài trăm tới vài nghìn GB được huấn luyện trên BERT đã tạo ra những kết quả khá ấn tượng.
 
     Theo đó:
     \begin{itemize}
-        \item Khoảng 15\% các token của câu input được thay thế bởi {\tt [MASK]} token trước khi truyền vào model đại diện cho những từ bị che dấu (masked). Mô hình sẽ dựa trên các từ không được che (non-masked) dấu xung quanh {\tt [MASK]} và đồng thời là bối cảnh của {\tt [MASK]} để dự báo giá trị gốc của từ được che dấu. Số lượng từ được che dấu được lựa chọn là một số ít (15\%) để tỷ lệ bối cảnh chiếm nhiều hơn (85\%).
-        \item Bản chất của kiến trúc BERT vẫn là một mô hình seq2seq gồm 2 phase encoder giúp embedding các từ input và decoder giúp tìm ra phân phối xác suất của các từ ở output. Kiến trúc Transfomer encoder được giữ lại trong tác vụ Masked ML. Sau khi thực hiện self-attention và feed forward ta sẽ thu được các véc tơ embedding ở output là $O_1, O_2,…, O_5$
+        \item Khoảng 15\% các token của câu input được thay thế bởi token {\tt [MASK]} trước khi truyền vào model đại diện cho những từ bị che dấu (masked). Mô hình sẽ dựa trên các từ không được che (non-masked) dấu xung quanh và đồng thời là bối cảnh của {\tt [MASK]} để dự báo giá trị gốc của từ được che dấu. Số lượng từ được che dấu được lựa chọn là một số ít (15\%) để tỷ lệ bối cảnh chiếm nhiều hơn (85\%).
+        \item Bản chất của kiến trúc BERT vẫn là một mô hình seq2seq gồm 2 phase encoder giúp embedding các từ input và decoder giúp tìm ra phân phối xác suất của các từ ở output. Kiến trúc Transfomer encoder được giữ lại trong tác vụ Masked ML. Sau khi thực hiện self-attention và feed forward ta sẽ thu được các vector embedding ở output là $O_1, O_2,…, O_5$
         \item Để tính toán phân phối xác suất cho từ output, chúng ta thêm một Fully connect layer ngay sau Transformer Encoder. Hàm softmax có tác dụng tính toán phân phối xác suất. Số lượng units của fully connected layer phải bằng với kích thước của từ điển.
-        \item Cuối cùng ta thu được véc tơ nhúng của mỗi một từ tại vị trí {\tt [MASK]} sẽ là embedding véc tơ giảm chiều của véc tơ $O_i$ sau khi đi qua fully connected layer như mô tả trên hình vẽ bên phải.
+        \item Cuối cùng ta thu được vector nhúng của mỗi một từ tại vị trí {\tt [MASK]} sẽ là embedding vector giảm chiều của vector $O_i$ sau khi đi qua fully connected layer như mô tả trên hình vẽ bên phải.
     \end{itemize}
 
-    Hàm loss function của BERT sẽ bỏ qua mất mát từ những từ không bị che dấu và chỉ đưa vào mất mát của những từ bị che dấu. Do đó mô hình sẽ hội tụ lâu hơn nhưng đây là đặc tính bù trừ cho sự gia tăng ý thức về bối cảnh. Việc lựa chọn ngẫu nhiên 15\% số lượng các từ bị che dấu cũng tạo ra vô số các kịch bản input cho mô hình huấn luyện nên mô hình sẽ cần phải huấn luyện rất lâu mới học được toàn diện các khả năng.
+    Hàm loss function của BERT sẽ bỏ qua mất mát của những từ không bị che và chỉ nhận của những từ bị che dấu. Do đó mô hình sẽ hội tụ lâu hơn nhưng đây là đặc tính bù trừ cho sự gia tăng ý thức về bối cảnh. Việc lựa chọn ngẫu nhiên 15\% số lượng các từ bị che dấu cũng tạo ra vô số các kịch bản input cho mô hình huấn luyện nên mô hình sẽ cần phải huấn luyện rất lâu mới học được toàn diện các khả năng.
     \item \textbf{Next Sentence Prediction (NSP):}
     
     Đây là một bài toán phân loại học có giám sát với 2 nhãn (hay còn gọi là phân loại nhị phân). Input đầu vào của mô hình là một cặp câu (pair-sequence) sao cho 50\% câu thứ 2 được lựa chọn là câu tiếp theo của câu thứ nhất và 50\% được lựa chọn một cách ngẫu nhiên từ bộ văn bản mà không có mối liên hệ gì với câu thứ nhất. Nhãn của mô hình sẽ tương ứng với {\tt {\small IsNext}} khi cặp câu là liên tiếp hoặc {\tt {\small NotNext}} nếu cặp câu không liên tiếp.
 
-    Cũng tương tự như mô hình Question and Answering, chúng ta cần đánh dấu các vị trí đầu câu thứ nhất bằng token {\tt [CLS]} và vị trí cuối các câu bằng token {\tt [SEP]}. Các token này có tác dụng nhận biết các vị trí bắt đầu và kết thúc của từng câu thứ nhất và thứ hai.
+    Cũng tương tự như trên, chúng ta cần đánh dấu các vị trí đầu câu thứ nhất bằng token {\tt [CLS]} và vị trí cuối các câu bằng token {\tt [SEP]}. Các token này có tác dụng nhận biết các vị trí bắt đầu và kết thúc của từng câu thứ nhất và thứ hai.
 
-    Mô hình sẽ dựa vào các vector embedding của token {\tt [CLS]} để dự đoán xem cặp câu đó có phải là liên tiếp hay không. Để dự đoán, chúng ta sẽ thêm một fully connected layer với 2 units (tương ứng với 2 nhãn) ngay sau véc tơ embedding của token {\tt [CLS]}. Hàm softmax sẽ giúp tính toán phân phối xác suất của 2 nhãn. Cuối cùng, mô hình sẽ dự đoán nhãn có xác suất cao nhất là nhãn cuối cùng của cặp câu.
+    Mô hình sẽ dựa vào các vector embedding của token {\tt [CLS]} để dự đoán xem cặp câu đó có phải là liên tiếp hay không. Để dự đoán, chúng ta sẽ thêm một fully connected layer với 2 units (tương ứng với 2 nhãn) ngay sau vector embedding của token {\tt [CLS]}. Hàm softmax sẽ giúp tính toán phân phối xác suất của 2 nhãn. Cuối cùng, mô hình sẽ dự đoán nhãn có xác suất cao nhất là nhãn cuối cùng của cặp câu.
 \end{enumerate}
 
 \subsubsection{Tinh chỉnh \textit(fine-tuning) BERT}
@@ -92,25 +93,48 @@ Ví dụ:
 
 \begin{itemize}
     \item Input Question: 
-    
+    % sự kết tủa của giọt nước khi va chạm với những tỉnh thể băng xảy ra ở đâu để tạo thành tuyết?
     {\tt {\scriptsize  Where do water droplets collide with ice crystals to form precipitation?}}
 
     \item Input Paragraph: 
-    
-    {\tt {\scriptsize  ... Precipitation forms as smaller droplets coalesce via collision with other rain drops or ice crystals within a cloud. ...}}
+    % sự kết tủa của giọt nước để trở thành tuyết xảy ra khi va chạm với những hạt mưa hoặc tỉnh thể băng ở bên trong đám mây.
+    {\tt {\scriptsize  ... Precipitation forms as smaller droplets coalesce via collision}}\\
+    {\tt {\scriptsize   with other rain drops or ice crystals within a cloud. ...}}
 
     \item Output Answer: 
-    
+    % ở bên trong đám mây
     {\tt {\scriptsize  within a cloud}}
 \end{itemize}
 
 Tương tự như các tác vụ liên quan đến cặp câu được đề cập ở phần dự đoán câu tiếp theo, ở phần này câu hỏi sẽ trở thành câu đầu tiên và đoạn văn là câu thứ hai trong chuỗi đầu vào. Tuy nhiên, lần này có thêm hai tham số mới được học trong quá trình tinh chỉnh: một vector bắt đầu và một vector kết thúc.
 
+% https://phamdinhkhanh.github.io/2020/05/23/BERTModel.html#3-c%C3%A1c-ki%E1%BA%BFn-tr%C3%BAc-model-bert
 \subsubsection{Những kiến trúc của BERT}
-Hiện tại có nhiều phiên bản khác nhau của model BERT. Các phiên bản đều dựa trên việc thay đổi kiến trúc của Transformer tập trung ở 3 tham số: $L$: số lượng các block sub-layers trong transformer, $H$: kích thước của embedding véc tơ (hay còn gọi là hidden size), $A$: Số lượng head trong multi-head layer, mỗi một head sẽ thực hiện một self-attention. Tên gọi của 2 kiến trúc bao gồm:
+Hiện tại có nhiều phiên bản khác nhau của model BERT. Các phiên bản đều dựa trên việc thay đổi kiến trúc của Transformer tập trung ở 3 tham số: $L$: số lượng các block sub-layers trong transformer, $H$: kích thước của embedding vector (hay còn gọi là hidden size), $A$: Số lượng head trong multi-head layer, mỗi một head sẽ thực hiện một self-attention. Tên gọi của 2 kiến trúc bao gồm:
 \begin{itemize}
     \item $BERT_{BASE}$ ($L$=12, $H$=768, $A$=12): Tổng tham số 110 triệu.
     \item $BERT_{LARGE}$ ($L$=24, $H$=1024, $A$=16): Tổng tham số 340 triệu.
 \end{itemize}
-Như vậy ở kiến trúc BERT Large chúng ta tăng gấp đôi số layer, tăng kích thước hidden size của embedding véc tơ gấp 1.33 lần và tăng số lượng head trong multi-head layer gấp 1.33 lần.
+Như vậy ở kiến trúc BERT Large chúng ta tăng gấp đôi số layer, tăng kích thước hidden size của embedding vector gấp 1.33 lần và tăng số lượng head trong multi-head layer gấp 1.33 lần.
+
+% https://viblo.asia/p/bert-roberta-phobert-bertweet-ung-dung-state-of-the-art-pre-trained-model-cho-bai-toan-phan-loai-van-ban-4P856PEWZY3
+\subsubsection{PhoBERT}
+
+PhoBERT là mô hình ngôn ngữ tiền huấn luyện (pre-trained language model) đầu tiên được phát triển dành riêng cho tiếng Việt. Mô hình do VinAI giới thiệu vào năm 2020 này được xây dựng dựa trên kiến trúc RoBERTa của Facebook, một phiên bản cải tiến so với BERT, và được huấn luyện trên một tập dữ liệu khổng lồ gồm văn bản tiếng Việt.
+
+Những đặc điểm chính của PhoBERT bao gồm:
+\begin{itemize}
+    \item Tiền huấn luyện đơn ngôn ngữ (Monolingual language model): PhoBERT chỉ được huấn luyện trên dữ liệu tiếng Việt, giúp mô hình hiểu và xử lý ngôn ngữ tiếng Việt một cách hiệu quả hơn.
+    \item Kiến trúc RoBERTa: PhoBERT sử dụng kiến trúc RoBERTa, một phiên bản cải tiến của BERT, giúp mô hình đạt được hiệu suất tốt hơn trong nhiều nhiệm vụ xử lý ngôn ngữ tự nhiên (NLP).
+    \item Tập dữ liệu khổng lồ: PhoBERT được huấn luyện trên một tập dữ liệu khổng lồ gồm văn bản tiếng Việt, bao gồm khoảng 1GB dữ liệu Wikipedia tiếng Việt và 20GB nguồn tin tức tiếng Việt.
+    \item Bộ chia tách từ RDRSegmenter: PhoBERT sử dụng bộ chia tách từ RDRSegmenter của VnCoreNLP để tách từ cho dữ liệu đầu vào trước khi đưa vào mô hình.
+    \item Nhiệm vụ huấn luyện: Vì tiếp cận theo kiến trúc RoBERTa, PhoBERT chỉ sử dụng nhiệm vụ Masked Language Model (MLM) để huấn luyện, giúp mô hình học cách dự đoán từ thiếu trong một câu dựa vào các từ ngữ cảnh.
+\end{itemize}
+
+PhoBERT được giới thiệu với 2 phiên bản, tương tự như BERT:
+\begin{itemize}
+    \item $PhoBERT_{BASE}$: Có 12 khối transformer.
+    \item $PhoBERT_{LARGE}$: Có 24 khối transformer.
+\end{itemize}
+
 
