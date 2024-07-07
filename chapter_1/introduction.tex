@@ -3,10 +3,10 @@ Với sự bùng nổ của Internet trong những năm gần đây, các diễn
 
 Chỉ mới gần đây thôi, vào năm 2020, Việt Nam đã lọt vào Top 5 những nước kém văn minh nhất thế giới trên Internet. Điều này chứng tỏ môi trường mạng Việt Nam tiềm ẩn nhiều nguy cơ cho những em nhỏ tiếp cận tới những ngôn ngữ không phù hợp với thuần phong mĩ tục, góp phần làm xấu đi hình ảnh đất nước trong mắt bạn bè quốc tế.
 
-Nhằm góp phần ngăn chặn sự tiêu cực mà ngôn ngữ độc hại đem lại, nhóm chúng tôi xin đề xuất ``Tìm hiểu bài toán nhận diện văn bản tiêu cực sử dụng học máy'' áp dụng cho tiếng Việt làm đề tài tiểu luận chuyên ngành cho mình.
+Nhằm góp phần ngăn chặn sự tiêu cực mà ngôn ngữ độc hại đem lại, nhóm chúng tôi xin đề xuất bài toán ``Nhận diện văn bản tiêu cực sử dụng học máy'' áp dụng cho tiếng Việt làm đề tài khoá luận tốt nghiệp cho mình.
 
 \section{Mục tiêu và nhiệm vụ nghiên cứu}
-Mục tiêu: Xây dựng được mô hình phát hiện các từ ngữ độc hại.
+Mục tiêu: Xây dựng được mô hình phát hiện các từ ngữ độc hại. Từ đó, áp dụng cho chatbot và tiện ích trong trình duyệt để hỗ trợ người dùng trong việc phát hiện và ngăn chặn ngôn ngữ độc hại.
 
 Nhiệm vụ:
 \begin{itemize}
@@ -14,6 +14,7 @@ Nhiệm vụ:
     \item Tìm hiểu về xử lí ngôn ngữ tự nhiên.
     \item Tìm hiểu các kỹ thuật nhúng từ (word embedding).
     \item Tìm hiểu các thư viện, module hỗ trợ học máy và học sâu như Tensorflow, Sklearn, \dots
+    \item Tìm hiểu những kiến trúc học sâu như LSTM, RNN, Transformer, \dots và các mô hình tiền huấn luyện GPT, BERT, \dots
 \end{itemize}
 
 \section{Cách tiếp cận và phương pháp nghiên cứu}
@@ -29,47 +30,51 @@ Phương pháp nghiên cứu:
     \item Huấn luyện và đánh giá mô hình dựa trên dữ liệu đầu vào để đánh giá khả năng phát hiện từ ngữ xấu của mô hình.
 \end{itemize}
 
+\section{Phân tích những công trình có liên quan}
+
 \section{Dự kiến kết quả đạt được}
 Về lý thuyết: Nhóm mong muốn sau khi thực hiện nghiên cứu có thể học hỏi và hiểu sâu về nội dung lý thuyết của bài toán đã nêu. Đồng thời có cơ hội thực hành mô hình học sâu trong quá trình huấn luyện dữ liệu cho bài toán.
 
-Về mặt sản phẩm: Nhóm mong muốn xây dựng được một mô hình có thể phát hiện các ngôn ngữ độc hại với một mức chính xác khả quan và có thể ứng dụng thực tế.
+Về mặt sản phẩm: Nhóm mong muốn xây dựng được một mô hình có thể phát hiện các ngôn ngữ độc hại với một mức chính xác khả quan và có thể ứng dụng thực tế. Từ đó, áp dụng vào thực tiễn dưới dạng chatbot hoặc tiện ích trong trình duyệt để hỗ trợ người dùng trong việc phát hiện và ngăn chặn ngôn ngữ độc hại
 
-\section{Bố cục luận văn}
-Bố cục bài tiểu luận chuyên ngành được tổ chức như sau:
-\begin{enumerate}
-    \item Phần 1. Mở đầu
-    \item Phần 2. Nội dung: Gồm có 4 chương
-          \begin{enumerate}
-              \item Chương 1: Tổng quan về học máy và học sâu
-                    \begin{itemize}
-                        \itemsep 0pt
-                        \item Khái quát về học máy
-                        \item Khái quát về học sâu
-                    \end{itemize}
-              \item Chương 2: Mạng neuron nhân tạo
-                    \begin{itemize}
-                        \item Mạng neuron nhân tạo
-                        \item Mạng neuron tích chập - CNN (Convolutional Neural Network)
-                        \item Mạng neuron hồi quy - RNN (Recurrent Neural Network)
-                        \item Bộ nhớ dài-ngắn hạn - LSTM (Long Short-Term Memory)
-                        \item Bộ nhớ tái phát - GRU (Gated Recurent Unit)
-                    \end{itemize}
-              \item Chương 3: Xử lý ngôn ngữ tự nhiên và kỹ thuật nhúng từ
-                    \begin{itemize}
-                        \item Kỹ thuật nhúng từ (Word embedding)
-                        \item Mô hình Word2vec
-                        \item Mô hình GloVe
-                        \item Mô hình Fasttext
-                    \end{itemize}
-              \item Chương 4: Xây dựng mô hình phát hiện từ ngữ độc hại
-                    \begin{itemize}
-                        \item Môi trường cài đặt và các thư viện sử dụng
-                        \item Mô tả tập dữ liệu
-                        \item Tiền xử lý dữ liệu
-                        \item Thiết lập mô hình
-                        \item Huấn luyện mô hình và đánh giá kết quả
-                    \end{itemize}
-          \end{enumerate}
-    \item Phần 3: Kết luận
-    \item Tài liệu tham khảo
-\end{enumerate}
+% \section{Bố cục luận văn}
+% Bố cục bài khoá luận tốt nghiệp được tổ chức như sau:
+% \begin{enumerate}
+%     \item Phần 1. Mở đầu
+%     \item Phần 2. Nội dung: Gồm có 4 chương
+%           \begin{enumerate}
+%               \item Chương 1: Tổng quan về học máy và học sâu
+%                     \begin{itemize}
+%                         \itemsep 0pt
+%                         \item Khái quát về học máy
+%                         \item Khái quát về học sâu
+%                     \end{itemize}
+%               \item Chương 2: Mạng neuron nhân tạo
+%                     \begin{itemize}
+%                         \item Mạng neuron nhân tạo
+%                         \item Mạng neuron tích chập - CNN (Convolutional Neural Network)
+%                         \item Mạng neuron hồi quy - RNN (Recurrent Neural Network)
+%                         \item Bộ nhớ dài-ngắn hạn - LSTM (Long Short-Term Memory)
+%                         \item Bộ nhớ tái phát - GRU (Gated Recurent Unit)
+%                     \end{itemize}
+%               \item Chương 3: Xử lý ngôn ngữ tự nhiên
+%                     \begin{itemize}
+%                         \item Xử lý ngôn ngữ tự nhiên
+%                         \item Kỹ thuật nhúng từ (Word embedding)
+%                         \item Ngữ cảnh (Contextual) và vai trò trong NLP
+%                         \item Mô hình Transformer
+%                         \item Tiếp cận nông và học sâu trong ứng dụng pre-training NLP
+%                         \item Mô hình BERT (Bidirectional Encoder Representations from Transformers)
+%                     \end{itemize}
+%               \item Chương 4: Xây dựng mô hình phát hiện từ ngữ độc hại
+%                     \begin{itemize}
+%                         \item Môi trường cài đặt và các thư viện sử dụng
+%                         \item Mô tả tập dữ liệu
+%                         \item Tiền xử lý dữ liệu
+%                         \item Thiết lập mô hình
+%                         \item Huấn luyện mô hình và đánh giá kết quả
+%                     \end{itemize}
+%           \end{enumerate}
+%     \item Phần 3: Kết luận
+%     \item Tài liệu tham khảo
+% \end{enumerate}
