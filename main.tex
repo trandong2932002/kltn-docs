@@ -3,12 +3,39 @@
 
 \begin{document}
 \pagenumbering{gobble}
+
+
+% cover page
+\input{prelims/cover}
+\newpage
+
+% sub-cover page
+\input{prelims/sub-cover}
+\newpage
+
+% assessment
+\input{prelims/assessment}
+\newpage
+
 % default header footer style
 \pagestyle{fancy}
-\chapter*{Lời cảm ơn}
-\markboth{\MakeUppercase{Lời cảm ơn}}{}
-\chapter*{Kế hoạch thực hiện}
-\markboth{\MakeUppercase{Kế hoạch thực hiện}}{}
+
+% thanks
+\chapter*{Lời cám ơn}
+\markboth{\MakeUppercase{Lời cám ơn}}{}
+\input{prelims/thanks}
+\newpage
+
+% outline
+\input{prelims/outline}
+\newpage
+
+% % plan
+% \chapter*{Kế hoạch thực hiện}
+% \markboth{\MakeUppercase{Kế hoạch thực hiện}}{}
+% \input{prelims/plan}
+% \newpage
+
 % toc
 \tableofcontents
 % lot
@@ -27,9 +54,9 @@
 % chapter 2
 \chapter{Nội dung}
 \import{chapter_2/}{content.tex}
-% % chapter 3
-% \chapter{Kết luận}
-% \import{chapter_3/}{conclusion.tex}
+% chapter 3
+\chapter{Kết luận}
+\import{chapter_3/}{conclusion.tex}
 % % ref
 % % \nocite{*}
 % \printbibliography[heading=bibintoc, title=Danh mục tài liệu tham khảo]
