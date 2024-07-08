@@ -34,6 +34,21 @@ Phương pháp nghiên cứu:
 
 \section{Phân tích những công trình có liên quan}
 
+% [2] K. Dubey, R. Nair, M. U. Khan, and S. Shaikh, "Toxic comment detection using LSTM," in Proc. 2020 Third International Conference on Advances in Electronics, Computers and Communications (ICAECC), Dec. 2020, doi:10.1109/icaecc50550.2020.9339521.
+% [3] A. K. Bala, “Toxic comments identification and classification using Deep Neural Networks,” Academia.edu, https://www.academia.edu/41458366/Toxic_Comments_Identification_and_Classification_Using_Deep_Neural_Networks (accessed Apr. 23, 2024).
+% [4] R. Sharma and M. Patel, “Toxic comment classification using neural networks and machine learning,” IARJSET, vol. 5, no. 9, pp. 47–52, Sep. 2018. doi:10.17148/iarjset.2018.597
+% [5] V. Maslej-Krešňáková, M. Sarnovský, P. Butka, and K. Machová, “Comparison of deep learning models and various text pre-processing techniques for the toxic comments classification,” Applied Sciences, vol. 10, no. 23, p. 8631, Dec. 2020. doi:10.3390/app10238631
+
+Với tập dữ liệu gốc là văn bản Tiếng Anh, cách tiếp cận phổ biến trong bài toán này là sử dụng các mô hình học sâu chuyên biệt cho dữ liệu chuỗi và xử lý ngôn ngữ tự nhiên.
+
+Như trong [2], các tác giả sử dụng các phương pháp phân tách từ (tokenization) kết hợp với mô hình học sâu LSTM. Cách tiếp cận này tạo ra một mô hình có kết quả khá cao, với độ chính xác (precision) đạt 94,49\%, độ nhạy (recall) đạt 92,79\% và độ chính xác (accuracy) đạt 94,94\%. 
+
+Một nghiên cứu khác sử dụng phiên bản tiên tiến hơn của Long Short-Term Memory (LSTM), là Bidirectional LSTM (BiLSTM), để cải thiện thêm độ chính xác của dự đoán [3]. 
+
+Ngoài việc chỉ sử dụng RNN, [4] còn sử dụng mạng nơ-ron tích chập (CNN) song song với mô hình LSTM. Mặc dù kết quả đánh giá cho thấy CNN cũng đạt được kết quả khá tốt, LSTM vẫn vượt trội hơn cả về độ chính xác lẫn hiệu suất thời gian khi sử dụng cùng số epoch. 
+
+Nghiên cứu [5] cho thấy rằng không chỉ việc áp dụng các mô hình phức tạp mà cả việc sử dụng các phương pháp tiền xử lý cơ bản và nhúng từ (word embedding) cũng có thể ảnh hưởng đến hiệu suất phân loại. Để chứng minh điều này, các tác giả đã tiến hành đánh giá thực nghiệm về kiến trúc kết hợp BiLSTM + CNN, mô hình ngôn ngữ BERT (Bidirectional Encoder Representation from Transformer) với các phương pháp tiền xử lý và nhúng từ khác nhau.
+
 \section{Dự kiến kết quả đạt được}
 Về lý thuyết: Nhóm mong muốn sau khi thực hiện nghiên cứu có thể học hỏi và hiểu sâu về nội dung lý thuyết của bài toán đã nêu. Đồng thời có cơ hội thực hành mô hình học sâu trong quá trình huấn luyện dữ liệu cho bài toán.
 
