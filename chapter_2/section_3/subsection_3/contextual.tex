@@ -7,25 +7,25 @@ Phân cấp mức độ phát triển của các phương pháp embedding từ t
 \begin{itemize}
     \item \textbf{Non-context (không bối cảnh)}: Là các thuật toán không tồn tại bối cảnh trong biểu diễn từ. Đó là các thuật toán NLP đời đầu như `word2vec, GLoVe, fasttext` đã trình bày ở trên. Chúng ta chỉ có duy nhất một biểu diễn vector cho mỗi một từ mà không thay đổi theo bối cảnh. Ví dụ:
 
-    Câu A: Đơn vị tiền tệ của Việt Nam là [đồng].
-    
-    Câu B: Vợ [đồng] ý với ý kiến của chồng là tăng thêm mỗi tháng 500k tiền tiêu vặt.
-    
-    Thì từ ``đồng'' sẽ mang 2 ý nghĩa khác nhau nên phải có hai biểu diễn từ riêng biệt. Các thuật toán non-context đã không đáp ứng được sự đa dạng về ngữ nghĩa của từ trong NLP.
+          Câu A: Đơn vị tiền tệ của Việt Nam là [đồng].
+
+          Câu B: Vợ [đồng] ý với ý kiến của chồng là tăng thêm mỗi tháng 500k tiền tiêu vặt.
+
+          Thì từ ``đồng'' sẽ mang 2 ý nghĩa khác nhau nên phải có hai biểu diễn từ riêng biệt. Các thuật toán non-context đã không đáp ứng được sự đa dạng về ngữ nghĩa của từ trong NLP.
 
     \item \textbf{Uni-directional (một chiều)}: Là các thuật toán đã bắt đầu xuất hiện bối cảnh của từ. Các phương pháp nhúng từ dựa trên RNN là những phương pháp nhúng từ một chiều. Các kết quả biểu diễn từ đã có bối cảnh nhưng chỉ được giải thích bởi một chiều từ trái qua phải hoặc từ phải qua trái. Ví dụ:
 
-    Câu C: Hôm nay tôi mang 200 tỷ [gửi] ở ngân hàng.
+          Câu C: Hôm nay tôi mang 200 tỷ [gửi] ở ngân hàng.
 
-    Câu D: Hôm nay tôi mang 200 tỷ [gửi] \dots.
+          Câu D: Hôm nay tôi mang 200 tỷ [gửi] \dots.
 
-    Như vậy vector biểu diễn của từ ``gửi'' được xác định thông qua các từ liền trước với nó. Nếu chỉ dựa vào các từ liền trước ``Hôm nay tôi mang 200 tỷ'' thì ta có thể nghĩ từ phù hợp ở vị trí hiện tại là cho ``vay'', ``mua'', ``thanh toán'', \dots
+          Như vậy vector biểu diễn của từ ``gửi'' được xác định thông qua các từ liền trước với nó. Nếu chỉ dựa vào các từ liền trước ``Hôm nay tôi mang 200 tỷ'' thì ta có thể nghĩ từ phù hợp ở vị trí hiện tại là cho ``vay'', ``mua'', ``thanh toán'', \dots
 
-    Ví dụ đơn giản trên đã cho thấy các thuật toán biểu diễn từ có bối cảnh tuân theo theo một chiều sẽ gặp hạn chế lớn trong biểu diễn từ hơn so với biểu diễn 2 chiều.
+          Ví dụ đơn giản trên đã cho thấy các thuật toán biểu diễn từ có bối cảnh tuân theo theo một chiều sẽ gặp hạn chế lớn trong biểu diễn từ hơn so với biểu diễn 2 chiều.
 
-    Mô hình ELMo[x] là một ví dụ cho phương pháp một chiều. Mặc dù ELMo có kiến trúc dựa trên một mạng BiLSTM xem xét bối cảnh theo hai chiều từ trái sang phải và từ phải sang trái nhưng những chiều này là độc lập nhau nên ta coi như đó là biểu diễn một chiều.
+          Mô hình ELMo[x] là một ví dụ cho phương pháp một chiều. Mặc dù ELMo có kiến trúc dựa trên một mạng BiLSTM xem xét bối cảnh theo hai chiều từ trái sang phải và từ phải sang trái nhưng những chiều này là độc lập nhau nên ta coi như đó là biểu diễn một chiều.
 
-    Thuật toán ELMo đã cải tiến hơn so với word2vec và fasttext đó là tạo ra nghĩa của từ theo bối cảnh. Trong ví dụ về từ đồng thì ở mỗi câu A và B chúng ta sẽ có một biểu diễn từ khác biệt.
+          Thuật toán ELMo đã cải tiến hơn so với word2vec và fasttext đó là tạo ra nghĩa của từ theo bối cảnh. Trong ví dụ về từ đồng thì ở mỗi câu A và B chúng ta sẽ có một biểu diễn từ khác biệt.
 
     \item \textbf{Bi-directional (hai chiều)}: Ngữ nghĩa của một từ không chỉ được biểu diễn bởi những từ liền trước mà còn được giải thích bởi toàn bộ các từ xung quanh. Luồng giải thích tuân theo đồng thời từ trái qua phải và từ phải qua trái cùng một lúc. Đại diện cho các phép biểu diễn từ này là những mô hình sử dụng kỹ thuật transformer mà chúng ta sẽ tìm hiểu bên dưới. Gần đây, những thuật toán NLP theo trường phái bidirectional như BERT, ULMFit, OpenAI GPT đã đạt được những kết quả State-Of-The-Art trên hầu hết các tác vụ của GLUE benchmark.
 \end{itemize}

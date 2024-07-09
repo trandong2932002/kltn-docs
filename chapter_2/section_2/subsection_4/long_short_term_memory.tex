@@ -29,9 +29,9 @@ Xét một nút ẩn bất kỳ trong mạng thần kinh nhiều lớp, phương
             \mathbf h_{t}^{(k-1)} \\
             \mathbf h_{t-1}^{(k)}
         \end{bmatrix} + \mathbf b
-    \right)           & \text{[Tính các vector trung gian]}                                                        \\
-    \mathbf c_t^{(k)} & =\mathbf f\odot\mathbf c_{t-1}^{(k)}+\mathbf i\odot\mathbf c & \text{[Tinh chỉnh bộ nhớ]}  \\
-    \mathbf h_t^{(k)} & =\mathbf o\odot\Phi(\mathbf c_t^{(k)})                       & \text{[Tính trạng thái ẩn]}
+    \right)           & \text{[Các vector trung gian]}                                                        \\
+    \mathbf c_t^{(k)} & =\mathbf f\odot\mathbf c_{t-1}^{(k)}+\mathbf i\odot\mathbf c & \text{[Bộ nhớ]}        \\
+    \mathbf h_t^{(k)} & =\mathbf o\odot\Phi(\mathbf c_t^{(k)})                       & \text{[Trạng thái ẩn]}
 \end{align}
 
 Nếu trạng thái ẩn có số chiều là $p$, thì ma trận $W_t^{(k)}$ bây giờ sẽ có số chiều là $4p\times 2p$, vì nó cần tạo ra bốn vector trung gian ở đầu ra. Bộ nhớ dài ngắn hạt hoạt động qua ba bước như sau (chi tiết trong hình \ref{figure:lstm-architecture}):

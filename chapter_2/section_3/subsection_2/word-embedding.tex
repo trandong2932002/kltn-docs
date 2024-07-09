@@ -42,7 +42,7 @@ Trong nhiều ứng dụng NLP (\textit{natural language processing}), các từ
 
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=0.6\textwidth]{tikz_image/word2vec_example.pdf}
+    \includegraphics[width=0.5\textwidth]{tikz_image/word2vec_example.pdf}
     \caption{Ví dụ về Word2vec}
     \label{figure:word2vec-example}
 \end{figure}
@@ -50,7 +50,7 @@ Trong nhiều ứng dụng NLP (\textit{natural language processing}), các từ
 Word2vec có 2 biến thể: dự đoán từ dựa trên các từ xung quanh - Continous Bag Of Words (CBOW) và dự đoán các từ xung quanh skip-gram.
 
 Trong mô hình CBOW, các tập huấn luyện là các cặp từ có liên quan đến nhau, khi một tập các từ được nhập vào và một từ sẽ được đoán ra. Các từ nhập vào bao gồm $2\cdot t$ từ tương ứng với $t$ từ đứng trước và $t$ từ phía sau từ đó. Từ đó, tổng số các từ nhập vào sẽ là $m = 2\cdot t$ từ. Để đơn giản, các từ đầu vào sẽ được đánh là $w_1, w_2,\dots w_m$  và từ được dự đoán là $w$. Từ $w$ có thể có $d$ giá trị khả thi với $d$ là tổng số từ trong toàn tập huấn luyện. Mục đích của neural embedding là tính xác suất $P(w|w_1,w_2,\dots w_d)$ với $d$ là số từ trên toàn tập huấn luyện và tối ưu hóa xác suất đó trên toàn tập dữ liệu.
-\begin{figure}[htbp]
+\begin{figure}[htb!]
     \centering
     \includegraphics[width=0.7\textwidth]{tikz_image/word2vec_cbow.pdf}
     \caption{Cách hoạt động của CBOW \cite{Aggarwal2022-xj}}
@@ -73,7 +73,7 @@ Và kết quả $\mathbf h$ được dùng để dự đoán kết quả đầu 
 \end{align}
 
 Trong mô hình Skip-gram, từ đầu vào được dùng để dự đoán m từ trước và sau. Từ đó chúng ta có $1$ input và $m$ output.
-\begin{figure}[htbp]
+\begin{figure}[htb!]
     \centering
     \includegraphics[width=0.7\textwidth]{tikz_image/word2vec_skipgram.pdf}
     \caption{Cách hoạt động của skip-gram}
@@ -158,13 +158,13 @@ Giống với Word2vec, Fasttext cũng hoạt động dựa trên 2 phương ph�
     \item Continous Bag Of Words (CBOW): Cách thức hoạt động tương tự như Word2vec, nhưng với mỗi từ được tính bằng n-gram. Ví dụ chúng ta có câu: ``I want to learn fast text'', các từ ``I'', ``want'', ``to'', ``fast'', ``text'' được cung cấp để mô hình dự đoán từ ``learn'' (hình \ref{figure:fasttext-cbow}).
     \item Skip-gram: Với ví dụ tương tự phía trên, chúng ta áp dụng skip-gram sẽ như hình \ref{figure:fasttext-skip-gram}.
 \end{itemize}
-\begin{figure}[htbp]
+\begin{figure}[htb!]
     \centering
     \includegraphics[width=0.7\textwidth]{tikz_image/fasttext_cbow.pdf}
     \caption{Mô hình fasttext đối với CBOW \cite{webpage14}}
     \label{figure:fasttext-cbow}
 \end{figure}
-\begin{figure}[htbp]
+\begin{figure}[htb!]
     \centering
     \includegraphics[width=0.7\textwidth]{tikz_image/fasttext_skipgram.pdf}
     \caption{Mô hình fasttext đối với skip-gram \cite{webpage14}}

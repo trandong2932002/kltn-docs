@@ -237,19 +237,19 @@ Nếu ta định nghĩa $g(\cdot)$ là hàm tính giá trị của một nốt �
 
 \subsubsection{Các vấn đề gặp phải khi huấn luyện mạng thần kinh}
 Mạng thần kinh có hàng triệu tham số $w_{ij}$ trong đó một số cạnh có giá trị đạo hàm $\partial L/\partial w_{ij}$ rất lớn so với các thành phần khác, dẫn đến thuật toán xuống đồi cập nhật một phần bộ tham số quá lệch so với phần còn lại. Điều đó tương đương với việc một số lớp ảnh hưởng trực tiếp đến lớp đầu ra, còn một số lớp thì hầu như chẳng có ảnh hưởng. Điều này xuất hiện chủ yếu là do giá trị đạo hàm được tính toán bằng quy tắc xích và nhân liên tục với nhau. Xét một mạng thần kinh với $m$ lớp, để đơn giản ta xem mỗi lớp chỉ có duy nhất 1 nút, giá trị của nút ở lớp ẩn thứ $t+1$ là
-\[
+\begin{align}
     h_{t+1}=\Phi(w_{t+1}h_t)
-\]
+\end{align}
 
 Đạo hàm từ nút $t+1$ đối với nút $t$ là
-\[
+\begin{align}
     \dfrac{\partial h_{t+1}}{\partial h_t}=w_{t+1}\cdot\Phi'(w_{t+1}h_t)
-\]
+\end{align}
 
 Đạo hàm từ hàm mất mát đối với nút $t$ sẽ có dạng
-\[
+\begin{align}
     \dfrac{\partial L}{\partial h_t}=\dfrac{\partial L}{\partial h_{t+1}}\cdot\dfrac{\partial h_{t+1}}{\partial h_t}=w_{t+1}\cdot\Phi'(w_{t+1}h_t)\cdot\dfrac{\partial L}{\partial h_{t+1}}
-\]
+\end{align}
 
 Nếu ta khởi tạo các giá trị $w_k$ dựa theo phân phối chuẩn, thì giá trị trung bình của $w=1$. Nếu ta chọn hàm kích hoạt là hàm sigmoid, đạo hàm của nó sẽ là $\Phi'=\sigma(1-\sigma)$, giá trị của hàm sigmoid nằm trong khoảng $(0,1)$ nên dạo hàm này có giá trị lớn nhất là $\Phi'=0.25<1$ khi $\sigma=0.5$. Nghĩa là đạo hàm của lớp sau luôn bé hơn hoặc bằng $0.25$ giá trị của lớp trước nó. Nếu ta đi ngược $r$ lớp thì đạo hàm lớp $t-r$ sẽ bé hơn hoặc bằng $0.25^r$ giá trị lớp $t$. Do đó khi ta cập nhật bộ tham số bằng thuật toán lan truyền ngược thì tham số cạnh $w$ của các lớp trước sẽ được điều chỉnh ít hơn nhiều so với các lớp sau, vấn đề này gọi là độ dốc biến mất (\textit{vanishing gradient problem}). Nếu ta chọn một hàm kích hoạt cho ra giá trị $\Phi'>1$ thì trường hợp ngược lại sẽ xảy ra: tham số cạnh $w$ của các lớp trước sẽ được điều chỉnh nhiều hơn so với các lớp sau, vấn đề này gọi là độ dốc bùng nổ (\textit{exploding gradient problem}).
 

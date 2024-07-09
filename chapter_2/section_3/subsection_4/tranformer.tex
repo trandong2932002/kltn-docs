@@ -15,12 +15,10 @@ Vậy có cách nào tận dụng khả năng tính toán song song của GPU đ
 \subsubsection{Kiến trúc Tranformer}
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=\textwidth]{image/tranformer-architecture.png}
+    \includegraphics[width=0.5\textwidth]{image/tranformer-architecture.png}
     \caption{Kiến trúc của mô hình Tranformer\cite{46201}}
     \label{figure:tranformer-architecture}
 \end{figure}
-
-
 
 Kiến trúc của Tranformer gồm 2 phần là Encoder bên trái và Decoder bên phải\cite{webpage23}.
 
@@ -34,47 +32,46 @@ Ngoài ra luôn có một bước cộng thêm Positional Encoding vào các đ�
 \begin{enumerate}[label=\textbf{\arabic*}]
     \item Scaled Dot-Product Attention:
 
-    Đây chính là một cơ chế self-attention khi mỗi từ có thể điều chỉnh trọng số của nó cho các từ khác trong câu sao cho từ ở vị trí càng gần nó nhất thì trọng số càng lớn và càng xa thì càng nhỏ dần. Sau bước nhúng từ (đi qua embeding layer) ta có đầu vào của encoder và decoder là ma trận $\mathbf{X}$ kích thước $m\times n$, $m,n$ lần lượt là là độ dài câu và số chiều của một vector nhúng từ.
+          Đây chính là một cơ chế self-attention khi mỗi từ có thể điều chỉnh trọng số của nó cho các từ khác trong câu sao cho từ ở vị trí càng gần nó nhất thì trọng số càng lớn và càng xa thì càng nhỏ dần. Sau bước nhúng từ (đi qua embeding layer) ta có đầu vào của encoder và decoder là ma trận $\mathbf{X}$ kích thước $m\times n$, $m,n$ lần lượt là là độ dài câu và số chiều của một vector nhúng từ.
 
-    Sau đó, ma trận $\mathbf{X}$ sẽ được nhân với 3 ma trận trọng số tương ứng $\mathbf{W}_\mathbf{q}$, $\mathbf{W}_\mathbf{k}$, $\mathbf{W}_\mathbf{v}$ chính là những hệ số mà model cần huấn luyện, ta thu được ma trận $\mathbf{Q}$, $\mathbf{K}$, $\mathbf{V}$ (Query, Key và Value). Ma trận Query và Key có tác dụng tính toán ra phân phối score cho các cặp từ. Ma trận Value sẽ dựa trên phân phối score để tính ra vector phân phối xác suất đầu ra. Ba ma trận $\mathbf{Q}$, $\mathbf{K}$, $\mathbf{V}$ chính là 3 mũi tên đầu vào của các Multi-head Attention (bản chất là Self-Attention) trong kiến trúc tổng quát hình x.
+          Sau đó, ma trận $\mathbf{X}$ sẽ được nhân với 3 ma trận trọng số tương ứng $\mathbf{W}_\mathbf{q}$, $\mathbf{W}_\mathbf{k}$, $\mathbf{W}_\mathbf{v}$ chính là những hệ số mà model cần huấn luyện, ta thu được ma trận $\mathbf{Q}$, $\mathbf{K}$, $\mathbf{V}$ (Query, Key và Value). Ma trận Query và Key có tác dụng tính toán ra phân phối score cho các cặp từ. Ma trận Value sẽ dựa trên phân phối score để tính ra vector phân phối xác suất đầu ra. Ba ma trận $\mathbf{Q}$, $\mathbf{K}$, $\mathbf{V}$ chính là 3 mũi tên đầu vào của các Multi-head Attention (bản chất là Self-Attention) trong kiến trúc tổng quát hình x.
 
-    Như đã đề cập, Đầu vào để tính attention sẽ bao gồm ma trận $\mathbf{Q}$ (mỗi dòng của nó là một vector query đại diện cho các từ trong đầu vào), ma trận $\mathbf{K}$ (tương tự như ma trận $\mathbf{Q}$, mỗi dòng là vector key đại diện cho các từ trong đầu vào). Hai ma trận $\mathbf{Q}$, $\mathbf{K}$ được sử dụng để tính attention mà các từ trong câu trả về cho 1 từ cụ thể trong câu. Attention vector sẽ được tính dựa trên trung bình có trọng số của các vector value trong ma trận $\mathbf{V}$ với trọng số attention (được tính từ $\mathbf{Q}$, $\mathbf{K}$).
+          Như đã đề cập, Đầu vào để tính attention sẽ bao gồm ma trận $\mathbf{Q}$ (mỗi dòng của nó là một vector query đại diện cho các từ trong đầu vào), ma trận $\mathbf{K}$ (tương tự như ma trận $\mathbf{Q}$, mỗi dòng là vector key đại diện cho các từ trong đầu vào). Hai ma trận $\mathbf{Q}$, $\mathbf{K}$ được sử dụng để tính attention mà các từ trong câu trả về cho 1 từ cụ thể trong câu. Attention vector sẽ được tính dựa trên trung bình có trọng số của các vector value trong ma trận $\mathbf{V}$ với trọng số attention (được tính từ $\mathbf{Q}$, $\mathbf{K}$).
 
-    Phương trình Attention như sau:
-    \begin{align}
-        \mathrm{Attention}({Q, K, V}) = \mathrm{softmax}(\frac{{QK^T})}{\sqrt{d_k}}\ {V} \tag{xxx}
-    \end{align}
+          Phương trình Attention như sau:
+          \begin{align}
+              \mathrm{Attention}(Q, K, V) = \mathrm{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
+          \end{align}
 
-    Việc chia cho $d_k$ là số dimension của vector key nhằm mục đích tránh tràn luồng nếu số mũ là quá lớn.
-    Trong thực hành chúng ta tính toán hàm attention trên toàn bộ tập các câu truy vấn một cách đồng thời được đóng gói thông qua ma trận $\mathbf{Q}$. Keys và Values cũng được đóng gói cùng nhau thông qua ma trận $\mathbf{K},\mathbf{V}$.
+          Việc chia cho $d_k$ là số dimension của vector key nhằm mục đích tránh tràn luồng nếu số mũ là quá lớn.
+          Trong thực hành chúng ta tính toán hàm attention trên toàn bộ tập các câu truy vấn một cách đồng thời được đóng gói thông qua ma trận $\mathbf{Q}$. Keys và Values cũng được đóng gói cùng nhau thông qua ma trận $\mathbf{K},\mathbf{V}$.
 
-    \begin{figure}[htb]
-        \centering
-        \includegraphics[width=\textwidth]{image/attention-equation.png}
-        \caption{Phương trình Attention thể hiện dưới dạng ma trận\cite{webpage27}}
-        \label{figure:attention-equation}
-    \end{figure}
+          \begin{figure}[htb]
+              \centering
+              \includegraphics[width=0.8\textwidth]{image/attention-equation.png}
+              \caption{Phương trình Attention thể hiện dưới dạng ma trận\cite{webpage27}}
+              \label{figure:attention-equation}
+          \end{figure}
 
     \item Multi-head Attention:
-    
-    Như vậy sau quá trình Scale dot production chúng ta sẽ thu được 1 ma trận attention. Các tham số mà model cần tinh chỉnh chính là các ma trận $\mathbf{W}_\mathbf{q},\mathbf{W}_\mathbf{k},\mathbf{W}_\mathbf{v}$. Mỗi quá trình như vậy được gọi là một head của attention. Khi lặp lại quá trình này nhiều lần (trong bài báo là ba heads) ta sẽ thu được quá trình Multi-head Attention.
-    
-    Sau khi thu được ba ma trận attention ở đầu ra chúng ta sẽ concatenate các matrix này theo các cột để thu được ma trận tổng hợp multi-head matrix có chiều cao trùng với chiều cao của ma trận đầu vào.
-    
-    \begin{align*}
-        \mathrm{MultiHead}(Q, K, V) &= \mathrm{Concat}({head_1},{head_2}, ..., {head_h})W^O\\
-    %    \mathrm{where} \mathrm{head_i} &= \mathrm{Attention}(QW_Q_i^{\dmodel \times d_q}, KW_K_i^{\dmodel \times d_k}, VW^V_i^{\dmodel \times d_v})\\
-        \text{với}~{head_i} &= \mathrm{Attention}(QW^Q_i, KW^K_i, VW^V_i)\\
-    \end{align*}
-    
 
-    Cuối cùng, để trả đầu ra có cùng kích thước với ma trận ban đầu chúng ta chỉ cần nhân với ma trận $\mathbf{W}_\mathbf{0}$ có chiều rộng bằng với chiều rộng của ma trận đầu vào.
+          \begin{figure}[htb]
+              \centering
+              \includegraphics[width=0.9\textwidth]{image/multi-head-illustration.png}
+              \caption{Multi-head Attention minh hoạ dưới dạng ma trận\cite{webpage27}}
+              \label{figure:multi-head-illustration}
+          \end{figure}
 
-    \begin{figure}[htb]
-        \centering
-        \includegraphics[width=\textwidth]{image/multi-head-illustration.png}
-        \caption{Multi-head Attention minh hoạ dưới dạng ma trận\cite{webpage27}}
-        \label{figure:multi-head-illustration}
-    \end{figure}
+          Như vậy sau quá trình Scale dot production chúng ta sẽ thu được 1 ma trận attention. Các tham số mà model cần tinh chỉnh chính là các ma trận $\mathbf{W}_\mathbf{q},\mathbf{W}_\mathbf{k},\mathbf{W}_\mathbf{v}$. Mỗi quá trình như vậy được gọi là một head của attention. Khi lặp lại quá trình này nhiều lần (trong bài báo là ba heads) ta sẽ thu được quá trình Multi-head Attention.
 
+          Sau khi thu được ba ma trận attention ở đầu ra chúng ta sẽ concatenate các matrix này theo các cột để thu được ma trận tổng hợp multi-head matrix có chiều cao trùng với chiều cao của ma trận đầu vào.
+
+          \begin{align}
+              \mathrm{MultiHead}(Q, K, V) & = \mathrm{Concat}(\mathrm{head_1},\mathrm{head_2}, ..., \mathrm{head_h})W^O \\
+              %    \mathrm{where} \mathrm{head_i} &= \mathrm{Attention}(QW_Q_i^{\dmodel \times d_q}, KW_K_i^{\dmodel \times d_k}, VW^V_i^{\dmodel \times d_v})\\
+              \text{với}~\mathrm{head_i}  & = \mathrm{Attention}(QW^Q_i, KW^K_i, VW^V_i)
+          \end{align}
+
+
+          Cuối cùng, để trả đầu ra có cùng kích thước với ma trận ban đầu chúng ta chỉ cần nhân với ma trận $\mathbf{W}_\mathbf{0}$ có chiều rộng bằng với chiều rộng của ma trận đầu vào.
 \end{enumerate}

@@ -23,7 +23,7 @@ Xét một nút ẩn bất kỳ trong mạng thần kinh nhiều lớp, thay vì
             \mathbf h_{t-1}^{(k)}
         \end{bmatrix}
     +\mathbf b_1\right)
-     & [\text{Tính các vector trung gian}]                                 \\
+     & [\text{Vector trung gian}]                                          \\
     \mathbf h_t^{(k)}
      & =\mathbf z\odot\mathbf h_{t-1}^{(k)}+(\mathbf 1-\mathbf z)\odot\Phi
     \left(V^{(k)}_t
@@ -32,7 +32,7 @@ Xét một nút ẩn bất kỳ trong mạng thần kinh nhiều lớp, thay vì
             \mathbf r\odot\mathbf h_{t-1}^{(k)}
         \end{bmatrix}
     +\mathbf b_2\right)
-     & [\text{Tính trạng thái ẩn}]
+     & [\text{Trạng thái ẩn}]
 \end{align}
 
 Ma trận $W_t^{(k)}$ bây giờ chỉ có số chiều là $2p\times 2p$ vì nó chỉ cần tạo ra hai vector trung gian ở đầu ra, còn ma trận $V_t^{(k)}$ sẽ có số chiều là $p\times 2p$. Vì bộ nhớ tái phát không sử dụng ô trạng thái để làm bộ nhớ, nên hai cổng của nó phải đảm nhiệm nhiệm vụ này. Bộ nhớ tái phát hoạt động qua hai bước như sau:

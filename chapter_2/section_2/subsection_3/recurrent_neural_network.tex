@@ -41,7 +41,7 @@ Kiến trúc của RNN có thể thay đổi dựa trên bài toán cần xử l
     \item \textbf{Nhiều-một (many-to-one)} Ở kiến trúc này, một output duy nhất được tạo ra bằng cách kết hợp nhiều input từ các mốc thời gian khác nhau. Kiến trúc này thường được sử dụng trong các bài toán phân tích và nhận dạng cảm xúc, nơi các nhãn được định nghĩa bởi các chuỗi từ.
     \item \textbf{Nhiều-nhiều (many-to-many)} Kiến trúc này sử dụng một chuỗi nhiều input để sinh ra một chuỗi nhiều output. Ví dụ điển hình cho kiến trúc này là các hệ thống dịch thuật ngôn ngữ.
 \end{itemize}
-\begin{table}[htbp]
+\begin{table}[htb!]
     \centering
     \caption{Một số loại RNN \cite{webpage6}}
     \begin{tabularx}{\textwidth}{ L{1} c L{1} }
@@ -78,7 +78,7 @@ Dù mạng hồi quy được dùng trong hầu hết các lĩnh vực có tồn
 
 Một mạng hồi quy được biểu diễn trên hình \ref{figure:rnn-example-a}. Điểm mấu chốt ở đây chính là vòng lặp tại chính giữa hình, thứ thay đổi trạng thái ẩn (\textit{hidden state}) của cả mạng sau mỗi từ trong chuỗi. Kiến trúc này trở nên rõ ràng hơn khi chúng ta “mở” vòng lặp đó ra trên một trục thời gian và biểu diễn giống như các mạng thần kinh nối tiếp nhau (hình \ref{figure:rnn-example-b}). Khi này chúng ta sẽ có những nút khác nhau đại diện cho lớp ẩn $\mathbf h_t$ trên mỗi điểm thời gian $t$. Dữ liệu đầu vào của nút thứ $n$ là từ thứ $n$. Cách trình bày này tương tự hình \ref{figure:rnn-example-a} nhưng dễ nắm bắt hơn do có sự tương đồng với các mạng thần kinh truyền thống. Ma trận $W$ trong các tầng khác nhau được sử dụng chung nhằm đảm bảo một hàm số duy nhất được sử dụng ở mỗi mốc thời gian. Dựa vào hình có thể thấy mỗi tầng đều có $W_{hh}$, $W_{hy}$, $W_{xh}$ giống nhau.
 
-Trong bài toán dự đoán các từ tiếp theo khi đã biết các từ trước đó, ví dụ chúng ta có một câu:\newline
+Trong bài toán dự đoán các từ tiếp theo khi đã biết các từ trước đó, ví dụ chúng ta có câu:\newline
 \centerline{\textit{``The lion chased the deer''} \cite{Aggarwal2023-zk}}
 Khi từ ``The'' đi vào tầng đầu tiên, đầu ra sẽ là một vector chứa các xác suất của các từ bao gồm cả từ ``lion'', và khi từ ``lion'' là input của tầng tiếp theo, đầu ra vẫn là một vector như vậy. Đây là một phân loại của mô hình ngôn ngữ khi mà xác suất của một từ được ước lượng dựa trên lịch sử của các từ trước đó.
 
@@ -91,7 +91,7 @@ Với mốc thời gian $t$, vector đầu vào là $\mathbf x_t$, trạng thái
 Ban đầu, vector $\mathbf h_0$ được khỏi tạo là vector $\mathbf 0$ hoặc là một vector bất kỳ. Bởi vì mỗi giá trị của $\mathbf h_t$ được tính bằng $\mathbf h_{t-1}$ trước đó, nên ta có thể viết
 \begin{align}
     \mathbf h_t & =f(\mathbf h_{t-1},\mathbf x_t)\nonumber                                                              \\
-                & =\dots\nonumber                                                                                      \\
+                & =\dots\nonumber                                                                                       \\
                 & =f(\dots f(f(\mathbf h_1,\mathbf x_1),\mathbf x_2)\dots\mathbf x_t)\label{equation:rnn-ordered-input} \\
                 & =F_t(\mathbf x_1,\dots,\mathbf x_t)\label{equation:rnn-variable-size-input}
 \end{align}
