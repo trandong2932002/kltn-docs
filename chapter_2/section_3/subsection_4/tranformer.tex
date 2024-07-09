@@ -1,6 +1,6 @@
 \subsubsection{Giới thiệu}
 % https://viblo.asia/p/transformers-nguoi-may-bien-hinh-bien-doi-the-gioi-nlp-924lJPOXKPM
-Mô hình Sequence-to-Sequence (Seq2Seq) nhận đầu vào là một chuỗi và trả lại đầu ra cũng là một chuỗi. Ví dụ bài toán QA, đầu vào là câu hỏi ``how are you?'' và đầu ra là câu trả lời ``I am good''. Phương pháp truyền thống sử dụng RNN cho cả encoder (phần mã hóa đầu vào) và decoder (phần giải mã đầu vào và trả đầu ra tương ứng).
+Mô hình Sequence-to-Sequence (Seq2Seq) nhận đầu vào là một chuỗi và trả lại đầu ra cũng là một chuỗi. Ví dụ bài toán QA, đầu vào là câu hỏi ``how are you?'' và đầu ra là câu trả lời ``I am good''. Phương pháp truyền thống sử dụng RNN cho cả encoder (phần mã hóa đầu vào) và decoder (phần giải mã đầu vào và trả đầu ra tương ứng)\cite{webpage22}.
 
 Nhưng mô hình này vẫn có nhiều điểm yếu như đã trình bày, điểm yếu đầu tiên là tốc độ huyến luyện rất chậm, do bản chất tuần hoàn của mạng, việc tính toán gradient cho các bước thời gian trước đó cần thực hiện theo trình tự, dẫn đến việc sử dụng CPU thay vì GPU, vốn có khả năng tính toán song song hiệu quả hơn. Việc sử dụng Truncated Backpropagation để cải thiện tốc độ huấn luyện vẫn còn hạn chế. Điểm yếu thứ hai là nó xử lý không tốt với những câu dài do hiện tượng Gradient Vanishing/Exploding như đã đề cập.
 
@@ -16,13 +16,13 @@ Vậy có cách nào tận dụng khả năng tính toán song song của GPU đ
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{image/tranformer-architecture.png}
-    \caption{Kiến trúc của mô hình Tranformer}
+    \caption{Kiến trúc của mô hình Tranformer\cite{46201}}
     \label{figure:tranformer-architecture}
 \end{figure}
 
 
 
-Kiến trúc của Tranformer gồm 2 phần là Encoder bên trái và Decoder bên phải.
+Kiến trúc của Tranformer gồm 2 phần là Encoder bên trái và Decoder bên phải\cite{webpage23}.
 
 \textbf{Encoder}: là tổng hợp xếp chồng lên nhau của 6 layers xác định. Mỗi layer bao gồm 2 layer con (sub-layer) trong nó. Sub-layer đầu tiên là multi-head self-attention mà lát nữa chúng ta sẽ tìm hiểu. Layer thứ 2 đơn thuần chỉ là các fully-connected feed-forward layer. Một lưu ý là chúng ta sẽ sử dụng một kết nối residual ở mỗi sub-layer ngay sau layer normalization. Kiến trúc này có ý tưởng tương tự như mạng resnet trong CNN. Đầu ra của mỗi sub-layer là $LayerNorm(x+Sublayer(x))$ có số chiều là 512 theo như bài viết.
 
@@ -51,7 +51,7 @@ Ngoài ra luôn có một bước cộng thêm Positional Encoding vào các đ�
     \begin{figure}[htb]
         \centering
         \includegraphics[width=\textwidth]{image/attention-equation.png}
-        \caption{Phương trình Attention thể hiện dưới dạng ma trận}
+        \caption{Phương trình Attention thể hiện dưới dạng ma trận\cite{webpage27}}
         \label{figure:attention-equation}
     \end{figure}
 
@@ -73,7 +73,7 @@ Ngoài ra luôn có một bước cộng thêm Positional Encoding vào các đ�
     \begin{figure}[htb]
         \centering
         \includegraphics[width=\textwidth]{image/multi-head-illustration.png}
-        \caption{Multi-head Attention minh hoạ dưới dạng ma trận}
+        \caption{Multi-head Attention minh hoạ dưới dạng ma trận\cite{webpage27}}
         \label{figure:multi-head-illustration}
     \end{figure}
 

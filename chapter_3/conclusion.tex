@@ -1,0 +1,12 @@
+\section*{Thành tựu}
+Về mặt lý thuyết: Nghiên cứu các mô hình mạng thần kinh sâu như CNN, RNN, LSTM, và GRU, cũng như các kỹ thuật xử lý văn bản ngôn ngữ tự nhiên bao gồm Word2vec, GloVe, và FastText. Đồng thời, tìm hiểu thêm về những kiến trúc và mô hình mới nhất trong lĩnh vực xử lý ngôn ngữ tự nhiên như cơ chế Attention trong kiến trúc Transformer, cùng với các mô hình tiên tiến như BERT và PhoBERT.
+
+Về mặt ứng dụng: Phát triển hai mô hình mạng thần kinh LSTM và GRU kết hợp với kỹ thuật nhúng từ FastText, và ứng dụng tinh chỉnh mô hình PhoBERT để phát hiện văn bản độc hại.
+
+\section*{Hạn chế}
+Đầu tiên, dữ liệu được sử dụng trong nghiên cứu này là dữ liệu tiếng Anh được dịch sang tiếng Việt. Mặc dù đã sử dụng nhiều công cụ dịch thuật, xử lý văn bản và các nguồn corpus tiếng Việt khác nhau, do khối lượng dữ liệu lớn và bối cảnh văn bản khó dự đoán, dữ liệu huấn luyện vẫn còn một số ít thiếu chính xác.
+
+Mô hình đã dự đoán tương đối chính xác với dữ liệu tiếng Việt thuần túy. Tuy nhiên, đối với những văn bản cố tình viết tắt, viết sai chính tả, hoặc không sử dụng dấu câu nhằm mục đích đánh lừa mô hình, khả năng nhận diện mức độ độc hại vẫn chưa đạt được hiệu quả cao.
+
+\section*{Hướng phát triển}
+Trong quá trình triển khai, chúng tôi đã phát triển hai ứng dụng ngăn chặn ngôn ngữ độc hại đơn giản cho người dùng cuối: một tiện ích cho trình duyệt web và một chatbot tích hợp trong Discord. Về phương hướng phát triển trong tương lai, phía server có thể được cải tiến để tự động chặn người dùng đăng các bình luận chứa nội dung độc hại trên các nền tảng mạng xã hội, diễn đàn, và fanpage, nhằm tạo ra môi trường trực tuyến an toàn hơn.
