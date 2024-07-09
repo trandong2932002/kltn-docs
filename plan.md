@@ -13,10 +13,10 @@
 
 - [x] Phần 1 : MỞ ĐẦU : PHÂN TÍCH NHỮNG CÔNG TRÌNH CÓ LIÊN QUAN
 - [ ] Phần 2 : NỘI DUNG :
-    - [ ] ex + bot
+    - [x] ex + bot
     - [ ] tien xu ly
     - [ ] thiet lap mo hinh
     - [ ] huan luyen mo hinh
 - [x] Phần 3 : KẾT LUẬN : viet lai
-- [ ] DANH MỤC TÀI LIỆU THAM KHẢO
+- [x] DANH MỤC TÀI LIỆU THAM KHẢO
 - [ ] PHỤ LỤC.

@@ -5,7 +5,7 @@
 
 % https://arxiv.org/abs/1810.04805
 \subsubsection{Giới thiệu BERT}
-Vào cuối năm 2018, các nhà nghiên cứu tại Google AI Language đã công bố một kỹ thuật mới được gọi là BERT ({\bf B}idirectional {\bf E}ncoder {\bf R}epresentations from {\bf T}ransformers) - một bước đột phá lớn đã gây tiếng vang trong cộng đồng Học sâu bởi hiệu suất đáng kinh ngạc của nó. Trong bài báo BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding[xxx] các tác giả đã nêu ra những cải tiến của model BERT trong các tác vụ:
+Vào cuối năm 2018, các nhà nghiên cứu tại Google AI Language đã công bố một kỹ thuật mới được gọi là BERT ({\bf B}idirectional {\bf E}ncoder {\bf R}epresentations from {\bf T}ransformers) - một bước đột phá lớn đã gây tiếng vang trong cộng đồng Học sâu bởi hiệu suất đáng kinh ngạc của nó. Trong bài báo BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding[xxx] các tác giả đã nêu ra những cải tiến của model BERT trong các tác vụ\cite{webpage20}:
 
 \begin{itemize}
     \item Tăng GLUE score (General Language Understanding Evaluation score), một chỉ số tổng quát đánh giá mức độ hiểu ngôn ngữ lên 80.5\%.
@@ -14,7 +14,7 @@ Vào cuối năm 2018, các nhà nghiên cứu tại Google AI Language đã cô
 \end{itemize}
 % https://medium.com/@samia.khalid/bert-explained-a-complete-guide-with-theory-and-tutorial-3ac9ebc8fa7c
 Về cơ bản, nhiệm vụ mà các mô hình ngôn ngữ cố gắng giải quyết là  ``điền vào chỗ trống'' dựa trên ngữ cảnh. Ví dụ, với câu: ``Tôi đi chợ và mua một \_\_\_\_ giày.''
-Một mô hình ngôn ngữ có thể hoàn thành câu bằng cách dự đoán từ điền vào chỗ trống:
+Một mô hình ngôn ngữ có thể hoàn thành câu bằng cách dự đoán từ điền vào chỗ trống\cite{webpage19}:
 
 \begin{itemize}
     \item ``đôi'' với tỉ lệ 80\% vì ``đôi'' là cách đếm thông dụng cho giày.
@@ -30,7 +30,7 @@ Thay vì dự đoán từ tiếp theo trong chuỗi, BERT sử dụng một kỹ
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{image/BERT_comparisons.pdf}
-    \caption{Sự khác nhau giữa các kiến trúc mô hình pre-trained. BERT sử dụng bidirectional Transformer. OpenAI GPT sử dụng Transformer theo hướng trái sang phải. ELMo sử dụng kết hợp đầu ra của hai LSTM được huấn luyện độc lập theo hướng trái sang phải và phải sang trái. Trong ba mô hình này, chỉ có BERT học được biểu diễn của từ ngữ phụ thuộc lẫn nhau vào cả ngữ cảnh trước và sau ở tất cả các layer.}
+    \caption{Sự khác nhau giữa các kiến trúc mô hình pre-trained. BERT sử dụng bidirectional Transformer. OpenAI GPT sử dụng Transformer theo hướng trái sang phải. ELMo sử dụng kết hợp đầu ra của hai LSTM được huấn luyện độc lập theo hướng trái sang phải và phải sang trái. Trong ba mô hình này, chỉ có BERT học được biểu diễn của từ ngữ phụ thuộc lẫn nhau vào cả ngữ cảnh trước và sau ở tất cả các layer.\cite{47751}}
     \label{figure:BERT_comparisons}
 \end{figure}
 
@@ -51,7 +51,7 @@ BERT được huấn luyện dựa trên Transformer, mục tiêu là tạo mô 
     \label{figure:Input_Emebeddings}
 \end{figure}
 
-Về bản chất, Transformer sẽ ánh xạ chuỗi ký tự đầu vào thành chuỗi ký tự đầu ra, do đó đầu ra cũng là một chuỗi các vector tương ứng giữa các token đầu vào và đầu ra ở cùng chỉ số. Như đã đề cập trước đó, BERT sẽ không dự đoán từ tiếp theo trong câu. Quá trình huấn luyện sử dụng hai chiến lược sau:
+Về bản chất, Transformer sẽ ánh xạ chuỗi ký tự đầu vào thành chuỗi ký tự đầu ra, do đó đầu ra cũng là một chuỗi các vector tương ứng giữa các token đầu vào và đầu ra ở cùng chỉ số. Như đã đề cập trước đó, BERT sẽ không dự đoán từ tiếp theo trong câu. Quá trình huấn luyện sử dụng hai chiến lược sau\cite{webpage20}:
 % https://phamdinhkhanh.github.io/2020/05/23/BERTModel.html#23-masked-ml-mlm
 \begin{enumerate}
     \item \textbf{Masked ML (MLM):}
@@ -120,7 +120,7 @@ Như vậy ở kiến trúc BERT Large chúng ta tăng gấp đôi số layer, t
 % https://viblo.asia/p/bert-roberta-phobert-bertweet-ung-dung-state-of-the-art-pre-trained-model-cho-bai-toan-phan-loai-van-ban-4P856PEWZY3
 \subsubsection{PhoBERT}
 
-PhoBERT là mô hình ngôn ngữ tiền huấn luyện (pre-trained language model) đầu tiên được phát triển dành riêng cho tiếng Việt. Mô hình do VinAI giới thiệu vào năm 2020 này được xây dựng dựa trên kiến trúc RoBERTa của Facebook, một phiên bản cải tiến so với BERT, và được huấn luyện trên một tập dữ liệu khổng lồ gồm văn bản tiếng Việt.
+PhoBERT là mô hình ngôn ngữ tiền huấn luyện (pre-trained language model) đầu tiên được phát triển dành riêng cho tiếng Việt. Mô hình do VinAI giới thiệu vào năm 2020 này được xây dựng dựa trên kiến trúc RoBERTa của Facebook, một phiên bản cải tiến so với BERT, và được huấn luyện trên một tập dữ liệu khổng lồ gồm văn bản tiếng Việt\cite{webpage21}.
 
 Những đặc điểm chính của PhoBERT bao gồm:
 \begin{itemize}
