@@ -1,1 +1,77 @@
-this is subsection 5
+Quá trình huấn luyện được thực hiện với hai mô hình học sâu là LSTM và GRU. Bảng \ref{table:lstm-model} và Bảng \ref{table:gru-model} là tóm tắt của từng mô hình.
+
+\subsubsection{Mô hình LSTM}
+Với mô hình LSTM, epochs = 32, batch = 128, nhóm thực hiện mô hình gồm 4 lớp (bảng \ref{table:lstm-model}):
+\begin{itemize}
+    \item 1 lớp embedding sử dụng fasttext embedding
+    \item 2 lớp Bidirectional LSTM
+    \item 1 lớp dense
+\end{itemize}
+
+\begin{table}[htb]
+    \centering
+    \caption{Bảng tóm tắt mô hình LSTM}\label{table:lstm-model}
+    \begin{tabular}{l l r}
+        \toprule
+        \textbf{Layer (type)}            & \textbf{Output Shape}                    & \textbf{Param \#} \\\midrule
+        input (InputLayer)               & [(None, 200)]                            & 0                 \\
+        embedding (Embedding)            & (None, 200, 300)                         & 60000000          \\
+        bidirectional (Bidirectional)    & (None, 200, 128)                         & 186880            \\
+        dropout (Dropout)                & (None, 200, 128)                         & 0                 \\
+        bidirectional\_1 (Bidirectional) & (None, 128)                              & 98816             \\
+        dense (Dense)                    & (None, 6)                                & 774               \\\midrule
+        Total params:                    & \multicolumn{2}{r}{60286470 (299.97 MB)}                     \\
+        Trainable params:                & \multicolumn{2}{r}{286470 (1.09 MB)}                         \\
+        Non-trainable params:            & \multicolumn{2}{r}{60000000 (228.88 MB)}                     \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Đối với dữ liệu train, có thể thấy với mỗi epoch, lượng mất mát ngày càng giảm và tới cuối cùng gần như không còn giảm quá đáng kể. Cùng với đó là sự đi lên của các thông số đánh giá. Ban đầu Accuracy của mô hình quá cao có thể do quá khớp, nhưng dần dần đã giảm xuống ở mức ổn định hơn. Dựa trên kết quả từ các epoch và biểu đồ bên trên, có thể thấy rằng mô hình có thể cho ra độ chính xác tương đối cao, trên $90\%$ và giá trị mất mát cũng rất khả quan.
+
+Đối với tập dữ liệu valid, các thông số tuy có nhiều sự thay đổi trong quá trình huấn
+luyện, nhưng không chênh lệch quá nhiều so với kết quả của tập train. Từ đó có thể kết
+luận rằng mô hình có thể hoạt động tương đối ổn.
+Đánh giá mô hình dựa trên tập dữ liệu test.
+
+Đánh giá dựa trên tập test cho kết quả tương đối khả quan dù không cao như tập chính,kết quả vẫn lên tới $95\%$. Điều này cho thấy rằng mô hình được huấn luyện cho kết quả tương đối tốt. Độ chính xác của mô hình có thể lên tới $95\%$, kết quả này cho thấy mô hình có thể dự đoán tốt hầu hết kết quả nhưng cũng không bị overfitting.
+
+
+\subsubsection{Mô hình GRU}
+Với mô hình GRU, epochs = 32, batch = 128, nhóm thực hiện mô hình gồm 4 lớp (bảng \ref{table:gru-model}):
+\begin{itemize}
+    \item 1 lớp embedding sử dụng fasttext embedding
+    \item 2 lớp Bidirectional LSTM
+    \item 1 lớp dense
+\end{itemize}
+
+\begin{table}[htb]
+    \centering
+    \caption{Bảng tóm tắt mô hình GRU}\label{table:gru-model}
+    \begin{tabular}{l l r}
+        \toprule
+        \textbf{Layer (type)}            & \textbf{Output Shape}                    & \textbf{Param \#} \\\midrule
+        input (InputLayer)               & [(None, 200)]                            & 0                 \\
+        embedding (Embedding)            & (None, 200, 300)                         & 60000000          \\
+        bidirectional (Bidirectional)    & (None, 200, 128)                         & 140544            \\
+        dropout (Dropout)                & (None, 200, 128)                         & 0                 \\
+        bidirectional\_1 (Bidirectional) & (None, 128)                              & 74496             \\
+        dense (Dense)                    & (None, 6)                                & 774               \\\midrule
+        Total params:                    & \multicolumn{2}{r}{60215814 (229.71 MB)}                     \\
+        Trainable params:                & \multicolumn{2}{r}{215814 (843.02 KB)}                       \\
+        Non-trainable params:            & \multicolumn{2}{r}{60000000 (228.88 MB)}                     \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Đối với dữ liệu train, có thể thấy với mỗi epoch, lượng mất mát ngày càng giảm và tới cuối cùng gần như không còn giảm quá đáng kể. Cùng với đó là sự đi lên của các thông số đánh giá. Ban đầu Accuracy của mô hình quá cao có thể do quá khớp, nhưng dần dần đã giảm xuống ở mức ổn định hơn. Dựa trên kết quả từ các epoch và biểu đồ bên trên, có thể thấy rằng mô hình có thể cho ra độ chính xác tương đối cao, trên $90\%$ và giá trị mất mát cũng rất khả quan.
+
+Đối với tập dữ liệu valid, các thông số tuy có nhiều sự thay đổi trong quá trình huấn
+luyện, nhưng không chênh lệch quá nhiều so với kết quả của tập train. Từ đó có thể kết
+luận rằng mô hình có thể hoạt động tương đối ổn.
+
+Đánh giá dựa trên tập test cho kết quả tương đối khả quan dù không cao như kết quả huấn luyện, độ chính xác Accuracy đạt trên $90\%$. Điều này cho thấy rằng mô hình được huấn luyện cho kết quả tương đối tốt. Độ chính xác của mô hình có thể lên tới $91\%$, kết quả này cho thấy mô hình có thể dự đoán tốt hầu hết kết quả nhưng cũng không bị quá khớp. Tuy nhiên so với mô hình LSTM trước đó thì kết quả này có phần lép vế.
+
+\subsubsection{Mô hình X}
+
+\subsubsection{Đánh giá giữa 3 mô hình}
