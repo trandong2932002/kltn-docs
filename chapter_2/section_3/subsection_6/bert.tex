@@ -5,7 +5,7 @@
 
 % https://arxiv.org/abs/1810.04805
 \subsubsection{Giới thiệu BERT}
-Vào cuối năm 2018, các nhà nghiên cứu tại Google AI Language đã công bố một kỹ thuật mới được gọi là BERT ({\bf B}idirectional {\bf E}ncoder {\bf R}epresentations from {\bf T}ransformers) - một bước đột phá lớn đã gây tiếng vang trong cộng đồng Học sâu bởi hiệu suất đáng kinh ngạc của nó. Trong bài báo BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding[xxx] các tác giả đã nêu ra những cải tiến của model BERT trong các tác vụ\cite{webpage20}:
+Vào cuối năm 2018, các nhà nghiên cứu tại Google AI Language đã công bố một kỹ thuật mới được gọi là BERT ({\bf B}idirectional {\bf E}ncoder {\bf R}epresentations from {\bf T}ransformers) - một bước đột phá lớn đã gây tiếng vang trong cộng đồng Học sâu bởi hiệu suất đáng kinh ngạc của nó. Trong bài báo BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding\cite{bert} các tác giả đã nêu ra những cải tiến của model BERT trong các tác vụ\cite{webpage20}:
 
 \begin{itemize}
     \item Tăng GLUE score (General Language Understanding Evaluation score), một chỉ số tổng quát đánh giá mức độ hiểu ngôn ngữ lên 80.5\%.
@@ -28,7 +28,7 @@ Tuy nhiên, với sự xuất hiện của BERT, mô hình ngôn ngữ giờ đ�
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{image/BERT_comparisons.pdf}
-    \caption{Sự khác nhau giữa các kiến trúc mô hình pre-trained. BERT sử dụng bidirectional Transformer. OpenAI GPT sử dụng Transformer theo hướng trái sang phải. ELMo sử dụng kết hợp đầu ra của hai LSTM được huấn luyện độc lập theo hướng trái sang phải và phải sang trái. Trong ba mô hình này, chỉ có BERT học được biểu diễn của từ ngữ phụ thuộc lẫn nhau vào cả ngữ cảnh trước và sau ở tất cả các layer. \cite{47751}}
+    \caption{Sự khác nhau giữa các kiến trúc mô hình pre-trained. BERT sử dụng bidirectional Transformer. OpenAI GPT sử dụng Transformer theo hướng trái sang phải. ELMo sử dụng kết hợp đầu ra của hai LSTM được huấn luyện độc lập theo hướng trái sang phải và phải sang trái. Trong ba mô hình này, chỉ có BERT học được biểu diễn của từ ngữ phụ thuộc lẫn nhau vào cả ngữ cảnh trước và sau ở tất cả các layer. \cite{bert}}
     \label{figure:BERT_comparisons}
 \end{figure}
 
@@ -83,7 +83,7 @@ Nếu muốn tinh chỉnh BERT cho một nhiệm vụ cụ thể dựa trên t�
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{image/BERT_fine_tune.pdf}
-    \caption{Minh họa việc tinh chỉnh BERT cho các tác vụ khác nhau \cite{47751}}
+    \caption{Minh họa việc tinh chỉnh BERT cho các tác vụ khác nhau \cite{bert}}
     \label{figure:BERT_fine_tuning}
 \end{figure}
 
@@ -119,14 +119,14 @@ Như vậy ở kiến trúc BERT Large chúng ta tăng gấp đôi số layer, t
 % https://viblo.asia/p/bert-roberta-phobert-bertweet-ung-dung-state-of-the-art-pre-trained-model-cho-bai-toan-phan-loai-van-ban-4P856PEWZY3
 \subsubsection{PhoBERT}
 
-PhoBERT là mô hình ngôn ngữ tiền huấn luyện (pre-trained language model) đầu tiên được phát triển dành riêng cho tiếng Việt. Mô hình do VinAI giới thiệu vào năm 2020 này được xây dựng dựa trên kiến trúc RoBERTa của Facebook, một phiên bản cải tiến so với BERT, và được huấn luyện trên một tập dữ liệu khổng lồ gồm văn bản tiếng Việt\cite{webpage21}.
+PhoBERT là mô hình ngôn ngữ tiền huấn luyện (pre-trained language model) đầu tiên được phát triển dành riêng cho tiếng Việt. Mô hình do VinAI giới thiệu vào năm 2020 này được xây dựng dựa trên kiến trúc RoBERTa\footnote{https://doi.org/10.48550/arXiv.1907.11692} của Facebook, một phiên bản cải tiến so với BERT, và được huấn luyện trên một tập dữ liệu khổng lồ gồm văn bản tiếng Việt\cite{webpage21}.
 
 Những đặc điểm chính của PhoBERT bao gồm:
 \begin{itemize}
     \item Tiền huấn luyện đơn ngôn ngữ (Monolingual language model): PhoBERT chỉ được huấn luyện trên dữ liệu tiếng Việt, giúp mô hình hiểu và xử lý ngôn ngữ tiếng Việt một cách hiệu quả hơn.
     \item Kiến trúc RoBERTa: PhoBERT sử dụng kiến trúc RoBERTa, một phiên bản cải tiến của BERT, giúp mô hình đạt được hiệu suất tốt hơn trong nhiều nhiệm vụ xử lý ngôn ngữ tự nhiên (NLP).
     \item Tập dữ liệu khổng lồ: PhoBERT được huấn luyện trên một tập dữ liệu khổng lồ gồm văn bản tiếng Việt, bao gồm khoảng 1GB dữ liệu Wikipedia tiếng Việt và 20GB nguồn tin tức tiếng Việt.
-    \item Bộ chia tách từ RDRSegmenter: PhoBERT sử dụng bộ chia tách từ RDRSegmenter của VnCoreNLP để tách từ cho dữ liệu đầu vào trước khi đưa vào mô hình.
+    \item Bộ chia tách từ RDRSegmenter: PhoBERT sử dụng bộ chia tách từ RDRSegmenter của VnCoreNLP\footnote{https://github.com/vncorenlp/VnCoreNLP} để tách từ cho dữ liệu đầu vào trước khi đưa vào mô hình.
     \item Nhiệm vụ huấn luyện: Vì tiếp cận theo kiến trúc RoBERTa, PhoBERT chỉ sử dụng nhiệm vụ Masked Language Model (MLM) để huấn luyện, giúp mô hình học cách dự đoán từ thiếu trong một câu dựa vào các từ ngữ cảnh.
 \end{itemize}
 

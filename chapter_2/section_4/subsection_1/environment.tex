@@ -1,5 +1,5 @@
 \subsubsection{Môi trường cài đặt}
-Bài toán được thực hiện hoàn toàn trên hai môi trường tính toán đám mây là Google Colaboratory hay còn gọi là Google Colab, là một sản phẩm từ Google Research, và Kaggle Notebooks được cung cấp bởi Kaggle, một nền tảng cộng đồng trực tuyến cho các nhà khoa học dữ liệu và học máy. Cả hai môi trường này đều miễn phí và cho phép thực thi Python trên nền tảng đám mây, đặc biệt phù hợp với Data analysis, Machine Learning và giáo dục.
+Bài toán được thực hiện hoàn toàn trên hai môi trường tính toán đám mây là Google Colaboratory hay còn gọi là Google Colab\footnote{https://colab.research.google.com/}, là một sản phẩm từ Google Research, và Kaggle Notebooks\footnote{https://www.kaggle.com/code} được cung cấp bởi Kaggle, một nền tảng cộng đồng trực tuyến cho các nhà khoa học dữ liệu và học máy. Cả hai môi trường này đều miễn phí và cho phép thực thi Python trên nền tảng đám mây, đặc biệt phù hợp với Data analysis, Machine Learning và giáo dục.
 
 Những môi trường này không cần yêu cầu cài đặt hay cấu hình máy tính, mọi thứ có thể chạy thông qua trình duyệt, ta có thể sử dụng tài nguyên máy tính từ CPU tốc độ cao và cả GPUs và cả TPUs đều được cung cấp.
 
@@ -23,7 +23,7 @@ Nhóm sử dụng phần cứng được cung cấp bởi Kaggle trong hầu h�
 \begin{enumerate}
     \item \textit{Thư viện Tensorflow}
 
-          TensorFlow là một thư viện mã nguồn mở end-to-end được tạo ra chủ yếu dành cho các ứng dụng Học máy. Nó là một thư viện toán học ký hiệu sử dụng luồng dữ liệu và lập trình có thể phân biệt để thực hiện các nhiệm vụ khác nhau, tập trung vào đào tạo và suy luận các mạng neuron sâu (\textit{deep neural network}). Nó cho phép các nhà phát triển tạo các ứng dụng học máy bằng cách sử dụng các công cụ, thư viện và tài nguyên cộng đồng khác nhau\cite{webpage16}.
+          TensorFlow\footnote{https://www.tensorflow.org/} là một thư viện mã nguồn mở end-to-end được tạo ra chủ yếu dành cho các ứng dụng Học máy. Nó là một thư viện toán học ký hiệu sử dụng luồng dữ liệu và lập trình có thể phân biệt để thực hiện các nhiệm vụ khác nhau, tập trung vào đào tạo và suy luận các mạng neuron sâu (\textit{deep neural network}). Nó cho phép các nhà phát triển tạo các ứng dụng học máy bằng cách sử dụng các công cụ, thư viện và tài nguyên cộng đồng khác nhau\cite{webpage16}.
 
           TensorFlow cho phép xây dựng biểu đồ và cấu trúc luồng dữ liệu để xác định cách dữ liệu di chuyển qua biểu đồ bằng cách lấy đầu vào là một mảng đa chiều được gọi là tensor. Nó cho phép xây dựng một sơ đồ các hoạt động có thể được thực hiện trên các đầu vào này, đi ở một đầu và đến ở đầu kia là đầu ra.
           Kiến trúc của Tensorflow hoạt động trong ba phần:
@@ -35,7 +35,7 @@ Nhóm sử dụng phần cứng được cung cấp bởi Kaggle trong hầu h�
 
     \item \textit{Thư viện Keras}
 
-          Keras là một API cấp cao được thiết kế cho Python để triển khai mạng nơ-ron dễ dàng hơn. Nó được phát triển bởi Google.
+          Keras\footnote{https://keras.io/} là một API cấp cao được thiết kế cho Python để triển khai mạng nơ-ron dễ dàng hơn. Nó được phát triển bởi Google.
 
           Keras có thể chạy trên các thư viện và khung công tác như TensorFlow, Theano, PlaidML, MXNet, CNTK. Chúng đều là những thư viện rất mạnh nhưng cũng khó hiểu để tạo mạng nơ-ron. Mặt khác, Keras rất thân thiện với người mới bắt đầu vì cấu trúc tối thiểu của nó cung cấp cách tạo ra các mô hình học sâu một cách dễ dàng và gọn ghẽ dựa trên TensorFlow hoặc Theano.
 
@@ -43,11 +43,11 @@ Nhóm sử dụng phần cứng được cung cấp bởi Kaggle trong hầu h�
 
     \item \textit{Thư viện WordCloud}
 
-          Word cloud (đám mây từ) là một kĩ thuật trực quan hóa dữ liệu trong NLP. Nó là một đám mây chứa rất nhiều từ với các kích thước khác nhau, chúng thể hiện tần suất hoặc tầm quan trọng của mỗi từ. WordCloud được sử dụng rộng rãi trong việc phân tích dữ liệu từ các trang mạng xã hội\cite{webpage17}.
+          Word cloud\footnote{https://www.wordclouds.com/} (đám mây từ) là một kĩ thuật trực quan hóa dữ liệu trong NLP. Nó là một đám mây chứa rất nhiều từ với các kích thước khác nhau, chúng thể hiện tần suất hoặc tầm quan trọng của mỗi từ. WordCloud được sử dụng rộng rãi trong việc phân tích dữ liệu từ các trang mạng xã hội\cite{webpage17}.
 
     \item \textit{Thư viện Pickle}
 
-          Pickle được sử dụng để thực hiện chuyển đổi các cấu trúc đối tượng Python sang một dạng byte để có thể được lưu trữ trên ổ đĩa hoặc được gửi qua mạng. Sau đó, luồng ký tự này sau đó có thể được truy xuất và chuyển đổi trở lại sang dạng đối tượng ban đầu trong Python\cite{webpage18}.
+          Pickle\footnote{https://docs.python.org/3/library/pickle.html} được sử dụng để thực hiện chuyển đổi các cấu trúc đối tượng Python sang một dạng byte để có thể được lưu trữ trên ổ đĩa hoặc được gửi qua mạng. Sau đó, luồng ký tự này sau đó có thể được truy xuất và chuyển đổi trở lại sang dạng đối tượng ban đầu trong Python\cite{webpage18}.
 
           Pickle có thể thực hiện chuyển đổi các đối tượng với các kiểu dữ liệu sau sang dạng byte bằng mô-đun Pickle.
           \begin{itemize}
@@ -64,7 +64,7 @@ Nhóm sử dụng phần cứng được cung cấp bởi Kaggle trong hầu h�
 
     \item \textit{Thư viện Underthesea}
 
-          Underthesea là một thư viện xử lý ngôn ngữ tự nhiên (NLP) cho tiếng Việt. Nó cung cấp các công cụ và chức năng để phân tích và xử lý văn bản tiếng Việt, bao gồm tách từ, gán nhãn từ loại, phân tích cú pháp và trích xuất thông tin. Thư viện này được xây dựng trên cơ sở của thư viện Python khác là Pyvi và có thể được sử dụng để xử lý các tác vụ NLP trong các ứng dụng và dự án liên quan đến tiếng Việt.
+          Underthesea\footnote{https://github.com/undertheseanlp/underthesea} là một thư viện xử lý ngôn ngữ tự nhiên (NLP) cho tiếng Việt. Nó cung cấp các công cụ và chức năng để phân tích và xử lý văn bản tiếng Việt, bao gồm tách từ, gán nhãn từ loại, phân tích cú pháp và trích xuất thông tin. Thư viện này được xây dựng trên cơ sở của thư viện Python khác là Pyvi và có thể được sử dụng để xử lý các tác vụ NLP trong các ứng dụng và dự án liên quan đến tiếng Việt.
 
           Dưới đây là một số nhiệm vụ mà thư viện Underthesea có thể thực hiện:
           \begin{itemize}
@@ -84,7 +84,7 @@ Nhóm sử dụng phần cứng được cung cấp bởi Kaggle trong hầu h�
 
     \item \textit{Thư viện Transformer}
 
-          Transformer là một thư viện mã nguồn mở được phát triển bởi Hugging Face. Nó cung cấp các công cụ và mô hình cho xử lý ngôn ngữ tự nhiên (NLP), bao gồm cả việc dịch máy, phân loại văn bản, và sinh văn bản. Thư viện này dựa trên kiến trúc Transformer, một mô hình mạng nơ-ron sử dụng cơ chế tự chú ý để xử lý các chuỗi đầu vào.
+          Transformer\footnote{https://github.com/huggingface/transformers} là một thư viện mã nguồn mở được phát triển bởi Hugging Face. Nó cung cấp các công cụ và mô hình cho xử lý ngôn ngữ tự nhiên (NLP), bao gồm cả việc dịch máy, phân loại văn bản, và sinh văn bản. Thư viện này dựa trên kiến trúc Transformer, một mô hình mạng nơ-ron sử dụng cơ chế tự chú ý để xử lý các chuỗi đầu vào.
 
           Transformer cho phép sử dụng các mô hình ngôn ngữ đã được huấn luyện trước (pre-trained models) để thực hiện các tác vụ NLP. Các mô hình này đã được huấn luyện trên các tập dữ liệu lớn và có thể được sử dụng để trích xuất thông tin, phân loại văn bản, và thậm chí tạo ra văn bản mới.
 
@@ -92,7 +92,7 @@ Nhóm sử dụng phần cứng được cung cấp bởi Kaggle trong hầu h�
 
     \item \textit{Thư viện Polars}
 
-          Polars là một thư viện mã nguồn mở dùng để xử lý dữ liệu là DataFrame. Polars được viết hoàn toàn bằng ngôn ngữ Rust, sử dụng Apache Arrow làm cấu trúc dữ liệu chính nên hiệu suất và tốc độ thực thi các truy vấn của nó nhanh hơn nhiều so với Pandas. Các tính năng chính của Polars gồm có:
+          Polars\footnote{https://pola.rs/} là một thư viện mã nguồn mở dùng để xử lý dữ liệu là DataFrame. Polars được viết hoàn toàn bằng ngôn ngữ Rust, sử dụng Apache Arrow làm cấu trúc dữ liệu chính nên hiệu suất và tốc độ thực thi các truy vấn của nó nhanh hơn nhiều so với Pandas. Các tính năng chính của Polars gồm có:
           \begin{itemize}
               \item Được triển khai cả Lazy API và Eager API.
               \item Xử lý song song.
