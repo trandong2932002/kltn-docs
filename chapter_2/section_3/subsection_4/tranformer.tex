@@ -63,6 +63,12 @@ Ngoài ra luôn có một bước cộng thêm Positional Encoding vào các đ�
           \end{figure}
 
           Như vậy sau quá trình Scale dot production chúng ta sẽ thu được 1 ma trận attention. Các tham số mà model cần tinh chỉnh chính là các ma trận $\mathbf{W}_\mathbf{q},\mathbf{W}_\mathbf{k},\mathbf{W}_\mathbf{v}$. Mỗi quá trình như vậy được gọi là một head của attention. Khi lặp lại quá trình này nhiều lần (trong bài báo là ba heads) ta sẽ thu được quá trình Multi-head Attention.
+    \begin{figure}[htb]
+        \centering
+        \includegraphics[width=\textwidth]{image/multi-head-illustration.png}
+        \caption{Multi-head Attention minh hoạ dưới dạng ma trận \cite{webpage27}}
+        \label{figure:multi-head-illustration}
+    \end{figure}
 
           \begin{figure}[htb]
             \centering
