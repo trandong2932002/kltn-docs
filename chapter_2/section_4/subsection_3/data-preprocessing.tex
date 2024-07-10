@@ -1,1 +1,55 @@
-this is subsection 3
+Giai đoạn tiền xử lý dữ liệu gồm hai giai đoạn chính: tiền xử lý dữ liệu tiếng Anh, dịch dữ liệu tiếng Anh sang tiếng Việt. Ngoài ra nhóm cũng xây dựng bộ tiền xử lý dữ liệu tiếng Việt để có thể dùng trong thực tế.
+
+\subsubsection{Tiền xử lý dữ liệu tiếng Anh}\label{english-preprocess}
+Vì dữ liệu là các bình luận trên Wikipedia, nên có một vài điểm đặc biệt trong các bình luận này so với các bình luận thông thường trên các nền tảng khác, ví dụ như địa chỉ IP, các phím tắt (\textit{shortcuts}) của Wikipedia,\dots Nhóm đã đề xuất một chuỗi các thao tác xử lý nhằm giảm bớt các chuỗi không cần thiết, cũng như chuyển đổi các ký tự đặc biệt thành các từ ngữ để máy có thể hiểu được. Chuỗi thao tác như sau:
+\begin{enumerate}
+    \item Chuyển các địa chỉ IP thành chuỗi ``(ip address)''.
+    \item Chuyển các email thành chuỗi ``(email)''.
+    \item Chuyển các đường dẫn thành chuỗi ``(url)''.
+    \item Chuyển các thời gian (định dạng HH:mm và HH:mm:ss) thành chuỗi ``(time)''.
+    \item Chuyển các cụm từ viết tắt trong tiếng Anh (contractions) thành dạng không viết tắt.
+    \item Chuyển các phím tắt của Wikipedia thành chuỗi ``(wikipedia shortcut)'', ``(wikipedia namepsace)'', ``(wikipedia file namespace)''.
+    \item Chuyển các emoticons thành tên.
+    \item Chuyển các emojis thành tên.
+    \item Xoá tất cả các ký tự đặc biệt, chỉ giữ lại các ký tự có tên khối (\textit{unicode block}) thuộc (``Latin'', ``Greek'', ``Phonetic'', ``Spacing'', ``General Punctuation'', ``Currency Symbols''). (xem [appendix])
+    \item Xoá tất cả các ký tự đặc biệt, chỉ giữ lại các ký tự có tên nhóm (\textit{unicode general category}) thuộc (``L'', ``M'', ``N'', ``P'', ``S'', ``Z'', ``C''). (xem [appendix])
+    \item Chuyển tất cả các ký tự đặc biệt còn lại thành các ký tự thuộc bảng mã ASCII.
+    \item Tách các ký tự đặc biệt xunh quanh từ ra khỏi từ (ví dụ: {\tt .hello,} thành {\tt .\textvisiblespace hello\textvisiblespace,}).
+\end{enumerate}
+
+Sau khi áp dụng các thao tác trên, nhóm đề xuất một thuật toán nhằm phân loại giữa các từ đặc biệt (số, dấu câu,\dots) và các từ còn lại. Sau đó sẽ kiểm tra các từ còn lại này có đúng chính tả hay không, nếu không thì sử dụng thuật toán SymSpell để đưa về dạng đúng. (xem [appendix])
+% \begin{algorithmz}
+%     \caption{Mã giả thuật toán phân loại và chỉnh sửa từ sai chính tả}
+%     \label{algorithm:english-spelling-corrector}
+%     \begin{algorithmic}[1]
+%         \State Khởi tạo văn bản mới $N$ = ``''
+%         \State Khởi tạo vector từ $T$ bằng cách tách các từ trong văn bản bằng các khoảng trắng.
+%         \For {từ $t$ trong vector từ $T$}
+%         \State Chuyển $t$ thành chữ thường
+%         \If {$t$ là số}
+%         \State $N\gets N+\texttt{\textvisiblespace}+t$
+%         \Continue
+%         \EndIf
+%         \If {$t$ là dấu câu hoặc ký hiệu}
+%         \State $N\gets N+\texttt{\textvisiblespace}+t$
+%         \Continue
+%         \EndIf
+%         \If {$t$ là số và ký hiệu}\Comment {ví dụ như các phương trình: $1+1=2$}
+%         \State $N\gets N+\texttt{\textvisiblespace}+t$
+%         \Continue
+%         \EndIf
+%         \If {$t$ thuộc từ điển}
+%         \State $N\gets N+\texttt{\textvisiblespace}+t$
+%         \Continue
+%         \EndIf
+%         \State $n_t$ = 
+%         \State $N\gets N+\texttt{\textvisiblespace}+\text{}t$
+%         \EndFor
+%     \end{algorithmic}
+% \end{algorithmz}
+
+\subsubsection{Dịch dữ liệu tiếng Anh sang tiếng Việt}
+Nhóm đã thử các công cụ dịch thuật khác như MyMemory Translator của translated Labs và gpt-3.5-turbo của OpenAI nhưng các công cụ này đều bị giới hạn số lượng từ có thể dịch trong một ngày (5000 ký tự đối với MyMemory và 200 requests đối với mô hình gpt-3.5-turbo). Nhóm cũng đã tham khảo công cụ dịch Anh-Việt là mô hình envit5-translation của VietAI (được xem là tốt hơn Google Translate vào năm 202x[ref]), mô hình này cho ra kết quả dịch rất tốt đối với những câu ngắn và không có ký tự đặc biệt; nhưng đối với những câu đủ dài (> 1000 ký tự), hoặc có quá nhiều ký tự đặc biệt, hoặc dấu câu bị thiếu, thì mô hình tốn rất nhiều thời gian để chạy và cho ra kết quả không thể sử dụng được. Dựa vào đó, nhóm quyết định sử dụng công cụ dịch tài liệu của Google Translate, do Google Cloud Translation cung cấp vì độ chính xác chấp nhận được và gần như không giới hạn (10MB một văn bản).\footnote{Thực tế khi nhóm sử dụng file excel (.xlsx), với hai cột là cột ``index'' và cột ``comment\_text'', thì giới hạn là 2MB một văn bản.}
+
+\subsubsection{Tiền xử lý dữ liệu tiếng Việt}
+Đối với tiền xử lý dữ liệu tiếng Việt, nhóm dựa trên các bước 2, 3, 7, 8, 9, 10, 12 của bộ tiền xử lý tiếng Anh (xem \ref{english-preprocess}). Sau đó tiếp tục dùng thuật toán SymSpell được tinh chỉnh cho tiếng Việt để đưa các từ sai về dạng đúng.\footnote{Đối với tiếng Anh, các từ chỉ khác nhau ở ký tự, nhưng đối với tiếng Việt các từ còn khác nhau ở dấu (\textit{accents}). Nhóm đã thử và nhận thấy việc sử dụng từ điển tần suất (\textit{frequency dictionary}) đã bỏ hết dấu thay vì sử dụng từ điển tần suất thông thường sẽ cho ra kết quả chính xác hơn khi sửa lỗi chính tả}

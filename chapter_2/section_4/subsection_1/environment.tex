@@ -1,72 +1,104 @@
 \subsubsection{Môi trường cài đặt}
-Bài toán được thực hiện hoàn toàn trên hai môi trường tính toán đám mây là Google Colaboratory hay còn gọi là Google Colab, là một sản phẩm từ Google Research, và Kaggle Notebooks được cung cấp bởi Kaggle, một nền tảng cộng đồng trực tuyến cho các nhà khoa học dữ liệu và học máy. Cả hai môi trường này đều miễn phí và cho phép thực thi Python trên nền tảng đám mây, đặc biệt phù hợp với Data analysis, Machine Learning và giáo dục.\\
-Những môi trường này không cần yêu cầu cài đặt hay cấu hình máy tính, mọi thứ có thể chạy thông qua trình duyệt, bạn có thể sử dụng tài nguyên máy tính từ CPU tốc độ cao và cả GPUs và cả TPUs đều được cung cấp cho bạn.\\
-Sử dụng chúng có những lợi ích ưu việt như: sẵn sàng chạy Python ở bất kỳ thiết bị nào có kết nối Internet mà không cần cài đặt, chia sẻ và làm việc nhóm dễ dàng, sử dụng miễn phí GPU cho các dự án về AI\cite{webpage15}. \\
-Đối với bài này thì nhóm sử dụng phần cứng có tên T4, với 2vCPU Xeon 2.00GHz, 12.7GB bộ nhớ trong, 78.2GB bộ nhớ ngoài, dùng GPU Tesla T4 có 15.36 GB bộ nhớ.
+Bài toán được thực hiện hoàn toàn trên hai môi trường tính toán đám mây là Google Colaboratory hay còn gọi là Google Colab, là một sản phẩm từ Google Research, và Kaggle Notebooks được cung cấp bởi Kaggle, một nền tảng cộng đồng trực tuyến cho các nhà khoa học dữ liệu và học máy. Cả hai môi trường này đều miễn phí và cho phép thực thi Python trên nền tảng đám mây, đặc biệt phù hợp với Data analysis, Machine Learning và giáo dục.
 
+Những môi trường này không cần yêu cầu cài đặt hay cấu hình máy tính, mọi thứ có thể chạy thông qua trình duyệt, bạn có thể sử dụng tài nguyên máy tính từ CPU tốc độ cao và cả GPUs và cả TPUs đều được cung cấp cho bạn.
+
+Sử dụng chúng có những lợi ích ưu việt như: sẵn sàng chạy Python ở bất kỳ thiết bị nào có kết nối Internet mà không cần cài đặt, chia sẻ và làm việc nhóm dễ dàng, sử dụng miễn phí GPU cho các dự án về AI\cite{webpage15}.
+
+Nhóm sử dụng phần cứng được cung cấp bởi Kaggle trong hầu hết thời gian làm bài khoá luận này. Đối với tiền xử lý dữ liệu, nhóm sử dụng máy có thông số:
+\begin{itemize}
+    \item CPU: 4vCPU Xeon 2.20GHz
+    \item Ram: 30GB
+    \item Python 3.10.13
+\end{itemize}
+Đối với việc trainning model, nhóm sử dụng máy có thông số:
+\begin{itemize}
+    \item CPU: 4vCPU Xeon 2.00GHz
+    \item Ram: 29GB
+    \item GPU: Tesla P100 16GB (CUDA version 12.4)
+    \item Python 3.10.13
+\end{itemize}
 
 \subsubsection{Thư viện}
 \begin{enumerate}
-    \item \textit{Thư viện Tensorflow}\\
-    TensorFlow là một thư viện mã nguồn mở end-to-end được tạo ra chủ yếu dành cho các ứng dụng Học máy. Nó là một thư viện toán học ký hiệu sử dụng luồng dữ liệu và lập trình có thể phân biệt để thực hiện các nhiệm vụ khác nhau, tập trung vào đào tạo và suy luận các mạng neuron sâu (\textit{deep neural network}). Nó cho phép các nhà phát triển tạo các ứng dụng học máy bằng cách sử dụng các công cụ, thư viện và tài nguyên cộng đồng khác nhau\cite{webpage16}. \\
-    TensorFlow cho phép bạn xây dựng biểu đồ và cấu trúc luồng dữ liệu để xác định cách dữ liệu di chuyển qua biểu đồ bằng cách lấy đầu vào là một mảng đa chiều được gọi là tensor. Nó cho phép bạn xây dựng một sơ đồ các hoạt động có thể được thực hiện trên các đầu vào này, đi ở một đầu và đến ở đầu kia là đầu ra.
-    Kiến trúc của Tensorflow hoạt động trong ba phần:
-    \begin{itemize}
-        \item Xử lý trước dữ liệu
-        \item Xây dựng mô hình
-        \item Đào tạo và ước tính mô hình
-    \end{itemize}
-    
-    \item \textit{Thư viện Keras}\\
-    
-    Keras là một API cấp cao được thiết kế cho Python để triển khai mạng nơ-ron dễ dàng hơn. Nó được phát triển bởi Google.
+    \item \textit{Thư viện Tensorflow}
 
-    Keras có thể chạy trên các thư viện và khung công tác như TensorFlow, Theano, PlaidML, MXNet, CNTK. Chúng đều là những thư viện rất mạnh nhưng cũng khó hiểu để tạo mạng nơ-ron. Mặt khác, Keras rất thân thiện với người mới bắt đầu vì cấu trúc tối thiểu của nó cung cấp cách tạo ra các mô hình học sâu một cách dễ dàng và gọn ghẽ dựa trên TensorFlow hoặc Theano.
+          TensorFlow là một thư viện mã nguồn mở end-to-end được tạo ra chủ yếu dành cho các ứng dụng Học máy. Nó là một thư viện toán học ký hiệu sử dụng luồng dữ liệu và lập trình có thể phân biệt để thực hiện các nhiệm vụ khác nhau, tập trung vào đào tạo và suy luận các mạng neuron sâu (\textit{deep neural network}). Nó cho phép các nhà phát triển tạo các ứng dụng học máy bằng cách sử dụng các công cụ, thư viện và tài nguyên cộng đồng khác nhau\cite{webpage16}.
 
-    Keras đã được TensorFlow thông qua làm API cấp cao chính thức của mình. Khi được nhúng vào TensorFlow, nó cung cấp các mô-đun có sẵn cho tất cả các tính toán mạng nơ-ron và do đó có thể thực hiện học sâu rất nhanh. TensorFlow rất linh hoạt và lợi ích chính là tính toán phân tán. Bạn có thể linh hoạt và có thể kiểm soát ứng dụng của mình, thực hiện ý tưởng của bạn trong thời gian ngắn, sử dụng Keras, trong khi tính toán liên quan đến tensors, đồ thị tính toán,\dots có thể được tùy chỉnh bằng cách sử dụng Tensorflow Core API.
+          TensorFlow cho phép bạn xây dựng biểu đồ và cấu trúc luồng dữ liệu để xác định cách dữ liệu di chuyển qua biểu đồ bằng cách lấy đầu vào là một mảng đa chiều được gọi là tensor. Nó cho phép bạn xây dựng một sơ đồ các hoạt động có thể được thực hiện trên các đầu vào này, đi ở một đầu và đến ở đầu kia là đầu ra.
+          Kiến trúc của Tensorflow hoạt động trong ba phần:
+          \begin{itemize}
+              \item Xử lý trước dữ liệu
+              \item Xây dựng mô hình
+              \item Đào tạo và ước tính mô hình
+          \end{itemize}
 
-    \item \textit{Thư viện WordCloud}\\
-    Word cloud (đám mây từ) là một kĩ thuật trực quan hóa dữ liệu trong NLP. Nó là một đám mây chứa rất nhiều từ với các kích thước khác nhau, chúng thể hiện tần suất hoặc tầm quan trọng của mỗi từ. WordCloud được sử dụng rộng rãi trong việc phân tích dữ liệu từ các trang mạng xã hội\cite{webpage17}. 
+    \item \textit{Thư viện Keras}
 
-    \item \textit{Thư viện Pickle}\\
-    Pickle được sử dụng để thực hiện chuyển đổi các cấu trúc đối tượng Python sang một dạng byte để có thể được lưu trữ trên ổ đĩa hoặc được gửi qua mạng. Sau đó, luồng ký tự này sau đó có thể được truy xuất và chuyển đổi trở lại sang dạng đối tượng ban đầu trong Python\cite{webpage18}. \\
-    Bạn có thể thực hiện chuyển đổi các đối tượng với các kiểu dữ liệu sau sang dạng byte bằng mô-đun Pickle.
-    \begin{itemize}
-        \item Kiểu Booleans
-        \item Kiểu giá trị số nguyên
-        \item Kiểu giá trị số thực
-        \item Kiểu giá trị số phức
-        \item Kiểu chuỗi ký tự
-        \item Kiểu Tuples
-        \item Kiểu Lists hay danh sách
-        \item Kiểu tập hợp Set
-        \item Kiểu Dictionaries hay từ điển
-    \end{itemize}
+          Keras là một API cấp cao được thiết kế cho Python để triển khai mạng nơ-ron dễ dàng hơn. Nó được phát triển bởi Google.
 
-    \item \textit{Thư viện Underthesea}\\
-    Underthesea là một thư viện xử lý ngôn ngữ tự nhiên (NLP) cho tiếng Việt. Nó cung cấp các công cụ và chức năng để phân tích và xử lý văn bản tiếng Việt, bao gồm tách từ, gán nhãn từ loại, phân tích cú pháp và trích xuất thông tin. Thư viện này được xây dựng trên cơ sở của thư viện Python khác là Pyvi và có thể được sử dụng để xử lý các tác vụ NLP trong các ứng dụng và dự án liên quan đến tiếng Việt.
+          Keras có thể chạy trên các thư viện và khung công tác như TensorFlow, Theano, PlaidML, MXNet, CNTK. Chúng đều là những thư viện rất mạnh nhưng cũng khó hiểu để tạo mạng nơ-ron. Mặt khác, Keras rất thân thiện với người mới bắt đầu vì cấu trúc tối thiểu của nó cung cấp cách tạo ra các mô hình học sâu một cách dễ dàng và gọn ghẽ dựa trên TensorFlow hoặc Theano.
 
-    Dưới đây là một số nhiệm vụ mà thư viện Underthesea có thể thực hiện:
-    \begin{itemize}
-        \item Phân đoạn Câu (Sentence Segmentation): Chia văn bản thành các câu riêng lẻ.
-        \item Chuẩn hóa Văn bản (Text Normalization): Đưa dữ liệu văn bản về dạng chuẩn thống nhất, ví dụ như loại bỏ ký tự thừa, chuyển đổi sang dạng chữ thường,...
-        \item Phân tách Từ (Word Segmentation): Chia văn bản thành các từ riêng lẻ.
-        \item Gắn Thẻ từ Loại (POS Tagging): Gắn nhãn cho từ loại của từng từ (danh từ, động từ, tính từ,...).
-        \item Ngắt Nhóm (Chunking): Nhóm các từ thành các cụm từ hoặc đơn vị có nghĩa.
-        \item Phân tích Cấu trúc Phụ thuộc (Dependency Parsing): Phân tích cấu trúc ngữ pháp giữa các từ.
-        \item Nhận dạng Thực thể Tên riêng (Named Entity Recognition): Xác định các thực thể được đặt tên (ví dụ: tên người, địa điểm).
-        \item Phân loại Văn bản (Text Classification): Phân loại văn bản thành các nhóm được xác định trước (ví dụ như tin tức, email, spam,...).
-        \item Phân tích Cảm xúc (Sentiment Analysis): Xác định sắc thái cảm xúc hoặc tình cảm của văn bản (tích cực, tiêu cực, trung lập).
-        \item Phát hiện Ngôn ngữ (Language Detect): Xác định ngôn ngữ của văn bản.
-        \item Chuyển đổi Văn bản thành Giọng nói (Say): Chuyển đổi văn bản viết thành âm thanh nói.
-    \end{itemize}
+          Keras đã được TensorFlow thông qua làm API cấp cao chính thức của mình. Khi được nhúng vào TensorFlow, nó cung cấp các mô-đun có sẵn cho tất cả các tính toán mạng nơ-ron và do đó có thể thực hiện học sâu rất nhanh. TensorFlow rất linh hoạt và lợi ích chính là tính toán phân tán. Bạn có thể linh hoạt và có thể kiểm soát ứng dụng của mình, thực hiện ý tưởng của bạn trong thời gian ngắn, sử dụng Keras, trong khi tính toán liên quan đến tensors, đồ thị tính toán,\dots có thể được tùy chỉnh bằng cách sử dụng Tensorflow Core API.
+
+    \item \textit{Thư viện WordCloud}
+
+          Word cloud (đám mây từ) là một kĩ thuật trực quan hóa dữ liệu trong NLP. Nó là một đám mây chứa rất nhiều từ với các kích thước khác nhau, chúng thể hiện tần suất hoặc tầm quan trọng của mỗi từ. WordCloud được sử dụng rộng rãi trong việc phân tích dữ liệu từ các trang mạng xã hội\cite{webpage17}.
+
+    \item \textit{Thư viện Pickle}
+
+          Pickle được sử dụng để thực hiện chuyển đổi các cấu trúc đối tượng Python sang một dạng byte để có thể được lưu trữ trên ổ đĩa hoặc được gửi qua mạng. Sau đó, luồng ký tự này sau đó có thể được truy xuất và chuyển đổi trở lại sang dạng đối tượng ban đầu trong Python\cite{webpage18}.
+
+          Bạn có thể thực hiện chuyển đổi các đối tượng với các kiểu dữ liệu sau sang dạng byte bằng mô-đun Pickle.
+          \begin{itemize}
+              \item Kiểu Booleans
+              \item Kiểu giá trị số nguyên
+              \item Kiểu giá trị số thực
+              \item Kiểu giá trị số phức
+              \item Kiểu chuỗi ký tự
+              \item Kiểu Tuples
+              \item Kiểu Lists hay danh sách
+              \item Kiểu tập hợp Set
+              \item Kiểu Dictionaries hay từ điển
+          \end{itemize}
+
+    \item \textit{Thư viện Underthesea}
+
+          Underthesea là một thư viện xử lý ngôn ngữ tự nhiên (NLP) cho tiếng Việt. Nó cung cấp các công cụ và chức năng để phân tích và xử lý văn bản tiếng Việt, bao gồm tách từ, gán nhãn từ loại, phân tích cú pháp và trích xuất thông tin. Thư viện này được xây dựng trên cơ sở của thư viện Python khác là Pyvi và có thể được sử dụng để xử lý các tác vụ NLP trong các ứng dụng và dự án liên quan đến tiếng Việt.
+
+          Dưới đây là một số nhiệm vụ mà thư viện Underthesea có thể thực hiện:
+          \begin{itemize}
+              \item Phân đoạn Câu (Sentence Segmentation): Chia văn bản thành các câu riêng lẻ.
+              \item Chuẩn hóa Văn bản (Text Normalization): Đưa dữ liệu văn bản về dạng chuẩn thống nhất, ví dụ như loại bỏ ký tự thừa, chuyển đổi sang dạng chữ thường,...
+              \item Phân tách Từ (Word Segmentation): Chia văn bản thành các từ riêng lẻ.
+              \item Gắn Thẻ từ Loại (POS Tagging): Gắn nhãn cho từ loại của từng từ (danh từ, động từ, tính từ,...).
+              \item Ngắt Nhóm (Chunking): Nhóm các từ thành các cụm từ hoặc đơn vị có nghĩa.
+              \item Phân tích Cấu trúc Phụ thuộc (Dependency Parsing): Phân tích cấu trúc ngữ pháp giữa các từ.
+              \item Nhận dạng Thực thể Tên riêng (Named Entity Recognition): Xác định các thực thể được đặt tên (ví dụ: tên người, địa điểm).
+              \item Phân loại Văn bản (Text Classification): Phân loại văn bản thành các nhóm được xác định trước (ví dụ như tin tức, email, spam,...).
+              \item Phân tích Cảm xúc (Sentiment Analysis): Xác định sắc thái cảm xúc hoặc tình cảm của văn bản (tích cực, tiêu cực, trung lập).
+              \item Phát hiện Ngôn ngữ (Language Detect): Xác định ngôn ngữ của văn bản.
+              \item Chuyển đổi Văn bản thành Giọng nói (Say): Chuyển đổi văn bản viết thành âm thanh nói.
+          \end{itemize}
 
 
-    \item \textit{Thư viện Transformer}\\
-    Transformer là một thư viện mã nguồn mở được phát triển bởi Hugging Face. Nó cung cấp các công cụ và mô hình cho xử lý ngôn ngữ tự nhiên (NLP), bao gồm cả việc dịch máy, phân loại văn bản, và sinh văn bản. Thư viện này dựa trên kiến trúc Transformer, một mô hình mạng nơ-ron sử dụng cơ chế tự chú ý để xử lý các chuỗi đầu vào.
+    \item \textit{Thư viện Transformer}
 
-    Transformer cho phép bạn sử dụng các mô hình ngôn ngữ đã được huấn luyện trước (pre-trained models) để thực hiện các tác vụ NLP. Các mô hình này đã được huấn luyện trên các tập dữ liệu lớn và có thể được sử dụng để trích xuất thông tin, phân loại văn bản, và thậm chí tạo ra văn bản mới.
+          Transformer là một thư viện mã nguồn mở được phát triển bởi Hugging Face. Nó cung cấp các công cụ và mô hình cho xử lý ngôn ngữ tự nhiên (NLP), bao gồm cả việc dịch máy, phân loại văn bản, và sinh văn bản. Thư viện này dựa trên kiến trúc Transformer, một mô hình mạng nơ-ron sử dụng cơ chế tự chú ý để xử lý các chuỗi đầu vào.
 
-    Thư viện Transformer cung cấp một API dễ sử dụng để tải và sử dụng các mô hình đã được huấn luyện trước. Ta có thể sử dụng các mô hình này để thực hiện các tác vụ NLP mà không cần phải huấn luyện lại từ đầu.
+          Transformer cho phép bạn sử dụng các mô hình ngôn ngữ đã được huấn luyện trước (pre-trained models) để thực hiện các tác vụ NLP. Các mô hình này đã được huấn luyện trên các tập dữ liệu lớn và có thể được sử dụng để trích xuất thông tin, phân loại văn bản, và thậm chí tạo ra văn bản mới.
+
+          Thư viện Transformer cung cấp một API dễ sử dụng để tải và sử dụng các mô hình đã được huấn luyện trước. Ta có thể sử dụng các mô hình này để thực hiện các tác vụ NLP mà không cần phải huấn luyện lại từ đầu.
+
+    \item \textit{Thư viện Polars}
+
+          Polars là một thư viện mã nguồn mở dùng để xử lý dữ liệu là DataFrame. Polars được viết hoàn toàn bằng ngôn ngữ Rust, sử dụng Apache Arrow làm cấu trúc dữ liệu chính nên hiệu suất và tốc độ thực thi các truy vấn của nó nhanh hơn nhiều so với Pandas. Các tính năng chính của Polars gồm có:
+          \begin{itemize}
+              \item Được triển khai cả Lazy API và Eager API.
+              \item Xử lý song song.
+              \item Các câu truy vấn được tối ưu hoá.
+              \item Hybrid Streaming giúp xử lý dữ liệu mà không cần phải tải toàn bộ dữ liệu vào Ram.
+          \end{itemize}
+          Lý do sử dụng: Ban đầu nhóm đã dùng Pandas để xử lý dữ liệu. Khi quá trình xử lý của nhóm trở nên phức tạp, nhóm đã chuyển qua thư viện Modin (với engine là Ray) để có thể xử lý song song các truy vấn. Nhưng khi nhóm muốn áp dụng các thuật toán có độ phức tạp lớn để xử lý dữ liệu dạng chuỗi, thì điểm yếu của Python được bộc lộ là quá chậm để xử lý toàn bộ tập dữ liệu (khoảng 160 nghìn dòng, với phân bố độ dài chuỗi [appendix]). Vì vậy nhóm quyết định sử dụng thư viện Polars vì có thể viết các thuật toán có độ phức tạp lớn bằng Rust nhằm tối ưu tốc độ xử lý.
 \end{enumerate}
 
