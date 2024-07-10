@@ -20,19 +20,18 @@
 }
 \fancypagestyle{plain}{
     \fancyhf{}
+    \fancyhead[L]{\leftmark}
+    \fancyfoot[C]{\thepage}
 }
-% section-header style fix: change fancypagestyle of chapter title page from plain to fancy
-\usepackage{etoolbox}
-\patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{fancy}}{}{}
 % space between tablenotes and table (threeparttable)
-\BeforeBeginEnvironment{tablenotes}{\smallskip}
+\AddToHook{env/tabular/before}[skip]{\smallskip}
 % tablenotes font size (threeparttable)
-\AtBeginEnvironment{tablenotes}{\fontsize{10pt}{15pt}\selectfont}
+\AddToHook{env/tablenotes/begin}[fontsize]{\fontsize{10pt}{15pt}\selectfont}
 % table font size: 12pt
-\BeforeBeginEnvironment{tabularx}{\fontsize{12pt}{18pt}\selectfont}
-\BeforeBeginEnvironment{tabular}{\fontsize{12pt}{18pt}\selectfont}
+\AddToHook{env/tabular/before}[fontsize]{\fontsize{12pt}{18pt}\selectfont}
+\AddToHook{env/tabularx/before}[fontsize]{\fontsize{12pt}{18pt}\selectfont}
 % image centering
-\AtBeginEnvironment{figure}{\centering}
+\AddToHook{env/figure/begin}[align]{\centering}
 % section depth
 \setcounter{secnumdepth}{4}
 % toc depth
@@ -46,6 +45,10 @@
     linkcolor=black,
     urlcolor=black
 }
+% rotate table
+\usepackage{rotating}
+% linebreak in cell
+\usepackage{makecell}
 % modify section
 \usepackage{titlesec}
 \titleformat{\chapter}[hang]
@@ -156,6 +159,8 @@
 % new algorithm command
 \algnewcommand\algorithmicforeach{\textbf{for each}}
 \algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ \algorithmicdo}
+\algnewcommand\algorithmiccontinue{\textbf{continue}}
+\newcommand{\Continue}{\State \algorithmiccontinue}
 %
 % debug
 %
@@ -176,7 +181,7 @@
 }
 \makeatother
 % debug layout
-% \usepackage{showframe}
+\usepackage{showframe}
 % \usepackage{lua-visual-debug} % using this package with lualatex
 % debug text
 \usepackage{lipsum}
