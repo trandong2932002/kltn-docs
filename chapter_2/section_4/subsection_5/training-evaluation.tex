@@ -1,7 +1,7 @@
-Quá trình huấn luyện được thực hiện với hai mô hình học sâu là LSTM và GRU. Bảng \ref{table:lstm-model} và Bảng \ref{table:gru-model} là tóm tắt của từng mô hình.
+Quá trình huấn luyện được thực hiện với ba mô hình khác nhau: hai mô hình dùng kiến trúc LSTM và GRU được huấn luyện từ đầu, một mô hình bằng cách tinh chỉnh mô hình PhoBERT của VinAIResearch.
 
 \subsubsection{Mô hình LSTM}
-Với mô hình LSTM, epochs = 32, batch = 128, nhóm thực hiện mô hình gồm 4 lớp (bảng \ref{table:lstm-model}):
+Với mô hình LSTM có epochs = 32, batch = 128, mô hình gồm 4 lớp (bảng \ref{table:lstm-model}):
 \begin{itemize}
     \item 1 lớp embedding sử dụng fasttext embedding
     \item 2 lớp Bidirectional LSTM
@@ -38,7 +38,7 @@ luận rằng mô hình có thể hoạt động tương đối ổn.
 
 
 \subsubsection{Mô hình GRU}
-Với mô hình GRU, epochs = 32, batch = 128, nhóm thực hiện mô hình gồm 4 lớp (bảng \ref{table:gru-model}):
+Với mô hình GRU có epochs = 32, batch = 128, mô hình gồm 4 lớp (bảng \ref{table:gru-model}):
 \begin{itemize}
     \item 1 lớp embedding sử dụng fasttext embedding
     \item 2 lớp Bidirectional LSTM
@@ -72,6 +72,19 @@ luận rằng mô hình có thể hoạt động tương đối ổn.
 
 Đánh giá dựa trên tập test cho kết quả tương đối khả quan dù không cao như kết quả huấn luyện, độ chính xác Accuracy đạt trên $90\%$. Điều này cho thấy rằng mô hình được huấn luyện cho kết quả tương đối tốt. Độ chính xác của mô hình có thể lên tới $91\%$, kết quả này cho thấy mô hình có thể dự đoán tốt hầu hết kết quả nhưng cũng không bị quá khớp. Tuy nhiên so với mô hình LSTM trước đó thì kết quả này có phần lép vế.
 
-\subsubsection{Mô hình X}
+\subsubsection{Tinh chỉnh mô hình PhoBERT}
 
 \subsubsection{Đánh giá giữa 3 mô hình}
+
+\begin{table}[htb]
+    \centering
+    \caption{asd}
+    \begin{tabular}{l r c c c}
+        \toprule
+        \textbf{Model} & \textbf{Param \#} & \textbf{Precision} & \textbf{Recall} & \textbf{Accuracy} \\\midrule
+        2-layer biLSTM & 60M               & ?                  & ?               & ?                 \\
+        2-layer biGRU  & 60M               & ?                  & ?               & ?                 \\
+        PhoBERT-base   & 135M              & ?                  & ?               & ?                 \\
+        \bottomrule
+    \end{tabular}
+\end{table}

@@ -1,55 +1,56 @@
-Giai đoạn tiền xử lý dữ liệu gồm hai giai đoạn chính: tiền xử lý dữ liệu tiếng Anh, dịch dữ liệu tiếng Anh sang tiếng Việt. Ngoài ra nhóm cũng xây dựng bộ tiền xử lý dữ liệu tiếng Việt để có thể dùng trong thực tế.
+Giai đoạn tiền xử lý dữ liệu gồm ba giai đoạn chính: phân tích khám phá dữ liệu, tiền xử lý dữ liệu tiếng Anh và dịch dữ liệu tiếng Anh sang tiếng Việt. Ngoài ra nhóm cũng xây dựng bộ tiền xử lý dữ liệu tiếng Việt để có thể dùng trong thực tế.
+
+\subsubsection{Phân tích khám phá dữ liệu - EDA (\textit{Exploratory Data Analysis})}
+Số lượng bình luận mỗi nhãn được thể hiện dưới dạng barplot ở hình [ref]. Như có thể thấy, các đánh giá được chia ra thành 6 cột tương ứng gồm ``toxic'', ``severe\_toxic'', ``obscene'', ``threat'', ``insult'', ``identity\_hate''. Có thể thấy ``toxic'' chiếm số lượng lớn nhất do đây là tiêu chí chung để có thể đánh giá cho bình luận, các thuộc tính khác có thể xem như là mở rộng hoặc bổ sung chi tiết cho thuộc tính ``toxic''.
+
+Chúng ta có thể thấy rằng dữ liệu sạch chiếm đa số trong tập dữ liệu, trong khi dữ liệu độc hại chiếm phần nhỏ hơn. Tuy vậy tỉ lệ dữ liệu độc hại không quá thấp, hoàn toàn có thể sử dụng để huấn luyện mô hình. Dựa vào hình [ref] về tương quan giữa các nhãn với nhau, chúng ta có thể nhìn ra được sự tương quan lớn ở một số nhãn. Có 3 cặp nhãn có độ tương quan cao mà có thể được chỉ ra ở đây: cặp ``toxic'' - ``obsence'', cặp ``toxic'' - ``insult'' và cặp ``obscene'' - ``insult''.
+
+Dựa vào các mối tương quan trên, có thể đưa ra một số kết luận như sau:
+
+\textit{Ngôn ngữ độc hại thường được dùng trong khi xúc phạm người khác, và khi làm như vậy họ có xu hướng sử dụng ngôn từ thô tục.}
+
+Với kết luận này, có thể dự đoán rằng mô hình được huấn luyện có khả năng bắt được những từ ngữ tục tĩu với độ nhạy tốt.
+
+Đối với những từ thường xuất hiện của mỗi nhãn, ta sử dụng thư viện WordCloud để trực quan các từ có tần suất xuất hiện nhiều trong mỗi nhãn tương ứng của dữ liệu. Kích cỡ càng lớn chứng tỏ mức độ xuất hiện của từ đó rất nhiều và ngược lại, kích cỡ nhỏ tương ứng với việc ít xuất hiện.
 
 \subsubsection{Tiền xử lý dữ liệu tiếng Anh}\label{english-preprocess}
-Vì dữ liệu là các bình luận trên Wikipedia, nên có một vài điểm đặc biệt trong các bình luận này so với các bình luận thông thường trên các nền tảng khác, ví dụ như địa chỉ IP, các phím tắt (\textit{shortcuts}) của Wikipedia,\dots Nhóm đã đề xuất một chuỗi các thao tác xử lý nhằm giảm bớt các chuỗi không cần thiết, cũng như chuyển đổi các ký tự đặc biệt thành các từ ngữ để máy có thể hiểu được. Chuỗi thao tác như sau:
+Vì dữ liệu là các bình luận trên Wikipedia, nên có một vài điểm đặc biệt trong các bình luận này so với các bình luận thông thường trên các nền tảng khác, ví dụ như địa chỉ IP, các phím tắt (\textit{shortcuts}) của Wikipedia [ref],\dots Nhóm đã đề xuất một chuỗi các thao tác xử lý nhằm giảm bớt các chuỗi không cần thiết, cũng như chuyển đổi các ký tự đặc biệt thành các từ ngữ để máy có thể hiểu được. Chuỗi thao tác như sau:
 \begin{enumerate}
     \item Chuyển các địa chỉ IP thành chuỗi ``(ip address)''.
     \item Chuyển các email thành chuỗi ``(email)''.
     \item Chuyển các đường dẫn thành chuỗi ``(url)''.
     \item Chuyển các thời gian (định dạng HH:mm và HH:mm:ss) thành chuỗi ``(time)''.
-    \item Chuyển các cụm từ viết tắt trong tiếng Anh (contractions) thành dạng không viết tắt.
+    \item Chuyển các cụm từ viết tắt trong tiếng Anh (contractions) thành dạng hoàn chỉnh. (bảng \ref{table:english-contractions})
     \item Chuyển các phím tắt của Wikipedia thành chuỗi ``(wikipedia shortcut)'', ``(wikipedia namepsace)'', ``(wikipedia file namespace)''.
-    \item Chuyển các emoticons thành tên.
-    \item Chuyển các emojis thành tên.
-    \item Xoá tất cả các ký tự đặc biệt, chỉ giữ lại các ký tự có tên khối (\textit{unicode block}) thuộc (``Latin'', ``Greek'', ``Phonetic'', ``Spacing'', ``General Punctuation'', ``Currency Symbols''). (xem [appendix])
-    \item Xoá tất cả các ký tự đặc biệt, chỉ giữ lại các ký tự có tên nhóm (\textit{unicode general category}) thuộc (``L'', ``M'', ``N'', ``P'', ``S'', ``Z'', ``C''). (xem [appendix])
-    \item Chuyển tất cả các ký tự đặc biệt còn lại thành các ký tự thuộc bảng mã ASCII.
+    \item Chuyển các emoticons thành tên. (bảng [appendix])
+    \item Chuyển các emojis thành tên. (bảng [appendix])
+    \item Xoá tất cả các ký tự đặc biệt, chỉ giữ lại các ký tự có tên khối unicode (\textit{unicode block}) thuộc (``Latin'', ``Greek'', ``Phonetic'', ``Spacing'', ``General Punctuation'', ``Currency Symbols''). (bảng \ref{table:unicode-blocks})
+    \item Xoá tất cả các ký tự đặc biệt, chỉ giữ lại các ký tự có tên nhóm unicode (\textit{unicode general category}) thuộc (``L'', ``M'', ``N'', ``P'', ``S'', ``Z'', ``C''). (bảng \ref{table:unicode-categories})
+    \item Chuyển tất cả các ký tự đặc biệt còn lại thành các ký tự thuộc bảng mã ASCII. (bảng [appendix])
     \item Tách các ký tự đặc biệt xunh quanh từ ra khỏi từ (ví dụ: {\tt .hello,} thành {\tt .\textvisiblespace hello\textvisiblespace,}).
 \end{enumerate}
 
-Sau khi áp dụng các thao tác trên, nhóm đề xuất một thuật toán nhằm phân loại giữa các từ đặc biệt (số, dấu câu,\dots) và các từ còn lại. Sau đó sẽ kiểm tra các từ còn lại này có đúng chính tả hay không, nếu không thì sử dụng thuật toán SymSpell để đưa về dạng đúng. (xem [appendix])
-% \begin{algorithmz}
-%     \caption{Mã giả thuật toán phân loại và chỉnh sửa từ sai chính tả}
-%     \label{algorithm:english-spelling-corrector}
-%     \begin{algorithmic}[1]
-%         \State Khởi tạo văn bản mới $N$ = ``''
-%         \State Khởi tạo vector từ $T$ bằng cách tách các từ trong văn bản bằng các khoảng trắng.
-%         \For {từ $t$ trong vector từ $T$}
-%         \State Chuyển $t$ thành chữ thường
-%         \If {$t$ là số}
-%         \State $N\gets N+\texttt{\textvisiblespace}+t$
-%         \Continue
-%         \EndIf
-%         \If {$t$ là dấu câu hoặc ký hiệu}
-%         \State $N\gets N+\texttt{\textvisiblespace}+t$
-%         \Continue
-%         \EndIf
-%         \If {$t$ là số và ký hiệu}\Comment {ví dụ như các phương trình: $1+1=2$}
-%         \State $N\gets N+\texttt{\textvisiblespace}+t$
-%         \Continue
-%         \EndIf
-%         \If {$t$ thuộc từ điển}
-%         \State $N\gets N+\texttt{\textvisiblespace}+t$
-%         \Continue
-%         \EndIf
-%         \State $n_t$ = 
-%         \State $N\gets N+\texttt{\textvisiblespace}+\text{}t$
-%         \EndFor
-%     \end{algorithmic}
-% \end{algorithmz}
+Sau khi áp dụng các thao tác trên, nhóm đề xuất các bước phân loại giữa các từ đặc biệt (số, dấu câu, ký hiệu, và tổ hợp của chúng) và các từ còn lại. Các từ còn lại này sẽ được kiểm tra là từ có nghĩa (nằm trong kho từ (\textit{corpus})), nếu là từ không có nghĩa thì sử dụng các bước sau đây cùng với thuật toán sửa lỗi chính tả SymSpell [ref] để đưa về dạng đúng nhất có thể.
+
+\begin{algorithmz}
+    \caption{Mã giả sửa lỗi chính tả cho từ $T$}
+    \begin{algorithmic}[1]
+        \State Thay thế tất cả ký tự đặc biệt bằng khoảng trắng (chỉ giữ lại nhóm unicode L và N)
+        \Comment \texttt{hello.,world} $\to$ \texttt{hello\textvisiblespace world}
+        \If {$\left(t\in\text{kho từ}\right)\lor\left[\text{đoán}(t)\in\text{kho từ}\right]$, $\forall t\in T$}
+        \Return $T$
+        \EndIf
+        \Comment \texttt{hello orld} $\to$ \texttt{hello world}
+        \State Xoá các khoảng trắng khỏi $T$
+        \State Xoá các ký tự bị trùng quá 2 lần khỏi $T$
+        \Comment \texttt{hellllo} $\to$ \texttt{hello}
+        \State \Return Phân tách từ $T$
+        \Comment \texttt{helloworld} $\to$ \texttt{hello\textvisiblespace world}
+    \end{algorithmic}
+\end{algorithmz}
 
 \subsubsection{Dịch dữ liệu tiếng Anh sang tiếng Việt}
-Nhóm đã thử các công cụ dịch thuật khác như MyMemory Translator của translated Labs và gpt-3.5-turbo của OpenAI nhưng các công cụ này đều bị giới hạn số lượng từ có thể dịch trong một ngày (5000 ký tự đối với MyMemory và 200 requests đối với mô hình gpt-3.5-turbo). Nhóm cũng đã tham khảo công cụ dịch Anh-Việt là mô hình envit5-translation của VietAI (được xem là tốt hơn Google Translate vào năm 202x[ref]), mô hình này cho ra kết quả dịch rất tốt đối với những câu ngắn và không có ký tự đặc biệt; nhưng đối với những câu đủ dài (> 1000 ký tự), hoặc có quá nhiều ký tự đặc biệt, hoặc dấu câu bị thiếu, thì mô hình tốn rất nhiều thời gian để chạy và cho ra kết quả không thể sử dụng được. Dựa vào đó, nhóm quyết định sử dụng công cụ dịch tài liệu của Google Translate, do Google Cloud Translation cung cấp vì độ chính xác chấp nhận được và gần như không giới hạn (10MB một văn bản).\footnote{Thực tế khi nhóm sử dụng file excel (.xlsx), với hai cột là cột ``index'' và cột ``comment\_text'', thì giới hạn là 2MB một văn bản.}
+Nhóm đã thử các công cụ dịch thuật khác như MyMemory Translator của translated Labs và gpt-3.5-turbo của OpenAI nhưng các công cụ này đều bị giới hạn số lượng từ có thể dịch trong một ngày (5000 ký tự đối với MyMemory và 200 requests đối với mô hình gpt-3.5-turbo). Nhóm cũng đã tham khảo công cụ dịch Anh-Việt là mô hình envit5-translation của VietAI (được xem là tốt hơn Google Translate vào năm 2022[ref]), mô hình này cho ra kết quả dịch rất tốt đối với những câu ngắn và không có ký tự đặc biệt; nhưng đối với những câu đủ dài (> 1000 ký tự), hoặc có quá nhiều ký tự đặc biệt, hoặc dấu câu bị thiếu, thì mô hình tốn rất nhiều thời gian để chạy và cho ra kết quả không thể sử dụng được. Dựa vào đó, nhóm quyết định sử dụng công cụ dịch tài liệu của Google Translate, do Google Cloud Translation cung cấp vì độ chính xác chấp nhận được và gần như không giới hạn (10MB một văn bản).\footnote{Thực tế khi nhóm sử dụng file excel (.xlsx), với hai cột là cột ``index'' và cột ``comment\_text'', thì giới hạn là 2MB một văn bản.}
 
 \subsubsection{Tiền xử lý dữ liệu tiếng Việt}
-Đối với tiền xử lý dữ liệu tiếng Việt, nhóm dựa trên các bước 2, 3, 7, 8, 9, 10, 12 của bộ tiền xử lý tiếng Anh (xem \ref{english-preprocess}). Sau đó tiếp tục dùng thuật toán SymSpell được tinh chỉnh cho tiếng Việt để đưa các từ sai về dạng đúng.\footnote{Đối với tiếng Anh, các từ chỉ khác nhau ở ký tự, nhưng đối với tiếng Việt các từ còn khác nhau ở dấu (\textit{accents}). Nhóm đã thử và nhận thấy việc sử dụng từ điển tần suất (\textit{frequency dictionary}) đã bỏ hết dấu thay vì sử dụng từ điển tần suất thông thường sẽ cho ra kết quả chính xác hơn khi sửa lỗi chính tả}
+Đối với tiền xử lý dữ liệu tiếng Việt, nhóm dựa trên các bước 2, 3, 7, 8, 9, 10, 12 của bộ tiền xử lý tiếng Anh (xem \ref{english-preprocess}). Sau đó tiếp tục dùng thuật toán SymSpell được tinh chỉnh cho tiếng Việt để đưa các từ sai về dạng đúng.\footnote{Đối với tiếng Anh, các từ chỉ khác nhau ở ký tự, nhưng đối với tiếng Việt các từ còn khác nhau ở các dấu thanh (\textit{accents}). Nhóm đã thử và nhận thấy, sử dụng từ điển tần suất (\textit{frequency dictionary}) đã bỏ hết dấu thanh, thay vì sử dụng từ điển tần suất thông thường, sẽ cho ra kết quả chính xác hơn khi sửa lỗi chính tả. (xem [appendix])}
