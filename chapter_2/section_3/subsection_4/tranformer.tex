@@ -20,7 +20,7 @@ Vậy có cách nào tận dụng khả năng tính toán song song của GPU đ
     \label{figure:tranformer-architecture}
 \end{figure}
 
-Kiến trúc của Tranformer gồm 2 phần là Encoder bên trái và Decoder bên phải\cite{webpage23}.
+Kiến trúc của Tranformer được minh hoạt ở hình \ref{figure:tranformer-architecture}, gồm 2 phần là Encoder bên trái và Decoder bên phải\cite{webpage23}.
 
 \textbf{Encoder}: là tổng hợp xếp chồng lên nhau của 6 layers xác định. Mỗi layer bao gồm 2 layer con (sub-layer) trong nó. Sub-layer đầu tiên là multi-head self-attention mà lát nữa chúng ta sẽ tìm hiểu. Layer thứ 2 đơn thuần chỉ là các fully-connected feed-forward layer. Một lưu ý là chúng ta sẽ sử dụng một kết nối residual ở mỗi sub-layer ngay sau layer normalization. Kiến trúc này có ý tưởng tương tự như mạng resnet trong CNN. Đầu ra của mỗi sub-layer là $LayerNorm(x+Sublayer(x))$ có số chiều là 512 theo như bài viết.
 
@@ -72,5 +72,5 @@ Ngoài ra luôn có một bước cộng thêm Positional Encoding vào các đ�
           \end{align}
 
 
-          Cuối cùng, để trả đầu ra có cùng kích thước với ma trận ban đầu chúng ta chỉ cần nhân với ma trận $\mathbf{W}_\mathbf{0}$ có chiều rộng bằng với chiều rộng của ma trận đầu vào.
+          Cuối cùng, để trả đầu ra có cùng kích thước với ma trận ban đầu chúng ta chỉ cần nhân với ma trận $\mathbf{W}_\mathbf{0}$ có chiều rộng bằng với chiều rộng của ma trận đầu vào như ở hình \ref{figure:multi-head-illustration}.
 \end{enumerate}

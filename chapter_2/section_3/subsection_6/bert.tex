@@ -36,7 +36,7 @@ Thay vì dự đoán từ tiếp theo trong chuỗi, BERT sử dụng một kỹ
 
 \subsubsection{Pre-training BERT}
 
-BERT được huấn luyện dựa trên Transformer, mục tiêu là tạo mô hình biểu diễn ngôn ngữ, vì vậy BERT chỉ cần phần Encoder. Đầu vào cho bộ mã hóa của BERT là một chuỗi các token, được chuyển đổi thành các vector và sau đó được xử lý trong mạng nơ-ron. Tuy nhiên, trước khi quá trình xử lý bắt đầu, BERT cần một số dữ liệu bổ sung vào input:
+BERT được huấn luyện dựa trên Transformer, mục tiêu là tạo mô hình biểu diễn ngôn ngữ, vì vậy BERT chỉ cần phần Encoder. Đầu vào cho bộ mã hóa của BERT là một chuỗi các token, được chuyển đổi thành các vector và sau đó được xử lý trong mạng nơ-ron. Tuy nhiên, trước khi quá trình xử lý bắt đầu, BERT cần một số dữ liệu bổ sung vào input được trình bày trong hình \ref{figure:Input_Emebeddings}:
 
 \begin{itemize}
     \item \textbf{Nhúng từ (token embedding)}: Ký hiệu {\tt [CLS]} được thêm vào các token từ đầu vào ở đầu câu đầu tiên và ký hiệu {\tt [SEP]} được chèn vào cuối mỗi câu.
@@ -78,7 +78,7 @@ Về bản chất, Transformer sẽ ánh xạ chuỗi ký tự đầu vào thàn
 \subsubsection{Tinh chỉnh \textit(fine-tuning) BERT}
 
 BERT đã vượt trội so với các phương pháp tối ưu (state-of-the-art) trước đây trên nhiều tác vụ khác nhau trong lĩnh vực hiểu ngôn ngữ tổng quát, chẳng hạn như suy luận ngôn ngữ tự nhiên, phân tích tình cảm và trả lời câu hỏi.
-Nếu muốn tinh chỉnh BERT cho một nhiệm vụ cụ thể dựa trên tập dữ liệu, việc cần làm là thêm một layer phía sau phần Encoder của BERT.
+Nếu muốn tinh chỉnh BERT cho một nhiệm vụ cụ thể dựa trên tập dữ liệu, việc cần làm là thêm một layer phía sau phần Encoder của BERT như hình \ref{figure:BERT_fine_tuning}.
 
 \begin{figure}[htb]
     \centering
