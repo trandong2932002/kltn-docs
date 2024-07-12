@@ -1,4 +1,4 @@
-Quá trình huấn luyện được thực hiện với ba mô hình khác nhau: hai mô hình dùng kiến trúc LSTM và GRU được huấn luyện từ đầu, một mô hình bằng cách tinh chỉnh mô hình PhoBERT của VinAIResearch.
+Quá trình huấn luyện được thực hiện với ba mô hình khác nhau: hai mô hình dùng kiến trúc LSTM và GRU được huấn luyện từ đầu, một mô hình thu được bằng cách tinh chỉnh (\textit{fine-tune}) mô hình PhoBERT của VinAIResearch.
 
 \subsubsection{Mô hình LSTM}
 Với mô hình LSTM có epochs = 32, batch = 128, mô hình gồm 4 lớp (bảng \ref{table:lstm-model}):
@@ -13,29 +13,25 @@ Với mô hình LSTM có epochs = 32, batch = 128, mô hình gồm 4 lớp (bả
     \caption{Bảng tóm tắt mô hình LSTM}\label{table:lstm-model}
     \begin{tabular}{l l r}
         \toprule
-        \textbf{Layer (type)}            & \textbf{Output Shape}                    & \textbf{Param \#} \\\midrule
-        input (InputLayer)               & [(None, 200)]                            & 0                 \\
-        embedding (Embedding)            & (None, 200, 300)                         & 60000000          \\
-        bidirectional (Bidirectional)    & (None, 200, 128)                         & 186880            \\
-        dropout (Dropout)                & (None, 200, 128)                         & 0                 \\
-        bidirectional\_1 (Bidirectional) & (None, 128)                              & 98816             \\
-        dense (Dense)                    & (None, 6)                                & 774               \\\midrule
-        Total params:                    & \multicolumn{2}{r}{60286470 (299.97 MB)}                     \\
-        Trainable params:                & \multicolumn{2}{r}{286470 (1.09 MB)}                         \\
-        Non-trainable params:            & \multicolumn{2}{r}{60000000 (228.88 MB)}                     \\
+        \textbf{Layer (type)}                   & \textbf{Output Shape}                    & \textbf{Param \#} \\\midrule
+        text\_vectorization (TextVectorization) & (None, 200)                              & 0                 \\
+        embedding (Embedding)                   & (None, 200, 300)                         & 60000000          \\
+        bidirectional (Bidirectional)           & (None, 200, 128)                         & 186880            \\
+        dropout (Dropout)                       & (None, 200, 128)                         & 0                 \\
+        bidirectional\_1 (Bidirectional)        & (None, 128)                              & 98816             \\
+        dense (Dense)                           & (None, 6)                                & 774               \\\midrule
+        Total params:                           & \multicolumn{2}{r}{60286470 (299.97 MB)}                     \\
+        Trainable params:                       & \multicolumn{2}{r}{286470 (1.09 MB)}                         \\
+        Non-trainable params:                   & \multicolumn{2}{r}{60000000 (228.88 MB)}                     \\
         \bottomrule
     \end{tabular}
 \end{table}
 
-Đối với dữ liệu train, có thể thấy với mỗi epoch, lượng mất mát ngày càng giảm và tới cuối cùng gần như không còn giảm quá đáng kể. Cùng với đó là sự đi lên của các thông số đánh giá. Ban đầu Accuracy của mô hình quá cao có thể do quá khớp, nhưng dần dần đã giảm xuống ở mức ổn định hơn. Dựa trên kết quả từ các epoch và biểu đồ bên trên, có thể thấy rằng mô hình có thể cho ra độ chính xác tương đối cao, trên $90\%$ và giá trị mất mát cũng rất khả quan.
+Đối với dữ liệu train, có thể thấy với mỗi epoch, lượng mất mát ngày càng giảm và tới cuối cùng gần như không còn giảm quá đáng kể. Cùng với đó là sự đi lên của các thông số đánh giá. Ban đầu thống số accuracy của mô hình quá cao có thể do quá khớp, nhưng dần dần đã giảm xuống ở mức ổn định hơn. Dựa trên kết quả từ các epoch và biểu đồ bên trên, có thể thấy rằng mô hình có thể cho ra độ chính xác tương đối cao, trên 90\% và giá trị mất mát cũng rất khả quan.
 
-Đối với tập dữ liệu valid, các thông số tuy có nhiều sự thay đổi trong quá trình huấn
-luyện, nhưng không chênh lệch quá nhiều so với kết quả của tập train. Từ đó có thể kết
-luận rằng mô hình có thể hoạt động tương đối ổn.
-Đánh giá mô hình dựa trên tập dữ liệu test.
+Đối với tập dữ liệu valid, các thông số tuy có nhiều sự thay đổi trong quá trình huấn luyện, nhưng không chênh lệch quá nhiều so với kết quả của tập train. Từ đó có thể kết luận rằng mô hình có thể hoạt động tương đối ổn.
 
-Đánh giá dựa trên tập test cho kết quả tương đối khả quan dù không cao như tập chính,kết quả vẫn lên tới $95\%$. Điều này cho thấy rằng mô hình được huấn luyện cho kết quả tương đối tốt. Độ chính xác của mô hình có thể lên tới $95\%$, kết quả này cho thấy mô hình có thể dự đoán tốt hầu hết kết quả nhưng cũng không bị overfitting.
-
+Đánh giá dựa trên tập test cho kết quả tương đối khả quan dù không cao như tập chính, kết quả vẫn lên tới 95\%. Điều này cho thấy rằng mô hình được huấn luyện cho kết quả tương đối tốt. Độ chính xác của mô hình có thể lên tới 95\%, kết quả này cho thấy mô hình có thể dự đoán tốt hầu hết kết quả nhưng cũng không bị overfitting.
 
 \subsubsection{Mô hình GRU}
 Với mô hình GRU có epochs = 32, batch = 128, mô hình gồm 4 lớp (bảng \ref{table:gru-model}):
@@ -50,41 +46,48 @@ Với mô hình GRU có epochs = 32, batch = 128, mô hình gồm 4 lớp (bản
     \caption{Bảng tóm tắt mô hình GRU}\label{table:gru-model}
     \begin{tabular}{l l r}
         \toprule
-        \textbf{Layer (type)}            & \textbf{Output Shape}                    & \textbf{Param \#} \\\midrule
-        input (InputLayer)               & [(None, 200)]                            & 0                 \\
-        embedding (Embedding)            & (None, 200, 300)                         & 60000000          \\
-        bidirectional (Bidirectional)    & (None, 200, 128)                         & 140544            \\
-        dropout (Dropout)                & (None, 200, 128)                         & 0                 \\
-        bidirectional\_1 (Bidirectional) & (None, 128)                              & 74496             \\
-        dense (Dense)                    & (None, 6)                                & 774               \\\midrule
-        Total params:                    & \multicolumn{2}{r}{60215814 (229.71 MB)}                     \\
-        Trainable params:                & \multicolumn{2}{r}{215814 (843.02 KB)}                       \\
-        Non-trainable params:            & \multicolumn{2}{r}{60000000 (228.88 MB)}                     \\
+        \textbf{Layer (type)}                   & \textbf{Output Shape}                    & \textbf{Param \#} \\\midrule
+        text\_vectorization (TextVectorization) & (None, 200)                              & 0                 \\
+        embedding (Embedding)                   & (None, 200, 300)                         & 60000000          \\
+        bidirectional (Bidirectional)           & (None, 200, 128)                         & 140544            \\
+        dropout (Dropout)                       & (None, 200, 128)                         & 0                 \\
+        bidirectional\_1 (Bidirectional)        & (None, 128)                              & 74496             \\
+        dense (Dense)                           & (None, 6)                                & 774               \\\midrule
+        Total params:                           & \multicolumn{2}{r}{60215814 (229.71 MB)}                     \\
+        Trainable params:                       & \multicolumn{2}{r}{215814 (843.02 KB)}                       \\
+        Non-trainable params:                   & \multicolumn{2}{r}{60000000 (228.88 MB)}                     \\
         \bottomrule
     \end{tabular}
 \end{table}
 
-Đối với dữ liệu train, có thể thấy với mỗi epoch, lượng mất mát ngày càng giảm và tới cuối cùng gần như không còn giảm quá đáng kể. Cùng với đó là sự đi lên của các thông số đánh giá. Ban đầu Accuracy của mô hình quá cao có thể do quá khớp, nhưng dần dần đã giảm xuống ở mức ổn định hơn. Dựa trên kết quả từ các epoch và biểu đồ bên trên, có thể thấy rằng mô hình có thể cho ra độ chính xác tương đối cao, trên $90\%$ và giá trị mất mát cũng rất khả quan.
+Đối với dữ liệu train, có thể thấy với mỗi epoch, lượng mất mát ngày càng giảm và tới cuối cùng gần như không còn giảm quá đáng kể. Cùng với đó là sự đi lên của các thông số đánh giá. Ban đầu thông số accuracy của mô hình quá cao có thể do quá khớp, nhưng dần dần đã giảm xuống ở mức ổn định hơn. Dựa trên kết quả từ các epoch và biểu đồ bên trên, có thể thấy rằng mô hình có thể cho ra độ chính xác tương đối cao, trên 90\% và giá trị mất mát cũng rất khả quan.
 
-Đối với tập dữ liệu valid, các thông số tuy có nhiều sự thay đổi trong quá trình huấn
-luyện, nhưng không chênh lệch quá nhiều so với kết quả của tập train. Từ đó có thể kết
-luận rằng mô hình có thể hoạt động tương đối ổn.
+Đối với tập dữ liệu valid, các thông số tuy có nhiều sự thay đổi trong quá trình huấn luyện, nhưng không chênh lệch quá nhiều so với kết quả của tập train. Từ đó có thể kết luận rằng mô hình có thể hoạt động tương đối ổn.
 
-Đánh giá dựa trên tập test cho kết quả tương đối khả quan dù không cao như kết quả huấn luyện, độ chính xác Accuracy đạt trên $90\%$. Điều này cho thấy rằng mô hình được huấn luyện cho kết quả tương đối tốt. Độ chính xác của mô hình có thể lên tới $91\%$, kết quả này cho thấy mô hình có thể dự đoán tốt hầu hết kết quả nhưng cũng không bị quá khớp. Tuy nhiên so với mô hình LSTM trước đó thì kết quả này có phần lép vế.
+Đánh giá dựa trên tập test cho kết quả tương đối khả quan dù không cao như kết quả huấn luyện, độ chính xác accuracy đạt trên 90\%. Điều này cho thấy rằng mô hình được huấn luyện cho kết quả tương đối tốt. Độ chính xác của mô hình có thể lên tới 91\%, kết quả này cho thấy mô hình có thể dự đoán tốt hầu hết kết quả nhưng cũng không bị quá khớp. Tuy nhiên so với mô hình LSTM trước đó thì kết quả này có phần lép vế.
 
 \subsubsection{Tinh chỉnh mô hình PhoBERT}
+Mô hình phoBERT cung cấp một bộ Tokenization riêng và người dùng sẽ sử dụng nó lên tập dữ liệu của minh. Trong quá trình huấn luyện mô hình, thông số mất mát sử dụng là binary cross entropy. Về thông số đánh giá mô hình, có 3 thông số được sử dụng: precision, recall, accuracy. Thông số epoch = 10, batch = 32.
 
-\subsubsection{Đánh giá giữa 3 mô hình}
+Kết quả mô hình cho ra kết quả tốt với các thông số cho tập train như sau rất cao. accuracy lên tới hơn 98\%. recall đạt mức 76\% trong khi precision đạt mức 88\%. Đây là một kết quả tốt, tuy nhiên accuracy cao có thể là do overfit.
 
+Để đánh giá chuẩn nhất, chúng ta sẽ sử dụng mô hình trên tập test. Đối với tập test, tập dữ liệu cũng cho ra kết quả rất cao là accuracy đạt mức 98.9\%, precision đạt mức 88.5\% và recall đạt mức 80\%.
+
+Trong quá trình huấn luyện sử dụng mô hình phoBERT, nhóm có gặp phải một số thuận lợi và khó khăn. Về thuận lợi, mô hình phoBERT cho ra kết quả rất tốt và chính xác, không cần phải tinh chỉnh mô hình quá nhiều. Về mặt khó khăn và hạn chế, mô hình phoBERT khá lớn (\textasciitilde 519MB, hơn gấp đôi so với mô hình LSTM) và có thời gian chạy khá lâu so với mô hình RNN.
+
+\subsubsection{Đánh giá giữa các mô hình}
+Có thể thấy kết quả của các mô hình là rất tốt (chỉ số accuracy đều lớn hơn 0.98), với các thông số precision, recall và accuracy của mô hình PhoBert là tốt nhất. Tuy nhiên thời gian huấn luyện của mô hình PhoBert là tệ nhất (hơn 10 giờ), gấp hơn 20 lần so với hai mô hình RNN còn lại (dưới 30 phút); thời gian dự đoán (\textit{inference time}) của mô hình PhoBert cũng lâu hơn, gấp hơn 10 lần so với mô hai mô hình còn lại.
 \begin{table}[htb]
     \centering
-    \caption{asd}
-    \begin{tabular}{l r c c c}
+    \caption{Đánh giá giữa các mô hình}
+    \begin{tabular}{l r c c c c c}
         \toprule
-        \textbf{Model} & \textbf{Param \#} & \textbf{Precision} & \textbf{Recall} & \textbf{Accuracy} \\\midrule
-        2-layer biLSTM & 60M               & ?                  & ?               & ?                 \\
-        2-layer biGRU  & 60M               & ?                  & ?               & ?                 \\
-        PhoBERT-base   & 135M              & ?                  & ?               & ?                 \\
+        \textbf{Model} & \textbf{Param \#}    & \textbf{Precision} & \textbf{Recall} & \textbf{Accuracy} & \textbf{\makecell{Thời gian                                  \\ huấn luyện}} & \textbf{\makecell{Thời gian\\ dự đoán}} \\\midrule
+        2-layer biLSTM & \textasciitilde 60M  & 0.7988             & 0.6529          & 0.9812            & 1474s                       & \textbf{\textasciitilde 0.07s} \\
+        2-layer biGRU  & \textasciitilde 60M  & 0.7639             & 0.6808          & 0.9805            & \textbf{1196s}              & \textbf{\textasciitilde 0.07s} \\
+        PhoBERT-base   & \textasciitilde 135M & \textbf{0.8860}    & \textbf{0.8064} & \textbf{0.9891}   & 37442s                      & \textasciitilde 0.8s           \\
         \bottomrule
     \end{tabular}
 \end{table}
+
+Từ các kết quả trên, nếu môi trường sử dụng có tần suất chạy mô hình lớn và cần độ trễ thấp (vd: tin nhắn của hội nhóm, tin nhắn trong live streaming, xử lý tập dữ liệu), nên chọn mô hình RNN để tối ưu tốc độ xử lý. Đối với môi trường không có tần suất chạy mô hình lớn, thì ta có thể chọn mô hình PhoBERT để tối ưu độ chính xác.

@@ -19,6 +19,12 @@ Nhóm sử dụng phần cứng được cung cấp bởi Kaggle trong hầu h�
     \item Python 3.10.13
 \end{itemize}
 
+Nhóm sử dụng phần cứng được cung cấp bởi Hugging Face để chạy mô hình trong thực tế:
+\begin{itemize}
+    \item CPU: 2vCPU
+    \item Ram: 16GB
+\end{itemize}
+
 \subsubsection{Thư viện}
 \begin{enumerate}
     \item \textit{Thư viện Tensorflow}
@@ -92,13 +98,21 @@ Nhóm sử dụng phần cứng được cung cấp bởi Kaggle trong hầu h�
 
     \item \textit{Thư viện Polars}
 
-          Polars\footnote{https://pola.rs/} là một thư viện mã nguồn mở dùng để xử lý dữ liệu là DataFrame. Polars được viết hoàn toàn bằng ngôn ngữ Rust, sử dụng Apache Arrow làm cấu trúc dữ liệu chính nên hiệu suất và tốc độ thực thi các truy vấn của nó nhanh hơn nhiều so với Pandas. Các tính năng chính của Polars gồm có:
+          Polars\footnote{https://pola.rs/} \footnote{Ban đầu nhóm đã dùng Pandas để xử lý dữ liệu. Khi quá trình xử lý của nhóm trở nên phức tạp, nhóm đã chuyển qua thư viện Modin (với engine là Ray) để có thể xử lý song song các truy vấn. Nhưng khi nhóm muốn áp dụng các thuật toán có độ phức tạp lớn để xử lý dữ liệu dạng chuỗi, thì điểm yếu của Python được bộc lộ là quá chậm để xử lý toàn bộ tập dữ liệu (khoảng 160 nghìn dòng, với phân phối độ dài chuỗi \ref{image:dist_number_of_chars}). Vì vậy nhóm quyết định sử dụng thư viện Polars vì có thể viết các thuật toán có độ phức tạp lớn bằng Rust nhằm tối ưu tốc độ xử lý.} là một thư viện mã nguồn mở dùng để xử lý dữ liệu là DataFrame. Polars được viết hoàn toàn bằng ngôn ngữ Rust, sử dụng Apache Arrow làm cấu trúc dữ liệu chính nên hiệu suất và tốc độ thực thi các truy vấn của nó nhanh hơn nhiều so với Pandas. Các tính năng chính của Polars gồm có:
           \begin{itemize}
               \item Được triển khai cả Lazy API và Eager API.
               \item Xử lý song song.
               \item Các câu truy vấn được tối ưu hoá.
               \item Hybrid Streaming giúp xử lý dữ liệu mà không cần phải tải toàn bộ dữ liệu vào Ram.
           \end{itemize}
-          Lý do sử dụng: Ban đầu nhóm đã dùng Pandas để xử lý dữ liệu. Khi quá trình xử lý của nhóm trở nên phức tạp, nhóm đã chuyển qua thư viện Modin (với engine là Ray) để có thể xử lý song song các truy vấn. Nhưng khi nhóm muốn áp dụng các thuật toán có độ phức tạp lớn để xử lý dữ liệu dạng chuỗi, thì điểm yếu của Python được bộc lộ là quá chậm để xử lý toàn bộ tập dữ liệu (khoảng 160 nghìn dòng, với phân phối độ dài chuỗi \ref{image:dist_number_of_chars}). Vì vậy nhóm quyết định sử dụng thư viện Polars vì có thể viết các thuật toán có độ phức tạp lớn bằng Rust nhằm tối ưu tốc độ xử lý.
+
+    \item \textit{Thự viện SymSpell}
+
+          Symspell\footnote{https://github.com/wolfgarbe/SymSpell} là thư viện sửa lỗi chính tả, được đánh giá là nhanh hơn 1 triệu lần so với thuật toán sửa lỗi chính tả mà Peter Norvig đề xuất, nhờ vào việc sử dụng thuật toán sửa lỗi chính tả xoá đối xứng (\textit{symetric delete spelling corrector}). Thuật toán sửa lỗi chính tả dùng khoảng cách Damerau-Levenshtein để tính toán độ tương tự giữa hai chuỗi, với các tính năng chính
+          \begin{itemize}
+              \item Sửa lỗi chính tả từ.
+              \item Sửa lỗi chính tả trong câu.
+              \item Tách các từ trong đoạn văn bản nhiễu (\textit{noisy text})\\(vd: \texttt{thequickbrownfoxjumpsoverthelazydog} $\to$ \texttt{he quick brown fox jumps over the lazy dog})
+          \end{itemize}
 \end{enumerate}
 
