@@ -45,8 +45,8 @@
     linkcolor=black,
     urlcolor=black
 }
-% rotate table
-\usepackage{rotating}
+% multirow in table
+\usepackage{multirow}
 % linebreak in cell
 \usepackage{makecell}
 % modify section
@@ -161,30 +161,31 @@
 \algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ \algorithmicdo}
 \algnewcommand\algorithmiccontinue{\textbf{continue}}
 \newcommand{\Continue}{\State \algorithmiccontinue}
-%
-% debug
-%
-\makeatletter
-\newcommand{\showfont}
-{%
-    (%\foreignlanguage{english}
-    {%
-            % encoding: \f@encoding{},
-            % family: \f@family{},
-            % series: \f@series{},
-            % shape: \f@shape{},
-            size: \f@size{},
-            baseline: \f@baselineskip{},
-            linespread: \f@linespread{},
-            linespacing: \the\baselineskip{}%
-        })%
-}
-\makeatother
-% debug layout
-\usepackage{showframe}
-% \usepackage{lua-visual-debug} % using this package with lualatex
-% debug text
-\usepackage{lipsum}
-%
-% end debug
-%
+
+% %
+% % debug
+% %
+% \makeatletter
+% \newcommand{\showfont}
+% {%
+%     (%\foreignlanguage{english}
+%     {%
+%             % encoding: \f@encoding{},
+%             % family: \f@family{},
+%             % series: \f@series{},
+%             % shape: \f@shape{},
+%             size: \f@size{},
+%             baseline: \f@baselineskip{},
+%             linespread: \f@linespread{},
+%             linespacing: \the\baselineskip{}%
+%         })%
+% }
+% \makeatother
+% % debug layout
+% \usepackage{showframe}
+% % \usepackage{lua-visual-debug} % using this package with lualatex
+% % debug text
+% \usepackage{lipsum}
+% %
+% % end debug
+% %

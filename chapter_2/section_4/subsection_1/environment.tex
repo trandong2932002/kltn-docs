@@ -18,14 +18,14 @@ Nhóm sử dụng phần cứng được cung cấp bởi Kaggle trong hầu h�
     \item GPU: Tesla P100 16GB (CUDA version 12.4)
     \item Python 3.10.13
 \end{itemize}
-
-Nhóm sử dụng phần cứng được cung cấp bởi Hugging Face để chạy mô hình trong thực tế:
+Ngoài ra nhóm sử dụng phần cứng được cung cấp bởi Hugging Face để chạy mô hình trong thực tế:
 \begin{itemize}
     \item CPU: 2vCPU
     \item Ram: 16GB
 \end{itemize}
 
 \subsubsection{Thư viện}
+Các thư viện chính mà nhóm đã sử dụng để thực hiện đề tài này:
 \begin{enumerate}
     \item \textit{Thư viện Tensorflow}
 
@@ -46,27 +46,6 @@ Nhóm sử dụng phần cứng được cung cấp bởi Hugging Face để ch�
           Keras có thể chạy trên các thư viện và khung công tác như TensorFlow, Theano, PlaidML, MXNet, CNTK. Chúng đều là những thư viện rất mạnh nhưng cũng khó hiểu để tạo mạng nơ-ron. Mặt khác, Keras rất thân thiện với người mới bắt đầu vì cấu trúc tối thiểu của nó cung cấp cách tạo ra các mô hình học sâu một cách dễ dàng và gọn ghẽ dựa trên TensorFlow hoặc Theano.
 
           Keras đã được TensorFlow thông qua làm API cấp cao chính thức của mình. Khi được nhúng vào TensorFlow, nó cung cấp các mô-đun có sẵn cho tất cả các tính toán mạng nơ-ron và do đó có thể thực hiện học sâu rất nhanh. TensorFlow rất linh hoạt và lợi ích chính là tính toán phân tán. Ta có thể linh hoạt và có thể kiểm soát ứng dụng của mình, thực hiện ý tưởng trong thời gian ngắn, sử dụng Keras, trong khi tính toán liên quan đến tensors, đồ thị tính toán,\dots có thể được tùy chỉnh bằng cách sử dụng Tensorflow Core API.
-
-    \item \textit{Thư viện WordCloud}
-
-          Word cloud\footnote{https://www.wordclouds.com/} (đám mây từ) là một kĩ thuật trực quan hóa dữ liệu trong NLP. Nó là một đám mây chứa rất nhiều từ với các kích thước khác nhau, chúng thể hiện tần suất hoặc tầm quan trọng của mỗi từ. WordCloud được sử dụng rộng rãi trong việc phân tích dữ liệu từ các trang mạng xã hội\cite{webpage17}.
-
-    \item \textit{Thư viện Pickle}
-
-          Pickle\footnote{https://docs.python.org/3/library/pickle.html} được sử dụng để thực hiện chuyển đổi các cấu trúc đối tượng Python sang một dạng byte để có thể được lưu trữ trên ổ đĩa hoặc được gửi qua mạng. Sau đó, luồng ký tự này sau đó có thể được truy xuất và chuyển đổi trở lại sang dạng đối tượng ban đầu trong Python\cite{webpage18}.
-
-          Pickle có thể thực hiện chuyển đổi các đối tượng với các kiểu dữ liệu sau sang dạng byte bằng mô-đun Pickle.
-          \begin{itemize}
-              \item Kiểu Booleans
-              \item Kiểu giá trị số nguyên
-              \item Kiểu giá trị số thực
-              \item Kiểu giá trị số phức
-              \item Kiểu chuỗi ký tự
-              \item Kiểu Tuples
-              \item Kiểu Lists hay danh sách
-              \item Kiểu tập hợp Set
-              \item Kiểu Dictionaries hay từ điển
-          \end{itemize}
 
     \item \textit{Thư viện Underthesea}
 
@@ -98,7 +77,7 @@ Nhóm sử dụng phần cứng được cung cấp bởi Hugging Face để ch�
 
     \item \textit{Thư viện Polars}
 
-          Polars\footnote{https://pola.rs/} \footnote{Ban đầu nhóm đã dùng Pandas để xử lý dữ liệu. Khi quá trình xử lý của nhóm trở nên phức tạp, nhóm đã chuyển qua thư viện Modin (với engine là Ray) để có thể xử lý song song các truy vấn. Nhưng khi nhóm muốn áp dụng các thuật toán có độ phức tạp lớn để xử lý dữ liệu dạng chuỗi, thì điểm yếu của Python được bộc lộ là quá chậm để xử lý toàn bộ tập dữ liệu (khoảng 160 nghìn dòng, với phân phối độ dài chuỗi \ref{image:dist_number_of_chars}). Vì vậy nhóm quyết định sử dụng thư viện Polars vì có thể viết các thuật toán có độ phức tạp lớn bằng Rust nhằm tối ưu tốc độ xử lý.} là một thư viện mã nguồn mở dùng để xử lý dữ liệu là DataFrame. Polars được viết hoàn toàn bằng ngôn ngữ Rust, sử dụng Apache Arrow làm cấu trúc dữ liệu chính nên hiệu suất và tốc độ thực thi các truy vấn của nó nhanh hơn nhiều so với Pandas. Các tính năng chính của Polars gồm có:
+          Polars\footnote{https://pola.rs/} \footnote{Ban đầu nhóm đã dùng Pandas để xử lý dữ liệu. Khi quá trình xử lý của nhóm trở nên phức tạp, nhóm đã chuyển qua thư viện Modin (với engine là Ray) để có thể xử lý song song các truy vấn. Nhưng khi nhóm muốn áp dụng các thuật toán có độ phức tạp lớn để xử lý dữ liệu dạng chuỗi, thì điểm yếu của Python được bộc lộ là quá chậm để xử lý toàn bộ tập dữ liệu (khoảng 160 nghìn dòng, với phân phối độ dài chuỗi \ref{figure:dist_number_of_chars}). Vì vậy nhóm quyết định sử dụng thư viện Polars vì có thể viết các thuật toán có độ phức tạp lớn bằng Rust nhằm tối ưu tốc độ xử lý.} là một thư viện mã nguồn mở dùng để xử lý dữ liệu là DataFrame. Polars được viết hoàn toàn bằng ngôn ngữ Rust, sử dụng Apache Arrow làm cấu trúc dữ liệu chính nên hiệu suất và tốc độ thực thi các truy vấn của nó nhanh hơn nhiều so với Pandas. Các tính năng chính của Polars gồm có:
           \begin{itemize}
               \item Được triển khai cả Lazy API và Eager API.
               \item Xử lý song song.
@@ -108,7 +87,7 @@ Nhóm sử dụng phần cứng được cung cấp bởi Hugging Face để ch�
 
     \item \textit{Thự viện SymSpell}
 
-          Symspell\footnote{https://github.com/wolfgarbe/SymSpell} là thư viện sửa lỗi chính tả, được đánh giá là nhanh hơn 1 triệu lần so với thuật toán sửa lỗi chính tả mà Peter Norvig đề xuất, nhờ vào việc sử dụng thuật toán sửa lỗi chính tả xoá đối xứng (\textit{symetric delete spelling corrector}). Thuật toán sửa lỗi chính tả dùng khoảng cách Damerau-Levenshtein để tính toán độ tương tự giữa hai chuỗi, với các tính năng chính
+          Symspell\footnote{https://github.com/wolfgarbe/SymSpell} là thư viện sửa lỗi chính tả, được đánh giá là nhanh hơn 1 triệu lần so với thuật toán sửa lỗi chính tả mà Peter Norvig đề xuất, nhờ vào việc sử dụng thuật toán sửa lỗi chính tả xoá đối xứng (\textit{symetric delete spelling corrector algorithm}). Thuật toán sửa lỗi chính tả dùng khoảng cách Damerau-Levenshtein để tính toán độ tương tự giữa hai chuỗi, với các tính năng chính:
           \begin{itemize}
               \item Sửa lỗi chính tả từ.
               \item Sửa lỗi chính tả trong câu.
