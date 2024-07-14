@@ -1,5 +1,7 @@
 \ProvidesPackage{preamble}
 
+% math before fontspec
+\usepackage{amsmath, amssymb}
 % font: Times New Roman
 \usepackage{fontspec}
 \setmainfont{Times New Roman}
@@ -36,14 +38,16 @@
 \setcounter{secnumdepth}{4}
 % toc depth
 \setcounter{tocdepth}{4}
-% clickable table
+% url auto add linebreak
+\usepackage{xurl}
+% clickable table, toc
 \usepackage{hyperref}
 \hypersetup{
     colorlinks,
     citecolor=black,
     filecolor=black,
     linkcolor=black,
-    urlcolor=black
+    urlcolor=black,
 }
 % multirow in table
 \usepackage{multirow}
@@ -90,15 +94,6 @@
 {\bf\fontsize{14pt}{21pt}\selectfont\MakeUppercase}
 \titlespacing*{\tablename}
 {0pt}{0pt}{0pt}
-% clickable toc
-\usepackage{hyperref}
-\hypersetup{
-    colorlinks,
-    citecolor=black,
-    filecolor=black,
-    linkcolor=black,
-    urlcolor=black
-}
 % threeparttable for notes
 \usepackage{threeparttable}
 % tabularx
@@ -125,27 +120,31 @@
     style=ieee,
     sorting=ynt]{biblatex}
 \addbibresource{./references.bib}
-% bibliography fix: overfull hbox
-\emergencystretch=1em
 % bibliography font size 11pt, align left
 \renewcommand*{\bibfont}{\fontsize{11pt}{16.5pt}\selectfont\raggedright}
 % image inserting
 \usepackage{graphicx}
 % import
 \usepackage{import}
-% math
-\usepackage{amsmath, amssymb}
 \DeclareMathOperator{\sign}{sign}
 % item
 \usepackage{enumitem}
 \setlist[itemize]{nolistsep}
 \setlist[enumerate]{nolistsep}
+% % paragraph skip
+% \usepackage[skip=4pt plus 2pt, indent=0.5cm]{parskip}
 % indent first paragraph in a section
 \usepackage{indentfirst}
 % multiple figure
 \usepackage{subcaption}
 % % insert code
 % \usepackage{minted}
+% font awesome
+\usepackage{fontawesome5}
+% font color
+\usepackage{xcolor}
+% hoa lá hẹ cover
+\usepackage{tikz}
 % use code
 \usepackage{algorithm, algpseudocode}
 % new algorithm

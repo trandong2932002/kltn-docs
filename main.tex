@@ -1,6 +1,10 @@
 \documentclass[oneside]{report}
 \usepackage{preamble}
 
+\title{Nhận diện văn bản tiêu cực sử dụng học máy}
+\date{July 2024}
+\author{Huỳnh Minh Phước, Văn Mai Thanh Nhật, Trần Đông}
+
 \begin{document}
 \pagenumbering{gobble}
 \pagestyle{empty}
@@ -21,8 +25,6 @@
 \pagestyle{fancy}
 
 % thanks
-\chapter*{Lời cám ơn}
-\markboth{\MakeUppercase{Lời cám ơn}}{}
 \input{prelims/thanks}
 \newpage
 
@@ -38,18 +40,19 @@
 
 % toc
 \tableofcontents
-% lot
 \cleardoublepage\phantomsection
-\addcontentsline{toc}{chapter}{\listtablename}
 \pagenumbering{roman}
+% lot
+\addcontentsline{toc}{chapter}{\listtablename}
 \listoftables
-% lof
 \cleardoublepage\phantomsection
+% lof
 \addcontentsline{toc}{chapter}{\listfigurename}
 \listoffigures
-\pagenumbering{arabic}
+\cleardoublepage\phantomsection
 % chapter 1
 \chapter{Mở đầu}
+\pagenumbering{arabic}
 \import{chapter_1/}{introduction.tex}
 % chapter 2
 \chapter{Nội dung}

@@ -1,11 +1,11 @@
 \subsubsection{Môi trường cài đặt}
-Bài toán được thực hiện hoàn toàn trên hai môi trường tính toán đám mây là Google Colaboratory hay còn gọi là Google Colab\footnote{https://colab.research.google.com/}, là một sản phẩm từ Google Research, và Kaggle Notebooks\footnote{https://www.kaggle.com/code} được cung cấp bởi Kaggle, một nền tảng cộng đồng trực tuyến cho các nhà khoa học dữ liệu và học máy. Cả hai môi trường này đều miễn phí và cho phép thực thi Python trên nền tảng đám mây, đặc biệt phù hợp với Data analysis, Machine Learning và giáo dục.
+Bài toán được thực hiện hoàn toàn trên hai môi trường tính toán đám mây là Google Colaboratory hay còn gọi là Google Colab\footnote{\url{https://colab.research.google.com/}}, là một sản phẩm từ Google Research, và Kaggle Notebooks\footnote{\url{https://www.kaggle.com/code}} được cung cấp bởi Kaggle, một nền tảng cộng đồng trực tuyến cho các nhà khoa học dữ liệu và học máy. Cả hai môi trường này đều miễn phí và cho phép thực thi Python trên nền tảng đám mây, đặc biệt phù hợp với Data analysis, Machine Learning và giáo dục.
 
 Những môi trường này không cần yêu cầu cài đặt hay cấu hình máy tính, mọi thứ có thể chạy thông qua trình duyệt, ta có thể sử dụng tài nguyên máy tính từ CPU tốc độ cao và cả GPUs và cả TPUs đều được cung cấp.
 
 Sử dụng chúng có những lợi ích ưu việt như: sẵn sàng chạy Python ở bất kỳ thiết bị nào có kết nối Internet mà không cần cài đặt, chia sẻ và làm việc nhóm dễ dàng, sử dụng miễn phí GPU cho các dự án về AI\cite{webpage15}.
 
-Nhóm sử dụng phần cứng được cung cấp bởi Kaggle trong hầu hết thời gian làm bài khoá luận này. Đối với tiền xử lý dữ liệu, nhóm sử dụng máy có thông số:
+Nhóm sử dụng phần cứng được cung cấp bởi Kaggle trong hầu hết thời gian làm bài luận văn này. Đối với tiền xử lý dữ liệu, nhóm sử dụng máy có thông số:
 \begin{itemize}
     \item CPU: 4vCPU Xeon 2.20GHz
     \item Ram: 30GB
@@ -29,7 +29,7 @@ Các thư viện chính mà nhóm đã sử dụng để thực hiện đề tà
 \begin{enumerate}
     \item \textit{Thư viện Tensorflow}
 
-          TensorFlow\footnote{https://www.tensorflow.org/} là một thư viện mã nguồn mở end-to-end được tạo ra chủ yếu dành cho các ứng dụng Học máy. Nó là một thư viện toán học ký hiệu sử dụng luồng dữ liệu và lập trình có thể phân biệt để thực hiện các nhiệm vụ khác nhau, tập trung vào đào tạo và suy luận các mạng neuron sâu (\textit{deep neural network}). Nó cho phép các nhà phát triển tạo các ứng dụng học máy bằng cách sử dụng các công cụ, thư viện và tài nguyên cộng đồng khác nhau\cite{webpage16}.
+          TensorFlow\footnote{\url{https://www.tensorflow.org/}} là một thư viện mã nguồn mở end-to-end được tạo ra chủ yếu dành cho các ứng dụng Học máy. Nó là một thư viện toán học ký hiệu sử dụng luồng dữ liệu và lập trình có thể phân biệt để thực hiện các nhiệm vụ khác nhau, tập trung vào đào tạo và suy luận các mạng neuron sâu (\textit{deep neural network}). Nó cho phép các nhà phát triển tạo các ứng dụng học máy bằng cách sử dụng các công cụ, thư viện và tài nguyên cộng đồng khác nhau\cite{webpage16}.
 
           TensorFlow cho phép xây dựng biểu đồ và cấu trúc luồng dữ liệu để xác định cách dữ liệu di chuyển qua biểu đồ bằng cách lấy đầu vào là một mảng đa chiều được gọi là tensor. Nó cho phép xây dựng một sơ đồ các hoạt động có thể được thực hiện trên các đầu vào này, đi ở một đầu và đến ở đầu kia là đầu ra.
           Kiến trúc của Tensorflow hoạt động trong ba phần:
@@ -41,7 +41,7 @@ Các thư viện chính mà nhóm đã sử dụng để thực hiện đề tà
 
     \item \textit{Thư viện Keras}
 
-          Keras\footnote{https://keras.io/} là một API cấp cao được thiết kế cho Python để triển khai mạng nơ-ron dễ dàng hơn. Nó được phát triển bởi Google.
+          Keras\footnote{\url{https://keras.io/}} là một API cấp cao được thiết kế cho Python để triển khai mạng nơ-ron dễ dàng hơn. Nó được phát triển bởi Google.
 
           Keras có thể chạy trên các thư viện và khung công tác như TensorFlow, Theano, PlaidML, MXNet, CNTK. Chúng đều là những thư viện rất mạnh nhưng cũng khó hiểu để tạo mạng nơ-ron. Mặt khác, Keras rất thân thiện với người mới bắt đầu vì cấu trúc tối thiểu của nó cung cấp cách tạo ra các mô hình học sâu một cách dễ dàng và gọn ghẽ dựa trên TensorFlow hoặc Theano.
 
@@ -49,7 +49,7 @@ Các thư viện chính mà nhóm đã sử dụng để thực hiện đề tà
 
     \item \textit{Thư viện Underthesea}
 
-          Underthesea\footnote{https://github.com/undertheseanlp/underthesea} là một thư viện xử lý ngôn ngữ tự nhiên (NLP) cho tiếng Việt. Nó cung cấp các công cụ và chức năng để phân tích và xử lý văn bản tiếng Việt, bao gồm tách từ, gán nhãn từ loại, phân tích cú pháp và trích xuất thông tin. Thư viện này được xây dựng trên cơ sở của thư viện Python khác là Pyvi và có thể được sử dụng để xử lý các tác vụ NLP trong các ứng dụng và dự án liên quan đến tiếng Việt.
+          Underthesea\footnote{\url{https://github.com/undertheseanlp/underthesea}} là một thư viện xử lý ngôn ngữ tự nhiên (NLP) cho tiếng Việt. Nó cung cấp các công cụ và chức năng để phân tích và xử lý văn bản tiếng Việt, bao gồm tách từ, gán nhãn từ loại, phân tích cú pháp và trích xuất thông tin. Thư viện này được xây dựng trên cơ sở của thư viện Python khác là Pyvi và có thể được sử dụng để xử lý các tác vụ NLP trong các ứng dụng và dự án liên quan đến tiếng Việt.
 
           Dưới đây là một số nhiệm vụ mà thư viện Underthesea có thể thực hiện:
           \begin{itemize}
@@ -69,7 +69,7 @@ Các thư viện chính mà nhóm đã sử dụng để thực hiện đề tà
 
     \item \textit{Thư viện Transformer}
 
-          Transformer\footnote{https://github.com/huggingface/transformers} là một thư viện mã nguồn mở được phát triển bởi Hugging Face. Nó cung cấp các công cụ và mô hình cho xử lý ngôn ngữ tự nhiên (NLP), bao gồm cả việc dịch máy, phân loại văn bản, và sinh văn bản. Thư viện này dựa trên kiến trúc Transformer, một mô hình mạng nơ-ron sử dụng cơ chế tự chú ý để xử lý các chuỗi đầu vào.
+          Transformer\footnote{\url{https://github.com/huggingface/transformers}} là một thư viện mã nguồn mở được phát triển bởi Hugging Face. Nó cung cấp các công cụ và mô hình cho xử lý ngôn ngữ tự nhiên (NLP), bao gồm cả việc dịch máy, phân loại văn bản, và sinh văn bản. Thư viện này dựa trên kiến trúc Transformer, một mô hình mạng nơ-ron sử dụng cơ chế tự chú ý để xử lý các chuỗi đầu vào.
 
           Transformer cho phép sử dụng các mô hình ngôn ngữ đã được huấn luyện trước (pre-trained models) để thực hiện các tác vụ NLP. Các mô hình này đã được huấn luyện trên các tập dữ liệu lớn và có thể được sử dụng để trích xuất thông tin, phân loại văn bản, và thậm chí tạo ra văn bản mới.
 
@@ -77,7 +77,7 @@ Các thư viện chính mà nhóm đã sử dụng để thực hiện đề tà
 
     \item \textit{Thư viện Polars}
 
-          Polars\footnote{https://pola.rs/} \footnote{Ban đầu nhóm đã dùng Pandas để xử lý dữ liệu. Khi quá trình xử lý của nhóm trở nên phức tạp, nhóm đã chuyển qua thư viện Modin (với engine là Ray) để có thể xử lý song song các truy vấn. Nhưng khi nhóm muốn áp dụng các thuật toán có độ phức tạp lớn để xử lý dữ liệu dạng chuỗi, thì điểm yếu của Python được bộc lộ là quá chậm để xử lý toàn bộ tập dữ liệu (khoảng 160 nghìn dòng, với phân phối độ dài chuỗi \ref{figure:dist_number_of_chars}). Vì vậy nhóm quyết định sử dụng thư viện Polars vì có thể viết các thuật toán có độ phức tạp lớn bằng Rust nhằm tối ưu tốc độ xử lý.} là một thư viện mã nguồn mở dùng để xử lý dữ liệu là DataFrame. Polars được viết hoàn toàn bằng ngôn ngữ Rust, sử dụng Apache Arrow làm cấu trúc dữ liệu chính nên hiệu suất và tốc độ thực thi các truy vấn của nó nhanh hơn nhiều so với Pandas. Các tính năng chính của Polars gồm có:
+          Polars\footnote{\url{https://pola.rs/}} \footnote{Ban đầu nhóm đã dùng Pandas để xử lý dữ liệu. Khi quá trình xử lý của nhóm trở nên phức tạp, nhóm đã chuyển qua thư viện Modin (với engine là Ray) để có thể xử lý song song các truy vấn. Nhưng khi nhóm muốn áp dụng các thuật toán có độ phức tạp lớn để xử lý dữ liệu dạng chuỗi, thì điểm yếu của Python được bộc lộ là quá chậm để xử lý toàn bộ tập dữ liệu (khoảng 160 nghìn dòng, với phân phối độ dài chuỗi \ref{figure:dist_number_of_chars}). Vì vậy nhóm quyết định sử dụng thư viện Polars vì có thể viết các thuật toán có độ phức tạp lớn bằng Rust nhằm tối ưu tốc độ xử lý.} là một thư viện mã nguồn mở dùng để xử lý dữ liệu là DataFrame. Polars được viết hoàn toàn bằng ngôn ngữ Rust, sử dụng Apache Arrow làm cấu trúc dữ liệu chính nên hiệu suất và tốc độ thực thi các truy vấn của nó nhanh hơn nhiều so với Pandas. Các tính năng chính của Polars gồm có:
           \begin{itemize}
               \item Được triển khai cả Lazy API và Eager API.
               \item Xử lý song song.
@@ -87,11 +87,13 @@ Các thư viện chính mà nhóm đã sử dụng để thực hiện đề tà
 
     \item \textit{Thự viện SymSpell}
 
-          Symspell\footnote{https://github.com/wolfgarbe/SymSpell} là thư viện sửa lỗi chính tả, được đánh giá là nhanh hơn 1 triệu lần so với thuật toán sửa lỗi chính tả mà Peter Norvig đề xuất, nhờ vào việc sử dụng thuật toán sửa lỗi chính tả xoá đối xứng (\textit{symetric delete spelling corrector algorithm}). Thuật toán sửa lỗi chính tả dùng khoảng cách Damerau-Levenshtein để tính toán độ tương tự giữa hai chuỗi, với các tính năng chính:
-          \begin{itemize}
-              \item Sửa lỗi chính tả từ.
-              \item Sửa lỗi chính tả trong câu.
-              \item Tách các từ trong đoạn văn bản nhiễu (\textit{noisy text})\\(vd: \texttt{thequickbrownfoxjumpsoverthelazydog} $\to$ \texttt{he quick brown fox jumps over the lazy dog})
-          \end{itemize}
+          Symspell\footnote{\url{https://github.com/wolfgarbe/SymSpell}} là thư viện sửa lỗi chính tả, được đánh giá là nhanh hơn 1 triệu lần so với thuật toán sửa lỗi chính tả mà Peter Norvig đề xuất, nhờ vào việc sử dụng thuật toán sửa lỗi chính tả xoá đối xứng (\textit{symetric delete spelling corrector algorithm}). Thuật toán sửa lỗi chính tả dùng khoảng cách Damerau-Levenshtein để tính toán độ tương tự giữa hai chuỗi, với các tính năng chính:
+          \begin{sloppypar}
+              \begin{itemize}
+                  \item Sửa lỗi chính tả từ.
+                  \item Sửa lỗi chính tả trong câu.
+                  \item Tách các từ trong đoạn văn bản nhiễu (\textit{noisy text})\\(vd: \texttt{thequickbrownfoxjumpsoverthelazydog} $\to$ \texttt{he quick brown fox jumps over the lazy dog})
+              \end{itemize}
+          \end{sloppypar}
 \end{enumerate}
 

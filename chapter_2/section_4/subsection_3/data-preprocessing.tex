@@ -7,17 +7,22 @@ Số lượng bình luận mỗi nhãn được thể hiện dưới dạng barp
     \centering
     \begin{subfigure}[t]{0.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{image/number_of_records_has_label.png}
+        \includegraphics[width=\textwidth]{chapter_2/image/num_records_has_label.pdf}
         \caption{Số lượng bình luận tiêu cực (có nhãn) và không tiêu cực}
     \end{subfigure}%
     \begin{subfigure}[t]{0.7\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{image/num_records_per_label.png}
+        \includegraphics[width=\textwidth]{chapter_2/image/num_records_per_label.pdf}
         \caption{Số lượng bình luận tiêu cực theo từng nhãn}
     \end{subfigure}\\
-    \begin{subfigure}{0.6\textwidth}
+    \begin{subfigure}{0.5\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{image/labels_corr.png}
+        \includegraphics[width=\textwidth]{chapter_2/image/num_records_per_label_without_toxic.pdf}
+        \caption{Số lượng bình luận tiêu cực không có nhãn toxic}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{chapter_2/image/labels_corr.pdf}
         \caption{Tương quan giữa các nhãn}
     \end{subfigure}%
     \caption{Tương quan giữa số lượng bình luận và nhãn trong tập dữ liệu}
@@ -33,7 +38,7 @@ Dựa vào các mối tương quan trên, có thể đưa ra một số kết lu
 Với kết luận này, có thể dự đoán rằng mô hình được huấn luyện có khả năng bắt được những từ ngữ tục tĩu với độ nhạy tốt.
 
 \subsubsection{Tiền xử lý dữ liệu tiếng Anh}\label{english-preprocess}
-Vì dữ liệu là các bình luận trên Wikipedia, nên có một vài điểm đặc biệt trong các bình luận này so với các bình luận thông thường trên các nền tảng khác, ví dụ như địa chỉ IP, các phím tắt (\textit{shortcuts}) của Wikipedia\footnote{https://en.wikipedia.org/wiki/Wikipedia:Shortcut\_index} \footnote{https://en.wikipedia.org/wiki/Wikipedia:Namespace},\dots Nhóm đã đề xuất một chuỗi các thao tác xử lý nhằm giảm bớt các chuỗi không cần thiết, cũng như chuyển đổi các ký tự đặc biệt thành các từ ngữ để máy có thể hiểu được. Chuỗi thao tác như sau:
+Vì dữ liệu là các bình luận trên Wikipedia, nên có một vài điểm đặc biệt trong các bình luận này so với các bình luận thông thường trên các nền tảng khác, ví dụ như địa chỉ IP, các phím tắt (\textit{shortcuts}) của Wikipedia\footnote{\url{https://en.wikipedia.org/wiki/Wikipedia:Shortcut_index}} \footnote{\url{https://en.wikipedia.org/wiki/Wikipedia:Namespace}},\dots Nhóm đã đề xuất một chuỗi các thao tác xử lý nhằm giảm bớt các chuỗi không cần thiết, cũng như chuyển đổi các ký tự đặc biệt thành các từ ngữ để máy có thể hiểu được. Chuỗi thao tác như sau:
 \begin{enumerate}
     \item Chuyển các địa chỉ IP thành chuỗi \texttt{(ip address)}.
     \item Chuyển các email thành chuỗi \texttt{(email)}.
@@ -72,7 +77,7 @@ Sau khi áp dụng các thao tác trên, dữ liệu chuỗi sẽ còn lại cá
 Mục tiêu của thuật toán trên nhằm giữ lại và trích xuất nhiều thông tin nhất có thể từ những từ vô nghĩa. Đối với các từ có nghĩa, nhóm nhận thấy các ký tự như - (gạch nối), ' (ngoặc đơn),\dots thường không bổ sung ý nghĩa cho từ. Trong nhiều trường hợp nó còn là lỗi sai chính tả (ví dụ như sử dụng dấu câu nhưng không có khoảng trắng: \texttt{hello,word}), hay việc cố tình thêm dấu câu giữa các từ để tránh các bộ lọc thô tục (ví dụ: \texttt{f.u.c.k}). Vì vậy bước 1 của thuật toán trên là thay thế toàn bộ các ký tự đó bằng khoảng trắng. Bước 2, 3 sẽ kiểm tra tính có nghĩa của toàn bộ các từ mới được tạo thành. Trường hợp có nghĩa thì thuật toán dừng lại và trả về các từ có nghĩa; nếu không thường sẽ rơi vào hai trường hợp, hoặc sai chính tả quá nặng (ví dụ: \texttt{hel\textvisiblespace llowo\textvisiblespace rld}), hoặc là các dạng spam từ (ví dụ: \texttt{hellooooooooooo}). Vì vậy bước tiếp theo sẽ xoá toàn bộ các khoảng trắng còn lại, sau đó sẽ chống spam bằng cách xoá toàn bộ các ký tự gần nhau bị trùng quá 2 lần\footnote{Trong tiếng Anh, tần suất xuất hiện hai ký tự giống nhau là rất thấp (bản đồ nhiệt \ref{figure:english_bigram_frequency}), dẫn đến việc xuất hiện ba ký tự giống nhau cực kỳ thấp (\texttt{tr\underline{ee} \underline{e}nd}). Đối với tiếng Việt chỉ có duy nhất cụm \texttt{oo} là hai ký tự gần nhau có nghĩa, còn lại các cụm \texttt{aa ee dd oo} là do viết sai chính tả hoặc sử dụng bảng mã Telex khi gõ tiếng Việt.}, cuối cùng dùng thuật toán Symspell để tách các từ con ra. (xem kết quả thử nghiệm tại \ref{spelling-corrector-algorithm-result})
 
 \subsubsection{Dịch dữ liệu tiếng Anh sang tiếng Việt}
-Nhóm đã thử các công cụ dịch thuật khác nhau như MyMemory Translator\footnote{https://mymemory.translated.net/} của translated Labs và gpt-3.5-turbo\footnote{https://openai.com/chatgpt/} của OpenAI nhưng các công cụ này đều bị giới hạn số lượng từ có thể dịch trong một ngày (5000 ký tự đối với MyMemory và 200 requests đối với mô hình gpt-3.5-turbo). Nhóm cũng đã tham khảo công cụ dịch Anh-Việt là mô hình envit5-translation\footnote{https://huggingface.co/VietAI/envit5-translation} của VietAI (được xem là tốt hơn Google Translate vào năm 2022\footnote{https://github.com/vietai/mTet}), mô hình này cho ra kết quả dịch rất tốt đối với những câu ngắn và không có ký tự đặc biệt; nhưng đối với những câu đủ dài (> 1000 ký tự), hoặc có quá nhiều ký tự đặc biệt, hoặc dấu câu bị thiếu, thì mô hình tốn rất nhiều thời gian để chạy và cho ra kết quả không thể sử dụng được. Do đó, nhóm quyết định sử dụng công cụ dịch tài liệu của Google Translate, do Google Cloud Translation cung cấp vì độ chính xác chấp nhận được và gần như không giới hạn (10MB một văn bản)\footnote{Thực tế khi nhóm sử dụng file excel (.xlsx), với hai cột là cột ``index'' và cột ``comment\_text'', thì giới hạn là 2MB một văn bản.}.
+Nhóm đã thử các công cụ dịch thuật khác nhau như MyMemory Translator\footnote{\url{https://mymemory.translated.net/}} của translated Labs và gpt-3.5-turbo\footnote{\url{https://openai.com/chatgpt/}} của OpenAI nhưng các công cụ này đều bị giới hạn số lượng từ có thể dịch trong một ngày (5000 ký tự đối với MyMemory và 200 requests đối với mô hình gpt-3.5-turbo). Nhóm cũng đã tham khảo công cụ dịch Anh-Việt là mô hình envit5-translation\footnote{\url{https://huggingface.co/VietAI/envit5-translation}} của VietAI (được xem là tốt hơn Google Translate vào năm 2022\footnote{\url{https://github.com/vietai/mTet}}), mô hình này cho ra kết quả dịch rất tốt đối với những câu ngắn và không có ký tự đặc biệt; nhưng đối với những câu đủ dài (> 1000 ký tự), hoặc có quá nhiều ký tự đặc biệt, hoặc dấu câu bị thiếu, thì mô hình tốn rất nhiều thời gian để chạy và cho ra kết quả không thể sử dụng được. Do đó, nhóm quyết định sử dụng công cụ dịch tài liệu của Google Translate, do Google Cloud Translation cung cấp vì độ chính xác chấp nhận được và gần như không giới hạn (10MB một văn bản)\footnote{Thực tế khi nhóm sử dụng file excel (.xlsx), với hai cột là cột ``index'' và cột ``comment\_text'', thì giới hạn là 2MB một văn bản.}.
 
 \subsubsection{Ghép từ tiếng Việt}\label{compound-words}
 Tiếng Việt là ngôn ngữ có sử dụng từ ghép nên nhóm đã sử dụng công cụ ghép từ của thư viện Underthesea để ghép các từ ghép (vd: \texttt{Chàng trai 9X Quảng Trị khởi nghiệp từ nấm sò} $\to$ \texttt{Chàng\_trai 9X Quảng\_Trị khởi\_nghiệp từ nấm sò}).

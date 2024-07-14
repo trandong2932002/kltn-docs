@@ -151,8 +151,10 @@ Tuy nhiên khi ứng dụng ma trận này trực tiếp, chúng ta sẽ gặp v
 \subsubsection{Mô hình Fasttext}
 Các phương pháp như Word2vec và GloVe tạo ra các vector khác nhau đại diện cho từ trong kho các từ huấn luyện. Tuy nhiên các phương pháp này lại không thể tìm được sự liên kết giữa các từ dựa trên sự giống nhau giữa các từ. Có nhiều ngôn ngữ mà các từ ngữ đồng nghĩa được biến đổi từ một từ ban đầu, từ đó chúng ta có thể cải thiện được mô hình vector của những ngôn ngữ đó bằng thông tin ở mức kí tự.
 
-Fasttext có thể được coi là một sự mở rộng của Word2vec, tuy nhiên khác với Word2vec hoạt động ở mức độ các từ riêng biệt, Fasttext hoạt động ở mức n-gram kí tự đối với mỗi từ. Ví dụ chúng ta có từ ``apple'' và $n = 3$ thì n-gram của từ này là: <ap, app, ppl, ple, le> và <apple>. Và vector đại diện cho từ ``apple'' có thể được tính bằng tổng các vector n-gram của chính nó.
-
+\begin{sloppypar}
+    Fasttext có thể được coi là một sự mở rộng của Word2vec, tuy nhiên khác với Word2vec hoạt động ở mức độ các từ riêng biệt, Fasttext hoạt động ở mức n-gram kí tự đối với mỗi từ. Ví dụ chúng ta có từ ``apple'' và $n = 3$ thì n-gram của từ này là: <ap, app, ppl, ple, le> và <apple>. Và vector đại diện cho từ ``apple'' có thể được tính bằng tổng các vector n-gram của chính nó.
+\end{sloppypar}
+    
 Giống với Word2vec, Fasttext cũng hoạt động dựa trên 2 phương pháp:
 \begin{itemize}
     \item Continous Bag Of Words (CBOW): Cách thức hoạt động tương tự như Word2vec, nhưng với mỗi từ được tính bằng n-gram. Ví dụ chúng ta có câu: ``I want to learn fast text'', các từ ``I'', ``want'', ``to'', ``fast'', ``text'' được cung cấp để mô hình dự đoán từ ``learn'' (hình \ref{figure:fasttext-cbow}).

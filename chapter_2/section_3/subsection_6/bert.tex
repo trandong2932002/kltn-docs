@@ -28,7 +28,7 @@ Tuy nhiên, với sự xuất hiện của BERT, mô hình ngôn ngữ giờ đ�
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{image/BERT_comparisons.pdf}
-    \caption{Sự khác nhau giữa các kiến trúc mô hình pre-trained. BERT sử dụng bidirectional Transformer. OpenAI GPT sử dụng Transformer theo hướng trái sang phải. ELMo sử dụng kết hợp đầu ra của hai LSTM được huấn luyện độc lập theo hướng trái sang phải và phải sang trái. Trong ba mô hình này, chỉ có BERT học được biểu diễn của từ ngữ phụ thuộc lẫn nhau vào cả ngữ cảnh trước và sau ở tất cả các layer. \cite{bert}}
+    \caption[Sự khác nhau giữa các kiến trúc mô hình pre-trained]{Sự khác nhau giữa các kiến trúc mô hình pre-trained. BERT sử dụng bidirectional Transformer. OpenAI GPT sử dụng Transformer theo hướng trái sang phải. ELMo sử dụng kết hợp đầu ra của hai LSTM được huấn luyện độc lập theo hướng trái sang phải và phải sang trái. Trong ba mô hình này, chỉ có BERT học được biểu diễn của từ ngữ phụ thuộc lẫn nhau vào cả ngữ cảnh trước và sau ở tất cả các layer. \cite{bert}}
     \label{figure:BERT_comparisons}
 \end{figure}
 
@@ -91,19 +91,21 @@ Ví dụ, giả sử chúng ta đang tạo một ứng dụng trả lời câu h
 
 Ví dụ:
 
-\begin{itemize}
-    \item Input Question:
-          % sự kết tủa của giọt nước khi va chạm với những tỉnh thể băng xảy ra ở đâu để tạo thành tuyết?
-          \texttt{Where do water droplets collide with ice crystals\\ to form precipitation?}
+\begin{sloppypar}
+    \begin{itemize}
+        \item Input Question:
+              % sự kết tủa của giọt nước khi va chạm với những tỉnh thể băng xảy ra ở đâu để tạo thành tuyết?
+              \texttt{Where do water droplets collide with ice crystals to form precipitation?}
 
-    \item Input Paragraph:
-          % sự kết tủa của giọt nước để trở thành tuyết xảy ra khi va chạm với những hạt mưa hoặc tỉnh thể băng ở bên trong đám mây.
-          \texttt{[\dots] Precipitation forms as smaller droplets\\ coalesce via collision with other rain drops or ice crystals\\ within a cloud. [\dots]}
+        \item Input Paragraph:
+              % sự kết tủa của giọt nước để trở thành tuyết xảy ra khi va chạm với những hạt mưa hoặc tỉnh thể băng ở bên trong đám mây.
+              \texttt{[\dots] Precipitation forms as smaller droplets coalesce via collision with other rain drops or ice crystals within a cloud. [\dots]}
 
-    \item Output Answer:
-          % ở bên trong đám mây
-          \texttt{within a cloud}
-\end{itemize}
+        \item Output Answer:
+              % ở bên trong đám mây
+              \texttt{within a cloud}
+    \end{itemize}
+\end{sloppypar}
 
 Tương tự như các tác vụ liên quan đến cặp câu được đề cập ở phần dự đoán câu tiếp theo, ở phần này câu hỏi sẽ trở thành câu đầu tiên và đoạn văn là câu thứ hai trong chuỗi đầu vào. Tuy nhiên, lần này có thêm hai tham số mới được học trong quá trình tinh chỉnh: một vector bắt đầu và một vector kết thúc.
 
@@ -119,14 +121,14 @@ Như vậy ở kiến trúc BERT Large chúng ta tăng gấp đôi số layer, t
 % https://viblo.asia/p/bert-roberta-phobert-bertweet-ung-dung-state-of-the-art-pre-trained-model-cho-bai-toan-phan-loai-van-ban-4P856PEWZY3
 \subsubsection{PhoBERT}
 
-PhoBERT là mô hình ngôn ngữ tiền huấn luyện (pre-trained language model) đầu tiên được phát triển dành riêng cho tiếng Việt. Mô hình do VinAI giới thiệu vào năm 2020 này được xây dựng dựa trên kiến trúc RoBERTa\footnote{https://doi.org/10.48550/arXiv.1907.11692} của Facebook, một phiên bản cải tiến so với BERT, và được huấn luyện trên một tập dữ liệu khổng lồ gồm văn bản tiếng Việt\cite{webpage21}.
+PhoBERT là mô hình ngôn ngữ tiền huấn luyện (pre-trained language model) đầu tiên được phát triển dành riêng cho tiếng Việt. Mô hình do VinAI giới thiệu vào năm 2020 này được xây dựng dựa trên kiến trúc RoBERTa\footnote{\url{https://doi.org/10.48550/arXiv.1907.11692}} của Facebook, một phiên bản cải tiến so với BERT, và được huấn luyện trên một tập dữ liệu khổng lồ gồm văn bản tiếng Việt\cite{webpage21}.
 
 Những đặc điểm chính của PhoBERT bao gồm:
 \begin{itemize}
     \item Tiền huấn luyện đơn ngôn ngữ (Monolingual language model): PhoBERT chỉ được huấn luyện trên dữ liệu tiếng Việt, giúp mô hình hiểu và xử lý ngôn ngữ tiếng Việt một cách hiệu quả hơn.
     \item Kiến trúc RoBERTa: PhoBERT sử dụng kiến trúc RoBERTa, một phiên bản cải tiến của BERT, giúp mô hình đạt được hiệu suất tốt hơn trong nhiều nhiệm vụ xử lý ngôn ngữ tự nhiên (NLP).
     \item Tập dữ liệu khổng lồ: PhoBERT được huấn luyện trên một tập dữ liệu khổng lồ gồm văn bản tiếng Việt, bao gồm khoảng 1GB dữ liệu Wikipedia tiếng Việt và 20GB nguồn tin tức tiếng Việt.
-    \item Bộ chia tách từ RDRSegmenter: PhoBERT sử dụng bộ chia tách từ RDRSegmenter của VnCoreNLP\footnote{https://github.com/vncorenlp/VnCoreNLP} để tách từ cho dữ liệu đầu vào trước khi đưa vào mô hình.
+    \item Bộ chia tách từ RDRSegmenter: PhoBERT sử dụng bộ chia tách từ RDRSegmenter của VnCoreNLP\footnote{\url{https://github.com/vncorenlp/VnCoreNLP}} để tách từ cho dữ liệu đầu vào trước khi đưa vào mô hình.
     \item Nhiệm vụ huấn luyện: Vì tiếp cận theo kiến trúc RoBERTa, PhoBERT chỉ sử dụng nhiệm vụ Masked Language Model (MLM) để huấn luyện, giúp mô hình học cách dự đoán từ thiếu trong một câu dựa vào các từ ngữ cảnh.
 \end{itemize}
 

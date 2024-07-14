@@ -76,7 +76,6 @@ Kết quả mô hình cho ra kết quả tốt với các thông số cho tập 
 Trong quá trình huấn luyện sử dụng mô hình PhoBERT, nhóm có gặp phải một số thuận lợi và khó khăn. Về thuận lợi, mô hình PhoBERT cho ra kết quả rất tốt và chính xác, không cần phải tinh chỉnh mô hình quá nhiều. Về mặt khó khăn và hạn chế, mô hình PhoBERT khá lớn (\textasciitilde 519MB, hơn gấp đôi so với mô hình LSTM) và có thời gian chạy khá lâu so với mô hình RNN.
 
 \subsubsection{Đánh giá giữa các mô hình}
-Có thể thấy kết quả của các mô hình là rất tốt (chỉ số accuracy đều lớn hơn 0.98), với các thông số precision, recall và accuracy của mô hình PhoBert là tốt nhất. Tuy nhiên thời gian huấn luyện của mô hình PhoBert là tệ nhất (hơn 10 giờ), gấp hơn 20 lần so với hai mô hình RNN còn lại (dưới 30 phút); thời gian dự đoán (\textit{inference time}) của mô hình PhoBert cũng lâu hơn, gấp hơn 10 lần so với mô hai mô hình còn lại.
 \begin{table}[htb]
     \centering
     \caption{Đánh giá giữa các mô hình}
@@ -95,5 +94,7 @@ Có thể thấy kết quả của các mô hình là rất tốt (chỉ số ac
         \end{tablenotes}
     \end{threeparttable}
 \end{table}
+
+Có thể thấy kết quả của các mô hình là rất tốt (chỉ số accuracy đều lớn hơn 0.98), với các thông số precision, recall và accuracy của mô hình PhoBert là tốt nhất. Tuy nhiên thời gian huấn luyện của mô hình PhoBert là tệ nhất (hơn 10 giờ), gấp hơn 20 lần so với hai mô hình RNN còn lại (dưới 30 phút); thời gian dự đoán (\textit{inference time}) của mô hình PhoBert cũng lâu hơn, gấp hơn 10 lần so với mô hai mô hình còn lại.
 
 Từ các kết quả trên, nếu môi trường sử dụng có tần suất chạy mô hình lớn và cần độ trễ thấp (vd: tin nhắn của hội nhóm, tin nhắn trong live streaming, xử lý tập dữ liệu), nên chọn mô hình RNN để tối ưu tốc độ xử lý. Đối với môi trường không có tần suất chạy mô hình lớn, thì ta có thể chọn mô hình PhoBERT để tối ưu độ chính xác.
