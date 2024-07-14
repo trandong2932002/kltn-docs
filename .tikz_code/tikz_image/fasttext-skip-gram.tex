@@ -1,20 +1,20 @@
 \begin{tikzpicture}
     \begin{scope}[every node/.style={draw,rectangle,text width=1.8cm,minimum height=1.5cm,align=center}]
-        \node (A1) at (9,0) {text};
-        \node (A2) at (9,2) {fast};
-        \node (A3) at (9,4) {to};
-        \node (A4) at (9,6) {want};
-        \node (A5) at (9,8) {I};
+        \node (A5) at (0,-9) {I};
+        \node (A4) at (2,-9) {want};
+        \node (A3) at (4,-9) {to};
+        \node (A2) at (6,-9) {fast};
+        \node (A1) at (8,-9) {text};
 
-        \node (B) at (5,4) {};
-        \node (C) at (0,4) {<lea,arn> learn};
+        \node (B) at (4,-4) {};
+        \node (C) at (4,0) {<lea,arn> learn};
 
-        \draw [<-] (A1.west)--(B);
-        \draw [<-] (A2.west)--(B);
-        \draw [<-] (A3.west)--(B);
-        \draw [<-] (A4.west)--(B);
-        \draw [<-] (A5.west)--(B);
+        \draw [<-] (A1.north)--(B);
+        \draw [<-] (A2.north)--(B);
+        \draw [<-] (A3.north)--(B);
+        \draw [<-] (A4.north)--(B);
+        \draw [<-] (A5.north)--(B);
 
-        \draw [<-] (B.west)--(C);
+        \draw [<-] (B.north)--(C);
     \end{scope}
 \end{tikzpicture}

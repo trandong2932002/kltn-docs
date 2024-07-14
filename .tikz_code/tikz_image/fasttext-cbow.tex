@@ -1,20 +1,20 @@
 \begin{tikzpicture}
     \begin{scope}[every node/.style={draw,rectangle,text width=1.8cm,minimum height=1.5cm,align=center}]
-    \node (A1) at (0,0) {<tex,ext> text};
-    \node (A2) at (0,2) {<fas,ast> fast};
-    \node (A3) at (0,4) {to};
-    \node (A4) at (0,6) {<wan,ant> want};
-    \node (A5) at (0,8) {I};
-    
-    \node (B) at (5,4) {};
-    \node (C) at (9,4) {learn};
-    
-    \draw [->] (A1)--(B);
-    \draw [->] (A2)--(B);
-    \draw [->] (A3)--(B);
-    \draw [->] (A4)--(B);
-    \draw [->] (A5)--(B);
-    
-    \draw [->] (B)--(C);
-\end{scope}
+        \node (A5) at (0,0) {I};
+        \node (A4) at (2,0) {<wan,ant> want};
+        \node (A3) at (4,0) {to};
+        \node (A2) at (6,0) {<fas,ast> fast};
+        \node (A1) at (8,0) {<tex,ext> text};
+
+        \node (B) at (4,-5) {};
+        \node (C) at (4,-9) {learn};
+
+        \draw [->] (A1)--(B);
+        \draw [->] (A2)--(B);
+        \draw [->] (A3)--(B);
+        \draw [->] (A4)--(B);
+        \draw [->] (A5)--(B);
+
+        \draw [->] (B)--(C);
+    \end{scope}
 \end{tikzpicture}
