@@ -91,21 +91,19 @@ Ví dụ, giả sử chúng ta đang tạo một ứng dụng trả lời câu h
 
 Ví dụ:
 
-\begin{sloppypar}
-    \begin{itemize}
-        \item Input Question:
-              % sự kết tủa của giọt nước khi va chạm với những tỉnh thể băng xảy ra ở đâu để tạo thành tuyết?
-              \texttt{Where do water droplets collide with ice crystals to form precipitation?}
+\begin{itemize}
+    \item Input Question:
+            % sự kết tủa của giọt nước khi va chạm với những tỉnh thể băng xảy ra ở đâu để tạo thành tuyết?
+            {\raggedright\texttt{Where do water droplets collide with ice crystals to form precipitation?}\par}
 
-        \item Input Paragraph:
-              % sự kết tủa của giọt nước để trở thành tuyết xảy ra khi va chạm với những hạt mưa hoặc tỉnh thể băng ở bên trong đám mây.
-              \texttt{[\dots] Precipitation forms as smaller droplets coalesce via collision with other rain drops or ice crystals within a cloud. [\dots]}
+    \item Input Paragraph:
+            % sự kết tủa của giọt nước để trở thành tuyết xảy ra khi va chạm với những hạt mưa hoặc tỉnh thể băng ở bên trong đám mây.
+            {\raggedright\texttt{[\dots] Precipitation forms as smaller droplets coalesce via collision with other rain drops or ice crystals within a cloud. [\dots]}\par}
 
-        \item Output Answer:
-              % ở bên trong đám mây
-              \texttt{within a cloud}
-    \end{itemize}
-\end{sloppypar}
+    \item Output Answer:
+            % ở bên trong đám mây
+            \texttt{within a cloud}
+\end{itemize}
 
 Tương tự như các tác vụ liên quan đến cặp câu được đề cập ở phần dự đoán câu tiếp theo, ở phần này câu hỏi sẽ trở thành câu đầu tiên và đoạn văn là câu thứ hai trong chuỗi đầu vào. Tuy nhiên, lần này có thêm hai tham số mới được học trong quá trình tinh chỉnh: một vector bắt đầu và một vector kết thúc.
 

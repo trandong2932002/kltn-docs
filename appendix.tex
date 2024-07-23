@@ -1,43 +1,54 @@
-\chapter*{Phân tích khám phá dữ liệu}
-\begin{figure}[htb]
+\section*{Phân tích khám phá dữ liệu}
+\begin{figure}[htb!]
     \centering
-    \begin{subfigure}[t]{0.5\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{chapter_2/image/dist_num_chars.pdf}
-        \caption{Phân bố của số ký tự}
-    \end{subfigure}%
-    \begin{subfigure}[t]{0.5\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{chapter_2/image/dist_num_chars_by_has_label.pdf}
-        \caption{Phân bố của số ký tự theo hai loại có nhãn và không có nhãn}
-    \end{subfigure}\\
-    \begin{subfigure}{\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{chapter_2/image/dist_num_chars_per_label.pdf}
-        \caption{Phân bố của số ký tự theo từng nhãn}
-    \end{subfigure}%
-    \caption{Các phân bố của số ký tự}
-    \label{figure:dist_number_of_chars}
+    \includegraphics[width=\textwidth]{chapter_2/image/dist_num_chars_and_words.pdf}
+    \caption{Phân bố dữ liệu theo số ký tự và theo số từ}
+    \label{figure:dist_num_chars_and_words}
+\end{figure}
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=\textwidth]{chapter_2/image/dist_num_chars_and_words_by_has_label.pdf}
+    \caption{Phân bố dữ liệu có/không có nhãn theo số ký tự và theo số từ}
+\end{figure}
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=\textwidth]{chapter_2/image/dist_num_chars_and_words_per_num_labels.pdf}
+    \caption{Phân bố dữ liệu có/không có nhãn theo số ký tự và theo số từ}
+\end{figure}
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=\textwidth]{chapter_2/image/dist_num_chars_per_label.pdf}
+    \caption{Phân bố dữ liệu đối với từng nhãn theo số ký tự}
+\end{figure}
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=\textwidth]{chapter_2/image/dist_num_words_per_label.pdf}
+    \caption{Phân bố dữ liệu đối với từng nhãn theo số từ}
+\end{figure}
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=\textwidth]{chapter_2/image/num_records_per_label_without_one_label.pdf}
+    \caption{Phân bố dữ liệu đối với từng nhãn theo số từ}
 \end{figure}
 
-\chapter*{Dữ liệu huấn luyện}
+\clearpage
+\section*{Dữ liệu huấn luyện}
 \begin{center}
     \textcolor{orange}{\faExclamationTriangle\. CẢNH BÁO: Bắt đầu từ đây sẽ có nhiều từ ngữ được xem là xúc phạm.}
 \end{center}
-Mẫu tập dữ liệu tiếng Anh và mẫu tập dữ liệu tiếng Việt.
-\begin{table}[htb]
-    \centering
+% Mẫu tập dữ liệu tiếng Anh và mẫu tập dữ liệu tiếng Việt.
+\begin{table}[htb!]
     \rotatebox{90}{%
-        \begin{minipage}{\textheight}
+        \begin{minipage}{0.88\textheight}
             \centering
             \caption{Mẫu dữ liệu tiếng Anh (32 dòng)}
             \label{table:dataset-english}
             \RemoveFromHook{env/tabularx/before}[fontsize]
             \fontsize{8pt}{12pt}\selectfont
             \begin{threeparttable}
-                \begin{tabularx}{\textwidth}{L{0.8} L{6.6} C{0.1} C{0.1} C{0.1} C{0.1} C{0.1} C{0.1}}
+                \begin{tabularx}{\textwidth}{L{0.95} L{6.25} C{0.135} C{0.135} C{0.135} C{0.135} C{0.135} C{0.135}}
                     \toprule
-                    \textbf{id}      & \textbf{comment\_text}                                                                                                           & \textbf{l1} & \textbf{l2} & \textbf{l3} & \textbf{l4} & \textbf{l5} & \textbf{l6} \\\midrule
+                    \textbf{id}      & \textbf{comment\_text}                                                                                                           & \textbf{L1} & \textbf{L2} & \textbf{L3} & \textbf{L4} & \textbf{L5} & \textbf{L6} \\\midrule
                     0002bcb3da6cb337 & COCKSUCKER BEFORE YOU PISS AROUND ON MY WORK                                                                                     & 1           & 1           & 1           & 0           & 1           & 0           \\
                     00190820581d90ce & FUCK YOUR FILTHY MOTHER IN THE ASS, DRY!                                                                                         & 1           & 0           & 1           & 0           & 1           & 0           \\
                     0020e7119b96eeeb & Stupid peace of shit stop deleting my stuff asshole go die and fall in a hole go to hell!                                        & 1           & 1           & 1           & 0           & 1           & 0           \\
@@ -74,26 +85,25 @@ Mẫu tập dữ liệu tiếng Anh và mẫu tập dữ liệu tiếng Việt.
                 \end{tabularx}
                 \begin{tablenotes}
                     \fontsize{8pt}{12pt}\selectfont
-                    \item \textbf{l1, l2, l3, l4, l5, l6} lần lượt là các nhãn \textbf{toxic, severe\_toxic, obscene, threat, insult, identity\_hate}
+                    \item \textbf{L1, L2, L3, L4, L5, L6} lần lượt là các nhãn \textbf{toxic, severe\_toxic, obscene, threat, insult, identity\_hate}
                 \end{tablenotes}
             \end{threeparttable}
         \end{minipage}%
     }
 \end{table}
 
-\begin{table}[htb]
-    \centering
+\begin{table}[htb!]
     \rotatebox{90}{%
-        \begin{minipage}{\textheight}
+        \begin{minipage}{0.88\textheight}
             \centering
             \caption{Mẫu dữ liệu sau khi xử lý và dịch sang tiếng Việt (32 dòng)}
             \label{table:dataset-vietnamese}
             \RemoveFromHook{env/tabularx/before}[fontsize]
             \fontsize{8pt}{12pt}\selectfont
             \begin{threeparttable}
-                \begin{tabularx}{\textwidth}{L{0.8} L{6.6} C{0.1} C{0.1} C{0.1} C{0.1} C{0.1} C{0.1}}
+                \begin{tabularx}{\textwidth}{L{0.95} L{6.25} C{0.135} C{0.135} C{0.135} C{0.135} C{0.135} C{0.135}}
                     \toprule
-                    \textbf{id}      & \textbf{comment\_text}                                                                                                            & \textbf{l1} & \textbf{l2} & \textbf{l3} & \textbf{l4} & \textbf{l5} & \textbf{l6} \\\midrule
+                    \textbf{id}      & \textbf{comment\_text}                                                                                                            & \textbf{L1} & \textbf{L2} & \textbf{L3} & \textbf{L4} & \textbf{L5} & \textbf{L6} \\\midrule
                     0002bcb3da6cb337 & đồ khốn nạn trước khi đi tiểu vào công việc của tôi                                                                               & 1           & 1           & 1           & 0           & 1           & 0           \\
                     00190820581d90ce & Đụ mẹ bẩn thỉu của ngươi vào mông đi , khô khan !                                                                                 & 1           & 0           & 1           & 0           & 1           & 0           \\
                     0020e7119b96eeeb & ngu ngốc yên bình chết tiệt đừng xóa đồ của tôi nữa đồ khốn kiếp đi chết và rơi xuống hố đi xuống địa ngục đi !                   & 1           & 1           & 1           & 0           & 1           & 0           \\
@@ -130,7 +140,7 @@ Mẫu tập dữ liệu tiếng Anh và mẫu tập dữ liệu tiếng Việt.
                 \end{tabularx}
                 \begin{tablenotes}
                     \fontsize{8pt}{12pt}\selectfont
-                    \item \textbf{l1, l2, l3, l4, l5, l6} lần lượt là các nhãn \textbf{toxic, severe\_toxic, obscene, threat, insult, identity\_hate}
+                    \item \textbf{L1, L2, L3, L4, L5, L6} lần lượt là các nhãn \textbf{toxic, severe\_toxic, obscene, threat, insult, identity\_hate}
                 \end{tablenotes}
             \end{threeparttable}
         \end{minipage}%
@@ -138,7 +148,7 @@ Mẫu tập dữ liệu tiếng Anh và mẫu tập dữ liệu tiếng Việt.
 \end{table}
 \clearpage
 
-\chapter*{Dữ liệu bên lề}
+\section*{Dữ liệu bên lề}
 \subsection*{Dữ liệu liên quan đến tiếng Anh}
 \begin{table}[htb]
     \centering
@@ -192,9 +202,9 @@ Biểu đồ tần suất của 2 từ liền kề trong tiếng Anh, là một 
         \bottomrule
     \end{tabular}
 \end{table}
-\footnotetext{\url{https://en.wikipedia.org/wiki/Wikipedia:Shortcut\_index}}
-\footnotetext{\url{https://en.wikipedia.org/wiki/Wikipedia:Namespace}}
-\footnotetext{\url{https://en.wikipedia.org/wiki/Wikipedia:Namespace}}
+\footnotetext[2]{\url{https://en.wikipedia.org/wiki/Wikipedia:Shortcut\_index}}
+\footnotetext[3]{\url{https://en.wikipedia.org/wiki/Wikipedia:Namespace}}
+\footnotetext[4]{\url{https://en.wikipedia.org/wiki/Wikipedia:Namespace}}
 
 \newpage
 \subsection*{Dữ liệu liên quan đến Unicode}
