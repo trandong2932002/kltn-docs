@@ -32,7 +32,7 @@ Tuy nhiên, với sự xuất hiện của BERT, mô hình ngôn ngữ giờ đ�
     \label{figure:BERT_comparisons}
 \end{figure}
 
-Thay vì dự đoán từ tiếp theo trong chuỗi, BERT sử dụng một kỹ thuật mới gọi là Masked ML (MLM). Kỹ thuật này hoạt động bằng cách ngẫu nhiên che khuất một số từ trong câu và sau đó BERT cố gắng dự đoán các từ đó. Che khuất ở đây có nghĩa là mô hình sẽ xem xét cả hai hướng của câu, sử dụng toàn bộ ngữ cảnh của câu, bao gồm cả các từ trước và sau từ bị che khuất, để dự đoán từ đó. Không giống như các mô hình ngôn ngữ trước đây, BERT có thể tính đến cả token trước và token sau cùng một lúc. Các mô hình LSTM kết hợp trái-sang-phải và phải-sang-trái hiện nay không thể làm được điều này mặc dù trên thực tế, chính xác hơn chúng ta có thể nói rằng đó là huấn luyện không hướng (non-directional).
+Thay vì dự đoán từ tiếp theo trong chuỗi, BERT sử dụng một kỹ thuật mới gọi là Masked LM (MLM). Kỹ thuật này hoạt động bằng cách ngẫu nhiên che khuất một số từ trong câu và sau đó BERT cố gắng dự đoán các từ đó. Che khuất ở đây có nghĩa là mô hình sẽ xem xét cả hai hướng của câu, sử dụng toàn bộ ngữ cảnh của câu, bao gồm cả các từ trước và sau từ bị che khuất, để dự đoán từ đó. Không giống như các mô hình ngôn ngữ trước đây, BERT có thể tính đến cả token trước và token sau cùng một lúc. Các mô hình LSTM kết hợp trái-sang-phải và phải-sang-trái hiện nay không thể làm được điều này mặc dù trên thực tế, chính xác hơn chúng ta có thể nói rằng đó là huấn luyện không hướng (non-directional).
 
 \subsubsection{Pre-training BERT}
 
@@ -47,22 +47,22 @@ BERT được huấn luyện dựa trên Transformer, mục tiêu là tạo mô 
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{image/Input_Emebeddings.pdf}
-    \caption{Biểu diễn đầu vào của BERT: Bao gồm các token embedding, token segment và token position.}
+    \caption{Biểu diễn đầu vào của BERT: Bao gồm các token embedding, token segment và token position.\cite{bert}}
     \label{figure:Input_Emebeddings}
 \end{figure}
 
 Về bản chất, Transformer sẽ ánh xạ chuỗi ký tự đầu vào thành chuỗi ký tự đầu ra, do đó đầu ra cũng là một chuỗi các vector tương ứng giữa các token đầu vào và đầu ra ở cùng chỉ số. Như đã đề cập trước đó, BERT sẽ không dự đoán từ tiếp theo trong câu. Quá trình huấn luyện sử dụng hai chiến lược sau\cite{webpage20}:
 % https://phamdinhkhanh.github.io/2020/05/23/BERTModel.html#23-masked-ml-mlm
 \begin{enumerate}
-    \item \textbf{Masked ML (MLM):}
-          Masked ML là một tác vụ cho phép chúng ta fine-tuning lại các biểu diễn từ trên các bộ dữ liệu unsupervised-text bất kỳ. Chúng ta có thể áp dụng Masked ML cho những ngôn ngữ khác nhau để tạo ra biểu diễn embedding cho chúng. Các bộ dữ liệu của tiếng anh có kích thước lên tới vài vài trăm tới vài nghìn GB được huấn luyện trên BERT đã tạo ra những kết quả khá ấn tượng.
+    \item \textbf{Masked Language Modeling (MLM):}
+          Masked LM là một tác vụ cho phép chúng ta fine-tuning lại các biểu diễn từ trên các bộ dữ liệu unsupervised-text bất kỳ. Chúng ta có thể áp dụng Masked LM cho những ngôn ngữ khác nhau để tạo ra biểu diễn embedding cho chúng. Các bộ dữ liệu của tiếng anh có kích thước lên tới vài vài trăm tới vài nghìn GB được huấn luyện trên BERT đã tạo ra những kết quả khá ấn tượng.
 
           Theo đó:
           \begin{itemize}
               \item Khoảng 15\% các token của câu input được thay thế bởi token {\tt [MASK]} trước khi truyền vào model đại diện cho những từ bị che dấu (masked). Mô hình sẽ dựa trên các từ không được che (non-masked) dấu xung quanh và đồng thời là bối cảnh của {\tt [MASK]} để dự báo giá trị gốc của từ được che dấu. Số lượng từ được che dấu được lựa chọn là một số ít (15\%) để tỷ lệ bối cảnh chiếm nhiều hơn (85\%).
-              \item Bản chất của kiến trúc BERT vẫn là một mô hình seq2seq gồm 2 phase encoder giúp embedding các từ input và decoder giúp tìm ra phân phối xác suất của các từ ở output. Kiến trúc Transfomer encoder được giữ lại trong tác vụ Masked ML. Sau khi thực hiện self-attention và feed forward ta sẽ thu được các vector embedding ở output là $O_1, O_2,…, O_5$
+              \item Bản chất của kiến trúc BERT vẫn là một mô hình seq2seq gồm 2 phase encoder giúp embedding các từ input và decoder giúp tìm ra phân phối xác suất của các từ ở output. Kiến trúc Transfomer encoder được giữ lại trong tác vụ Masked LM. Sau khi thực hiện self-attention và feed forward ta sẽ thu được các vector embedding ở output là $O_1, O_2,…, O_n$
               \item Để tính toán phân phối xác suất cho từ output, chúng ta thêm một Fully connect layer ngay sau Transformer Encoder. Hàm softmax có tác dụng tính toán phân phối xác suất. Số lượng units của fully connected layer phải bằng với kích thước của từ điển.
-              \item Cuối cùng ta thu được vector nhúng của mỗi một từ tại vị trí {\tt [MASK]} sẽ là embedding vector giảm chiều của vector $O_i$ sau khi đi qua fully connected layer như mô tả trên hình vẽ bên phải.
+              \item Cuối cùng ta thu được vector nhúng của mỗi một từ tại vị trí {\tt [MASK]} sẽ là embedding vector giảm chiều của vector $O_i$ sau khi đi qua fully connected layer.
           \end{itemize}
 
           Hàm loss function của BERT sẽ bỏ qua mất mát của những từ không bị che và chỉ nhận của những từ bị che dấu. Do đó mô hình sẽ hội tụ lâu hơn nhưng đây là đặc tính bù trừ cho sự gia tăng ý thức về bối cảnh. Việc lựa chọn ngẫu nhiên 15\% số lượng các từ bị che dấu cũng tạo ra vô số các kịch bản input cho mô hình huấn luyện nên mô hình sẽ cần phải huấn luyện rất lâu mới học được toàn diện các khả năng.
