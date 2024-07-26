@@ -35,7 +35,7 @@ Có 2 phương pháp chủ yếu được sử dụng trong word embedding là C
 \end{figure}
 
 \subsubsection{Mô hình Word2vec}
-Trong nhiều ứng dụng NLP (\textit{natural language processing}), các từ thường chỉ được biểu diễn bởi one-hot encoding và không giữ được quan hệ giữa các từ. Lí do để lựa chọn one-hot encoding là sự đơn giản và hiệu quả của chúng. \cite{Aggarwal2022-xj} Tuy nhiên với sự cải thiện của lĩnh vực học máy, các thuật toán phức tạp được huấn luyện trên các tập dữ liệu lớn đã hoạt động hiểu quả hơn các mô hình đơn giản. Tiêu biểu là thuật toán Word2vec có thể nắm bắt được cả sự tương đồng giữa ngữ pháp và ngữ nghĩa của các từ ngữ. Và một ví dụ được biết đến rộng rãi của Word2vec là:
+Trong nhiều ứng dụng NLP (\textit{natural language processing}), các từ thường chỉ được biểu diễn bởi one-hot encoding và không giữ được quan hệ giữa các từ. Lí do để lựa chọn one-hot encoding là sự đơn giản và hiệu quả của chúng. \cite{Aggarwal2022} Tuy nhiên với sự cải thiện của lĩnh vực học máy, các thuật toán phức tạp được huấn luyện trên các tập dữ liệu lớn đã hoạt động hiểu quả hơn các mô hình đơn giản. Tiêu biểu là thuật toán Word2vec có thể nắm bắt được cả sự tương đồng giữa ngữ pháp và ngữ nghĩa của các từ ngữ. Và một ví dụ được biết đến rộng rãi của Word2vec là:
 \[
     \overline{King}-\overline{Man}=\overline{Queen}-\overline{Woman}
 \]
@@ -53,11 +53,11 @@ Trong mô hình CBOW, các tập huấn luyện là các cặp từ có liên qu
 \begin{figure}[htb!]
     \centering
     \includegraphics[width=0.7\textwidth]{tikz_image/word2vec_cbow.pdf}
-    \caption{Cách hoạt động của CBOW \cite{Aggarwal2022-xj}}
+    \caption{Cách hoạt động của CBOW \cite{Aggarwal2022}}
     \label{figure:word2vec-cbow}
 \end{figure}
 
-Kiến trúc mỗi tầng được mô tả như sau: \cite{Aggarwal2022-xj}
+Kiến trúc mỗi tầng được mô tả như sau: \cite{Aggarwal2022}
 \begin{itemize}
     \item Lớp đầu vào (\textit{input layer}): Kiến trúc tổng quát được mô tả ở hình trên. Đầu vào có $m$ từ tương ứng với $m$ vector, mỗi vector có $d$ chiều tương ứng với $d$ từ trong tập huấn luyện, từ đó ta có tổng cộng $m\cdot d$ nút đầu vào. Mỗi vector đầu vào sẽ được biểu diễn dưới dạng mã hoá one-hot. Chỉ một trong số $d$ của vector có giá trị là $1$ và còn lại sẽ có giá trị là $0$.
     \item Lớp ẩn (\textit{hidden layer}): Lớp ẩn chứa $p$ thành phần với $p$ là số chiều của Word2vec. Đầu ra của lớp ẩn là  $h_1,h_2,\dots h_p$. Lớp đầu vào được kết nối tới lớp ẩn bởi ma trận trọng số $U$ kích thước $d\cdot p$ như đã minh họa ở hình %.

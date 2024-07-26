@@ -6,7 +6,7 @@ Nhưng mô hình này vẫn có nhiều điểm yếu như đã trình bày, đi
 
 Ra đời năm 1997, LSTM và theo sau đó là GRU (2014) có vẻ đã giải quyết phần nào vẫn đề Gradient Vanishing, nhưng cả hai kỹ thuật này lại phức tạp hơn RNN rất nhiều, và hiển nhiên nó cũng train chậm hơn RNN đáng kể.
 
-Vậy có cách nào tận dụng khả năng tính toán song song của GPU để tăng tốc độ học hỏi cho các mô hình ngôn ngữ, đồng thời khắc phục điểm yếu xử lý câu dài không? Transformers chính là câu trả lời. Ý tưởng chính của phần này được lấy từ bài báo Attention is all you need\cite{tranformer} xuất bản vào năm 2017 của tác giả Ashish Vaswani tại hội nghị quốc tế hằng năm về hệ thống xử lý thông tin mạng thần kinh nhân tạo (NeurIPS). Tính đến năm 2024, bài báo đã được trích dẫn 100.000 lần, trở thành một trong những bài báo có ảnh hưởng nhất trong lĩnh vực học máy. Bài báo giới thiệu kiến trúc Transformer, một mô hình học máy mới dựa hoàn toàn trên cơ chế chú ý (Attention). Transformer đã thay đổi cách thức xây dựng các mô hình học máy cho các nhiệm vụ xử lý ngôn ngữ tự nhiên, đặc biệt là dịch máy.
+Vậy có cách nào tận dụng khả năng tính toán song song của GPU để tăng tốc độ học hỏi cho các mô hình ngôn ngữ, đồng thời khắc phục điểm yếu xử lý câu dài không? Transformers chính là câu trả lời. Ý tưởng chính của phần này được lấy từ bài báo Attention is all you need\cite{vaswani2023attentionneed} xuất bản vào năm 2017 của tác giả Ashish Vaswani tại hội nghị quốc tế hằng năm về hệ thống xử lý thông tin mạng thần kinh nhân tạo (NeurIPS). Tính đến năm 2024, bài báo đã được trích dẫn 100.000 lần, trở thành một trong những bài báo có ảnh hưởng nhất trong lĩnh vực học máy. Bài báo giới thiệu kiến trúc Transformer, một mô hình học máy mới dựa hoàn toàn trên cơ chế chú ý (Attention). Transformer đã thay đổi cách thức xây dựng các mô hình học máy cho các nhiệm vụ xử lý ngôn ngữ tự nhiên, đặc biệt là dịch máy.
 
 Điều đặc biệt về Transformer so với mô hình RNN là nó không yêu cầu xử lý các phần tử trong chuỗi một cách tuần tự. Trong khi RNN phải xử lý từng phần tử theo thứ tự từ đầu đến cuối, Transformer có thể xử lý toàn bộ câu ngôn ngữ tự nhiên cùng một lúc. Điều này cho phép Transformer tận dụng tối đa khả năng tính toán song song của GPU và giảm thời gian xử lý đáng kể. Thay vì phải chờ đợi kết quả từ các phần tử trước đó trong chuỗi, Transformer có thể đồng thời xem xét và ánh xạ mối quan hệ giữa tất cả các từ trong câu. Điều này giúp mô hình hiểu được mối quan hệ toàn diện trong câu và tạo ra các biểu diễn ngữ nghĩa phong phú hơn.
 
@@ -16,7 +16,7 @@ Vậy có cách nào tận dụng khả năng tính toán song song của GPU đ
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.5\textwidth]{image/tranformer-architecture.png}
-    \caption{Kiến trúc của mô hình Tranformer \cite{tranformer}}
+    \caption{Kiến trúc của mô hình Tranformer \cite{vaswani2023attentionneed}}
     \label{figure:tranformer-architecture}
 \end{figure}
 

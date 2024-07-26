@@ -56,7 +56,7 @@ Nhắc lại quy tắc xích
     \label{figure:multivariate-chain-rule-nn}
 \end{figure}
 
-Dựa vào quy tắc xích đa biến, Charu C. Aggarwal đã nêu ra bổ đề về tổng hợp của các cạnh (\textit{pathwise aggregation lemma}) \cite{Aggarwal2023-zk} như sau: gọi $y(i)$ là giá trị của nút $i$ trong mạng, gọi $z(i,j)=\partial y(j)/\partial y(i)$ là đạo hàm của cạnh $(i,j)$, gọi tập hợp các đường đi khác nhau xuất phát từ điểm $s$ và kết thúc ở điểm $t$ là $\mathcal{P}$, giá trị của đào hàm $\partial y(t)/\partial y(s)$ được tính bằng tích của các cạnh nối từ $s$ đến $t$, rồi lấy tổng theo các đường đi khác nhau dẫn từ $s$ đến $t$
+Dựa vào quy tắc xích đa biến, Charu C. Aggarwal đã nêu ra bổ đề về tổng hợp của các cạnh (\textit{pathwise aggregation lemma}) \cite{Aggarwal2023} như sau: gọi $y(i)$ là giá trị của nút $i$ trong mạng, gọi $z(i,j)=\partial y(j)/\partial y(i)$ là đạo hàm của cạnh $(i,j)$, gọi tập hợp các đường đi khác nhau xuất phát từ điểm $s$ và kết thúc ở điểm $t$ là $\mathcal{P}$, giá trị của đào hàm $\partial y(t)/\partial y(s)$ được tính bằng tích của các cạnh nối từ $s$ đến $t$, rồi lấy tổng theo các đường đi khác nhau dẫn từ $s$ đến $t$
 \begin{align}
     \dfrac{\partial y(t)}{\partial y(s)}=\sum_{P\in\mathcal{P}}\ \prod_{(i,j)\in P}z(i,j)
     \label{equation:pathwise-aggregation-lemma}
@@ -73,7 +73,7 @@ Chọn điểm $i$ bất kỳ trong mạng, gọi $j\in A(i)$ là tập hợp c�
 \end{align}
 Với giá trị khởi tạo $S(t,t)=1$, mã giả của thuật toán quy hoạch động để tính $S(s,t)$ là
 \begin{algorithmz}
-    \caption{Mã giả tính $S(s,t)$ bằng quy hoạch động \cite{Aggarwal2023-zk}}
+    \caption{Mã giả tính $S(s,t)$ bằng quy hoạch động \cite{Aggarwal2023}}
     \label{algorithm:dynamic-programming-node-to-node}
     \begin{algorithmic}[1]
         \State Khởi tạo $S(t,t)=1$
@@ -100,7 +100,7 @@ Chọn điểm $i$ bất kỳ trong mạng, gọi $j\in A(i)$ là tập hợp c�
 \end{align}
 Khởi tạo đạo hàm mất mát với tất cả các nút đầu ra $\triangle(t_k)$, ta có
 \begin{algorithmz}
-    \caption{Mã giả tính $\partial L/\partial\mathbf{w}$ bằng quy hoạch động \cite{Aggarwal2023-zk}}
+    \caption{Mã giả tính $\partial L/\partial\mathbf{w}$ bằng quy hoạch động \cite{Aggarwal2023}}
     \label{algorithm:dynamic-programming-loss-to-weight}
     \begin{algorithmic}[1]
         \State Khởi tạo $\triangle(t_k)=\dfrac{\partial L}{\partial y(t_k)}$ với mỗi $k\in\{1,\dots,p\}$
@@ -188,7 +188,7 @@ Cả hai cách trên đều được dùng trong mạng thần kinh nhân tạo,
     \begin{subfigure}[b]{0.33\textwidth}
         \centering
         \includegraphics[width=\textwidth]{tikz_image/diff_relu.pdf}
-        \caption{Hàm ReLu}
+        \caption{Hàm ReLU}
     \end{subfigure}%
     \begin{subfigure}[b]{0.33\textwidth}
         \centering
@@ -271,7 +271,7 @@ Gọi $\mathbf z_i$ là vector giá trị của lớp $i$, $\mathbf g_i$ là vec
 Một số hàm thường gặp trong mạng thần kinh khi lan truyền xuôi và lan truyền ngược (được tính dựa vào phương trình lan truyền ngược bên trên), với phép toán $\odot$ là tích Hadamard (\textit{Hadamard product} hay \textit{element-wise product}), vector $1s$ là \textbf 1.
 \begin{table}[htbp]
     \centering
-    \caption{Một số hàm thông dụng và lan truyền xuôi-ngược của nó \cite{Aggarwal2023-zk}}
+    \caption{Một số hàm thông dụng và lan truyền xuôi-ngược của nó \cite{Aggarwal2023}}
     \label{table:derivative-forward-backward}
     \begin{threeparttable}
         \begin{tabularx}{\textwidth}{ c c C{1} C{1} }
@@ -297,7 +297,7 @@ Sau khi lan truyền xuôi để tính toàn bộ $\mathbf z_i$, lan truyền ng
 \begin{align}
     \dfrac{\partial L}{\partial w_{pq}}=\dfrac{\partial L}{\partial z_{iq}}\cdot\dfrac{\partial z_{iq}}{\partial w_{pq}}=\underbrace{g_{iq}\cdot z_{i-1\ p}}_{1\times 1}
 \end{align}
-Với quy ước ma trận sắp xếp theo mẫu số, ma trận đạo hàm của hàm mất mát $L$ đối với ma trận tham số cạnh $W$ được tính bằng tích ngoài (\textit{outer product}) \cite{Aggarwal2023-zk}
+Với quy ước ma trận sắp xếp theo mẫu số, ma trận đạo hàm của hàm mất mát $L$ đối với ma trận tham số cạnh $W$ được tính bằng tích ngoài (\textit{outer product}) \cite{Aggarwal2023}
 \begin{align}
     M=\mathbf g_i\cdot\mathbf  z_{i-1}^\intercal
 \end{align}

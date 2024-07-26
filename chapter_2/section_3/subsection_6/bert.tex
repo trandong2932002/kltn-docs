@@ -5,7 +5,7 @@
 
 % https://arxiv.org/abs/1810.04805
 \subsubsection{Giới thiệu BERT}
-Vào cuối năm 2018, các nhà nghiên cứu tại Google AI Language đã công bố một kỹ thuật mới được gọi là BERT ({\bf B}idirectional {\bf E}ncoder {\bf R}epresentations from {\bf T}ransformers) - một bước đột phá lớn đã gây tiếng vang trong cộng đồng Học sâu bởi hiệu suất đáng kinh ngạc của nó. Trong bài báo BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding\cite{bert} các tác giả đã nêu ra những cải tiến của model BERT trong các tác vụ\cite{webpage20}:
+Vào cuối năm 2018, các nhà nghiên cứu tại Google AI Language đã công bố một kỹ thuật mới được gọi là BERT ({\bf B}idirectional {\bf E}ncoder {\bf R}epresentations from {\bf T}ransformers) - một bước đột phá lớn đã gây tiếng vang trong cộng đồng Học sâu bởi hiệu suất đáng kinh ngạc của nó. Trong bài báo BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding\cite{devlin2019bertpretrainingdeepbidirectional} các tác giả đã nêu ra những cải tiến của model BERT trong các tác vụ\cite{webpage20}:
 
 \begin{itemize}
     \item Tăng GLUE score (General Language Understanding Evaluation score), một chỉ số tổng quát đánh giá mức độ hiểu ngôn ngữ lên 80.5\%.
@@ -28,7 +28,7 @@ Tuy nhiên, với sự xuất hiện của BERT, mô hình ngôn ngữ giờ đ�
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{image/BERT_comparisons.pdf}
-    \caption[Sự khác nhau giữa các kiến trúc mô hình pre-trained]{Sự khác nhau giữa các kiến trúc mô hình pre-trained. BERT sử dụng bidirectional Transformer. OpenAI GPT sử dụng Transformer theo hướng trái sang phải. ELMo sử dụng kết hợp đầu ra của hai LSTM được huấn luyện độc lập theo hướng trái sang phải và phải sang trái. Trong ba mô hình này, chỉ có BERT học được biểu diễn của từ ngữ phụ thuộc lẫn nhau vào cả ngữ cảnh trước và sau ở tất cả các layer. \cite{bert}}
+    \caption[Sự khác nhau giữa các kiến trúc mô hình pre-trained]{Sự khác nhau giữa các kiến trúc mô hình pre-trained. BERT sử dụng bidirectional Transformer. OpenAI GPT sử dụng Transformer theo hướng trái sang phải. ELMo sử dụng kết hợp đầu ra của hai LSTM được huấn luyện độc lập theo hướng trái sang phải và phải sang trái. Trong ba mô hình này, chỉ có BERT học được biểu diễn của từ ngữ phụ thuộc lẫn nhau vào cả ngữ cảnh trước và sau ở tất cả các layer. \cite{devlin2019bertpretrainingdeepbidirectional}}
     \label{figure:BERT_comparisons}
 \end{figure}
 
@@ -47,7 +47,7 @@ BERT được huấn luyện dựa trên Transformer, mục tiêu là tạo mô 
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{image/Input_Emebeddings.pdf}
-    \caption{Biểu diễn đầu vào của BERT: Bao gồm các token embedding, token segment và token position.\cite{bert}}
+    \caption{Biểu diễn đầu vào của BERT: Bao gồm các token embedding, token segment và token position.\cite{devlin2019bertpretrainingdeepbidirectional}}
     \label{figure:Input_Emebeddings}
 \end{figure}
 
@@ -83,7 +83,7 @@ Nếu muốn tinh chỉnh BERT cho một nhiệm vụ cụ thể dựa trên t�
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{image/BERT_fine_tune.pdf}
-    \caption{Minh họa việc tinh chỉnh BERT cho các tác vụ khác nhau \cite{bert}}
+    \caption{Minh họa việc tinh chỉnh BERT cho các tác vụ khác nhau \cite{devlin2019bertpretrainingdeepbidirectional}}
     \label{figure:BERT_fine_tuning}
 \end{figure}
 

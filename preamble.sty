@@ -113,7 +113,7 @@
 \usepackage{caption}
 \DeclareCaptionFont{table-figure-caption-fontsize}{\fontsize{11pt}{16.5pt}\selectfont}
 \captionsetup{tablename=Bảng, figurename=Hình, labelfont=bf, font=table-figure-caption-fontsize}
-\captionsetup[subfigure]{font=table-figure-caption-fontsize}
+\captionsetup[subfigure]{font=table-figure-caption-fontsize, justification=centering}
 % bibliography
 \usepackage[
     backend=biber,
@@ -181,7 +181,7 @@
 % }
 % \makeatother
 % % debug layout
-% \usepackage{showframe}
+\usepackage{showframe}
 % % \usepackage{lua-visual-debug} % using this package with lualatex
 % % debug text
 % \usepackage{lipsum}

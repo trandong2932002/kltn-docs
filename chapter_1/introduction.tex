@@ -1,7 +1,7 @@
 \section{Tính cấp thiết của đề tài}
 Với sự bùng nổ của Internet trong những năm gần đây, các diễn đàn, trang web, mạng xã hội, \dots dần trở nên phổ biến và tiếp cận được nhiều hơn tới mọi người. Thông qua các kênh thông tin này, chúng ta có thể tiếp cận và chia sẻ thông tin một cách nhanh chóng hơn bao giờ hết. Các trang web và mạng xã hội này có một lượng lớn người sử dụng từ đa dạng các thành phần xã hội khác nhau. Đồng thời nội dung trên Internet cũng ngày càng trở nên phong phú và khó đoán hơn. Mọi người ngày nay coi mạng xã hội không chỉ là một kênh phương tiện giải trí mà còn là nơi giao lưu và chia sẻ thông tin với nhau. Không chỉ người lớn mới sử dụng Internet và mạng xã hội, trẻ em ngày nay cũng được tiếp cận với Internet từ sớm để phục vụ nhu cầu học tập và giải trí. Tuy nhiên ngoài những lợi ích có thể thấy được, Internet mang lại những nguy cơ không lường trước được cho những em nhỏ, và một trong số đó là những ngôn từ không phù hợp trên Internet, hay còn gọi là ngôn ngữ độc hại.
 
-Chỉ mới gần đây thôi, vào năm 2020, Việt Nam đã lọt vào Top 5 những nước kém văn minh nhất thế giới trên Internet\cite{webpage28}. Điều này chứng tỏ môi trường mạng Việt Nam tiềm ẩn nhiều nguy cơ cho những em nhỏ tiếp cận tới những ngôn ngữ không phù hợp với thuần phong mĩ tục, góp phần làm xấu đi hình ảnh đất nước trong mắt bạn bè quốc tế.
+Chỉ mới gần đây thôi, vào năm 2020, Việt Nam đã lọt vào Top 5 những nước kém văn minh nhất thế giới trên Internet \cite{webpage28}. Điều này chứng tỏ môi trường mạng Việt Nam tiềm ẩn nhiều nguy cơ cho những em nhỏ tiếp cận tới những ngôn ngữ không phù hợp với thuần phong mĩ tục, góp phần làm xấu đi hình ảnh đất nước trong mắt bạn bè quốc tế.
 
 Nhằm góp phần ngăn chặn sự tiêu cực mà ngôn ngữ độc hại đem lại, nhóm chúng tôi xin đề xuất bài toán ``Nhận diện văn bản tiêu cực sử dụng học máy'' áp dụng cho tiếng Việt làm đề tài khoá luận tốt nghiệp cho mình.
 
@@ -43,55 +43,13 @@ Với tập dữ liệu gốc là văn bản Tiếng Anh, cách tiếp cận ph�
 
 Như trong \cite{9339521}, các tác giả sử dụng các phương pháp phân tách từ (tokenization) kết hợp với mô hình học sâu LSTM. Cách tiếp cận này tạo ra một mô hình có kết quả khá cao, với độ chính xác (precision) đạt 94,49\%, độ nhạy (recall) đạt 92,79\% và độ chính xác (accuracy) đạt 94,94\%.
 
-Một nghiên cứu khác sử dụng phiên bản tiên tiến hơn của Long Short-Term Memory (LSTM), là Bidirectional LSTM (BiLSTM), để cải thiện thêm độ chính xác của dự đoán\cite{webpage25}.
+Một nghiên cứu khác sử dụng phiên bản tiên tiến hơn của Long Short-Term Memory (LSTM), là Bidirectional LSTM (BiLSTM), để cải thiện thêm độ chính xác của dự đoán \cite{webpage25}.
 
-Ngoài việc chỉ sử dụng RNN, \cite{Sharma_Patel_2018} còn sử dụng mạng nơ-ron tích chập (CNN) song song với mô hình LSTM. Mặc dù kết quả đánh giá cho thấy CNN cũng đạt được kết quả khá tốt, LSTM vẫn vượt trội hơn cả về độ chính xác lẫn hiệu suất thời gian khi sử dụng cùng số epoch.
+Ngoài việc chỉ sử dụng RNN, bài báo \cite{Sharma2018} còn sử dụng mạng nơ-ron tích chập (CNN) song song với mô hình LSTM. Mặc dù kết quả đánh giá cho thấy CNN cũng đạt được kết quả khá tốt, LSTM vẫn vượt trội hơn cả về độ chính xác lẫn hiệu suất thời gian khi sử dụng cùng số epoch.
 
-Nghiên cứu \cite{Kresnakova} cho thấy rằng không chỉ việc áp dụng các mô hình phức tạp mà cả việc sử dụng các phương pháp tiền xử lý cơ bản và nhúng từ (word embedding) cũng có thể ảnh hưởng đến hiệu suất phân loại. Để chứng minh điều này, các tác giả đã tiến hành đánh giá thực nghiệm về kiến trúc kết hợp BiLSTM + CNN, mô hình ngôn ngữ BERT (Bidirectional Encoder Representation from Transformer) với các phương pháp tiền xử lý và nhúng từ khác nhau.
+Nghiên cứu \cite{app10238631} cho thấy rằng không chỉ việc áp dụng các mô hình phức tạp mà cả việc sử dụng các phương pháp tiền xử lý cơ bản và nhúng từ (word embedding) cũng có thể ảnh hưởng đến hiệu suất phân loại. Để chứng minh điều này, các tác giả đã tiến hành đánh giá thực nghiệm về kiến trúc kết hợp BiLSTM + CNN, mô hình ngôn ngữ BERT (Bidirectional Encoder Representation from Transformer) với các phương pháp tiền xử lý và nhúng từ khác nhau.
 
 \section{Dự kiến kết quả đạt được}
 Về lý thuyết: Nhóm mong muốn sau khi thực hiện nghiên cứu có thể học hỏi và hiểu sâu về nội dung lý thuyết của bài toán đã nêu. Đồng thời có cơ hội thực hành mô hình học sâu trong quá trình huấn luyện dữ liệu cho bài toán.
 
 Về mặt sản phẩm: Nhóm mong muốn xây dựng được một mô hình có thể phát hiện các ngôn ngữ độc hại với một mức chính xác khả quan và có thể ứng dụng thực tế. Từ đó, áp dụng vào thực tiễn dưới dạng chatbot hoặc tiện ích trong trình duyệt để hỗ trợ người dùng trong việc phát hiện và ngăn chặn ngôn ngữ độc hại
-
-% \section{Bố cục luận văn}
-% Bố cục bài khoá luận tốt nghiệp được tổ chức như sau:
-% \begin{enumerate}
-%     \item Phần 1. Mở đầu
-%     \item Phần 2. Nội dung: Gồm có 4 chương
-%           \begin{enumerate}
-%               \item Chương 1: Tổng quan về học máy và học sâu
-%                     \begin{itemize}
-%                         \itemsep 0pt
-%                         \item Khái quát về học máy
-%                         \item Khái quát về học sâu
-%                     \end{itemize}
-%               \item Chương 2: Mạng neuron nhân tạo
-%                     \begin{itemize}
-%                         \item Mạng neuron nhân tạo
-%                         \item Mạng neuron tích chập - CNN (Convolutional Neural Network)
-%                         \item Mạng neuron hồi quy - RNN (Recurrent Neural Network)
-%                         \item Bộ nhớ dài-ngắn hạn - LSTM (Long Short-Term Memory)
-%                         \item Bộ nhớ tái phát - GRU (Gated Recurent Unit)
-%                     \end{itemize}
-%               \item Chương 3: Xử lý ngôn ngữ tự nhiên
-%                     \begin{itemize}
-%                         \item Xử lý ngôn ngữ tự nhiên
-%                         \item Kỹ thuật nhúng từ (Word embedding)
-%                         \item Ngữ cảnh (Contextual) và vai trò trong NLP
-%                         \item Mô hình Transformer
-%                         \item Tiếp cận nông và học sâu trong ứng dụng pre-training NLP
-%                         \item Mô hình BERT (Bidirectional Encoder Representations from Transformers)
-%                     \end{itemize}
-%               \item Chương 4: Xây dựng mô hình phát hiện từ ngữ độc hại
-%                     \begin{itemize}
-%                         \item Môi trường cài đặt và các thư viện sử dụng
-%                         \item Mô tả tập dữ liệu
-%                         \item Tiền xử lý dữ liệu
-%                         \item Thiết lập mô hình
-%                         \item Huấn luyện mô hình và đánh giá kết quả
-%                     \end{itemize}
-%           \end{enumerate}
-%     \item Phần 3: Kết luận
-%     \item Tài liệu tham khảo
-% \end{enumerate}

@@ -5,7 +5,7 @@ Những môi trường này không cần yêu cầu cài đặt hay cấu hình 
 
 Sử dụng chúng có những lợi ích ưu việt như: sẵn sàng chạy Python ở bất kỳ thiết bị nào có kết nối Internet mà không cần cài đặt, chia sẻ và làm việc nhóm dễ dàng, sử dụng miễn phí GPU cho các dự án về AI\cite{webpage15}.
 
-Nhóm sử dụng phần cứng được cung cấp bởi Kaggle trong hầu hết thời gian làm bài luận văn này. Đối với tiền xử lý dữ liệu, nhóm sử dụng máy có thông số:
+Nhóm sử dụng phần cứng được cung cấp bởi Kaggle\footnote{\url{https://www.kaggle.com/code/bconsolvo/hardware-available-on-kaggle/notebook}} trong hầu hết thời gian làm bài luận văn này. Đối với tiền xử lý dữ liệu, nhóm sử dụng máy có thông số:
 \begin{itemize}
     \item CPU: 4vCPU Xeon 2.20GHz
     \item Ram: 30GB
@@ -18,18 +18,19 @@ Nhóm sử dụng phần cứng được cung cấp bởi Kaggle trong hầu h�
     \item GPU: Tesla P100 16GB (CUDA version 12.4)
     \item Python 3.10.13
 \end{itemize}
-Ngoài ra nhóm sử dụng phần cứng được cung cấp bởi Hugging Face để chạy mô hình trong thực tế:
+Ngoài ra nhóm sử dụng phần cứng được cung cấp bởi Hugging Face\footnote{\url{https://huggingface.co/docs/hub/en/spaces-overview}} để chạy mô hình trong thực tế:
 \begin{itemize}
     \item CPU: 2vCPU
     \item Ram: 16GB
 \end{itemize}
+kết hợp với máy tính cá nhân.
 
 \subsubsection{Thư viện}
 Các thư viện chính mà nhóm đã sử dụng để thực hiện đề tài này:
 \begin{enumerate}
-    \item \textit{Thư viện Tensorflow}
+    \item \textit{Thư viện Tensorflow}\footnote{\url{https://www.tensorflow.org/}}
 
-          TensorFlow\footnote{\url{https://www.tensorflow.org/}} là một thư viện mã nguồn mở end-to-end được tạo ra chủ yếu dành cho các ứng dụng Học máy. Nó là một thư viện toán học ký hiệu sử dụng luồng dữ liệu và lập trình có thể phân biệt để thực hiện các nhiệm vụ khác nhau, tập trung vào đào tạo và suy luận các mạng neuron sâu (\textit{deep neural network}). Nó cho phép các nhà phát triển tạo các ứng dụng học máy bằng cách sử dụng các công cụ, thư viện và tài nguyên cộng đồng khác nhau\cite{webpage16}.
+          TensorFlow là một thư viện mã nguồn mở end-to-end được tạo ra chủ yếu dành cho các ứng dụng Học máy. Nó là một thư viện toán học ký hiệu sử dụng luồng dữ liệu và lập trình có thể phân biệt để thực hiện các nhiệm vụ khác nhau, tập trung vào đào tạo và suy luận các mạng neuron sâu (\textit{deep neural network}). Nó cho phép các nhà phát triển tạo các ứng dụng học máy bằng cách sử dụng các công cụ, thư viện và tài nguyên cộng đồng khác nhau\cite{webpage16}.
 
           TensorFlow cho phép xây dựng biểu đồ và cấu trúc luồng dữ liệu để xác định cách dữ liệu di chuyển qua biểu đồ bằng cách lấy đầu vào là một mảng đa chiều được gọi là tensor. Nó cho phép xây dựng một sơ đồ các hoạt động có thể được thực hiện trên các đầu vào này, đi ở một đầu và đến ở đầu kia là đầu ra.
           Kiến trúc của Tensorflow hoạt động trong ba phần:
@@ -39,17 +40,17 @@ Các thư viện chính mà nhóm đã sử dụng để thực hiện đề tà
               \item Đào tạo và ước tính mô hình
           \end{itemize}
 
-    \item \textit{Thư viện Keras}
+    \item \textit{Thư viện Keras}\footnote{\url{https://keras.io/}}
 
-          Keras\footnote{\url{https://keras.io/}} là một API cấp cao được thiết kế cho Python để triển khai mạng nơ-ron dễ dàng hơn. Nó được phát triển bởi Google.
+          Keras là một API cấp cao được thiết kế cho Python để triển khai mạng nơ-ron dễ dàng hơn. Nó được phát triển bởi Google.
 
           Keras có thể chạy trên các thư viện và khung công tác như TensorFlow, Theano, PlaidML, MXNet, CNTK. Chúng đều là những thư viện rất mạnh nhưng cũng khó hiểu để tạo mạng nơ-ron. Mặt khác, Keras rất thân thiện với người mới bắt đầu vì cấu trúc tối thiểu của nó cung cấp cách tạo ra các mô hình học sâu một cách dễ dàng và gọn ghẽ dựa trên TensorFlow hoặc Theano.
 
           Keras đã được TensorFlow thông qua làm API cấp cao chính thức của mình. Khi được nhúng vào TensorFlow, nó cung cấp các mô-đun có sẵn cho tất cả các tính toán mạng nơ-ron và do đó có thể thực hiện học sâu rất nhanh. TensorFlow rất linh hoạt và lợi ích chính là tính toán phân tán. Ta có thể linh hoạt và có thể kiểm soát ứng dụng của mình, thực hiện ý tưởng trong thời gian ngắn, sử dụng Keras, trong khi tính toán liên quan đến tensors, đồ thị tính toán,\dots có thể được tùy chỉnh bằng cách sử dụng Tensorflow Core API.
 
-    \item \textit{Thư viện Underthesea}
+    \item \textit{Thư viện Underthesea}\footnote{\url{https://github.com/undertheseanlp/underthesea}}
 
-          Underthesea\footnote{\url{https://github.com/undertheseanlp/underthesea}} là một thư viện xử lý ngôn ngữ tự nhiên (NLP) cho tiếng Việt. Nó cung cấp các công cụ và chức năng để phân tích và xử lý văn bản tiếng Việt, bao gồm tách từ, gán nhãn từ loại, phân tích cú pháp và trích xuất thông tin. Thư viện này được xây dựng trên cơ sở của thư viện Python khác là Pyvi và có thể được sử dụng để xử lý các tác vụ NLP trong các ứng dụng và dự án liên quan đến tiếng Việt.
+          Underthesea là một thư viện xử lý ngôn ngữ tự nhiên (NLP) cho tiếng Việt. Nó cung cấp các công cụ và chức năng để phân tích và xử lý văn bản tiếng Việt, bao gồm tách từ, gán nhãn từ loại, phân tích cú pháp và trích xuất thông tin. Thư viện này được xây dựng trên cơ sở của thư viện Python khác là Pyvi và có thể được sử dụng để xử lý các tác vụ NLP trong các ứng dụng và dự án liên quan đến tiếng Việt.
 
           Dưới đây là một số nhiệm vụ mà thư viện Underthesea có thể thực hiện:
           \begin{itemize}
@@ -67,17 +68,17 @@ Các thư viện chính mà nhóm đã sử dụng để thực hiện đề tà
           \end{itemize}
 
 
-    \item \textit{Thư viện Transformer}
+    \item \textit{Thư viện Transformer}\footnote{\url{https://github.com/huggingface/transformers}}
 
-          Transformer\footnote{\url{https://github.com/huggingface/transformers}} là một thư viện mã nguồn mở được phát triển bởi Hugging Face. Nó cung cấp các công cụ và mô hình cho xử lý ngôn ngữ tự nhiên (NLP), bao gồm cả việc dịch máy, phân loại văn bản, và sinh văn bản. Thư viện này dựa trên kiến trúc Transformer, một mô hình mạng nơ-ron sử dụng cơ chế tự chú ý để xử lý các chuỗi đầu vào.
+          Transformer là một thư viện mã nguồn mở được phát triển bởi Hugging Face. Nó cung cấp các công cụ và mô hình cho xử lý ngôn ngữ tự nhiên (NLP), bao gồm cả việc dịch máy, phân loại văn bản, và sinh văn bản. Thư viện này dựa trên kiến trúc Transformer, một mô hình mạng nơ-ron sử dụng cơ chế tự chú ý để xử lý các chuỗi đầu vào.
 
           Transformer cho phép sử dụng các mô hình ngôn ngữ đã được huấn luyện trước (pre-trained models) để thực hiện các tác vụ NLP. Các mô hình này đã được huấn luyện trên các tập dữ liệu lớn và có thể được sử dụng để trích xuất thông tin, phân loại văn bản, và thậm chí tạo ra văn bản mới.
 
           Thư viện Transformer cung cấp một API dễ sử dụng để tải và sử dụng các mô hình đã được huấn luyện trước. Ta có thể sử dụng các mô hình này để thực hiện các tác vụ NLP mà không cần phải huấn luyện lại từ đầu.
 
-    \item \textit{Thư viện Polars}
+    \item \textit{Thư viện Polars}\footnote{\url{https://pola.rs/}}
 
-          Polars\footnote{\url{https://pola.rs/}} \footnote{Ban đầu nhóm đã dùng Pandas để xử lý dữ liệu. Khi quá trình xử lý của nhóm trở nên phức tạp, nhóm đã chuyển qua thư viện Modin (với engine là Ray) để có thể xử lý song song các truy vấn. Nhưng khi nhóm muốn áp dụng các thuật toán có độ phức tạp lớn để xử lý dữ liệu dạng chuỗi, thì điểm yếu của Python được bộc lộ là quá chậm để xử lý toàn bộ tập dữ liệu (khoảng 160 nghìn dòng, với phân phối độ dài chuỗi \ref{figure:dist_num_chars_and_words}). Vì vậy nhóm quyết định sử dụng thư viện Polars vì có thể viết các thuật toán có độ phức tạp lớn bằng Rust nhằm tối ưu tốc độ xử lý.} là một thư viện mã nguồn mở dùng để xử lý dữ liệu là DataFrame. Polars được viết hoàn toàn bằng ngôn ngữ Rust, sử dụng Apache Arrow làm cấu trúc dữ liệu chính nên hiệu suất và tốc độ thực thi các truy vấn của nó nhanh hơn nhiều so với Pandas. Các tính năng chính của Polars gồm có:
+          Polars là một thư viện mã nguồn mở dùng để xử lý dữ liệu là DataFrame. Polars được viết hoàn toàn bằng ngôn ngữ Rust, sử dụng Apache Arrow làm cấu trúc dữ liệu chính nên hiệu suất và tốc độ thực thi các truy vấn của nó nhanh hơn nhiều so với Pandas\footnote{Ban đầu nhóm đã dùng Pandas để xử lý dữ liệu. Khi quá trình xử lý của nhóm trở nên phức tạp, nhóm đã chuyển qua thư viện Modin (với engine là Ray) để có thể xử lý song song các truy vấn. Nhưng khi nhóm muốn áp dụng các thuật toán có độ phức tạp lớn để xử lý dữ liệu dạng chuỗi, điểm yếu của Python được bộc lộ là quá chậm khi thực hiện thuật toán gồm nhiều vòng lặp để xử lý toàn bộ tập dữ liệu (khoảng 160 nghìn dòng, với phân phối độ dài chuỗi \ref{figure:dist_num_chars_and_words}). Vì vậy nhóm quyết định sử dụng thư viện Polars vì có thể viết các thuật toán có độ phức tạp lớn bằng Rust nhằm tối ưu tốc độ xử lý.}. Các tính năng chính của Polars gồm có:
           \begin{itemize}
               \item Được triển khai cả Lazy API và Eager API.
               \item Xử lý song song.
@@ -85,13 +86,15 @@ Các thư viện chính mà nhóm đã sử dụng để thực hiện đề tà
               \item Hybrid Streaming giúp xử lý dữ liệu mà không cần phải tải toàn bộ dữ liệu vào Ram.
           \end{itemize}
 
-    \item \textit{Thự viện SymSpell}
+    \item \textit{Thự viện SymSpell}\footnote{\url{https://github.com/wolfgarbe/SymSpell}}
 
-          Symspell\footnote{\url{https://github.com/wolfgarbe/SymSpell}} là thư viện sửa lỗi chính tả, được đánh giá là nhanh hơn 1 triệu lần so với thuật toán sửa lỗi chính tả mà Peter Norvig đề xuất, nhờ vào việc sử dụng thuật toán sửa lỗi chính tả xoá đối xứng (\textit{symetric delete spelling corrector algorithm}). Thuật toán sửa lỗi chính tả dùng khoảng cách Damerau-Levenshtein để tính toán độ tương tự giữa hai chuỗi, với các tính năng chính:
+          Symspell là thư viện sửa lỗi chính tả, được đánh giá là nhanh hơn 1 triệu lần so với thuật toán sửa lỗi chính tả mà Peter Norvig đề xuất, nhờ vào việc sử dụng thuật toán sửa lỗi chính tả xoá đối xứng (\textit{symetric delete spelling corrector algorithm}). Thuật toán sửa lỗi chính tả dùng khoảng cách Damerau-Levenshtein để tính toán độ tương tự giữa hai chuỗi, với các tính năng chính:
           \begin{itemize}
               \item Sửa lỗi chính tả từ.
               \item Sửa lỗi chính tả trong câu.
-              \item Tách các từ trong đoạn văn bản nhiễu (\textit{noisy text})\\(vd: {\raggedright\texttt{thequickbrownfoxjumpsoverthelazydog}\par} $\to$ {\raggedright\texttt{the quick brown fox jumps over the lazy dog}\par})
+              \item Tách các từ trong đoạn văn bản nhiễu (\textit{noisy text})
+
+                    {\raggedright(vd: \texttt{thequickbrownfoxjumpsoverthelazydog} $\to$ \texttt{the quick brown fox jumps over the lazy dog})\par}
           \end{itemize}
 \end{enumerate}
 
