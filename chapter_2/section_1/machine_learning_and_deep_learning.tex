@@ -15,26 +15,30 @@ Là một lĩnh vực công nghệ phát triển nhanh, học máy hiện tại 
 
 \subsubsection{Học có giám sát}
 Các thuật toán và mô hình học có giám sát tạo ra các dự đoán dựa trên các dữ liệu đã được đánh nhãn. Mỗi mẫu dữ liệu huấn luyện đều bao gồm dữ liệu đầu vào (\textit{input}) và dữ liệu đầu ra (\textit{output}) tương ứng. Thuật toán học có giám sát phân tích dữ liệu huấn luyện và tạo ra các suy luận - hoặc có thể gọi là các suy đoán có cơ sở khi dự đoán cho các dữ liệu chưa biết trước.\cite{webpage}
+
+Đây là hướng tiếp cận phổ biến nhất khi nói về học máy, mô hình được “giám sát” bởi chúng cần được học và cung cấp các dữ liệu đã được đánh nhãn từ trước. Dữ liệu được đánh nhãn sẽ cung cấp thông tin về các khuôn mẫu (có thể là hình ảnh, phân loại, etc) để mô hình có thể nhận diện được từ dữ liệu.\cite{webpage}
+
+\newpage % hardcode
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{image/supervised-learning.png}
-    \caption{Học có giám sát}
+    \caption[Học có giám sát]{Học có giám sát\footnotemark}
     \label{figure:supervised-learning}
 \end{figure}
-
-Đây là hướng tiếp cận phổ biến nhất khi nói về học máy, mô hình được “giám sát” bởi chúng cần được học và cung cấp các dữ liệu đã được đánh nhãn từ trước. Dữ liệu được đánh nhãn sẽ cung cấp thông tin về các khuôn mẫu (có thể là hình ảnh, phân loại, etc) để mô hình có thể nhận diện được từ dữ liệu.\cite{webpage}
+\footnotetext{\url{https://dev.to/dulyaaa/lets-peek-into-machine-learning-in0}}
 
 Và với phương pháp học có giám sát, chúng ta có hai phương pháp: phân loại (\textit{classification}) và hồi quy (\textit{regression}).
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.7\textwidth]{image/regression-vs-classification-in-machine-learning.png}
-    \caption{Phân loại và hồi quy}
+    \caption[Phân loại và hồi quy]{Phân loại và hồi quy\footnotemark}
     \label{figure:regression-vs-classification-in-machine-learning}
 \end{figure}
+\footnotetext{\url{https://www.datacamp.com/blog/supervised-machine-learning}}
 
 \begin{enumerate}
     \item Phương pháp hồi quy:
-          Hồi quy tìm sự tương quan giữa biến phụ thuộc và các biến độc lập, từ đó thuật toán hồi quy có thể dự đoán các biến liên tục (\textit{continous variable}) chẳng hạn như chiều cao, cân nặng, \dots\cite{webpage1}
+          Hồi quy tìm sự tương quan giữa biến phụ thuộc và các biến độc lập, từ đó thuật toán hồi quy có thể dự đoán các biến liên tục (\textit{continous variable}) chẳng hạn như chiều cao, cân nặng, v.v.. \cite{webpage1}
 
           Một số thuật toán hồi quy:
           \begin{itemize}
@@ -46,7 +50,7 @@ Và với phương pháp học có giám sát, chúng ta có hai phương pháp:
     \item Phương pháp phân loại:
           Phân loại là thuật toán tìm ra các hàm số có thể chia dữ liệu thành nhiều nhóm dựa trên nhiều thông số khác nhau. Khi sử dụng thuật toán phân loại, máy sẽ học trên tập dữ liệu và phân loại dữ liệu vào nhiều nhóm dựa trên những gì đã học.
 
-          Thuật toán phân loại chuyển các dữ liệu đầu vào thành dữ liệu đầu ra rời rạc (các giá trị nhị phân như $0$ và $1$, $true$ và $false$, \dots). Thuật toán phân loại dự đoán khả năng xảy ra của một sự kiện bằng cách đưa dữ liệu vào hàm logit.\cite{webpage1}
+          Thuật toán phân loại chuyển các dữ liệu đầu vào thành dữ liệu đầu ra rời rạc (các giá trị nhị phân như $0$ và $1$, $true$ và $false$, v.v.). Thuật toán phân loại dự đoán khả năng xảy ra của một sự kiện bằng cách đưa dữ liệu vào hàm logit.\cite{webpage1}
           \begin{itemize}
               \item Logistic Regression
               \item K-Nearest Neighbors(KNN)
@@ -57,13 +61,15 @@ Và với phương pháp học có giám sát, chúng ta có hai phương pháp:
 \end{enumerate}
 
 \subsubsection{Học không giám sát}
-Các thuật toán học không giám sát khám phá các mối quan hệ trong dữ liệu không được đánh nhãn. Trong trường hợp này, mô hình được cung cấp dữ liệu nhưng không biết được dữ liệu đầu ra mong muốn, mô hình phải dự đoán dựa trên các bằng chứng gián tiếp mà không có chỉ dẫn nào. Mô hình không được huấn luyện với các ``giá trị đúng'' và phải tự tìm ra các khuôn mẫu.\cite{webpage}
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{image/unsupervised-learning.png}
-    \caption{Học không giám sát}
+    \caption[Học không giám sát]{Học không giám sát\footnotemark}
     \label{figure:unsupervised-learning}
 \end{figure}
+\footnotetext{\url{https://dev.to/dulyaaa/lets-peek-into-machine-learning-in0}}
+
+Các thuật toán học không giám sát khám phá các mối quan hệ trong dữ liệu không được đánh nhãn. Trong trường hợp này, mô hình được cung cấp dữ liệu nhưng không biết được dữ liệu đầu ra mong muốn, mô hình phải dự đoán dựa trên các bằng chứng gián tiếp mà không có chỉ dẫn nào. Mô hình không được huấn luyện với các ``giá trị đúng'' và phải tự tìm ra các khuôn mẫu.\cite{webpage}
 
 Một trong những loại học không giám sát phổ biến nhất chính là gom cụm (\textit{clustering}), thực hiện gom nhóm các dữ liệu giống nhau. Phương pháp này thường được dùng trong phân tích khám phá và có thể tìm ra các khuôn mẫu hay xu hướng bị ẩn giấu.
 
@@ -80,9 +86,10 @@ Trong học bán giám sát, dữ liệu huấn luyện sẽ được chia thàn
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{image/semi-supervised-learning.jpeg}
-    \caption{Học bán giám sát}
+    \caption[Học bán giám sát]{Học bán giám sát\footnotemark}
     \label{figure:semi-supervised-learning}
 \end{figure}
+\footnotetext{\url{https://www.datacamp.com/blog/supervised-machine-learning}}
 
 Trong trường hợp này, mô hình sẽ dùng dữ liệu có đánh nhãn để tạo ra các suy luận về dữ liệu chưa được đánh nhãn, cung cấp các kết quả chính xác hơn các mô hình học có giám sát thông thường.
 
@@ -93,20 +100,15 @@ Học tăng cường liên quan tới việc chương trình nên hoạt động
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{image/reinforcement-learning.jpg}
-    \caption{Học tăng cường}
+    \caption[Học tăng cường]{Học tăng cường\footnotemark}
     \label{figure:reinforcement-learning}
 \end{figure}
+\footnotetext{\url{https://techvidvan.com/tutorials/reinforcement-learning/}}
 
 Phương pháp này thường được dùng trong các ngành robot và trò chơi điện tử. Các trò chơi điện tử thể hiện rõ ràng mối quan hệ giữa hành động và kết quả, và có thể đánh giá thành công thông qua điểm. Vì vậy, chúng là một cách thức thích hợp để cải thiện thuật toán học tăng cường.
 
 \subsubsection{Cách thức hoạt động}
 Hệ thống học máy xây dựng mô hình dự đoán bằng cách học các dữ liệu có sẵn từ trước và dự đoán đầu ra cho dữ liệu mới mỗi khi nhận được.
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=\textwidth]{image/machine-learning-model.png}
-    \caption{Cách hoạt động của mô hình học máy}
-    \label{figure:machine-learning-model}
-\end{figure}
 
 Quá trình học máy sẽ gồm 3 giai đoạn\cite{webpage2}:
 \begin{enumerate}
@@ -126,6 +128,13 @@ Quá trình học máy sẽ gồm 3 giai đoạn\cite{webpage2}:
               \item Từ kết quả trên có thể đánh giá lại độ hiệu quả của mô hình và sử dụng mô hình khác nếu cần thiết.
           \end{itemize}
 \end{enumerate}
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\textwidth]{image/machine-learning-model.png}
+    \caption[Cách hoạt động của mô hình học máy]{Cách hoạt động của mô hình học máy\footnotemark}
+    \label{figure:machine-learning-model}
+\end{figure}
+\footnotetext{\url{https://www.scoutaerial.com.au/real-time-automated-shark-detection-system/}}
 
 \subsection{Khái quát về học sâu}
 \subsubsection{Giới thiệu}
@@ -134,7 +143,7 @@ Học sâu (\textit{deep learning}) có thể được xem là một nhánh củ
 \subsubsection{Cơ sở hình thành}
 Bộ não con người và máy tính ngay từ bản chất đã rất khác nhau, máy tính có thể dễ dàng tính toán những con số mà con người khó tính được, còn con người có thể xử lí những công việc mang tính tư duy mà máy tính không thể thực hiện. Các mạng tế bào thần kinh của con người đã tiến hóa qua hàng triệu năm và hoạt động theo cách mà con người cũng không thể hiểu hết được. Nhưng với những kiến thức đã có được về mạng thần kinh sinh học, chúng ta đã tạo ra mạng thần kinh nhân tạo dựa trên những hiểu biết đó. Tuy nhiên mạng thần kinh nhân tạo ban đầu lại không được đón nhận do sự thiếu hiệu quả so với các thuật toán truyền thống do sự hạn chế về máy móc cũng như các thuật toán truyền thống cho ra kết quả tốt với những tập dữ liệu nhỏ hơn.
 
-Nhưng trong những năm gần đây, với sự phát triển của dữ liệu lớn (\textit{big data}) cùng với sức mạnh tính toán của máy tính đã được cải thiện, các thuật toán truyền thống không thể nào tận dụng hết được chúng, từ đó mạng thần kinh nhân tạo dần được ứng dụng nhiều hơn, cũng như sự phổ biến của học sâu.\cite{Aggarwal2022-xj}
+Nhưng trong những năm gần đây, với sự phát triển của dữ liệu lớn (\textit{big data}) cùng với sức mạnh tính toán của máy tính đã được cải thiện, các thuật toán truyền thống không thể nào tận dụng hết được chúng, từ đó mạng thần kinh nhân tạo dần được ứng dụng nhiều hơn, cũng như sự phổ biến của học sâu.\cite{Aggarwal2022}
 
 \subsubsection{Ưu nhược điểm}
 Học sâu có một số ưu điểm vượt trội:
@@ -152,4 +161,4 @@ Học sâu vẫn còn một số hạn chế gắn liền với nó ví dự nh�
     \item Chưa có nền tảng lý thuyết mạnh mẽ để lựa chọn các công cụ tối ưu cho học sâu.
 \end{itemize}
 
-Tuy học sâu có hiệu năng và độ chính xác vượt trội, tuy nhiên để đạt được nó cần một lượng dữ liệu lớn và các mô hình phức tạp. Vì vậy, việc lựa chọn sử dụng học sâu hay khôn phụ thuộc nhiều vào mục tiêu của dự án, lượng dữ liệu và tài nguyên, \dots\cite{webpage10}
+Tuy học sâu có hiệu năng và độ chính xác vượt trội, tuy nhiên để đạt được nó cần một lượng dữ liệu lớn và các mô hình phức tạp. Vì vậy, việc lựa chọn sử dụng học sâu hay khôn phụ thuộc nhiều vào mục tiêu của dự án, lượng dữ liệu và tài nguyên, v.v..\cite{webpage10}

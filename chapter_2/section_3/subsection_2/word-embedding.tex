@@ -35,7 +35,7 @@ Có 2 phương pháp chủ yếu được sử dụng trong word embedding là C
 \end{figure}
 
 \subsubsection{Mô hình Word2vec}
-Trong nhiều ứng dụng NLP (\textit{natural language processing}), các từ thường chỉ được biểu diễn bởi one-hot encoding và không giữ được quan hệ giữa các từ. Lí do để lựa chọn one-hot encoding là sự đơn giản và hiệu quả của chúng. \cite{Aggarwal2022-xj} Tuy nhiên với sự cải thiện của lĩnh vực học máy, các thuật toán phức tạp được huấn luyện trên các tập dữ liệu lớn đã hoạt động hiểu quả hơn các mô hình đơn giản. Tiêu biểu là thuật toán Word2vec có thể nắm bắt được cả sự tương đồng giữa ngữ pháp và ngữ nghĩa của các từ ngữ. Và một ví dụ được biết đến rộng rãi của Word2vec là:
+Trong nhiều ứng dụng NLP (\textit{natural language processing}), các từ thường chỉ được biểu diễn bởi one-hot encoding và không giữ được quan hệ giữa các từ. Lí do để lựa chọn one-hot encoding là sự đơn giản và hiệu quả của chúng. \cite{Aggarwal2022} Tuy nhiên với sự cải thiện của lĩnh vực học máy, các thuật toán phức tạp được huấn luyện trên các tập dữ liệu lớn đã hoạt động hiểu quả hơn các mô hình đơn giản. Tiêu biểu là thuật toán Word2vec có thể nắm bắt được cả sự tương đồng giữa ngữ pháp và ngữ nghĩa của các từ ngữ. Và một ví dụ được biết đến rộng rãi của Word2vec là:
 \[
     \overline{King}-\overline{Man}=\overline{Queen}-\overline{Woman}
 \]
@@ -53,11 +53,11 @@ Trong mô hình CBOW, các tập huấn luyện là các cặp từ có liên qu
 \begin{figure}[htb!]
     \centering
     \includegraphics[width=0.7\textwidth]{tikz_image/word2vec_cbow.pdf}
-    \caption{Cách hoạt động của CBOW \cite{Aggarwal2022-xj}}
+    \caption[Cách hoạt động của CBOW]{Cách hoạt động của CBOW \cite{Aggarwal2022}}
     \label{figure:word2vec-cbow}
 \end{figure}
 
-Kiến trúc mỗi tầng được mô tả như sau: \cite{Aggarwal2022-xj}
+Kiến trúc mỗi tầng được mô tả như sau: \cite{Aggarwal2022}
 \begin{itemize}
     \item Lớp đầu vào (\textit{input layer}): Kiến trúc tổng quát được mô tả ở hình trên. Đầu vào có $m$ từ tương ứng với $m$ vector, mỗi vector có $d$ chiều tương ứng với $d$ từ trong tập huấn luyện, từ đó ta có tổng cộng $m\cdot d$ nút đầu vào. Mỗi vector đầu vào sẽ được biểu diễn dưới dạng mã hoá one-hot. Chỉ một trong số $d$ của vector có giá trị là $1$ và còn lại sẽ có giá trị là $0$.
     \item Lớp ẩn (\textit{hidden layer}): Lớp ẩn chứa $p$ thành phần với $p$ là số chiều của Word2vec. Đầu ra của lớp ẩn là  $h_1,h_2,\dots h_p$. Lớp đầu vào được kết nối tới lớp ẩn bởi ma trận trọng số $U$ kích thước $d\cdot p$ như đã minh họa ở hình %.
@@ -76,7 +76,7 @@ Trong mô hình Skip-gram, từ đầu vào được dùng để dự đoán m t
 \begin{figure}[htb!]
     \centering
     \includegraphics[width=0.7\textwidth]{tikz_image/word2vec_skipgram.pdf}
-    \caption{Cách hoạt động của skip-gram}
+    \caption[Cách hoạt động của skip-gram]{Cách hoạt động của skip-gram \cite{Aggarwal2022}}
     \label{figure:word2vec-skip-gram}
 \end{figure}
 
@@ -99,7 +99,7 @@ Lớp ẩn kết nối tới lớp đầu ra bởi một ma trận $V=[v_{jq}]$ 
 Ví dụ chúng ta có 2 câu: ``Data is next oil'' và ``Data is future''. Dựa trên 2 câu này chúng ta có thể tạo nên một ma trận tần suất đồng thời.
 \begin{table}[htb]
     \centering
-    \caption{Ma trận tần suất đồng thời \cite{webpage9}}
+    \caption[Ma trận tần suất đồng thời]{Ma trận tần suất đồng thời \cite{webpage9}}
     \label{table:frequency-matrix}
     \begin{tabular}{ l c c c c c }
         \toprule
@@ -116,7 +116,7 @@ Ví dụ chúng ta có 2 câu: ``Data is next oil'' và ``Data is future''. Dự
 Xác suất $P(j|i) = X_{ij}/X_i$ là xác suất mà từ tại hàng $j$ xuất hiện đồng thời với cột $i$. Như có thể thấy, xác suất để từ ``Data'' xuất hiện khi có từ ``is'' là $P(\text{Data|is}) = 2/4$. Với một ví dụ khác
 \begin{table}[htb]
     \centering
-    \caption{Xác suất các từ cùng xuất hiện \cite{webpage9}}
+    \caption[Xác suất các từ cùng xuất hiện]{Xác suất các từ cùng xuất hiện \cite{webpage9}}
     \begin{tabular}{ l c c c c }
         \toprule
                                             & \multicolumn{4}{c}{k}                                                                   \\\cmidrule{2-5}
