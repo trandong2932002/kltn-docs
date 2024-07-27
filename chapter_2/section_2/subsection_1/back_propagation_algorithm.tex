@@ -169,12 +169,12 @@ Cả hai cách trên đều được dùng trong mạng thần kinh nhân tạo,
         \centering
         \includegraphics[width=\textwidth]{tikz_image/diff_identity.pdf}
         \caption{Hàm tuyến tính}
-    \end{subfigure}%
+    \end{subfigure}\hfil%
     \begin{subfigure}[b]{0.33\textwidth}
         \centering
         \includegraphics[width=\textwidth]{tikz_image/diff_sign.pdf}
         \caption{Hàm sign}
-    \end{subfigure}%
+    \end{subfigure}\hfil%
     \begin{subfigure}[b]{0.33\textwidth}
         \centering
         \includegraphics[width=\textwidth]{tikz_image/diff_sigmoid.pdf}
@@ -184,12 +184,12 @@ Cả hai cách trên đều được dùng trong mạng thần kinh nhân tạo,
         \centering
         \includegraphics[width=\textwidth]{tikz_image/diff_tanh.pdf}
         \caption{Hàm tanh}
-    \end{subfigure}%
+    \end{subfigure}\hfil%
     \begin{subfigure}[b]{0.33\textwidth}
         \centering
         \includegraphics[width=\textwidth]{tikz_image/diff_relu.pdf}
         \caption{Hàm ReLU}
-    \end{subfigure}%
+    \end{subfigure}\hfil%
     \begin{subfigure}[b]{0.33\textwidth}
         \centering
         \includegraphics[width=\textwidth]{tikz_image/diff_hardtanh.pdf}
@@ -271,7 +271,7 @@ Gọi $\mathbf z_i$ là vector giá trị của lớp $i$, $\mathbf g_i$ là vec
 Một số hàm thường gặp trong mạng thần kinh khi lan truyền xuôi và lan truyền ngược (được tính dựa vào phương trình lan truyền ngược bên trên), với phép toán $\odot$ là tích Hadamard (\textit{Hadamard product} hay \textit{element-wise product}), vector $1s$ là \textbf 1.
 \begin{table}[htbp]
     \centering
-    \caption{Một số hàm thông dụng và lan truyền xuôi-ngược của nó \cite{Aggarwal2023}}
+    \caption[Một số hàm thông dụng và lan truyền xuôi-ngược của nó]{Một số hàm thông dụng và lan truyền xuôi-ngược của nó \cite{Aggarwal2023}}
     \label{table:derivative-forward-backward}
     \begin{threeparttable}
         \begin{tabularx}{\textwidth}{ c c C{1} C{1} }

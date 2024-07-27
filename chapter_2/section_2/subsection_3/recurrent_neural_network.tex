@@ -7,18 +7,18 @@ Kiến trúc mạng thần kinh căn bản được thiết kế để nhận c�
 \end{itemize}
 \begin{figure}[htb]
     \centering
-    \begin{subfigure}[t]{0.33\textwidth}
+    \begin{subfigure}[b]{0.33\textwidth}
         \includegraphics[width=\textwidth]{tikz_image/rnn_loop_architecture.pdf}
         \caption{Kiến trúc mạng hồi quy}
         \label{figure:rnn-loop-architecture}
     \end{subfigure}
-    \begin{subfigure}[t]{0.66\textwidth}
+    \begin{subfigure}[b]{0.66\textwidth}
         \centering
         \includegraphics[width=\textwidth]{tikz_image/rnn_layer_architecture.pdf}
         \caption{Kiến trúc mạng hồi quy khi khai triển thành các lớp thời gian}
         \label{figure:rnn-layer-architecture}
     \end{subfigure}
-    \caption{Mạng hồi quy \cite{Aggarwal2023}}
+    \caption[Mạng hồi quy]{Mạng hồi quy \cite{Aggarwal2023}}
 \end{figure}
 \begin{figure}[htb]
     \centering
@@ -43,17 +43,24 @@ Kiến trúc của RNN có thể thay đổi dựa trên bài toán cần xử l
 \end{itemize}
 \begin{table}[htb!]
     \centering
-    \caption{Một số loại RNN \cite{webpage6}}
-    \begin{tabularx}{\textwidth}{ L{1} c L{1} }
-        \toprule
-        \textbf{Loại RNN}         & \textbf{Hình minh hoạ}                                                                     & \textbf{Ứng dụng}           \\\midrule
-        Một-một $T_x=T_y=1$       & \includegraphics[width=0.47\textwidth, valign=c]{image/rnn-one-to-one-ltr.png}             & Mạng thần kinh truyền thống \\\midrule
-        Một-nhiều $T_x=1,T_y>1$   & \includegraphics[width=0.47\textwidth, valign=c]{image/rnn-one-to-many-ltr.png}            & Sinh nhạc                   \\\midrule
-        Nhiều-một $T_x>1,T_y=1$   & \includegraphics[width=0.47\textwidth, valign=c]{image/rnn-many-to-one-ltr.png}            & Phân loại cảm xúc, ý kiến   \\\midrule
-        Nhiều-Nhiều $T_x=T_y$     & \includegraphics[width=0.47\textwidth, valign=c]{image/rnn-many-to-many-same-ltr.png}      & Nhận dạng tên của thực thể  \\\midrule
-        Nhiều-nhiều $T_x\neq T_y$ & \includegraphics[width=0.47\textwidth, valign=c]{image/rnn-many-to-many-different-ltr.png} & Dịch                        \\
-        \bottomrule
-    \end{tabularx}
+    \caption[Một số loại RNN]{Một số loại RNN \cite{webpage6}}
+    \begin{threeparttable}
+        \begin{tabularx}{\textwidth}{ L{0.9} c L{1} }
+            \toprule
+            \textbf{Loại RNN}         & \textbf{Hình minh hoạ}                                                                     & \textbf{Ứng dụng}                                                     \\\midrule
+            Một-một $T_x=T_y=1$       & \includegraphics[width=0.47\textwidth, valign=t]{image/rnn-one-to-one-ltr.png}             & Mạng thần kinh truyền thống                                           \\\midrule
+            Một-nhiều $T_x=1,T_y>1$   & \includegraphics[width=0.47\textwidth, valign=t]{image/rnn-one-to-many-ltr.png}            & Sinh nhạc, bộ decoder trong mô hình seq2seq, v.v.                     \\\midrule
+            Nhiều-một $T_x>1,T_y=1$   & \includegraphics[width=0.47\textwidth, valign=t]{image/rnn-many-to-one-ltr.png}            & Phân loại cảm xúc\tnote{1}, các ứng dụng về phân loại nói chung, v.v. \\\midrule
+            Nhiều-Nhiều $T_x=T_y$     & \includegraphics[width=0.47\textwidth, valign=t]{image/rnn-many-to-many-same-ltr.png}      & Nhận dạng tên của thực thể\tnote{2}, đánh dấu loại từ\tnote{3}, v.v.  \\\midrule
+            Nhiều-nhiều $T_x\neq T_y$ & \includegraphics[width=0.47\textwidth, valign=t]{image/rnn-many-to-many-different-ltr.png} & Dịch máy, các ứng dụng của mô hình seq2seq nói chung, v.v.            \\
+            \bottomrule
+        \end{tabularx}
+        \begin{tablenotes}
+            \item[1] Sentiment analysis
+            \item[2] Named entity regconition (NER)
+            \item[3] Part-of-speech tagging (POS)
+        \end{tablenotes}
+    \end{threeparttable}
 \end{table}
 
 \subsubsection{Kiến trúc}
@@ -72,13 +79,14 @@ Dù mạng hồi quy được dùng trong hầu hết các lĩnh vực có tồn
         \caption{Mạng hồi quy được trải thành lớp thời gian}
         \label{figure:rnn-example-b}
     \end{subfigure}
-    \caption{Mạng hồi quy trong dự đoán từ \cite{Aggarwal2023}}
+    \caption[Mạng hồi quy trong dự đoán từ]{Mạng hồi quy trong dự đoán từ \cite{Aggarwal2023}}
     \label{figure:rnn-example}
 \end{figure}
 
 Một mạng hồi quy được biểu diễn trên hình \ref{figure:rnn-example-a}. Điểm mấu chốt ở đây chính là vòng lặp tại chính giữa hình, thứ thay đổi trạng thái ẩn (\textit{hidden state}) của cả mạng sau mỗi từ trong chuỗi. Kiến trúc này trở nên rõ ràng hơn khi chúng ta “mở” vòng lặp đó ra trên một trục thời gian và biểu diễn giống như các mạng thần kinh nối tiếp nhau (hình \ref{figure:rnn-example-b}). Khi này chúng ta sẽ có những nút khác nhau đại diện cho lớp ẩn $\mathbf h_t$ trên mỗi điểm thời gian $t$. Dữ liệu đầu vào của nút thứ $n$ là từ thứ $n$. Cách trình bày này tương tự hình \ref{figure:rnn-example-a} nhưng dễ nắm bắt hơn do có sự tương đồng với các mạng thần kinh truyền thống. Ma trận $W$ trong các tầng khác nhau được sử dụng chung nhằm đảm bảo một hàm số duy nhất được sử dụng ở mỗi mốc thời gian. Dựa vào hình có thể thấy mỗi tầng đều có $W_{hh}$, $W_{hy}$, $W_{xh}$ giống nhau.
 
-Trong bài toán dự đoán các từ tiếp theo khi đã biết các từ trước đó, ví dụ chúng ta có câu:\newline
+Trong bài toán dự đoán các từ tiếp theo khi đã biết các từ trước đó, ví dụ chúng ta có câu:
+
 \centerline{\textit{``The lion chased the deer''} \cite{Aggarwal2023}}
 Khi từ ``The'' đi vào tầng đầu tiên, đầu ra sẽ là một vector chứa các xác suất của các từ bao gồm cả từ ``lion'', và khi từ ``lion'' là input của tầng tiếp theo, đầu ra vẫn là một vector như vậy. Đây là một phân loại của mô hình ngôn ngữ khi mà xác suất của một từ được ước lượng dựa trên lịch sử của các từ trước đó.
 

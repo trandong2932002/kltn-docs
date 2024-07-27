@@ -1,12 +1,15 @@
 \begin{tikzpicture}
     \begin{axis}[
             ticklabel style={font=\small},
-            xmin=-10,
-            xmax=10,
-            ymin=-0.7,
-            ymax=0.7,
+            xmin=-12,
+            xmax=12,
+            ymin=-0.6,
+            ymax=0.6,
+            ytick={-0.5,-0.25,0,0.25,0.5},
+            yticklabel style={rotate=90},
+            legend style={at={(0.95, 0.95)}},
         ]
-        \addplot[blue, mark=none, domain=-10:10, thick, samples=100] {(1/(1+exp(-\x)))*(1-(1/(1+exp(-\x))))};
+        \addplot[blue, mark=none, domain=-12:12, thick, samples=100] {(1/(1+exp(-\x)))*(1-(1/(1+exp(-\x))))};
         \legend{$\sigma(1-\sigma)$}
     \end{axis}
 \end{tikzpicture}

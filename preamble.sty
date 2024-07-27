@@ -1,7 +1,7 @@
 \ProvidesPackage{preamble}
 
 % math before fontspec
-\usepackage{amsmath, amssymb}
+\usepackage{amsmath, amssymb, mathtools}
 % font: Times New Roman
 \usepackage{fontspec}
 \setmainfont{Times New Roman}
@@ -51,10 +51,9 @@
 }
 % multirow in table
 \usepackage{multirow}
-% linebreak in cell
-\usepackage{makecell}
 % modify section
 \usepackage{titlesec}
+% chapter
 \titleformat{\chapter}[hang]
 {\bfseries\fontsize{14pt}{21pt}\selectfont\filcenter\MakeUppercase}
 {\chaptertitlename\ \thechapter:}
@@ -62,7 +61,7 @@
 {\bfseries\fontsize{14pt}{21pt}\selectfont\MakeUppercase}
 \titlespacing*{\chapter}
 {0pt}{-10pt}{0pt}
-%
+% section
 \titleformat{\section}[hang]
 {\bf\fontsize{13pt}{19.5pt}\selectfont\MakeUppercase}
 {\thesection\ }
@@ -70,7 +69,7 @@
 {\bf\fontsize{13pt}{19.5pt}\selectfont\MakeUppercase}
 \titlespacing*{\section}
 {0pt}{0pt}{0pt}
-%
+% subsection
 \titleformat{\subsection}[hang]
 {\bf\fontsize{13pt}{19.5pt}\selectfont}
 {\thesubsection\ }
@@ -78,7 +77,7 @@
 {\bf\fontsize{13pt}{19.5pt}\selectfont}
 \titlespacing*{\subsection}
 {0pt}{0pt}{0pt}
-%
+% subsubsection
 \titleformat{\subsubsection}[hang]
 {\it\fontsize{13pt}{19.5pt}\selectfont}
 {\thesubsubsection\ }
@@ -86,7 +85,7 @@
 {\it\fontsize{13pt}{19.5pt}\selectfont}
 \titlespacing*{\subsubsection}
 {0pt}{0pt}{0pt}
-%
+% toc
 \titleformat{\tablename}[hang]
 {\bf\fontsize{14pt}{21pt}\selectfont\filcenter\MakeUppercase}
 {\thetable}
@@ -94,6 +93,12 @@
 {\bf\fontsize{14pt}{21pt}\selectfont\MakeUppercase}
 \titlespacing*{\tablename}
 {0pt}{0pt}{0pt}
+% toc indent
+\usepackage[titles]{tocloft}
+\setlength{\cftsecindent}{1em}
+\renewcommand*{\cftsubsecindent}{2em}
+\renewcommand*{\cftsubsubsecindent}{3em}
+\renewcommand*{\@tocrmarg}{2.55em plus1fil}
 % threeparttable for notes
 \usepackage{threeparttable}
 % tabularx

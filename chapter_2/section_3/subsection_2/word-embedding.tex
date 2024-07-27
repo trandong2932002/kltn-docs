@@ -53,7 +53,7 @@ Trong mô hình CBOW, các tập huấn luyện là các cặp từ có liên qu
 \begin{figure}[htb!]
     \centering
     \includegraphics[width=0.7\textwidth]{tikz_image/word2vec_cbow.pdf}
-    \caption{Cách hoạt động của CBOW \cite{Aggarwal2022}}
+    \caption[Cách hoạt động của CBOW]{Cách hoạt động của CBOW \cite{Aggarwal2022}}
     \label{figure:word2vec-cbow}
 \end{figure}
 
@@ -76,7 +76,7 @@ Trong mô hình Skip-gram, từ đầu vào được dùng để dự đoán m t
 \begin{figure}[htb!]
     \centering
     \includegraphics[width=0.7\textwidth]{tikz_image/word2vec_skipgram.pdf}
-    \caption{Cách hoạt động của skip-gram}
+    \caption[Cách hoạt động của skip-gram]{Cách hoạt động của skip-gram \cite{Aggarwal2022}}
     \label{figure:word2vec-skip-gram}
 \end{figure}
 
@@ -99,7 +99,7 @@ Lớp ẩn kết nối tới lớp đầu ra bởi một ma trận $V=[v_{jq}]$ 
 Ví dụ chúng ta có 2 câu: ``Data is next oil'' và ``Data is future''. Dựa trên 2 câu này chúng ta có thể tạo nên một ma trận tần suất đồng thời.
 \begin{table}[htb]
     \centering
-    \caption{Ma trận tần suất đồng thời \cite{webpage9}}
+    \caption[Ma trận tần suất đồng thời]{Ma trận tần suất đồng thời \cite{webpage9}}
     \label{table:frequency-matrix}
     \begin{tabular}{ l c c c c c }
         \toprule
@@ -116,7 +116,7 @@ Ví dụ chúng ta có 2 câu: ``Data is next oil'' và ``Data is future''. Dự
 Xác suất $P(j|i) = X_{ij}/X_i$ là xác suất mà từ tại hàng $j$ xuất hiện đồng thời với cột $i$. Như có thể thấy, xác suất để từ ``Data'' xuất hiện khi có từ ``is'' là $P(\text{Data|is}) = 2/4$. Với một ví dụ khác
 \begin{table}[htb]
     \centering
-    \caption{Xác suất các từ cùng xuất hiện \cite{webpage9}}
+    \caption[Xác suất các từ cùng xuất hiện]{Xác suất các từ cùng xuất hiện \cite{webpage9}}
     \begin{tabular}{ l c c c c }
         \toprule
                                             & \multicolumn{4}{c}{k}                                                                   \\\cmidrule{2-5}
