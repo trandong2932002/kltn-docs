@@ -20,17 +20,34 @@ Nhiệm vụ:
 \end{itemize}
 
 \section{Cách tiếp cận và phương pháp nghiên cứu}
-Cách tiếp cận:
-\begin{itemize}
-    \item Sử dụng các lý thuyết học máy, học sâu và kỹ thuật nhúng từ.
-    \item Sử dụng các thư viện, module hỗ trợ học máy và học sâu như Tensorflow, Sklearn, \dots
-\end{itemize}
+% Cách tiếp cận:
+% \begin{itemize}
+%     \item Sử dụng các lý thuyết học máy, học sâu và kỹ thuật nhúng từ.
+%     \item Sử dụng các thư viện, module hỗ trợ học máy và học sâu như Tensorflow, Sklearn, \dots
+% \end{itemize}
 
-Phương pháp nghiên cứu:
-\begin{itemize}
-    \item Xử lí dữ liệu đầu vào trước khi thực hiện huấn luyện.
-    \item Huấn luyện và đánh giá mô hình dựa trên dữ liệu đầu vào để đánh giá khả năng phát hiện từ ngữ xấu của mô hình.
-\end{itemize}
+% Phương pháp nghiên cứu:
+% \begin{itemize}
+%     \item Xử lí dữ liệu đầu vào trước khi thực hiện huấn luyện.
+%     \item Huấn luyện và đánh giá mô hình dựa trên dữ liệu đầu vào để đánh giá khả năng phát hiện từ ngữ xấu của mô hình.
+% \end{itemize}
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\textwidth]{image/ToxicDetection_workflow.drawio.png}
+    \caption{Phương pháp tiếp cận trong bài toán nhận diện ngôn ngữ độc hại}
+    \label{figure:ToxicDetection_workflow}
+\end{figure}
+
+Kiến trúc tổng quan của hệ thống phát hiện văn bản độc hại được minh họa trong Hình \ref{figure:ToxicDetection_workflow}.
+
+Hệ thống phân loại độc hại trong ngôn ngữ sẽ bắt đầu với một loạt các bước tiền xử lý dữ liệu để làm sạch và chuẩn hóa dữ liệu thành định dạng mà mô hình có thể hiểu được bao gồm hai kỹ thuật sẽ được sử dụng: phân tách từ (tokenization) và nhúng từ (word embedding).
+
+Trong nhiệm vụ phân loại, chúng tôi xây dựng hai mô hình mạng thần kinh hồi quy sử dụng hai kiến trúc: LSTM và GRU như đã đề cập, và một mô hình được tinh chỉnh từ PhoBERT. Với hai mô hình mạng hồi quy, mỗi mô hình bao gồm sáu lớp: lớp đầu vào nhận dữ liệu đầu vào dưới dạng các token, lớp nhúng từ sử dụng fastText, lớp dropout ở giữa hai lớp mạng thần kinh hồi quy hai chiều để kiểm soát quá khớp (overfitting), và cuối cùng là lớp dense đánh giá mức độ độc hại của văn bản dựa trên các giá trị độc hại đã định nghĩa. Về mô hình PhoBERT, chúng tôi sử dụng mô hình đã được huấn luyện trước và thêm một lớp classifier vào phía sau tương ứng với sáu mức độ độc hại của văn bản.
+
+Vì đối mặt với bài toán sử dụng ngôn ngữ tự nhiên, mô hình mạng thần kinh hồi quy hai chiều (bidirectional RNN) và PhoBERT được ưu tiên chọn lựa, trong khi mô hình fastText được coi là phù hợp nhất cho tiếng Việt.
+
+Khi nhận dữ liệu thực tế từ các ứng dụng, hệ thống sẽ xử lý dữ liệu lần nữa trước khi đưa vào mô hình đánh giá. Tùy thuộc vào loại ứng dụng và yêu cầu về độ trễ của phản hồi, hệ thống sẽ sử dụng một trong ba mô hình để tối ưu hóa kết quả cuối cùng. Sau đó, cung cấp một số gợi ý chỉnh sửa nhằm đáp ứng các tiêu chuẩn của cộng đồng đối với Chatbot, hoặc ẩn văn bản tiêu cực trên trang web đối với Tiện ích Chrome.
 
 \section{Phân tích những công trình có liên quan}
 
