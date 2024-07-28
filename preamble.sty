@@ -1,20 +1,30 @@
 \ProvidesPackage{preamble}
 
-% math before fontspec
-\usepackage{amsmath, amssymb, mathtools}
-% font: Times New Roman
-\usepackage{fontspec}
+% USE PACKAGES ----------------------------------------------------------------
+\usepackage{amsmath, amssymb, mathtools} % math; todo: use before fontspec
+\usepackage{fontspec, anyfontsize, fontsize, fontawesome5, xcolor} % font
+\usepackage{geometry} % page layout, paragraph layout
+\usepackage{fancyhdr} % header and footer
+\usepackage{titlesec} % title (titleformat)
+\usepackage{caption} % caption (captionsetup)
+\usepackage{tabularx, threeparttable, booktabs, multirow, subcaption, graphicx, tikz} % table
+\usepackage[export]{adjustbox} % figure position in table
+\usepackage{enumitem} % list
+\usepackage{algorithm, algpseudocode} % algorithm
+\usepackage[backend=biber, style=ieee]{biblatex} % references
+\usepackage[titles]{tocloft} % toc spacing; todo: use after titlesec
+\usepackage{import} % project structure
+\usepackage{indentfirst} % indent first paragraph
+\usepackage{hyperref}
+\usepackage{xurl}
+
+% LAYOUT CONFIG ---------------------------------------------------------------
 \setmainfont{Times New Roman}
-% font size: 13pt, line spacing: 1.5 line
-\usepackage{anyfontsize}
-\usepackage{fontsize}
 \changefontsize[19.5pt]{13pt}
-% paper size and margins
-\usepackage[a4paper, portrait,
+\geometry{a4paper, portrait,
     top=2cm, bottom=2cm, left=3cm, right=2cm,
-    headheight=0.8cm, headsep=0.3cm, marginparsep=0.5cm, footskip=0.8cm]{geometry}
-% header and footer styles
-\usepackage{fancyhdr}
+    headheight=0.8cm, headsep=0.3cm, marginparsep=0.5cm, footskip=0.8cm}
+% header and footer
 \fancypagestyle{fancy}{
     \fancyhf{}
     \fancyhead[L]{\fontsize{13pt}{19.5pt}\selectfont\leftmark}
@@ -25,6 +35,78 @@
     \fancyhead[L]{\fontsize{13pt}{19.5pt}\selectfont\leftmark}
     \fancyfoot[C]{\fontsize{12pt}{18pt}\selectfont\thepage}
 }
+
+% TITLE CONFIG ----------------------------------------------------------------
+% modify title style, fontsize
+\titleformat{\chapter}[hang] % new chapter name
+{\bfseries\fontsize{14pt}{21pt}\selectfont\filcenter\MakeUppercase}
+{\chaptertitlename\ \thechapter:}
+{10pt}
+{\bfseries\fontsize{14pt}{21pt}\selectfont\MakeUppercase}
+\titleformat{\section}[hang] % new section name
+{\bf\fontsize{13pt}{19.5pt}\selectfont\MakeUppercase}
+{\thesection\ }
+{0pt}
+{\bf\fontsize{13pt}{19.5pt}\selectfont\MakeUppercase}
+\titleformat{\subsection}[hang] % new subsection name
+{\bf\fontsize{13pt}{19.5pt}\selectfont}
+{\thesubsection\ }
+{0pt}
+{\bf\fontsize{13pt}{19.5pt}\selectfont}
+\titleformat{\subsubsection}[hang] % new subsubsection name
+{\it\fontsize{13pt}{19.5pt}\selectfont}
+{\thesubsubsection\ }
+{0pt}
+{\it\fontsize{13pt}{19.5pt}\selectfont}
+\titleformat{\tablename}[hang]  % new toc name
+{\bf\fontsize{14pt}{21pt}\selectfont\filcenter\MakeUppercase}
+{\thetable}
+{0pt}
+{\bf\fontsize{14pt}{21pt}\selectfont\MakeUppercase}
+% modify title name
+\renewcommand*{\contentsname}{Mục lục}
+\renewcommand*{\listtablename}{Danh sách bảng}
+\renewcommand*{\listfigurename}{Danh sách hình ảnh}
+\renewcommand*{\chaptername}{Chương}
+\renewcommand*{\appendixname}{Phụ lục}
+% modify (name, fontisze) of (table, figure)
+\DeclareCaptionFont{table-figure-caption-fontsize}{\fontsize{11pt}{16.5pt}\selectfont}
+\captionsetup{tablename=Bảng, figurename=Hình, labelfont=bf, font=table-figure-caption-fontsize}
+\captionsetup[subfigure]{font=table-figure-caption-fontsize, justification=centering}
+\captionsetup[subtable]{font=table-figure-caption-fontsize, justification=centering}
+
+% TABLE/FIGURE CONFIG ---------------------------------------------------------
+% new tabularx column types
+\newcolumntype{L}[1]{>{\hsize=#1\hsize\raggedright\arraybackslash}X} % L=left X
+\newcolumntype{R}[1]{>{\hsize=#1\hsize\raggedleft\arraybackslash}X} % R=right X
+\newcolumntype{C}[1]{>{\hsize=#1\hsize\centering\arraybackslash}X} % C=center X
+
+% LIST CONFIG -----------------------------------------------------------------
+\setlist[itemize]{nolistsep}
+\setlist[enumerate]{nolistsep}
+
+% ALGORITHM CONFIG ------------------------------------------------------------
+\renewcommand*{\ALG@name}{Giải thuật}
+% new algorithm command
+\algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ \algorithmicdo}
+\algnewcommand\algorithmicforeach{\textbf{for each}}
+
+% BIBLIOGRAPHY CONFIG ---------------------------------------------------------
+\addbibresource{./references.bib}
+\renewcommand*{\bibfont}{\fontsize{11pt}{16.5pt}\selectfont\raggedright}
+
+% SPACING CONFIG --------------------------------------------------------------
+% modify title spacing
+\titlespacing*{\chapter}{0pt}{-10pt}{0pt}
+\titlespacing*{\section}{0pt}{0pt}{0pt}
+\titlespacing*{\subsection}{0pt}{0pt}{0pt}
+\titlespacing*{\subsubsection}{0pt}{0pt}{0pt}
+\titlespacing*{\tablename}{0pt}{0pt}{0pt}
+% modify title indent in toc
+\setlength{\cftsecindent}{1em}
+\renewcommand*{\cftsubsecindent}{2em}
+\renewcommand*{\cftsubsubsecindent}{3em}
+\renewcommand*{\@tocrmarg}{2.65em plus1fil}
 % space between tablenotes and table (threeparttable)
 \AddToHook{env/tabular/before}[skip]{\smallskip}
 % tablenotes font size (threeparttable)
@@ -34,14 +116,10 @@
 \AddToHook{env/tabularx/before}[fontsize]{\fontsize{12pt}{18pt}\selectfont}
 % image centering
 \AddToHook{env/figure/begin}[align]{\centering}
-% section depth
-\setcounter{secnumdepth}{4}
-% toc depth
-\setcounter{tocdepth}{4}
-% url auto add linebreak
-\usepackage{xurl}
-% clickable table, toc
-\usepackage{hyperref}
+
+% OTHER CONFIG ----------------------------------------------------------------
+\setcounter{secnumdepth}{4} % section max counter
+\setcounter{tocdepth}{4} % toc max counter
 \hypersetup{
     colorlinks,
     citecolor=black,
@@ -49,147 +127,6 @@
     linkcolor=black,
     urlcolor=black,
 }
-% multirow in table
-\usepackage{multirow}
-% modify section
-\usepackage{titlesec}
-% chapter
-\titleformat{\chapter}[hang]
-{\bfseries\fontsize{14pt}{21pt}\selectfont\filcenter\MakeUppercase}
-{\chaptertitlename\ \thechapter:}
-{10pt}
-{\bfseries\fontsize{14pt}{21pt}\selectfont\MakeUppercase}
-\titlespacing*{\chapter}
-{0pt}{-10pt}{0pt}
-% section
-\titleformat{\section}[hang]
-{\bf\fontsize{13pt}{19.5pt}\selectfont\MakeUppercase}
-{\thesection\ }
-{0pt}
-{\bf\fontsize{13pt}{19.5pt}\selectfont\MakeUppercase}
-\titlespacing*{\section}
-{0pt}{0pt}{0pt}
-% subsection
-\titleformat{\subsection}[hang]
-{\bf\fontsize{13pt}{19.5pt}\selectfont}
-{\thesubsection\ }
-{0pt}
-{\bf\fontsize{13pt}{19.5pt}\selectfont}
-\titlespacing*{\subsection}
-{0pt}{0pt}{0pt}
-% subsubsection
-\titleformat{\subsubsection}[hang]
-{\it\fontsize{13pt}{19.5pt}\selectfont}
-{\thesubsubsection\ }
-{0pt}
-{\it\fontsize{13pt}{19.5pt}\selectfont}
-\titlespacing*{\subsubsection}
-{0pt}{0pt}{0pt}
-% toc
-\titleformat{\tablename}[hang]
-{\bf\fontsize{14pt}{21pt}\selectfont\filcenter\MakeUppercase}
-{\thetable}
-{0pt}
-{\bf\fontsize{14pt}{21pt}\selectfont\MakeUppercase}
-\titlespacing*{\tablename}
-{0pt}{0pt}{0pt}
-% toc indent
-\usepackage[titles]{tocloft}
-\setlength{\cftsecindent}{1em}
-\renewcommand*{\cftsubsecindent}{2em}
-\renewcommand*{\cftsubsubsecindent}{3em}
-\renewcommand*{\@tocrmarg}{2.55em plus1fil}
-% threeparttable for notes
-\usepackage{threeparttable}
-% tabularx
-\usepackage{tabularx, booktabs}
-\newcolumntype{L}[1]{>{\hsize=#1\hsize\raggedright\arraybackslash}X}%
-\newcolumntype{R}[1]{>{\hsize=#1\hsize\raggedleft\arraybackslash}X}%
-\newcolumntype{C}[1]{>{\hsize=#1\hsize\centering\arraybackslash}X}%
-% image in tabularx, export: the package can go directly in the arguments of graphicx
-\usepackage[export]{adjustbox}
-% modify title 
-\renewcommand{\contentsname}{Mục lục}
-\renewcommand{\listtablename}{Danh sách bảng}
-\renewcommand{\listfigurename}{Danh sách hình ảnh}
-\renewcommand{\chaptername}{Chương}
-\renewcommand{\appendixname}{Phụ lục}
-% modify names of table, figure
-\usepackage{caption}
-\DeclareCaptionFont{table-figure-caption-fontsize}{\fontsize{11pt}{16.5pt}\selectfont}
-\captionsetup{tablename=Bảng, figurename=Hình, labelfont=bf, font=table-figure-caption-fontsize}
-\captionsetup[subfigure]{font=table-figure-caption-fontsize, justification=centering}
-% bibliography
-\usepackage[
-    backend=biber,
-    style=ieee,
-    sorting=ynt]{biblatex}
-\addbibresource{./references.bib}
-% bibliography font size 11pt, align left
-\renewcommand*{\bibfont}{\fontsize{11pt}{16.5pt}\selectfont\raggedright}
-% image inserting
-\usepackage{graphicx}
-% import
-\usepackage{import}
-\DeclareMathOperator{\sign}{sign}
-% item
-\usepackage{enumitem}
-\setlist[itemize]{nolistsep}
-\setlist[enumerate]{nolistsep}
-% % paragraph skip
-% \usepackage[skip=4pt plus 2pt, indent=0.5cm]{parskip}
-% indent first paragraph in a section
-\usepackage{indentfirst}
-% multiple figure
-\usepackage{subcaption}
-% % insert code
-% \usepackage{minted}
-% font awesome
-\usepackage{fontawesome5}
-% font color
-\usepackage{xcolor}
-% hoa lá hẹ cover
-\usepackage{tikz}
-% use code
-\usepackage{algorithm, algpseudocode}
-% new algorithm
-\makeatletter
-\newenvironment{algorithmz}[1][htbp]{
-    \floatname{algorithm}{Giải thuật}
-    \renewcommand{\ALG@name}{Giải thuật}
-    \begin{algorithm}[#1]%
-        }{\end{algorithm}}
-\makeatother
-% new algorithm command
-\algnewcommand\algorithmicforeach{\textbf{for each}}
-\algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ \algorithmicdo}
-\algnewcommand\algorithmiccontinue{\textbf{continue}}
-\newcommand{\Continue}{\State \algorithmiccontinue}
 
-% %
-% % debug
-% %
-% \makeatletter
-% \newcommand{\showfont}
-% {%
-%     (%\foreignlanguage{english}
-%     {%
-%             % encoding: \f@encoding{},
-%             % family: \f@family{},
-%             % series: \f@series{},
-%             % shape: \f@shape{},
-%             size: \f@size{},
-%             baseline: \f@baselineskip{},
-%             linespread: \f@linespread{},
-%             linespacing: \the\baselineskip{}%
-%         })%
-% }
-% \makeatother
-% % debug layout
+% DEBUG -----------------------------------------------------------------------
 \usepackage{showframe}
-% % \usepackage{lua-visual-debug} % using this package with lualatex
-% % debug text
-% \usepackage{lipsum}
-% %
-% % end debug
-% %
