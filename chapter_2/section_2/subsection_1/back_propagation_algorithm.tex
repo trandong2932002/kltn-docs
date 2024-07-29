@@ -72,7 +72,7 @@ Chọn điểm $i$ bất kỳ trong mạng, gọi $j\in A(i)$ là tập hợp c�
     S(i,t)=\sum_{j\in A(i)}z(i,j)S(j,t)
 \end{align}
 Với giá trị khởi tạo $S(t,t)=1$, mã giả của thuật toán quy hoạch động để tính $S(s,t)$ là
-\begin{algorithmz}
+\begin{algorithm}[htb]
     \caption{Mã giả tính $S(s,t)$ bằng quy hoạch động \cite{Aggarwal2023}}
     \label{algorithm:dynamic-programming-node-to-node}
     \begin{algorithmic}[1]
@@ -82,7 +82,7 @@ Với giá trị khởi tạo $S(t,t)=1$, mã giả của thuật toán quy ho�
         \State Cập nhật $S(i,t)\gets\sum_{j\in A(i)}z(i,j)S(j,t)$
         \Until tất cả các nút đã được tính
     \end{algorithmic}
-\end{algorithmz}
+\end{algorithm}
 
 Trong hầu hết các thuật toán học máy truyền thống, người ta chỉ cần tìm lời giải một lần duy nhất là một hàm $f$ dưới dạng rút gọn, sau đó chỉ cần thay các điểm dữ liệu khác nhau là ta sẽ cập nhật được bộ tham số $\mathbf{w}$ dựa theo thuật toán xuống đồi. Đối với thuật toán lan truyền ngược, ta phải chạy lại thuật toán với mỗi điểm khác nhau. Điều này nghe như khối lượng công việc sẽ nhiều hơn so với các thuật toán truyền thống, nhưng nó đã được chứng minh là tốt hơn nhiều so với cách giải truyền thống khi mà số lượng lớp và nút ở mỗi lớp lớn.
 
@@ -99,7 +99,7 @@ Chọn điểm $i$ bất kỳ trong mạng, gọi $j\in A(i)$ là tập hợp c�
     \triangle(i)=\sum_{j\in A(i)}z(i,j)\triangle(j)
 \end{align}
 Khởi tạo đạo hàm mất mát với tất cả các nút đầu ra $\triangle(t_k)$, ta có
-\begin{algorithmz}
+\begin{algorithm}[htb]
     \caption{Mã giả tính $\partial L/\partial\mathbf{w}$ bằng quy hoạch động \cite{Aggarwal2023}}
     \label{algorithm:dynamic-programming-loss-to-weight}
     \begin{algorithmic}[1]
@@ -112,7 +112,8 @@ Khởi tạo đạo hàm mất mát với tất cả các nút đầu ra $\trian
         \State Tính $\dfrac{\partial L}{\partial w_{ji}}\gets\triangle(i)\cdot\dfrac{\partial y(i)}{\partial w_{ji}}$
         \EndFor
     \end{algorithmic}
-\end{algorithmz}\\
+\end{algorithm}
+
 Sau khi tính $\partial L/\partial\mathbf{w}$, ta có thể áp dụng thuật toán xuống đồi để tối ưu tham số $\mathbf{w}$
 \begin{align}
     \mathbf{w}\leftarrow\mathbf{w}-\alpha\cdot\dfrac{\partial L}{\partial\mathbf{w}}

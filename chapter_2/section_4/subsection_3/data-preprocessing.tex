@@ -56,7 +56,7 @@ Vì dữ liệu là các bình luận trên Wikipedia, nên có một vài đi�
 
 Sau khi áp dụng các thao tác trên, dữ liệu chuỗi sẽ còn lại các từ đơn dạng: số 0-9, chữ cái a-z và A-Z, dấu câu, ký hiệu, và các tổ hợp của chúng. Nhóm đề xuất các bước phân loại thành hai nhóm: nhóm 1 bao gồm số, dấu câu, ký hiệu và các tổ hợp của chúng, nhóm 2 là các từ còn lại. Nhóm các từ còn lại này sẽ được kiểm tra là từ có nghĩa (nằm trong kho từ (\textit{corpus})), nếu là từ không có nghĩa thì sử dụng các bước sau đây kết hợp với thuật toán sửa lỗi chính tả SymSpell để đưa về dạng đúng nhất có thể.
 
-\begin{algorithmz}[htb]
+\begin{algorithm}[htb]
     \caption{Mã giả sửa lỗi chính tả cho từ $T$, với hàm đoán$(\cdot)$ và hàm tách$(\cdot)$ là các hàm trong thuật toán SymSpell}
     \begin{algorithmic}[1]
         \State Thay thế tất cả ký tự đặc biệt bằng khoảng trắng (chỉ giữ lại nhóm unicode L và N)
@@ -72,7 +72,7 @@ Sau khi áp dụng các thao tác trên, dữ liệu chuỗi sẽ còn lại cá
         \State \Return tách$(T)$
         \Comment \texttt{helloworld} $\to$ \texttt{hello\textvisiblespace world}
     \end{algorithmic}
-\end{algorithmz}
+\end{algorithm}
 
 Mục tiêu của thuật toán trên nhằm giữ lại và trích xuất nhiều thông tin nhất có thể từ những từ vô nghĩa. Đối với các từ có nghĩa, nhóm nhận thấy các ký tự như - (gạch nối), ' (ngoặc đơn), v.v. thường không bổ sung ý nghĩa cho từ. Trong nhiều trường hợp nó còn là lỗi sai chính tả (ví dụ như sử dụng dấu câu nhưng không có khoảng trắng: \texttt{hello,word}), hay việc cố tình thêm dấu câu giữa các từ để tránh các bộ lọc thô tục (ví dụ: \texttt{f.u.c.k}). Vì vậy bước 1 của thuật toán trên là thay thế toàn bộ các ký tự đó bằng khoảng trắng. Bước 2, 3 sẽ kiểm tra tính có nghĩa của toàn bộ các từ mới được tạo thành. Trường hợp có nghĩa thì thuật toán dừng lại và trả về các từ có nghĩa; nếu không thường sẽ rơi vào hai trường hợp, hoặc sai chính tả quá nặng (ví dụ: \texttt{hel\textvisiblespace llowo\textvisiblespace rld}), hoặc là các dạng spam từ (ví dụ: \texttt{hellooooooooooo}). Vì vậy bước tiếp theo sẽ xoá toàn bộ các khoảng trắng còn lại, sau đó sẽ chống spam bằng cách xoá toàn bộ các ký tự gần nhau bị trùng quá 2 lần\footnote{Trong tiếng Anh, tần suất xuất hiện hai ký tự giống nhau là rất thấp (bản đồ nhiệt \ref{figure:english_bigram_frequency}), dẫn đến việc xuất hiện ba ký tự giống nhau cực kỳ thấp (\texttt{tr\underline{ee} \underline{e}nd}). Đối với tiếng Việt chỉ có duy nhất cụm \texttt{oo} là hai ký tự gần nhau có nghĩa, còn lại các cụm \texttt{aa ee dd oo} là do viết sai chính tả hoặc sử dụng bảng mã Telex khi gõ tiếng Việt.}, cuối cùng dùng thuật toán Symspell để tách các từ con ra. (xem kết quả thử nghiệm tại \ref{spelling-corrector-algorithm-result})
 

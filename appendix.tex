@@ -1,4 +1,4 @@
-\section*{Phân tích khám phá dữ liệu}
+\section{Phân tích khám phá dữ liệu}
 Biểu đồ về phân bố dữ liệu theo số ký tự, với giới hạn của số ký tự trong dataset là $(0,5000]$. Đối với tiếng Việt hoặc tiếng Anh, nhóm thấy việc chuẩn hóa theo dạng NFC\footnote{\url{https://unicode.org/reports/tr15/\#Norm\_Forms}} rồi tách từ là đủ, không cần sử dụng đến grapheme cluster\footnote{\url{https://www.unicode.org/reports/tr29/\#Grapheme\_Cluster\_Boundaries}}.
 
 Biểu đồ phân bố dữ liệu theo số từ được tạo ra bằng cách dùng hàm word\_tokenize\footnote{\url{https://www.nltk.org/api/nltk.tokenize.html}} của thư viện NLTK, sau đó bỏ đi các dấu câu.
@@ -13,7 +13,6 @@ Biểu đồ phân bố dữ liệu theo số từ được tạo ra bằng các
     \includegraphics[width=0.9\textwidth]{chapter_2/image/dist_num_chars_and_words_by_has_label.pdf}
     \caption{Phân bố dữ liệu có/không có nhãn theo số ký tự và số từ}
 \end{figure}
-
 
 \begin{figure}[htb]
     \centering
@@ -41,9 +40,9 @@ Khi nhãn toxic là $0$, có rất ít dữ liệu thuộc các nhãn còn lại
     \includegraphics[width=\textwidth]{chapter_2/image/num_records_per_label_without_one_label.pdf}
     \caption{Phân bố dữ liệu đối với từng nhãn khi một nhãn bất kỳ là $0$}
 \end{figure}
-
 \clearpage
-\section*{Dữ liệu huấn luyện}
+
+\section{Dữ liệu huấn luyện}
 \begin{center}
     \textcolor{orange}{\faExclamationTriangle\. CẢNH BÁO: Bắt đầu từ đây sẽ có nhiều từ ngữ được xem là xúc phạm.}
 \end{center}
@@ -159,11 +158,11 @@ Tập dữ liệu tiếng Anh sau khi được xử lý sẽ được dịch th�
 \end{table}
 \clearpage
 
-\section*{Dữ liệu bên lề}
-\subsection*{Dữ liệu liên quan đến tiếng Anh}
+\section{Dữ liệu bên lề}
+\subsection*{Từ viết tắt trong tiếng Anh (\textit{abbreviation})\footnote{\url{https://www.grammarly.com/blog/types-abbreviations/}}}
 \begin{table}[htb]
     \centering
-    \caption{Các cụm từ viết tắt trong tiếng Anh}
+    \caption{Một vài từ viết tắt dạng \textit{contraction}}
     \label{table:english-contractions}
     \begin{tabular}{ll}
         \toprule
@@ -181,9 +180,28 @@ Tập dữ liệu tiếng Anh sau khi được xử lý sẽ được dịch th�
         \bottomrule
     \end{tabular}
 \end{table}
+Đối với các từ viết tắt dạng \textit{clipping}, \textit{initialism}, \textit{acronym} và \textit{textese}, nhóm quyết định không thay thế chúng mà để cho mô hình nhúng từ xử lý chúng.
+\begin{table}[htb]
+    \centering
+    \caption{Các cụm từ viết tắt khác}
+    \begin{tabular}{lll}
+        \toprule
+        \textbf{Dạng}               & \textbf{Từ viết tắt} & \textbf{Từ hoàn chỉnh}                        \\\midrule
+        \multirow{2}{*}{clipping}   & ad                   & advertisement                                 \\
+                                    & app                  & application                                   \\\midrule
+        \multirow{2}{*}{initialism} & FBI                  & Federal Bureau of Investigation               \\
+                                    & UFO                  & Unidentified Flying Object                    \\\midrule
+        \multirow{2}{*}{acronym}    & PIN                  & Personal Identification Number                \\
+                                    & NASA                 & National Aeronautics and Space Administration \\\midrule
+        \multirow{2}{*}{textese}    & lol                  & laugh out loud                                \\
+                                    & btw                  & by the way                                    \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+\clearpage
 
-\newpage
-Biểu đồ tần suất của 2 từ liền kề trong tiếng Anh, là một phần trong bài viết English Letter Frequency Counts của Peter Norvig\footnote{\url{https://norvig.com/mayzner.html}}.
+\subsection*{English Letter Frequency Counts\footnote{\url{https://norvig.com/mayzner.html}}}
+Biểu đồ tần suất của 2 từ liền kề (\textit{bigram}) trong tiếng Anh.
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{chapter_2/image/norvig_bigram_frequency.pdf}
@@ -200,16 +218,19 @@ Biểu đồ tần suất của 2 từ liền kề trong tiếng Anh, là một 
     \begin{tabular}{l l}
         \toprule
         \textbf{Tên}                                                    & \textbf{shortcut} \\\midrule
-        \multirow{5}{*}{\texttt{wikipedia shortcut\footnotemark}}       & Portal:Contents   \\
+        \multirow{6}{*}{\texttt{wikipedia shortcut\footnotemark}}       & Portal:Contents   \\
                                                                         & WP:QI             \\
                                                                         & WP:TI             \\
                                                                         & P:LIT             \\
-                                                                        & WP:MOS-ZH         \\\midrule
-        \multirow{3}{*}{\texttt{wikipedia namespace\footnotemark}}      & WP:\              \\
+                                                                        & WP:MOS-ZH         \\
+                                                                        & \dots             \\\midrule
+        \multirow{4}{*}{\texttt{wikipedia namespace\footnotemark}}      & WP:\              \\
                                                                         & Project:\_        \\
-                                                                        & Project talk:\_   \\\midrule
-        \multirow{2}{*}{\texttt{wikipedia file namespace\footnotemark}} & Image:\_          \\
+                                                                        & Project talk:\_   \\
+                                                                        & \dots             \\\midrule
+        \multirow{3}{*}{\texttt{wikipedia file namespace\footnotemark}} & Image:\_          \\
                                                                         & Image talk:\_     \\
+                                                                        & \dots             \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -219,34 +240,34 @@ Biểu đồ tần suất của 2 từ liền kề trong tiếng Anh, là một 
 
 \newpage
 \subsection*{Dữ liệu liên quan đến Unicode}
-Bảng mã Unicode có rất nhiều khối\footnote{\url{https://www.compart.com/en/unicode/block}} khác nhau, nhưng phần lớn trong đó là các ký tự của các ngôn ngữ trên thế giới. Đề tài này chỉ tập trung vào xử lý các ký tự latin và một vài ký tự khác gần giống với ký tự latin.
+Bảng mã Unicode có rất nhiều khối\footnote{\url{https://www.compart.com/en/unicode/block}} khác nhau, nhưng phần lớn trong đó là các ký tự của các ngôn ngữ trên thế giới.
 \begin{table}[htb]
     \centering
     \caption{Các khối Unicode được sử dụng}
     \label{table:unicode-blocks}
     \begin{threeparttable}
-        \begin{tabular}{lccc}
+        \begin{tabular}{llccc}
             \toprule
-            \multirow{2}{*}{\textbf{Tên khối}}      & \multicolumn{2}{c}{\textbf{Khoảng Unicode}} & \multirow{2}{*}{ \textbf{Ví dụ}}     \\\cmidrule(lr){2-3}
-                                                    & Bắt đầu                                     & Kết thúc                         &   \\\midrule
-            Basic Latin                             & U+0000                                      & U+007F                           & a \\
-            Latin-1 Supplement                      & U+0080                                      & U+00FF                           & á \\
-            Latin Extended-A                        & U+0100                                      & U+017F                           & ă \\
-            Latin Extended-B                        & U+0180                                      & U+024F                           & ơ \\
-            Latin Extended Additional               & U+1E00                                      & U+1EFF                           & ả \\
-            Latin Extended-C                        & U+2C60                                      & U+2C7F                           & ⱽ \\
-            Latin Extended-D                        & U+A720                                      & U+A7FF                           & ꞷ \\
-            Latin Extended-E                        & U+AB30                                      & U+AB6F                           & ꬶ \\
-            Greek and Coptic                        & U+0370                                      & U+03FF                           & β \\
-            Greek Extend                            & U+1F00                                      & U+1FFF                           & ἀ \\
-            Ancient Greek Numbers\tnote{1}          & U+10140                                     & U+1018F                          &   \\
-            Ancient Greek Musical Notation\tnote{2} & U+1D200                                     & U+1D24F                          &   \\
-            Phonetic Extensions                     & U+1D00                                      & U+1D7F                           & ᴀ \\
-            Phonetic Extensions Supplement          & U+1D80                                      & U+1DBF                           & ᶆ \\
-            Katakana Phonetic Extensions\tnote{3}   & U+31F0                                      & U+31FF                           &   \\
-            Spacing Modifier Letters                & U+02B0                                      & U+02FF                           & ʰ \\
-            General Punctuation                     & U+2000                                      & U+206F                           & ‚ \\
-            Currency Symbols                        & U+20A0                                      & U+20CF                           & € \\
+            \multirow{2}{*}{\textbf{Loại}} & \multirow{2}{*}{\textbf{Tên khối}}      & \multicolumn{2}{c}{\textbf{Khoảng Unicode}} & \multirow{2}{*}{ \textbf{Ví dụ}}     \\\cmidrule(lr){3-4}
+                                           &                                         & Bắt đầu                                     & Kết thúc                         &   \\\midrule
+            \multirow{8}{*}{Latin}         & Basic Latin                             & U+0000                                      & U+007F                           & a \\
+                                           & Latin-1 Supplement                      & U+0080                                      & U+00FF                           & á \\
+                                           & Latin Extended-A                        & U+0100                                      & U+017F                           & ă \\
+                                           & Latin Extended-B                        & U+0180                                      & U+024F                           & ơ \\
+                                           & Latin Extended Additional               & U+1E00                                      & U+1EFF                           & ả \\
+                                           & Latin Extended-C                        & U+2C60                                      & U+2C7F                           & ⱽ \\
+                                           & Latin Extended-D                        & U+A720                                      & U+A7FF                           & ꞷ \\
+                                           & Latin Extended-E                        & U+AB30                                      & U+AB6F                           & ꬶ \\\midrule
+            \multirow{4}{*}{Greek}         & Greek and Coptic                        & U+0370                                      & U+03FF                           & β \\
+                                           & Greek Extend                            & U+1F00                                      & U+1FFF                           & ἀ \\
+                                           & Ancient Greek Numbers\tnote{1}          & U+10140                                     & U+1018F                          &   \\
+                                           & Ancient Greek Musical Notation\tnote{2} & U+1D200                                     & U+1D24F                          &   \\\midrule
+            \multirow{3}{*}{Phonetic}      & Phonetic Extensions                     & U+1D00                                      & U+1D7F                           & ᴀ \\
+                                           & Phonetic Extensions Supplement          & U+1D80                                      & U+1DBF                           & ᶆ \\
+                                           & Katakana Phonetic Extensions\tnote{3}   & U+31F0                                      & U+31FF                           &   \\\midrule
+            \multirow{3}{*}{Others}        & Spacing Modifier Letters                & U+02B0                                      & U+02FF                           & ʰ \\
+                                           & General Punctuation                     & U+2000                                      & U+206F                           & ‚ \\
+                                           & Currency Symbols                        & U+20A0                                      & U+20CF                           & € \\
             \bottomrule
         \end{tabular}
         \begin{tablenotes}
@@ -257,8 +278,10 @@ Bảng mã Unicode có rất nhiều khối\footnote{\url{https://www.compart.co
     \end{threeparttable}
 \end{table}
 
-\newpage
-Bảng mã Unicode có nhiều nhóm\footnote{\url{https://www.compart.com/en/unicode/category}} khác nhau, nhưng trong đề tài này chỉ tập trung vào các nhóm chính.
+Nhóm nhận thấy, trong tập dữ liệu, các ký tự thuộc các ngôn ngữ như Trung, Hindi, Thái, Hàn, v.v. thường là các từ thuộc dạng spam và không mang nhiều ý nghĩa. Vì vậy nhóm đã quyết định loại bỏ hoàn toàn các ký tự như vậy, và tập trung vào xử lý các ký tự latin và một vài ký tự khác gần giống với ký tự latin.
+
+\clearpage
+Bảng mã Unicode có nhiều nhóm\footnote{\url{https://www.compart.com/en/unicode/category}} khác nhau, nhưng trong đề tài này chỉ tập trung vào xử lý các nhóm chính.
 \begin{table}[htb]
     \centering
     \caption{Các nhóm Unicode}
@@ -277,7 +300,7 @@ Bảng mã Unicode có nhiều nhóm\footnote{\url{https://www.compart.com/en/un
     \end{tabular}
 \end{table}
 
-Biến đổi các ký tự đặc biệt còn lại về bảng mã ASCII.
+Biến đổi các ký tự đặc biệt còn lại về bảng mã ASCII\footnote{\url{https://interglacial.com/tpj/22/}}.
 \begin{table}[htb]
     \centering
     \caption{Một vài biến đổi giữa ký tự đặc biệt và ký tự ASCII}
@@ -290,10 +313,17 @@ Biến đổi các ký tự đặc biệt còn lại về bảng mã ASCII.
         {\fontspec{MS Gothic}北亰}    & Bei Jing             \\
         {\fontspec{MS Gothic}げんまい茶} & genmaiCha            \\
         {\fontspec{MS Gothic}δ}     & d                    \\
-        \char"2026                  & ...                  \\
+        \dots                       & \dots                \\
         \bottomrule
     \end{tabular}
 \end{table}
+
+Một vài ký tự đặc biệt khi biến đổi về dạng ASCII sẽ không giống hoặc không hoàn toàn giống với hình dạng của ký tự đó, ví dụ như:
+\begin{itemize}
+    \item Æ\textrightarrow AE, nhưng có thể là A hoặc E hoặc AE.
+    \item Ἠ\textrightarrow E, nhưng có thể là H.
+    \item v.v..
+\end{itemize}
 
 \newpage
 \subsection*{Dữ liệu liên quan đến các loại emoticons/emojis}
@@ -307,7 +337,6 @@ Các emoticons được thu thập từ nhiều nguồn\footnote{\url{https://en
         \textbf{Emoticons}                & \textbf{Tên tiếng Anh}    & \textbf{Tên tiếng Việt}        \\\midrule
         {\fontspec{Consolas}:)}           & smiley, happy face        & khuôn mặt tươi cười, hạnh phúc \\
         {\fontspec{Consolas}xD}           & laughing                  & cười                           \\
-        {\fontspec{Consolas}XD}           & laughing                  & cười                           \\
         {\fontspec{Consolas}:-))}         & very happy or double chin & rất vui vẻ hoặc cằm đôi        \\
         {\fontspec{Consolas}8-X}          & skull and crossbones      & đầu lâu xương chéo             \\
         {\fontspec{Consolas}~:>}          & chicken                   & thịt gà                        \\
@@ -316,6 +345,7 @@ Các emoticons được thu thập từ nhiều nguồn\footnote{\url{https://en
         {\fontspec{Consolas}( . Y . )}    & boobs                     & ngực                           \\
         {\fontspec{Consolas}( ° ͜ʖ͡°)╭∩╮}   & fuck                      & chết tiệt                      \\
         {\fontspec{Consolas}╭∩╮(-\_-)╭∩╮} & fuck                      & chết tiệt                      \\
+        \dots                             & \dots                     & \dots                          \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -337,6 +367,7 @@ Các emoticons được thu thập từ nhiều nguồn\footnote{\url{https://en
         {\fontspec{Segoe UI Emoji}\char"1F602} & face with tears of joy          & khuôn mặt với giọt nước mắt của niềm vui      \\
         {\fontspec{Segoe UI Emoji}\char"1F642} & slightly smiling face           & khuôn mặt hơi mỉm cười                        \\
         {\fontspec{Segoe UI Emoji}\char"1F643} & upside-down face                & mặt lộn ngược                                 \\
+        \dots                                  & \dots                           & \dots                                         \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -409,19 +440,22 @@ Ví dụ về văn bản là những đặc trưng của tiếng Việt: chỉ c
     \begin{tabular}{lll}
         \toprule
         \textbf{Loại}            & \textbf{Văn bản gốc} & \textbf{Văn bản độc hại tương ứng} \\\midrule
-        \multirow{3}{*}{Đồng âm} & phúc du              & fuck you                           \\
+        \multirow{4}{*}{Đồng âm} & phúc du              & fuck you                           \\
                                  & bích                 & bitch                              \\
-                                 & dung                 & dung (phân trong tiếng Anh)        \\\midrule
-        \multirow{3}{*}{Nối âm}  & cờ hó                & chó                                \\
+                                 & dung                 & dung (phân trong tiếng Anh)        \\
+                                 & \dots                & \dots                              \\\midrule
+        \multirow{4}{*}{Nối âm}  & cờ hó                & chó                                \\
                                  & mờ ẹ                 & mẹ                                 \\
-                                 & đờ ịt                & địt                                \\\midrule
-        \multirow{2}{*}{Nói lái} & bủ nghi              & bỉ ngu                             \\
+                                 & đờ ịt                & địt                                \\
+                                 & \dots                & \dots                              \\\midrule
+        \multirow{3}{*}{Nói lái} & bủ nghi              & bỉ ngu                             \\
                                  & ơn lạnh              & anh lợn                            \\
+                                 & \dots                & \dots                              \\
         \bottomrule
     \end{tabular}
 \end{table}
+\clearpage
 
-\newpage
 \subsection*{Từ điển tần suất tiếng Việt}\label{vietnamese-frequency-dictionary}
 \begin{table}[htb]
     \caption{Từ điển tần suất tiếng Việt (10 từ đầu theo thứ tự giảm dần tần suất)}
@@ -464,37 +498,58 @@ Ví dụ về văn bản là những đặc trưng của tiếng Việt: chỉ c
         \end{tabular}
     \end{subtable}
 \end{table}
-
 \subsection*{Từ điển tần suất tiếng Anh}
-\begin{table}[htb]
-    \centering
+\begin{table}[htb!]
     \caption{Từ điển tần suất tiếng Anh (10 từ đầu theo thứ tự giảm dần tần suất)}
-    \begin{tabular}{l r}
-        \toprule
-        \textbf{Từ} & \textbf{Tần suất} \\\midrule
-        the         & $23135851162$     \\
-        of          & $13151942776$     \\
-        and         & $12997637966$     \\
-        to          & $12136980858$     \\
-        a           & $9081174698$      \\
-        in          & $8469404971$      \\
-        for         & $5933321709$      \\
-        is          & $4705743816$      \\
-        on          & $3750423199$      \\
-        that        & $3400031103$      \\
-        \bottomrule
-    \end{tabular}
+    \begin{subtable}[h]{0.5\textwidth}
+        \centering
+        \caption{Từ điển từ đơn}
+        \begin{tabular}{l r}
+            \toprule
+            \textbf{Từ} & \textbf{Tần suất} \\\midrule
+            the         & $23135851162$     \\
+            of          & $13151942776$     \\
+            and         & $12997637966$     \\
+            to          & $12136980858$     \\
+            a           & $9081174698$      \\
+            in          & $8469404971$      \\
+            for         & $5933321709$      \\
+            is          & $4705743816$      \\
+            on          & $3750423199$      \\
+            that        & $3400031103$      \\
+            \bottomrule
+        \end{tabular}
+    \end{subtable}%
+    \begin{subtable}[h]{0.5\textwidth}
+        \centering
+        \caption{Từ điển hai từ}
+        \begin{tabular}{l r}
+            \toprule
+            \textbf{Từ} & \textbf{Tần suất} \\\midrule
+            of the      & $177045273024$    \\
+            in the      & $104242900736$    \\
+            to the      & $72911935936$     \\
+            on the      & $51221044160$     \\
+            for the     & $44343987328$     \\
+            and the     & $40302521152$     \\
+            to be       & $32329535808$     \\
+            is a        & $30510015360$     \\
+            with the    & $29525206272$     \\
+            from the    & $27411406016$     \\
+            \bottomrule
+        \end{tabular}
+    \end{subtable}
 \end{table}
+\clearpage
 
-\newpage
 \subsection*{Kết quả thử nghiệm thuật toán}\label{spelling-corrector-algorithm-result}
 \begin{table}[htb]
     \centering
     \begin{tabularx}{\textwidth}{L{1} L{1}}
         \toprule
         \textbf{Đầu vào}                                                                                                                                                         & \textbf{Đầu ra}                                                                                                                                                             \\\midrule
-        Trong24đến48giờtiếptheo,ápthấpnhiệtđ-\newline ớidichuyểnchủyếutheohướngtâytâybắc,\newline mỗigiờđiđượckhoảng10km,tiếptụcmạnh-\newline thêm,tiếnvềbờbiểncáctỉnhmiềnTrung. & trong 24 đến 48 giờ tiếp theo áp thấp nhiệt đới di chuyển chủ yếu theo hướng tây tây bắc mỗi giờ đi được khoảng 10km tiếp tục mạnh thêm tiến về bờ biển các tỉnh miền trung \\
-        maaaaaaaaaaaaaaaaaaaaammmmmmm-\newline aaaaaaaaaaaaaayyyyyyyyyyyy                                                                                                        & ma may                                                                                                                                                                      \\
+        Trong24đến48giờtiếptheo,ápthấpnhiệtđ-\newline ớidichuyểnchủyếutheohướngtâytâybắc,\newline mỗigiờđiđượckhoảng10km,tiếptụcmạnh-\newline thêm,tiếnvềbờbiểncáctỉnhmiềnTrung. & trong 24 đến 48 giờ tiếp theo áp thấp nhiệt đới di chuyển chủ yếu theo hướng tây tây bắc mỗi giờ đi được khoảng 10km tiếp tục mạnh thêm tiến về bờ biển các tỉnh miền trung \\\midrule
+        maaaaaaaaaaaaaaaaaaaaammmmmmm-\newline aaaaaaaaaaaaaayyyyyyyyyyyy                                                                                                        & ma may                                                                                                                                                                      \\\midrule
         con c,h.o kia                                                                                                                                                            & con cho kia                                                                                                                                                                 \\
         \bottomrule
     \end{tabularx}

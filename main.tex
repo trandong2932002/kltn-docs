@@ -51,21 +51,35 @@
 \listoffigures
 \cleardoublepage\phantomsection
 % chapter 1
-\chapter{Mở đầu}
 \pagenumbering{arabic}
+\chapter{Mở đầu}\label{chapter:first}
+\addcontentsline{lof}{chapter}{\nameref{chapter:first}}
+\addcontentsline{lot}{chapter}{\nameref{chapter:first}}
 \import{chapter_1/}{introduction.tex}
 % chapter 2
-\chapter{Nội dung}
+\chapter{Nội dung}\label{chapter:second}
+\addcontentsline{lof}{chapter}{\nameref{chapter:second}}
+\addcontentsline{lot}{chapter}{\nameref{chapter:second}}
 \import{chapter_2/}{content.tex}
 % chapter 3
-\chapter{Kết luận}
+\chapter{Kết luận}\label{chapter:third}
+\addcontentsline{lof}{chapter}{\nameref{chapter:third}}
+\addcontentsline{lot}{chapter}{\nameref{chapter:third}}
 \import{chapter_3/}{conclusion.tex}
 % ref
 % \nocite{*}
 \printbibliography[heading=bibintoc, title=Danh mục tài liệu tham khảo]
 % % appendix
-\chapter*{Phụ lục}
+\appendix
+\chapter*{Phụ lục}\label{chapter:appendix}
 \addcontentsline{toc}{chapter}{Phụ lục}
+\addcontentsline{lof}{chapter}{\nameref{chapter:appendix}}
+\addcontentsline{lot}{chapter}{\nameref{chapter:appendix}}
 \markboth{\MakeUppercase{Phụ lục}}{}
+\renewcommand*{\thesection}{\Alph{section}}
+\counterwithin{figure}{section}
+\renewcommand*{\thefigure}{\thesection.\arabic{figure}}
+\counterwithin{table}{section}
+\renewcommand{\thetable}{\thesection.\arabic{table}} 
 \import{}{appendix.tex}
 \end{document}
